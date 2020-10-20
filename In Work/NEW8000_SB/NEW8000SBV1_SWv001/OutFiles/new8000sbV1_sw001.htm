@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\OutFiles\new8000sbV1_sw001.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\OutFiles\new8000sbV1_sw001.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Mon Oct 12 16:27:06 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Tue Oct 20 09:50:48 2020
 <BR><P>
 <H3>Maximum Stack Usage =         48 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -527,18 +527,6 @@ Global Symbols
 <LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SirenBoard_BuildingPackForRS485
 </UL>
 
-<P><STRONG><a name="[59]"></a>Siren_GetOffLineStatus</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, siren.o(i.Siren_GetOffLineStatus))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Siren_GetOffLineStatus
-</UL>
-<BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Siren_OutputFSM
-</UL>
-
-<P><STRONG><a name="[60]"></a>Siren_GetOnLineStatus</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, siren.o(i.Siren_GetOnLineStatus))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Siren_GetOnLineStatus
-</UL>
-<BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Siren_OutputFSM
-</UL>
-
 <P><STRONG><a name="[52]"></a>Siren_Init</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, siren.o(i.Siren_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Siren_Init
 </UL>
@@ -561,16 +549,6 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
 </UL>
 
-<P><STRONG><a name="[58]"></a>Siren_Off</STRONG> (Thumb, 68 bytes, Stack size 0 bytes, siren.o(i.Siren_Off))
-<BR><BR>[Called By]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_PollingRS485
-<LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_Apply
-<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Siren_OutputFSM
-</UL>
-
-<P><STRONG><a name="[5e]"></a>Siren_On</STRONG> (Thumb, 64 bytes, Stack size 0 bytes, siren.o(i.Siren_On))
-<BR><BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Siren_OutputFSM
-</UL>
-
 <P><STRONG><a name="[50]"></a>Siren_OutputFSM</STRONG> (Thumb, 242 bytes, Stack size 16 bytes, siren.o(i.Siren_OutputFSM))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Siren_OutputFSM &rArr; __ARM_common_switch8
 </UL>
@@ -586,7 +564,9 @@ Global Symbols
 <LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Stop
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Adc_Start
 </UL>
-<BR>[Called By]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Siren_ControlFromMB
+<BR>[Called By]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_PollingRS485
+<LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_Apply
+<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Siren_ControlFromMB
 </UL>
 
 <P><STRONG><a name="[6c]"></a>SwTimers_Init</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, swtimers.o(i.SwTimers_Init))
@@ -620,11 +600,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[26]"></a>Task_Apply</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, main.o(i.Task_Apply))
+<P><STRONG><a name="[26]"></a>Task_Apply</STRONG> (Thumb, 64 bytes, Stack size 8 bytes, main.o(i.Task_Apply))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = Task_Apply &rArr; Siren_ControlFromMB &rArr; Siren_OutputFSM &rArr; __ARM_common_switch8
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Scheduler_SetTask
-<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Siren_Off
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Siren_OutputFSM
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Siren_ControlFromMB
 <LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Siren_GetMeas
 </UL>
@@ -641,11 +621,11 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(i.Task_PollingRS485)
 </UL>
-<P><STRONG><a name="[28]"></a>Task_PollingRS485</STRONG> (Thumb, 82 bytes, Stack size 8 bytes, main.o(i.Task_PollingRS485))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Task_PollingRS485
+<P><STRONG><a name="[28]"></a>Task_PollingRS485</STRONG> (Thumb, 100 bytes, Stack size 8 bytes, main.o(i.Task_PollingRS485))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = Task_PollingRS485 &rArr; Siren_OutputFSM &rArr; __ARM_common_switch8
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Scheduler_SetTask
-<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Siren_Off
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Siren_OutputFSM
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RS485_Flags
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Blink
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Led_ACT_Set
@@ -751,7 +731,27 @@ Local Symbols
 
 <P><STRONG><a name="[24]"></a>RS485_TxBufComplete</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, rs485.o(i.RS485_TxBufComplete))
 <BR>[Address Reference Count : 1]<UL><LI> rs485.o(i.RS485_Init)
-</UL><P>
+</UL>
+<P><STRONG><a name="[59]"></a>Siren_GetOffLineStatus</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, siren.o(i.Siren_GetOffLineStatus))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Siren_GetOffLineStatus
+</UL>
+<BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Siren_OutputFSM
+</UL>
+
+<P><STRONG><a name="[60]"></a>Siren_GetOnLineStatus</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, siren.o(i.Siren_GetOnLineStatus))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Siren_GetOnLineStatus
+</UL>
+<BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Siren_OutputFSM
+</UL>
+
+<P><STRONG><a name="[58]"></a>Siren_Off</STRONG> (Thumb, 68 bytes, Stack size 0 bytes, siren.o(i.Siren_Off))
+<BR><BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Siren_OutputFSM
+</UL>
+
+<P><STRONG><a name="[5e]"></a>Siren_On</STRONG> (Thumb, 64 bytes, Stack size 0 bytes, siren.o(i.Siren_On))
+<BR><BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Siren_OutputFSM
+</UL>
+<P>
 <H3>
 Undefined Global Symbols
 </H3>

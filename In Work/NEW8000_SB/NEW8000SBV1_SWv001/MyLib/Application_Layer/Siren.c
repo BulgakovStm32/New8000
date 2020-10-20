@@ -5,9 +5,67 @@
 static SirenLine_t SirenLineContextArr[4];//3 линии табло и 1 одна линия питания.
 //******************************************************************************************
 //******************************************************************************************
+//Опеределение состояния линии при отключенном выходе.
+static void Siren_GetOffLineStatus(uint8_t line){
+	
+	uint16_t meas;
+	uint8_t	 stateTemp;
+	//--------------------	
+  meas = SirenLineContextArr[line].AdcMeasValue;//Берем измерение для канала.
+	
+			 if(meas < 40)                      stateTemp = SIREN_LINE_SHORT;//КЗ линии.
+	else if((meas >= 20) && (meas <= 2500)) stateTemp = SIREN_LINE_NORM; //Линия в норме.
+	else if(meas > 2500)                    stateTemp = SIREN_LINE_BREAK;//Обрыв линии
+
+	SirenLineContextArr[line].LineState = stateTemp;
+}
+//*****************************************************************************
+//Опеределение состояния линии при активированном выходе.
+static void Siren_GetOnLineStatus(uint8_t line){
+	
+	uint16_t meas;
+	uint8_t	 stateTemp;
+	//--------------------	
+  meas = SirenLineContextArr[line].AdcMeasValue;//Берем измерение для канала.
+	
+			 if(meas > 1600)                    stateTemp = SIREN_LINE_SHORT;//КЗ линии.
+	else if((meas >= 30) && (meas <= 1600)) stateTemp = SIREN_LINE_NORM; //Линия в норме.
+	else if(meas < 30)                      stateTemp = SIREN_LINE_BREAK;//Обрыв линии
+	
+	SirenLineContextArr[line].LineState = stateTemp;
+}
+//*****************************************************************************
+//Активация реле оповещателя.
+static void Siren_On(uint8_t line){
+	
+			 if(line == SIREN_1) RelSiren1On();
+	else if(line == SIREN_2) RelSiren2On();
+	else if(line == SIREN_3) RelSiren3On();
+	else if(line == SIREN_ALL) 
+		{
+			RelSiren1On();
+			RelSiren2On();
+			RelSiren3On();
+		}
+}	
+//*****************************************************************************
+//Отключение реле оповещателя.
+static void Siren_Off(uint8_t line){
+
+			 if(line == SIREN_1) RelSiren1Off();
+	else if(line == SIREN_2) RelSiren2Off();
+	else if(line == SIREN_3) RelSiren3Off();
+	else if(line == SIREN_ALL) 
+		{
+			RelSiren1Off();
+			RelSiren2Off();
+			RelSiren3Off();
+		}
+}
+//******************************************************************************************
+//******************************************************************************************
 void Siren_Init(void){
 	
-
 	RCC->AHBENR  |=   RCC_AHBENR_GPIOAEN; //Включаем тактирование порта A. 
 	GPIOA->MODER &= ~(GPIO_MODER_MODER0 | //PA0 - аналоговый вход.
 									  GPIO_MODER_MODER1 | //PA1 - аналоговый вход.
@@ -18,7 +76,7 @@ void Siren_Init(void){
 									  GPIO_PUPDR_PUPDR1 |	//PA1 - No pull-up, pull-down.
 									  GPIO_PUPDR_PUPDR2 |	//PA2 - No pull-up, pull-down.
 									  GPIO_PUPDR_PUPDR3);	//PA3 - No pull-up, pull-down.
-
+	//--------------------
 	Adc_Init();
 }
 //*****************************************************************************
@@ -47,67 +105,9 @@ uint16_t Siren_GetMeas(uint8_t ch){
   else                  return   SirenLineContextArr[ch].AdcMeasValue;
 }
 //*****************************************************************************
-//Опеределение состояния линии при отключенном выходе.
-void Siren_GetOffLineStatus(uint8_t line){
-	
-	uint16_t meas;
-	uint8_t	 stateTemp;
-	//--------------------	
-  meas = SirenLineContextArr[line].AdcMeasValue;//Берем измерение для канала.
-	
-			 if(meas < 40)                      stateTemp = SIREN_LINE_SHORT;//КЗ линии.
-	else if((meas >= 20) && (meas <= 2500)) stateTemp = SIREN_LINE_NORM; //Линия в норме.
-	else if(meas > 2500)                    stateTemp = SIREN_LINE_BREAK;//Обрыв линии
-
-	SirenLineContextArr[line].LineState = stateTemp;
-}
-//*****************************************************************************
-//Опеределение состояния линии при активированном выходе.
-void Siren_GetOnLineStatus(uint8_t line){
-	
-	uint16_t meas;
-	uint8_t	 stateTemp;
-	//--------------------	
-  meas = SirenLineContextArr[line].AdcMeasValue;//Берем измерение для канала.
-	
-			 if(meas > 1600)                    stateTemp = SIREN_LINE_SHORT;//КЗ линии.
-	else if((meas >= 30) && (meas <= 1600)) stateTemp = SIREN_LINE_NORM; //Линия в норме.
-	else if(meas < 30)                      stateTemp = SIREN_LINE_BREAK;//Обрыв линии
-	
-	SirenLineContextArr[line].LineState = stateTemp;
-}
-//*****************************************************************************
 uint8_t Siren_LineStatus(uint8_t line){
 
 	return SirenLineContextArr[line].LineState;
-}
-//*****************************************************************************
-//Активация оповещателя.
-void Siren_On(uint8_t line){
-	
-			 if(line == SIREN_1) RelSiren1On();
-	else if(line == SIREN_2) RelSiren2On();
-	else if(line == SIREN_3) RelSiren3On();
-	else if(line == SIREN_ALL) 
-		{
-			RelSiren1On();
-			RelSiren2On();
-			RelSiren3On();
-		}
-}	
-//*****************************************************************************
-//Отключение оповещателя.
-void Siren_Off(uint8_t line){
-
-			 if(line == SIREN_1) RelSiren1Off();
-	else if(line == SIREN_2) RelSiren2Off();
-	else if(line == SIREN_3) RelSiren3Off();
-	else if(line == SIREN_ALL) 
-		{
-			RelSiren1Off();
-			RelSiren2Off();
-			RelSiren3Off();
-		}
 }
 //*****************************************************************************
 void Siren_ControlFromMB(uint8_t ch){
@@ -139,8 +139,7 @@ void Siren_ControlFromMB(uint8_t ch){
 		//-----------
 	}
 }
-//******************************************************************************************
-//******************************************************************************************
+//*****************************************************************************
 //Машина состояний для управление выходами.
 void Siren_OutputFSM(uint8_t siren, uint8_t cmd){
 	

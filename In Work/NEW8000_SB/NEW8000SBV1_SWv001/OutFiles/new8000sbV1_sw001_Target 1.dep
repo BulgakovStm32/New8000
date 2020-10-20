@@ -111,7 +111,7 @@ I (.\CMSIS_STM32F0xx\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h)(0x597
 I (.\MyLib\Drivers\dma_ST.h)(0x5F43AA98)
 I (.\MyLib\Drivers\crc16.h)(0x5F3FC734)
 I (MyLib\Application_Layer\SB_SirenBoard.h)(0x5F8023EB)
-I (MyLib\Application_Layer\Siren.h)(0x5F8455E4)
+I (MyLib\Application_Layer\Siren.h)(0x5F8E87A5)
 I (.\MyLib\Drivers\adc_ST.h)(0x5F8433C7)
 I (.\MyLib\Drivers\gpio_ST.h)(0x5F58EB48)
 I (MyLib\Application_Layer\Blink.h)(0x5F742F0F)
@@ -120,7 +120,7 @@ I (.\MyLib\FSM\FsmMessage.h)(0x5F805DE9)
 F (.\MyLib\Application_Layer\Rs485.h)(0x5F742D93)()
 F (.\MyLib\Application_Layer\SB_SirenBoard.c)(0x5F8405B4)(-c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I.\CMSIS_STM32F0xx\CMSIS\Include -I.\CMSIS_STM32F0xx\CMSIS\Device\ST\STM32F0xx\Include -I.\CMSIS_STM32F0xx\CMSIS\Device\ST\STM32F0xx\Source\Templates -I.\Main -I.\MyLib\Application_Layer -I.\MyLib\Drivers -I.\StartUp -I.\MyLib\Sheduler -I.\MyLib\FSM-I "D:\02_Keil5_17_Project\01_KeilProjects_NEW8000\In Work\NEW8000_SB\NEW8000SBV1_SWv001\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F070x6-o .\outfiles\sb_sirenboard.o --omf_browse .\outfiles\sb_sirenboard.crf --depend .\outfiles\sb_sirenboard.d)
 I (MyLib\Application_Layer\SB_SirenBoard.h)(0x5F8023EB)
-I (MyLib\Application_Layer\Siren.h)(0x5F8455E4)
+I (MyLib\Application_Layer\Siren.h)(0x5F8E87A5)
 I (.\MyLib\Drivers\adc_ST.h)(0x5F8433C7)
 I (.\CMSIS_STM32F0xx\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x5F3F82C5)
 I (.\CMSIS_STM32F0xx\CMSIS\Device\ST\STM32F0xx\Include\stm32f070x6.h)(0x5978C20D)
@@ -135,8 +135,8 @@ I (MyLib\Application_Layer\Blink.h)(0x5F742F0F)
 I (.\MyLib\FSM\SwTimers.h)(0x5F80668A)
 I (.\MyLib\FSM\FsmMessage.h)(0x5F805DE9)
 F (.\MyLib\Application_Layer\SB_SirenBoard.h)(0x5F8023EB)()
-F (.\MyLib\Application_Layer\Siren.c)(0x5F844BD5)(-c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I.\CMSIS_STM32F0xx\CMSIS\Include -I.\CMSIS_STM32F0xx\CMSIS\Device\ST\STM32F0xx\Include -I.\CMSIS_STM32F0xx\CMSIS\Device\ST\STM32F0xx\Source\Templates -I.\Main -I.\MyLib\Application_Layer -I.\MyLib\Drivers -I.\StartUp -I.\MyLib\Sheduler -I.\MyLib\FSM-I "D:\02_Keil5_17_Project\01_KeilProjects_NEW8000\In Work\NEW8000_SB\NEW8000SBV1_SWv001\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F070x6-o .\outfiles\siren.o --omf_browse .\outfiles\siren.crf --depend .\outfiles\siren.d)
-I (MyLib\Application_Layer\Siren.h)(0x5F8455E4)
+F (.\MyLib\Application_Layer\Siren.c)(0x5F8E8819)(-c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I.\CMSIS_STM32F0xx\CMSIS\Include -I.\CMSIS_STM32F0xx\CMSIS\Device\ST\STM32F0xx\Include -I.\CMSIS_STM32F0xx\CMSIS\Device\ST\STM32F0xx\Source\Templates -I.\Main -I.\MyLib\Application_Layer -I.\MyLib\Drivers -I.\StartUp -I.\MyLib\Sheduler -I.\MyLib\FSM-I "D:\02_Keil5_17_Project\01_KeilProjects_NEW8000\In Work\NEW8000_SB\NEW8000SBV1_SWv001\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F070x6-o .\outfiles\siren.o --omf_browse .\outfiles\siren.crf --depend .\outfiles\siren.d)
+I (MyLib\Application_Layer\Siren.h)(0x5F8E87A5)
 I (.\MyLib\Drivers\adc_ST.h)(0x5F8433C7)
 I (.\CMSIS_STM32F0xx\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x5F3F82C5)
 I (.\CMSIS_STM32F0xx\CMSIS\Device\ST\STM32F0xx\Include\stm32f070x6.h)(0x5978C20D)
@@ -151,8 +151,8 @@ I (MyLib\Application_Layer\Blink.h)(0x5F742F0F)
 I (MyLib\Application_Layer\SB_SirenBoard.h)(0x5F8023EB)
 I (.\MyLib\FSM\SwTimers.h)(0x5F80668A)
 I (.\MyLib\FSM\FsmMessage.h)(0x5F805DE9)
-F (.\MyLib\Application_Layer\Siren.h)(0x5F8455E4)()
-F (.\Main\main.c)(0x5F8456DC)(-c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I.\CMSIS_STM32F0xx\CMSIS\Include -I.\CMSIS_STM32F0xx\CMSIS\Device\ST\STM32F0xx\Include -I.\CMSIS_STM32F0xx\CMSIS\Device\ST\STM32F0xx\Source\Templates -I.\Main -I.\MyLib\Application_Layer -I.\MyLib\Drivers -I.\StartUp -I.\MyLib\Sheduler -I.\MyLib\FSM-I "D:\02_Keil5_17_Project\01_KeilProjects_NEW8000\In Work\NEW8000_SB\NEW8000SBV1_SWv001\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F070x6-o .\outfiles\main.o --omf_browse .\outfiles\main.crf --depend .\outfiles\main.d)
+F (.\MyLib\Application_Layer\Siren.h)(0x5F8E87A5)()
+F (.\Main\main.c)(0x5F8E88B7)(-c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I.\CMSIS_STM32F0xx\CMSIS\Include -I.\CMSIS_STM32F0xx\CMSIS\Device\ST\STM32F0xx\Include -I.\CMSIS_STM32F0xx\CMSIS\Device\ST\STM32F0xx\Source\Templates -I.\Main -I.\MyLib\Application_Layer -I.\MyLib\Drivers -I.\StartUp -I.\MyLib\Sheduler -I.\MyLib\FSM-I "D:\02_Keil5_17_Project\01_KeilProjects_NEW8000\In Work\NEW8000_SB\NEW8000SBV1_SWv001\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="517" -DSTM32F070x6-o .\outfiles\main.o --omf_browse .\outfiles\main.crf --depend .\outfiles\main.d)
 I (Main\main.h)(0x5F522975)
 I (.\CMSIS_STM32F0xx\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h)(0x5F3F82C5)
 I (.\CMSIS_STM32F0xx\CMSIS\Device\ST\STM32F0xx\Include\stm32f070x6.h)(0x5978C20D)
@@ -172,7 +172,7 @@ I (.\MyLib\Sheduler\Scheduler.h)(0x5F34EC15)
 I (.\MyLib\Application_Layer\Rs485.h)(0x5F742D93)
 I (.\MyLib\Drivers\dma_ST.h)(0x5F43AA98)
 I (.\MyLib\Application_Layer\SB_SirenBoard.h)(0x5F8023EB)
-I (.\MyLib\Application_Layer\Siren.h)(0x5F8455E4)
+I (.\MyLib\Application_Layer\Siren.h)(0x5F8E87A5)
 I (.\MyLib\Application_Layer\Blink.h)(0x5F742F0F)
 I (.\MyLib\FSM\SwTimers.h)(0x5F80668A)
 I (.\MyLib\FSM\FsmMessage.h)(0x5F805DE9)

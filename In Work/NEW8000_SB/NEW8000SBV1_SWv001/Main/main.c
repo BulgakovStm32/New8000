@@ -6,7 +6,12 @@
 void Task_Apply(void){
 	
 	//Отключение всех оповещателей при отсутсвии питания.
-	if(Siren_GetMeas(SIREN_POWER) < SIREN_POWER_MIN) Siren_Off(SIREN_ALL);
+	if(Siren_GetMeas(SIREN_POWER) < SIREN_POWER_MIN) 
+		{
+			Siren_OutputFSM(SIREN_1, SIREN_OUT_OFF);
+			Siren_OutputFSM(SIREN_2, SIREN_OUT_OFF);
+			Siren_OutputFSM(SIREN_3, SIREN_OUT_OFF);			
+		}
 	//Управление выходами.
 	else 
 		{
@@ -33,7 +38,9 @@ void Task_PollingRS485(void){
 	//Истек таймаут ожидания запроса от ЦП.
 	else if(RS485_Flags()->TIMEOUT_ERR_f) 
 		{
-			Siren_Off(SIREN_ALL);
+			Siren_OutputFSM(SIREN_1, SIREN_OUT_OFF);
+			Siren_OutputFSM(SIREN_2, SIREN_OUT_OFF);
+			Siren_OutputFSM(SIREN_3, SIREN_OUT_OFF);	
 			Led_ACT_Set(Blink(INTERVAL_1000_mS));
 		}
 	else Led_ACT_Set(Blink(INTERVAL_50_mS));

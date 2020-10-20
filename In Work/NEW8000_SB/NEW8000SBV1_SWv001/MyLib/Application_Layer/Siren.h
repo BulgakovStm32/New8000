@@ -61,19 +61,11 @@ typedef	struct{
 //*****************************************************************************
 //*****************************************************************************
 void     Siren_Init    (void);			
-void     Siren_MeasLoop(void);//Измерение и усреднение по 16 выборкам для 5-ти каналов АЦП. Вызывается каждую 1мСек.
-
-uint16_t Siren_GetMeas (uint8_t ch);	     //Получение измерения для канала.
-void     Siren_GetOffLineStatus(uint8_t line);
-void     Siren_GetOnLineStatus (uint8_t line);
+void     Siren_MeasLoop(void);           //Измерение и усреднение по 16 выборкам для 5-ти каналов АЦП. Вызывается каждую 1мСек.
+uint16_t Siren_GetMeas(uint8_t ch);	     //Получение измерения для канала.
 uint8_t  Siren_LineStatus(uint8_t line);
-
-void 		 Siren_On (uint8_t line);        //Активация оповещателя.
-void 		 Siren_Off(uint8_t line);        //Отключение оповещателя.
-void 		 Siren_ControlFromMB(uint8_t ch);//Управление выходами
-
-void Siren_OutputFSM(uint8_t siren, uint8_t cmd);
-void Siren_FSMLoop(void);
+void     Siren_ControlFromMB(uint8_t ch);//Управление выходами от ЦП.
+void     Siren_OutputFSM(uint8_t siren, uint8_t cmd);
 //*****************************************************************************
 //*****************************************************************************
 #endif /*_Siren_H*/
