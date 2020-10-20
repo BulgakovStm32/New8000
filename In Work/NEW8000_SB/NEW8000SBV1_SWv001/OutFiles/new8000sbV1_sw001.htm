@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\OutFiles\new8000sbV1_sw001.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\OutFiles\new8000sbV1_sw001.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Tue Oct 20 09:50:48 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Tue Oct 20 09:57:20 2020
 <BR><P>
 <H3>Maximum Stack Usage =         48 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -420,10 +420,10 @@ Global Symbols
 <P><STRONG><a name="[25]"></a>IdleTask</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, scheduler.o(i.IdleTask))
 <BR><BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Scheduler
 </UL>
-<BR>[Address Reference Count : 4]<UL><LI> scheduler.o(i.Scheduler)
+<BR>[Address Reference Count : 4]<UL><LI> scheduler.o(i.Scheduler_TimerService)
+<LI> scheduler.o(i.Scheduler)
 <LI> scheduler.o(i.Scheduler_Init)
 <LI> scheduler.o(i.Scheduler_SetTask)
-<LI> scheduler.o(i.Scheduler_TimerService)
 </UL>
 <P><STRONG><a name="[68]"></a>Led_ACT_Set</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, gpio_st.o(i.Led_ACT_Set))
 <BR><BR>[Called By]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_PollingRS485
@@ -600,7 +600,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[26]"></a>Task_Apply</STRONG> (Thumb, 64 bytes, Stack size 8 bytes, main.o(i.Task_Apply))
+<P><STRONG><a name="[26]"></a>Task_Apply</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, main.o(i.Task_Apply))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = Task_Apply &rArr; Siren_ControlFromMB &rArr; Siren_OutputFSM &rArr; __ARM_common_switch8
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Scheduler_SetTask
@@ -608,8 +608,8 @@ Global Symbols
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Siren_ControlFromMB
 <LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Siren_GetMeas
 </UL>
-<BR>[Address Reference Count : 2]<UL><LI> main.o(i.Task_Apply)
-<LI> main.o(i.main)
+<BR>[Address Reference Count : 2]<UL><LI> main.o(i.main)
+<LI> main.o(i.Task_Apply)
 </UL>
 <P><STRONG><a name="[27]"></a>Task_ParsingCmd</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, main.o(i.Task_ParsingCmd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = Task_ParsingCmd &rArr; RS485_TxStatusSB &rArr; SirenBoard_BuildingPackForRS485 &rArr; Siren_GetMeas &rArr; __aeabi_idivmod
