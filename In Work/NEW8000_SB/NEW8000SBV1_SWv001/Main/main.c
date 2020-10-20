@@ -6,12 +6,12 @@
 void Task_Apply(void){
 	
 	//Отключение всех оповещателей при отсутсвии питания.
-	if(Siren_GetMeas(SIREN_POWER) < SIREN_POWER_MIN) Siren_OutputFSM(SIREN_1, SIREN_OUT_OFF);
-//		{
-//			Siren_OutputFSM(SIREN_1, SIREN_OUT_OFF);
-//			Siren_OutputFSM(SIREN_2, SIREN_OUT_OFF);
-//			Siren_OutputFSM(SIREN_3, SIREN_OUT_OFF);			
-//		}
+	if(Siren_GetMeas(SIREN_POWER) < SIREN_POWER_MIN)
+		{
+			Siren_OutputFSM(SIREN_1, SIREN_OUT_OFF);
+			Siren_OutputFSM(SIREN_2, SIREN_OUT_OFF);
+			Siren_OutputFSM(SIREN_3, SIREN_OUT_OFF);			
+		}	
 	//Управление выходами.
 	else 
 		{

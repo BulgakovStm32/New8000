@@ -216,7 +216,7 @@ void Siren_OutputFSM(uint8_t siren, uint8_t cmd){
 					GlobSwTimer_Stop(siren);
 					*sirenState = OUT_STATE_OFF;
 				}
-		break;					
+		return;					
 		//--------------------
 		default: 
 		break;	
