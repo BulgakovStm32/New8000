@@ -150,17 +150,7 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>TaskQueue</ItemText>
-        </Ww>
-        <Ww>
-          <count>1</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>index</ItemText>
-        </Ww>
-        <Ww>
-          <count>2</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>goToTask</ItemText>
+          <ItemText>SirenLineContextArr</ItemText>
         </Ww>
       </WatchWindow1>
       <MemoryWindow1>

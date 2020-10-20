@@ -8,20 +8,89 @@ static SirenLine_t SirenLineContextArr[4];//3 линии табло и 1 одн�
 //Опеределение состояния линии при отключенном выходе.
 static void Siren_GetOffLineStatus(uint8_t line){
 	
+//	uint16_t meas  =  SirenLineContextArr[line].AdcMeasValue;//Берем измерение для канала.;
+//  uint8_t* state = &SirenLineContextArr[line].LineState;
+//	//--------------------	
+//	switch(*state){
+//		//-----------
+//		case(SIREN_LINE_NORM):
+//			//КЗ линии.
+//			if(meas < 35) *state = SIREN_LINE_SHORT;
+//			//Обрыв линии
+//			if(meas > 2500) *state = SIREN_LINE_BREAK;
+//		return;
+//		//-----------
+//		case(SIREN_LINE_SHORT):
+//		 //Линия в норме.
+//		 if((meas > 50) && (meas <= 2500)) *state = SIREN_LINE_NORM;
+//		 //Обрыв линии
+//		 if(meas > 2500) *state = SIREN_LINE_BREAK;
+//		  
+//		return;
+//		//-----------
+//		case(SIREN_LINE_BREAK):
+//		 //Линия в норме.
+//		 if((meas > 50) && (meas <= 2500)) *state = SIREN_LINE_NORM;			
+//		 //КЗ линии.
+//		 if(meas < 45) *state = SIREN_LINE_SHORT;
+//		return;			
+//		//-----------
+//		default: //Неизвестная команда.
+//		break;	
+//		//-----------
+//	}	
+//	//--------------------
+	
 	uint16_t meas;
 	uint8_t	 stateTemp;
-	//--------------------	
+	//--------------------
   meas = SirenLineContextArr[line].AdcMeasValue;//Берем измерение для канала.
-	
-			 if(meas < 40)                      stateTemp = SIREN_LINE_SHORT;//КЗ линии.
-	else if((meas >= 20) && (meas <= 2500)) stateTemp = SIREN_LINE_NORM; //Линия в норме.
-	else if(meas > 2500)                    stateTemp = SIREN_LINE_BREAK;//Обрыв линии
+
+	     if(meas < 40)                     stateTemp = SIREN_LINE_SHORT;//КЗ линии.
+	else if((meas >= 40) && (meas <= 2500))stateTemp = SIREN_LINE_NORM; //Линия в норме.
+	else if(meas > 2500)                   stateTemp = SIREN_LINE_BREAK;//Обрыв линии
 
 	SirenLineContextArr[line].LineState = stateTemp;
 }
 //*****************************************************************************
 //Опеределение состояния линии при активированном выходе.
 static void Siren_GetOnLineStatus(uint8_t line){
+	
+//	uint16_t meas  =  SirenLineContextArr[line].AdcMeasValue;//Берем измерение для канала.;
+//  uint8_t* state = &SirenLineContextArr[line].LineState;
+//	//--------------------	
+//	switch(*state){
+//		//-----------
+//		case(SIREN_LINE_NORM):
+//			//КЗ линии.
+//			if(meas > 1700)*state = SIREN_LINE_SHORT;
+//			//Обрыв линии
+//			if(meas < 40)  *state = SIREN_LINE_BREAK;
+//		return;
+//		//-----------
+//		case(SIREN_LINE_SHORT):
+//		 //Линия в норме.
+//		 if((meas > 50) && (meas <= 1700)) *state = SIREN_LINE_NORM;
+//		 //Обрыв линии
+//		 if(meas < 40) *state = SIREN_LINE_BREAK;
+//		return;
+//		//-----------
+//		case(SIREN_LINE_BREAK):
+//		 //Линия в норме.
+//		 if((meas > 50) && (meas <= 1700)) *state = SIREN_LINE_NORM;			
+//		 //КЗ линии.
+//		 if(meas > 1600) *state = SIREN_LINE_SHORT;
+//		return;			
+//		//-----------
+//		default: //Неизвестная команда.
+//		break;	
+//		//-----------
+//	}	
+//	//--------------------	
+	
+	
+	
+	
 	
 	uint16_t meas;
 	uint8_t	 stateTemp;
@@ -78,6 +147,11 @@ void Siren_Init(void){
 									  GPIO_PUPDR_PUPDR3);	//PA3 - No pull-up, pull-down.
 	//--------------------
 	Adc_Init();
+	
+	SirenLineContextArr[SIREN_1].LineState = SIREN_LINE_NORM;
+	SirenLineContextArr[SIREN_2].LineState = SIREN_LINE_NORM;
+	SirenLineContextArr[SIREN_3].LineState = SIREN_LINE_NORM;
+
 }
 //*****************************************************************************
 //Измерение и усреднение.

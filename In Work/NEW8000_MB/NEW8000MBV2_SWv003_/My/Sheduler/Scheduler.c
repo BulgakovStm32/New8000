@@ -66,7 +66,7 @@ void Scheduler_SetTask(TaskPTR task){
           return;		     //Можно вернуть код ошибки...
         }
     }
-  // Если нашли свободное место, то
+  //Если нашли свободное место, то
   TaskQueue[index] = task;//Записываем в очередь задачу
   __enable_irq();         //И включаем прерывания если не в обработчике прерывания.
 }
@@ -105,7 +105,7 @@ void Scheduler_SetTimerTask(TaskPTR task, uint16_t newTime){
   //-------------------- 
   __disable_irq();	//Глобальное запрещение прерываний.
   //Прочесываем очередь таймеров 
-  for(index = 0; index < MainTimerQueueSize; index++)
+  for(index = 0; index <= MainTimerQueueSize; index++)
     {
       if(TaskWithTime[index].Task == task)	  //Если уже есть запись с таким адресом
         {
@@ -116,7 +116,7 @@ void Scheduler_SetTimerTask(TaskPTR task, uint16_t newTime){
    }
   //Алгоритм, в данном случае не очень оптимален. В прошлом цикле можно было запомнить 
   //положение первого Idle и сейчас не искать его.
-  for(index = 0; index < MainTimerQueueSize; index++)//Если не находим похожий таймер, то ищем любой пустой 
+  for(index = 0; index <= MainTimerQueueSize; index++)//Если не находим похожий таймер, то ищем любой пустой 
     {
       if(TaskWithTime[index].Task == IdleTask)  
         {

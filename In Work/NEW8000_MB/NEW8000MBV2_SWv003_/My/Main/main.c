@@ -399,7 +399,7 @@ void Task_ControlModeUnit(void){
 			if(FireLine(POJ_1)->LogicalState == FIRE_LINES_FIRE)
 				{
 					SpeakerLine(SP_LINE_1)->IsActivated = ActionFireLine1On;
-					SirenBoard_Set(SIREN_1, SIREN_OUT_Blink1);    //Активация оповещателя 1.
+					SirenBoard_Set(SIREN_1, SIREN_OUT_ON);    //Активация оповещателя 1.
 				}
 			if(FireLine(POJ_1)->LogicalState != FIRE_LINES_FIRE)
 				{
