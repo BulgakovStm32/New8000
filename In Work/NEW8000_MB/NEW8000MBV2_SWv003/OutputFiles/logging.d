@@ -1,0 +1,12 @@
+.\outputfiles\logging.o: My\Application\Logging.c
+.\outputfiles\logging.o: My\Application\Logging.h
+.\outputfiles\logging.o: .\My\Drivers\crc16.h
+.\outputfiles\logging.o: .\CMSIS_STM32F1xx\CM3\DeviceSupport\ST\STM32F10x\stm32f10x.h
+.\outputfiles\logging.o: .\CMSIS_STM32F1xx\CM3\CoreSupport\core_cm3.h
+.\outputfiles\logging.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\outputfiles\logging.o: .\CMSIS_STM32F1xx\CM3\DeviceSupport\ST\STM32F10x\system_stm32f10x.h
+.\outputfiles\logging.o: My\Application\Time.h
+.\outputfiles\logging.o: .\My\Drivers\rtc_ST.h
+.\outputfiles\logging.o: .\My\Drivers\gpio_ST.h
+.\outputfiles\logging.o: My\Application\EepM95128.h
+.\outputfiles\logging.o: .\My\Drivers\spi_ST.h

@@ -1,0 +1,10 @@
+.\outfiles\adc_st.o: MyLib\Drivers\adc_ST.c
+.\outfiles\adc_st.o: MyLib\Drivers\adc_ST.h
+.\outfiles\adc_st.o: .\CMSIS_STM32F0xx\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h
+.\outfiles\adc_st.o: .\CMSIS_STM32F0xx\CMSIS\Device\ST\STM32F0xx\Include\stm32f070x6.h
+.\outfiles\adc_st.o: .\CMSIS_STM32F0xx\CMSIS\Include\core_cm0.h
+.\outfiles\adc_st.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\outfiles\adc_st.o: .\CMSIS_STM32F0xx\CMSIS\Include\core_cmInstr.h
+.\outfiles\adc_st.o: .\CMSIS_STM32F0xx\CMSIS\Include\cmsis_armcc.h
+.\outfiles\adc_st.o: .\CMSIS_STM32F0xx\CMSIS\Include\core_cmFunc.h
+.\outfiles\adc_st.o: .\CMSIS_STM32F0xx\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h

@@ -1,0 +1,10 @@
+.\objects\linecheck.o: My\Application\LineCheck.c
+.\objects\linecheck.o: My\Application\LineCheck.h
+.\objects\linecheck.o: .\My\Drivers\adc_ST.h
+.\objects\linecheck.o: .\CMSIS_STM32F1xx\stm32f10x.h
+.\objects\linecheck.o: .\CMSIS_STM32F1xx\core_cm3.h
+.\objects\linecheck.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\linecheck.o: .\CMSIS_STM32F1xx\system_stm32f10x.h
+.\objects\linecheck.o: .\My\Drivers\gpio_ST.h
+.\objects\linecheck.o: My\Application\Relay.h
+.\objects\linecheck.o: .\My\Drivers\spi_ST.h

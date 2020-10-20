@@ -1,0 +1,10 @@
+.\outfiles\logging.o: MyLib\Application_Layer\Logging.c
+.\outfiles\logging.o: MyLib\Application_Layer\Logging.h
+.\outfiles\logging.o: .\CMSIS_STM32F1xx\CM3\DeviceSupport\ST\STM32F10x\stm32f10x.h
+.\outfiles\logging.o: .\CMSIS_STM32F1xx\CM3\CoreSupport\core_cm3.h
+.\outfiles\logging.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\outfiles\logging.o: .\CMSIS_STM32F1xx\CM3\DeviceSupport\ST\STM32F10x\system_stm32f10x.h
+.\outfiles\logging.o: .\MyLib\crc16.h
+.\outfiles\logging.o: MyLib\Application_Layer\Time.h
+.\outfiles\logging.o: .\MyLib\rtc_ST.h
+.\outfiles\logging.o: .\MyLib\gpio_ST.h

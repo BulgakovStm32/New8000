@@ -1,0 +1,22 @@
+--cpu Cortex-M0
+".\outfiles\system_stm32f0xx.o"
+".\outfiles\startup_stm32f070x6.o"
+".\outfiles\adc_st.o"
+".\outfiles\crc16.o"
+".\outfiles\gpio_st.o"
+".\outfiles\sys_st.o"
+".\outfiles\sys_tick_st.o"
+".\outfiles\uart_st.o"
+".\outfiles\dma_st.o"
+".\outfiles\blink.o"
+".\outfiles\rs485.o"
+".\outfiles\sb_sirenboard.o"
+".\outfiles\siren.o"
+".\outfiles\main.o"
+".\outfiles\scheduler.o"
+".\outfiles\fsmmessage.o"
+".\outfiles\swtimers.o"
+--strict --scatter ".\OutFiles\new8000sbV1_sw001.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\new8000sbV1_sw001.map" -o .\OutFiles\new8000sbV1_sw001.axf

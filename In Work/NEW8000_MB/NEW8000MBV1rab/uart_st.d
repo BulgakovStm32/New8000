@@ -1,0 +1,16 @@
+.\uart_st.o: MyLib\uart_ST.c
+.\uart_st.o: MyLib\uart_ST.h
+.\uart_st.o: .\CMSIS_STM32F1xx\CM3\DeviceSupport\ST\STM32F10x\stm32f10x.h
+.\uart_st.o: .\CMSIS_STM32F1xx\CM3\CoreSupport\core_cm3.h
+.\uart_st.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\uart_st.o: .\CMSIS_STM32F1xx\CM3\DeviceSupport\ST\STM32F10x\system_stm32f10x.h
+.\uart_st.o: MyLib\crc16.h
+.\uart_st.o: MyLib\adc_ST.h
+.\uart_st.o: MyLib\gpio_ST.h
+.\uart_st.o: MyLib\rtc_ST.h
+.\uart_st.o: .\MyLib\Application_Layer\LineCheck.h
+.\uart_st.o: .\MyLib\Application_Layer\Relay.h
+.\uart_st.o: .\MyLib\spi_ST.h
+.\uart_st.o: .\MyLib\Application_Layer\Eep.h
+.\uart_st.o: .\MyLib\Application_Layer\Buttons.h
+.\uart_st.o: .\MyLib\uart_ST.h

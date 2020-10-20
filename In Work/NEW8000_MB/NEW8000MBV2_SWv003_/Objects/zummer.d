@@ -1,0 +1,10 @@
+.\objects\zummer.o: My\Application\Zummer.c
+.\objects\zummer.o: My\Application\Zummer.h
+.\objects\zummer.o: .\My\Drivers\timers_ST.h
+.\objects\zummer.o: .\CMSIS_STM32F1xx\stm32f10x.h
+.\objects\zummer.o: .\CMSIS_STM32F1xx\core_cm3.h
+.\objects\zummer.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\zummer.o: .\CMSIS_STM32F1xx\system_stm32f10x.h
+.\objects\zummer.o: My\Application\Buttons.h
+.\objects\zummer.o: .\My\Boards\FP_FacePanel\FP_FacePanel.h
+.\objects\zummer.o: .\My\Application\Buttons.h

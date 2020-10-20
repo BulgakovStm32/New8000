@@ -1,0 +1,10 @@
+.\outfiles\crc16.o: MyLib\Drivers\crc16.c
+.\outfiles\crc16.o: MyLib\Drivers\crc16.h
+.\outfiles\crc16.o: .\CMSIS_STM32F0xx\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h
+.\outfiles\crc16.o: .\CMSIS_STM32F0xx\CMSIS\Device\ST\STM32F0xx\Include\stm32f070x6.h
+.\outfiles\crc16.o: .\CMSIS_STM32F0xx\CMSIS\Include\core_cm0.h
+.\outfiles\crc16.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\outfiles\crc16.o: .\CMSIS_STM32F0xx\CMSIS\Include\core_cmInstr.h
+.\outfiles\crc16.o: .\CMSIS_STM32F0xx\CMSIS\Include\cmsis_armcc.h
+.\outfiles\crc16.o: .\CMSIS_STM32F0xx\CMSIS\Include\core_cmFunc.h
+.\outfiles\crc16.o: .\CMSIS_STM32F0xx\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h

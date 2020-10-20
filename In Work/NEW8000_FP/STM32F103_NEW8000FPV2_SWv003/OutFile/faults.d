@@ -1,0 +1,15 @@
+.\outfile\faults.o: MyLib\Application_Layer\Faults.c
+.\outfile\faults.o: MyLib\Application_Layer\Faults.h
+.\outfile\faults.o: .\CMSIS_STM32F1xx\CM3\DeviceSupport\ST\STM32F10x\stm32f10x.h
+.\outfile\faults.o: .\CMSIS_STM32F1xx\CM3\CoreSupport\core_cm3.h
+.\outfile\faults.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\outfile\faults.o: .\CMSIS_STM32F1xx\CM3\DeviceSupport\ST\STM32F10x\system_stm32f10x.h
+.\outfile\faults.o: .\MyLib\gpio_ST.h
+.\outfile\faults.o: .\Boards\MB_MotherBoard\MB_MotherBoard.h
+.\outfile\faults.o: .\Boards\SB_SirenBoard\SB_SirenBoard.h
+.\outfile\faults.o: .\MyLib\Application_Layer\Rs485.h
+.\outfile\faults.o: .\MyLib\crc16.h
+.\outfile\faults.o: .\MyLib\uart_ST.h
+.\outfile\faults.o: .\MyLib\Application_Layer\Rs485.h
+.\outfile\faults.o: .\Boards\SB_SirenBoard\SB_SirenBoard.h
+.\outfile\faults.o: .\Boards\FP_FacePanel\FP_FacePanel.h

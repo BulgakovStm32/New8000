@@ -1,0 +1,12 @@
+.\outfile\rs485.o: MyLib\Application_Layer\Rs485.c
+.\outfile\rs485.o: MyLib\Application_Layer\Rs485.h
+.\outfile\rs485.o: .\CMSIS_STM32F1xx\CM3\DeviceSupport\ST\STM32F10x\stm32f10x.h
+.\outfile\rs485.o: .\CMSIS_STM32F1xx\CM3\CoreSupport\core_cm3.h
+.\outfile\rs485.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\outfile\rs485.o: .\CMSIS_STM32F1xx\CM3\DeviceSupport\ST\STM32F10x\system_stm32f10x.h
+.\outfile\rs485.o: .\MyLib\crc16.h
+.\outfile\rs485.o: .\MyLib\uart_ST.h
+.\outfile\rs485.o: .\MyLib\Application_Layer\Rs485.h
+.\outfile\rs485.o: .\Boards\MB_MotherBoard\MB_MotherBoard.h
+.\outfile\rs485.o: .\Boards\SB_SirenBoard\SB_SirenBoard.h
+.\outfile\rs485.o: .\Boards\FP_FacePanel\FP_FacePanel.h

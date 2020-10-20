@@ -1,0 +1,11 @@
+.\outfiles\spi_st.o: MyLib\Drivers\spi_ST.c
+.\outfiles\spi_st.o: MyLib\Drivers\spi_ST.h
+.\outfiles\spi_st.o: .\CMSIS_STM32F0xx\CMSIS\Device\ST\STM32F0xx\Include\stm32f0xx.h
+.\outfiles\spi_st.o: .\CMSIS_STM32F0xx\CMSIS\Device\ST\STM32F0xx\Include\stm32f070x6.h
+.\outfiles\spi_st.o: .\CMSIS_STM32F0xx\CMSIS\Include\core_cm0.h
+.\outfiles\spi_st.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\outfiles\spi_st.o: .\CMSIS_STM32F0xx\CMSIS\Include\core_cmInstr.h
+.\outfiles\spi_st.o: .\CMSIS_STM32F0xx\CMSIS\Include\cmsis_armcc.h
+.\outfiles\spi_st.o: .\CMSIS_STM32F0xx\CMSIS\Include\core_cmFunc.h
+.\outfiles\spi_st.o: .\CMSIS_STM32F0xx\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h
+.\outfiles\spi_st.o: MyLib\Drivers\gpio_ST.h
