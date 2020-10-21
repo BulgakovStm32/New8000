@@ -41,6 +41,8 @@ static void Siren_GetOffLineStatus(uint8_t line){
 //	}	
 //	//--------------------
 	
+	
+	
 	uint16_t meas;
 	uint8_t	 stateTemp;
 	//--------------------
@@ -87,8 +89,6 @@ static void Siren_GetOnLineStatus(uint8_t line){
 //		//-----------
 //	}	
 //	//--------------------	
-	
-	
 	
 	
 	
