@@ -475,28 +475,14 @@ void Task_GetControl(void){
 //Начало работы программы.
 void Task_Begin(void){
 
-	//uint8_t i = 0;
+	//Вывод на дисплей логотопа.
+  Menu_Logo();
+  Delay_mSec(2000);
 	//--------------------
-  //Вывод на дисплей логотопа.
-//  MenuLogo();
-//	Delay_mSec(2000);
-	
-//	for(i=0; i < 50; i++)
-//		{
-//			LcdBar(0, 0, 64, 63, i);
-//			LcdUpdateAll();
-//			Delay_mSec(10);	
-//		}
-//	LcdClear();
-		
-  //Горизонтальный прогресбар.
-  //MenuProgressBar();
-  //Delay_mSec(2000);
-	//--------------------
-	while(!GpioCheck()) Delay_mSec(10);//Определение состояния ключа.
-	Menu_Init();     									 //Инициализация пунктов меню.
-	RS485_Init();                      //Инициализация обмена RS485.	
-	TimeInit();												 //Инициализация календаря.
+	while(!GpioCheck()){};// Delay_mSec(10);//Определение состояния ключа.
+	Menu_Init();     			//Инициализация пунктов меню.
+	RS485_Init();         //Инициализация обмена RS485.	
+	TimeInit();						//Инициализация календаря.
   //--------------------
 	Scheduler_SetTask(Task_LcdUpdate);	 //Обновление изображения на дисплее. 
 	Scheduler_SetTask(Task_PriorityGet); //Получение приоритета управления блоком.
