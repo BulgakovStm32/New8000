@@ -3,8 +3,6 @@
 #define _PojLine_H
 //********************************************************************************************
 
-#include "stm32f10x.h"
-
 #include "adc_ST.h"
 
 //--------------------
@@ -35,25 +33,25 @@ typedef	struct{
 #define POJ_2  1
 #define POJ_3  2
 #define ChS    3
+
 //количество входов ШС.
-#define FIRE_LINES_NUMBER		4
+#define FIRE_LINES_NUMBER		    4
+
 //Время в сек. перехода из ВНИМАНИЕ в ПОЖАР
 #define	FIRE_LINES_TIMEOUT_MIN 	0
 #define	FIRE_LINES_TIMEOUT_MAX	99
-//Режим работы входа.Поле Type контекста входа.
-#define	FIRE_LINES_TYPE_OFF             		0 // вход откл. и не контролируется; 
-#define	FIRE_LINES_TYPE_ON_CONTROL_ON_CLOSE	1 // вход вкл. и контролируется, фиксация замыкания СК;
-#define	FIRE_LINES_TYPE_ON_CONTROL_ON_OPEN  2 // вход вкл. и контролируется, фиксация размыкания СК;
 
-//#define	InputOnControlOff     1 // вход вкл. и не контролируется;
-//#define	InputOnControlOnClose	2 // вход вкл. и контролируется, фиксация замыкания СК;
-//#define	InputOnControlOnOpen  3 // вход вкл. и контролируется, фиксация размыкания СК;
-//#define	InputOnControlOnClOp  4 // вход вкл. и контролируется, фиксация замыкания и размыкания СК;
+//Режим работы входа. Поле Type контекста входа.
+#define	FIRE_LINES_TYPE_OFF             		0 // вход откл. и не контролируется; 
+#define	FIRE_LINES_TYPE_ON_CONTROL_ON_CLOSE	1 // вход вкл. и контролируется, фиксация замыкания СК.
+#define	FIRE_LINES_TYPE_ON_CONTROL_ON_OPEN  2 // вход вкл. и контролируется, фиксация размыкания СК.
+
 //Логические состояния Пожарных шлейфов.
 #define	FIRE_LINES_CONTROL_OFF  0 //
 #define	FIRE_LINES_UNDERCONTROL 1 //
-#define	FIRE_LINES_ATTENTION 		2 //«ВНИМАНИЕ» – зафиксировано срабатывание одного извещателя
-#define	FIRE_LINES_FIRE      		3 //«ПОЖАР»    – вход переходит в это состояние через в случае удержания сработки в течении TimeOut. TimeOut задается в настройках входа.
+#define	FIRE_LINES_ATTENTION 		2 //«ВНИМАНИЕ» – зафиксирована сработка СК.
+#define	FIRE_LINES_FIRE      		3 //«ПОЖАР»    – вход переходит в это состояние в случае удержания сработки СК в течении TimeOut. TimeOut задается в настройках входа.
+
 //Физические состояния Пожарных шлейфов.
 #define FIRE_LINES_NORM 			  0
 #define FIRE_LINES_UNDEF 			  1
@@ -65,9 +63,9 @@ typedef	struct{
 #define	DEFAULT_FIRE_LINES_INPUT_TIMEOUT	3
 #define	DEFAULT_FIRE_LINES_INPUT_TYPE			FIRE_LINES_TYPE_ON_CONTROL_ON_CLOSE
 //*****************************************************************************
-void 			FireLine_Init    (void);
-void      FireLine_MeasLoop(void);
-void			FireLine_FSMLoop (void);
+void FireLine_Init    (void);
+void FireLine_MeasLoop(void);
+void FireLine_FSMLoop (void);
 
 FireLine_t* FireLine(uint8_t line);
 uint8_t	    FireLine_GetPhysicalState(uint8_t line);

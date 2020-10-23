@@ -6,7 +6,7 @@ static FaultReg_t FaultRegStr;
 //*****************************************************************************
 //*****************************************************************************
 //Анализ неисправностей блока.
-void FaultsLoop(void){
+void Faults_Loop(void){
 	
 				 uint32_t faultReg    = 0;
 	static uint32_t faultOldReg = 0;

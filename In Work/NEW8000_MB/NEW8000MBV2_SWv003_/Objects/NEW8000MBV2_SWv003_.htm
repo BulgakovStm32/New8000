@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\NEW8000MBV2_SWv003_.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\NEW8000MBV2_SWv003_.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Fri Oct 23 10:36:36 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Fri Oct 23 13:38:59 2020
 <BR><P>
 <H3>Maximum Stack Usage =        184 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -622,8 +622,8 @@ Global Symbols
 <LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_Executors
 </UL>
 
-<P><STRONG><a name="[71]"></a>FaultsLoop</STRONG> (Thumb, 278 bytes, Stack size 8 bytes, faults.o(i.FaultsLoop))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = FaultsLoop &rArr; SpeakerLine_GetDefStatus
+<P><STRONG><a name="[71]"></a>Faults_Loop</STRONG> (Thumb, 278 bytes, Stack size 8 bytes, faults.o(i.Faults_Loop))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Faults_Loop &rArr; SpeakerLine_GetDefStatus
 </UL>
 <BR>[Calls]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PAmp_GetStat
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpeakerLine_GetDefStatus
@@ -637,7 +637,7 @@ Global Symbols
 
 <P><STRONG><a name="[75]"></a>FireLine</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, pojline.o(i.FireLine))
 <BR><BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotherBoard_BuildingPackForRS485
-<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FaultsLoop
+<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Faults_Loop
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_PojLineControlModeUnit
 <LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_ParsingCmdFP
@@ -768,7 +768,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_ParsingCmdFP
 </UL>
 
-<P><STRONG><a name="[8a]"></a>Log_SaveEvent</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, logging.o(i.Log_SaveEvent))
+<P><STRONG><a name="[8a]"></a>Log_SaveEvent</STRONG> (Thumb, 108 bytes, Stack size 16 bytes, logging.o(i.Log_SaveEvent))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = Log_SaveEvent &rArr; WriteOneEventToEep &rArr; EepM95128_WriteBuffer &rArr; EepM95128_WritePage &rArr; EepM95128_WaitStandbyState &rArr; EepM95128_SendInstruction &rArr; Spi2_TxRxByte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Get_Crc16
@@ -821,7 +821,7 @@ Global Symbols
 
 <P><STRONG><a name="[73]"></a>PAmp_GetStat</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, amplifier.o(i.PAmp_GetStat))
 <BR><BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotherBoard_BuildingPackForRS485
-<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FaultsLoop
+<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Faults_Loop
 </UL>
 
 <P><STRONG><a name="[e6]"></a>PAmp_Init</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, amplifier.o(i.PAmp_Init))
@@ -830,7 +830,7 @@ Global Symbols
 
 <P><STRONG><a name="[72]"></a>Power</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, powerandcharge.o(i.Power))
 <BR><BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotherBoard_BuildingPackForRS485
-<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FaultsLoop
+<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Faults_Loop
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -838,7 +838,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[95]"></a>PowerAndCharge_Loop</STRONG> (Thumb, 222 bytes, Stack size 8 bytes, powerandcharge.o(i.PowerAndCharge_Loop))
+<P><STRONG><a name="[95]"></a>PowerAndCharge_Loop</STRONG> (Thumb, 206 bytes, Stack size 8 bytes, powerandcharge.o(i.PowerAndCharge_Loop))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = PowerAndCharge_Loop
 </UL>
 <BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Gpio_GetState
@@ -881,7 +881,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[74]"></a>RS485_Flags</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, rs485.o(i.RS485_Flags))
-<BR><BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FaultsLoop
+<BR><BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Faults_Loop
 <LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_PollingRS485
 <LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_ParsingCmdSB
 <LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_ParsingCmdFP
@@ -1041,7 +1041,7 @@ Global Symbols
 
 <P><STRONG><a name="[77]"></a>SirenBoard</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, sb_sirenboard.o(i.SirenBoard))
 <BR><BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotherBoard_BuildingPackForRS485
-<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FaultsLoop
+<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Faults_Loop
 </UL>
 
 <P><STRONG><a name="[a7]"></a>SirenBoard_BuildingPackForRS485</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, sb_sirenboard.o(i.SirenBoard_BuildingPackForRS485))
@@ -1091,7 +1091,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpeakerLine
 </UL>
-<BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FaultsLoop
+<BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Faults_Loop
 </UL>
 
 <P><STRONG><a name="[e5]"></a>SpeakerLine_Init</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, linecheck.o(i.SpeakerLine_Init))
@@ -1236,7 +1236,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(i.Task_GetKeyState)
 </UL>
-<P><STRONG><a name="[42]"></a>Task_Executors</STRONG> (Thumb, 136 bytes, Stack size 8 bytes, main.o(i.Task_Executors))
+<P><STRONG><a name="[42]"></a>Task_Executors</STRONG> (Thumb, 144 bytes, Stack size 8 bytes, main.o(i.Task_Executors))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = Task_Executors &rArr; Log_Loop &rArr; Log_SaveEvent &rArr; WriteOneEventToEep &rArr; EepM95128_WriteBuffer &rArr; EepM95128_WritePage &rArr; EepM95128_WaitStandbyState &rArr; EepM95128_SendInstruction &rArr; Spi2_TxRxByte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Scheduler_SetTimerTask
@@ -1248,14 +1248,14 @@ Global Symbols
 <LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Relay_Off
 <LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpeakerLine_FSMLoop
 <LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VoiceMessage_UpdateLoop
-<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FaultsLoop
+<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Faults_Loop
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Faults
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotherBoard_WorkReg
 <LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Config_SaveLoop
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FacePanel
 </UL>
-<BR>[Address Reference Count : 2]<UL><LI> main.o(i.main)
-<LI> main.o(i.Task_Executors)
+<BR>[Address Reference Count : 2]<UL><LI> main.o(i.Task_Executors)
+<LI> main.o(i.main)
 </UL>
 <P><STRONG><a name="[43]"></a>Task_GetKeyState</STRONG> (Thumb, 80 bytes, Stack size 8 bytes, main.o(i.Task_GetKeyState))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Task_GetKeyState &rArr; Scheduler_SetTimerTask
@@ -1265,8 +1265,8 @@ Global Symbols
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Scheduler_SetTask
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FacePanel
 </UL>
-<BR>[Address Reference Count : 2]<UL><LI> main.o(i.main)
-<LI> main.o(i.Task_GetKeyState)
+<BR>[Address Reference Count : 2]<UL><LI> main.o(i.Task_GetKeyState)
+<LI> main.o(i.main)
 </UL>
 <P><STRONG><a name="[40]"></a>Task_ParsingCmdFP</STRONG> (Thumb, 448 bytes, Stack size 24 bytes, main.o(i.Task_ParsingCmdFP))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = Task_ParsingCmdFP &rArr; RS485_FP_BuildAndTxEventPack &rArr; Log_GetEvent &rArr; WriteOneEventToEep &rArr; EepM95128_WriteBuffer &rArr; EepM95128_WritePage &rArr; EepM95128_WaitStandbyState &rArr; EepM95128_SendInstruction &rArr; Spi2_TxRxByte

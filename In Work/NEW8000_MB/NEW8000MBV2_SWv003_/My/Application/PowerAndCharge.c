@@ -1,9 +1,10 @@
 
 #include "PowerAndCharge.h"
 
-//*****************************************************************************
+//*************************************************************************************************
 static PowerSTR_t PowerSTR;
-//*****************************************************************************
+//*************************************************************************************************
+//*************************************************************************************************
 //Получение состояния батареи.
 static uint8_t Bat_StateCalc(void){
 
@@ -19,7 +20,8 @@ static uint8_t Bat_StateCalc(void){
   if( tempBatMeas <= 1850)                           return BAT_DEEP; 
   return BAT_NOT_CONNECT;   
 }
-//*****************************************************************************
+//*************************************************************************************************
+//*************************************************************************************************
 void PowerAndCharge_Init(void){
 
   //Включаем тактирование порта A.
@@ -41,26 +43,28 @@ void PowerAndCharge_Init(void){
 void PowerAndCharge_Loop(void){
 
   static uint16_t acCheckCount = 0;
-	static uint32_t BatMeasTemp  = 0;
-  static uint16_t BatMeasCount = 0;
+	static uint32_t batMeasTemp  = 0;
+  static uint16_t batMeasCount = 0;
   //--------------------
 	//Получение усредненного напряжения на АКБ в мВ.
-	BatMeasTemp += Adc_GetMeas(BatAdcCh);
-  if(++BatMeasCount == BAT_MEAS_NUM)
+	batMeasTemp += Adc_GetMeas(BatAdcCh);
+  if(++batMeasCount == BAT_MEAS_NUM)
     {
-			PowerSTR.BatMeas  = (uint16_t)(BatMeasTemp >> BAT_MEAS_SHIFT);
+			PowerSTR.BatMeas  = (uint16_t)(batMeasTemp >> BAT_MEAS_SHIFT);
 			PowerSTR.BatMeas  = (uint16_t)(((PowerSTR.BatMeas * 11) + 5)/10);
 			PowerSTR.BatState = Bat_StateCalc();
-      BatMeasTemp  = 0;
-      BatMeasCount = 0;
+      batMeasTemp  = 0;
+      batMeasCount = 0;
     }	
   //--------------------
 	//Получение состояния инвертора.
-	if( (Gpio_GetState(PowerGPOI) & DcOkPIN) &&
-     !(Gpio_GetState(PowerGPOI) & DcFaultPIN)) PowerSTR.DCState = POWER_DC_OK;
+	uint16_t gpio = Gpio_GetState(PowerGPOI);
+		
+	if( (gpio & DcOkPIN) &&
+     !(gpio & DcFaultPIN)) PowerSTR.DCState = POWER_DC_OK;
 
-  if(!(Gpio_GetState(PowerGPOI) & DcOkPIN) &&
-      (Gpio_GetState(PowerGPOI) & DcFaultPIN)) PowerSTR.DCState = POWER_DC_FAULT;
+  if(!(gpio & DcOkPIN) &&
+      (gpio & DcFaultPIN)) PowerSTR.DCState = POWER_DC_FAULT;
   //--------------------		
 	//Получение состояния основного ввода питания 220В.
   if(!(AcGPOI->IDR & AcPIN))

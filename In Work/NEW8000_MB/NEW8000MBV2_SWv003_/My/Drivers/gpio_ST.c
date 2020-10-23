@@ -2,9 +2,9 @@
 #include "gpio_ST.h"
 
 //-----------------------------------------------------------------------------
-volatile uint16_t GpioAState = 0; //
-volatile uint16_t GpioBState = 0; //
-volatile uint16_t GpioCState = 0; //
+static volatile uint16_t GpioAState = 0; //
+static volatile uint16_t GpioBState = 0; //
+static volatile uint16_t GpioCState = 0; //
 //-----------------------------------------------------------------------------
 //Инициализация переферии.
 void Gpio_Init (void){
@@ -77,41 +77,21 @@ void Gpio_Init (void){
                   GPIO_CRH_MODE12 );//тактирование 50МГц.
   GPIOD->CRL |= ( GPIO_CRL_MODE2  );
 	//--------------------
-//	//Управление сдвиговыми регистрами. PC7(STPIC_CS), PC8(STPIC_CLR).
-//	GPIOC->CRL &= ~GPIO_CRL_CNF7;	
-//  GPIOC->CRH &= ~GPIO_CRH_CNF8;	
-
-//	GPIOC->CRL |= GPIO_CRL_MODE7;	//PC7(STPIC_CS)  - выход, режим - push-pull.
-//																//PC7(STPIC_CS)  - тактирование 50МГц.		
-//	GPIOC->CRH |= GPIO_CRH_MODE8;	//PC8(STPIC_CLR) - выход, режим - push-pull.
-//																//PC8(STPIC_CLR) - тактирование 50МГц.		
-  //--------------------
-//Управление EEPROM. PA8(EEP_HOLD), PB11(EEP_WP), PB12(EEP_CS).
-//	GPIOA->CRH &= ~(GPIO_CRH_CNF8);	
-//	GPIOB->CRH &= ~(GPIO_CRH_CNF11 | GPIO_CRH_CNF12);
-//	
-//	GPIOA->CRH |= GPIO_CRH_MODE8;	//PA8(EEP_HOLD)  - выход, режим - push-pull.
-//																//PA8(EEP_HOLD)  - тактирование 50МГц.		
-//	GPIOB->CRH |= GPIO_CRH_MODE11;//PB11(EEP_WP) - выход, режим - push-pull.
-//																//PB11(EEP_WP) - тактирование 50МГц.			
-//	GPIOB->CRH |= GPIO_CRH_MODE12;//PB12(SPI2_NSS/EPP_CS) - выход, режим - push-pull.
-																//PB12(SPI2_NSS/EPP_CS) - тактирование 50МГц. 	
-	//--------------------	
 }
 //-----------------------------------------------------------------------------
 void Gpio_CheckLoop(void){
 
  	static uint8_t  mScount         = 0;
  	static uint8_t  cycle           = 0;
- 	static uint16_t GpioAIDRtemp[3] = {0, 0, 0};
- 	static uint16_t GpioBIDRtemp[3] = {0, 0, 0};
- 	static uint16_t GpioCIDRtemp[3] = {0, 0, 0};
+ 	static uint16_t GpioAIDRtemp[3] = {0};
+ 	static uint16_t GpioBIDRtemp[3] = {0};
+ 	static uint16_t GpioCIDRtemp[3] = {0};
   //-------------------------
   if(++mScount >= Gpio_mSConst)
     { 
       mScount = 0;
       //-------------------------
-      if (cycle < 3)
+      if(cycle < 3)
         {
           GpioAIDRtemp[cycle] = GPIOA->IDR;//Считывание выводов.
           GpioBIDRtemp[cycle] = GPIOB->IDR;//Считывание выводов.

@@ -2,14 +2,13 @@
 #include "MB_MotherBoard.h"
 
 //********************************************************************************************
-//static MBData_t 		MBDataStr;
 static MBWorkReg_t	MBWorkRegStr;
 //********************************************************************************************
 //********************************************************************************************
 void MotherBoard_BuildingPackForRS485(uint8_t *dataBuf){
 	
 	MBData_t *dataForTx = (MBData_t*)dataBuf;
-	//-----------
+  //--------------------
   dataForTx->Addres   = MBWorkRegStr.Address;
   dataForTx->Group    = MBWorkRegStr.Group;
   dataForTx->MB_State = MBWorkRegStr.State;

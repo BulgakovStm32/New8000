@@ -82,9 +82,8 @@ static void WriteWorkRegToEep(void){
 void Log_Init(void){
  
 	EepM95128_Init();
+//	ClearAllEventToEep();//сброс счетчиков событий.
 	ReadWorkRegFromEep();
-
-	//ClearAllEventToEep();
 }
 //*****************************************************************************
 //Логирование событий блока.
@@ -157,9 +156,11 @@ void Log_SaveEvent(EventIDEnum_t eventID, EventParamEnum_t eventParam){
 	
 	static OneEventEep_t eventForEep;
 	//--------------------
+	if(LogCountsStr.SavedEvents == MAX_EVENTS) LogCountsStr.SavedEvents = 0;
 	LogCountsStr.SavedEvents++; //+1 к общему количеству записей.
-	LogCountsStr.UnreadEvents++;//+1 к количеству непросмотренных событий.
 	
+	if(LogCountsStr.UnreadEvents < MAX_EVENTS) LogCountsStr.UnreadEvents++;//+1 к количеству непросмотренных событий.
+
 	if(LogCountsStr.SavedEvents > MAX_EVENTS) LogCountsStr.SavedEvents = 1;
 	
 	//Формирование события для записи в журнал.

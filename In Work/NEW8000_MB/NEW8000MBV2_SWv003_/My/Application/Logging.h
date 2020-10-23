@@ -47,8 +47,8 @@ typedef struct{
 #pragma pack(pop)//вернули предыдущую настройку.
 #define EVENT_EEP_SIZE	(uint8_t)sizeof(OneEventEep_t) 	
 //-------------------------------------------------	
-#define MAX_EVENTS					 		 1024u	
-#define ALL_EVENTS_BUF_SIZE 		(uint16_t)(MAX_EVENTS * EVENT_SIZE)
+#define MAX_EVENTS					 	1024u	
+#define ALL_EVENTS_BUF_SIZE 	(uint16_t)(MAX_EVENTS * EVENT_SIZE)
 
 #define UNREAD_EVENT_FLAG			(1<<15)//признак непросмотренного события.
 #define RESET_UNREAD_EVENTS	  (uint16_t)0xFFFFu
