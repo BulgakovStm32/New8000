@@ -51,9 +51,18 @@ void Task_Executors(void){
 	Config_SaveLoop();//Запись конфигурации после ее изменения.
 	Faults_Loop();    //Определение неисправностей блока.
 	Log_Loop();       //Логирование неисправностей блока.
-	//Режим ТЕСТ.
-  if(MotherBoard_WorkReg()->State == MB_WORK_STATE) Zummer_Fault(Faults()->Instant);
-	else																							Zummer_Fault(0);
+	//--------------------
+	//Управление зуммером.
+  if(MotherBoard_WorkReg()->State == MB_WORK_STATE && 
+		 FacePanel()->Key != KEY_CONFIG_STATE) 						
+		{
+			Zummer_Fault(Faults()->Instant);
+		}
+	//В режиме настройки зуммер не работает.
+	else
+		{
+			Zummer_Fault(0);
+		}
 	//--------------------
   //Управление реле "НЕИСПРАВНОСТЬ ОБЩАЯ".
 	if(Faults()->Instant != 0) Relay_On (RELAY_FAULT_GENERAL);//Активация реле "Н.О.".
