@@ -7,5 +7,8 @@
 .\outfile\rs485.o: .\My\Drivers\crc16.h
 .\outfile\rs485.o: .\My\Drivers\uart_ST.h
 .\outfile\rs485.o: .\My\Drivers\gpio_ST.h
+.\outfile\rs485.o: My\Application\Buttons.h
+.\outfile\rs485.o: .\My\Drivers\sm1628.h
+.\outfile\rs485.o: .\My\Drivers\spi_ST.h
 .\outfile\rs485.o: .\My\Boards\MB_MotherBoard\MB_MotherBoard.h
 .\outfile\rs485.o: .\My\Boards\FP_FacePanel\FP_FacePanel.h

@@ -16,11 +16,11 @@
 .\outfile\main.o: .\My\Application\Rs485.h
 .\outfile\main.o: .\My\Drivers\crc16.h
 .\outfile\main.o: .\My\Drivers\uart_ST.h
-.\outfile\main.o: .\My\Boards\MB_MotherBoard\MB_MotherBoard.h
-.\outfile\main.o: .\My\Boards\FP_FacePanel\FP_FacePanel.h
 .\outfile\main.o: .\My\Application\Buttons.h
 .\outfile\main.o: .\My\Drivers\sm1628.h
 .\outfile\main.o: .\My\Drivers\spi_ST.h
+.\outfile\main.o: .\My\Boards\MB_MotherBoard\MB_MotherBoard.h
+.\outfile\main.o: .\My\Boards\FP_FacePanel\FP_FacePanel.h
 .\outfile\main.o: .\My\Application\Led.h
 .\outfile\main.o: .\My\Application\LcdMenu.h
 .\outfile\main.o: .\My\Application\Led.h

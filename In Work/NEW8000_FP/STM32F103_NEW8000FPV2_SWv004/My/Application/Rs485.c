@@ -212,15 +212,6 @@ void RS485_TxDataToMB(void){
  	//---------------------	
 	switch(*RS485_Cmd()){
 		//--------------------
-//		//Команда "Выдача статуса от FP".
-//		case(FP_CMD_SEND_STATUS):
-//			RS485_TxBuf()->Str.CmdCode = FP_CMD_SEND_STATUS;               
-//			txBuf->MicState = MicGetState();
-//			txBuf->KeyState = KeyGetState();
-//			txBuf->Address  = Address;
-//			txBuf->Group    = Group;  
-//		break;
-		//--------------------
 		//Команда установки адрес блока
 		case(FP_CMD_SET_ADDRES):
 			RS485_TxBuf()->Str.CmdCode = FP_CMD_SET_ADDRES;
@@ -292,11 +283,12 @@ void RS485_TxDataToMB(void){
 		//--------------------
 		//Команда "Выдача статуса от FP".
 		default:
-			RS485_TxBuf()->Str.CmdCode = FP_CMD_SEND_STATUS;               
-			txBuf->MicState = MicState();
-			txBuf->KeyState = KeyGetState();
-			//txBuf->Address  = FacePanel_WorkReg()->Address;
-			//txBuf->Group    = FacePanel_WorkReg()->Group;  
+			RS485_TxBuf()->Str.CmdCode = FP_CMD_SEND_STATUS; 		
+			txBuf->MicState        = MicState();
+			txBuf->KeyState        = KeyGetState();
+		
+			txBuf->Control_Buttons = Button_GetControl();
+			txBuf->Alg_Buttons     = Button_GetAlg();
 		break;
 		//--------------------
 	}

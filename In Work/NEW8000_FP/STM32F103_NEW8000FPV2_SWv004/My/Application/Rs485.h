@@ -9,6 +9,9 @@
 #include "uart_ST.h"
 #include "gpio_ST.h"
 //--------------------
+//Application.
+#include "Buttons.h"
+//--------------------
 //Boards.
 #include "MB_MotherBoard.h"
 #include "FP_FacePanel.h"

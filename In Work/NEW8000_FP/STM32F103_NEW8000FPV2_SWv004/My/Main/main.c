@@ -5,21 +5,18 @@
 static uint8_t ControlModeUnitAlgButState = 0;
 static uint8_t priorityState              = NO_ACT;
 
-
 extern const char RusText_ControlModeUnit[];
 extern const char RusText_LockModeUnit[];
 //**************************************************************************************************************
-void Task_PriorityGet(void);//Получение приоритета управления блоком. Запускает сам себя
-void Task_FaultsGet  (void);//Получение неисправностей.
-void Task_LcdUpdate  (void);
-void Task_LedUpdate  (void);
-void Task_Begin      (void);
-void Task_GetControl (void);
-
-void Task_RS485ParsingCmdFromMB(void);
-
-void Task_ErrorConnectMB(void);
-void Task_KeyControl    (void);
+//void Task_PriorityGet(void);//Получение приоритета управления блоком. Запускает сам себя
+//void Task_FaultsGet  (void);//Получение неисправностей.
+//void Task_LcdUpdate  (void);
+//void Task_LedUpdate  (void);
+//void Task_Begin      (void);
+//void Task_GetControl (void);
+//void Task_RS485ParsingCmdFromMB(void);
+//void Task_ErrorConnectMB(void);
+//void Task_KeyControl    (void);
 
 void Task_LockModeUnit(void);
 void Task_ControlModeUnit(void);
@@ -469,7 +466,7 @@ void Task_KeyControl(void){
 void Task_GetControl(void){
 	
 	//Отсутствие обмена с ЦП.
-	if(RS485_Flags()->TimeOutError) Scheduler_SetTask(Task_ErrorConnectMB);   
+	     if(RS485_Flags()->TimeOutError)       Scheduler_SetTask(Task_ErrorConnectMB);   
   else if(Button_CheckLoop() || GpioCheck()) Scheduler_SetTask(Task_KeyControl);	
   //--------------------
   Scheduler_SetTimerTask(Task_GetControl, 10);
@@ -501,11 +498,11 @@ void Task_Begin(void){
 	RS485_Init();                      //Инициализация обмена RS485.	
 	TimeInit();												 //Инициализация календаря.
   //--------------------
-	Scheduler_SetTask(Task_LcdUpdate);	//Обновление изображения на дисплее. 
-	Scheduler_SetTask(Task_PriorityGet);//Получение приоритета управления блоком.
-	Scheduler_SetTask(Task_FaultsGet);  //Определение неисправностей.
-  Scheduler_SetTask(Task_GetControl); //Определение управления.
-	Scheduler_SetTask(Task_PollingRS485);  //
+	Scheduler_SetTask(Task_LcdUpdate);	 //Обновление изображения на дисплее. 
+	Scheduler_SetTask(Task_PriorityGet); //Получение приоритета управления блоком.
+	Scheduler_SetTask(Task_FaultsGet);   //Определение неисправностей.
+  Scheduler_SetTask(Task_GetControl);  //Определение управления.
+	Scheduler_SetTask(Task_PollingRS485);//
 }
 //**************************************************************************************************************
 //**************************************************************************************************************
@@ -596,8 +593,8 @@ void Task_ControlModeUnit(void){
     }		
 	//-------------------------------------------------------		
   //Передача состояний кнопок в ЦП.
-  txBuf->Control_Buttons = Button_GetControl();
-  txBuf->Alg_Buttons     = Button_GetAlg();
+//  txBuf->Control_Buttons = Button_GetControl();
+//  txBuf->Alg_Buttons     = Button_GetAlg();
 	//-------------------------------------------------------	
 }
 //**************************************************************************************************************
