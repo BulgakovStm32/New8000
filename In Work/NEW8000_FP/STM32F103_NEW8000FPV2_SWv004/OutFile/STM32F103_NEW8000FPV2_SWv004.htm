@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\OutFile\STM32F103_NEW8000FPV2_SWv004.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\OutFile\STM32F103_NEW8000FPV2_SWv004.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Mon Oct 12 17:33:15 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Wed Oct 21 14:29:38 2020
 <BR><P>
 <H3>Maximum Stack Usage =        124 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -79,13 +79,13 @@ Function Pointers
  <LI><a href="#[ed]">Task_CofigModeUnit</a> from main.o(.text) referenced from main.o(.text)
  <LI><a href="#[f0]">Task_ControlModeUnit</a> from main.o(.text) referenced from main.o(.text)
  <LI><a href="#[eb]">Task_ErrorConnectMB</a> from main.o(.text) referenced from main.o(.text)
- <LI><a href="#[dd]">Task_FaultsGet</a> from main.o(.text) referenced 2 times from main.o(.text)
+ <LI><a href="#[dc]">Task_FaultsGet</a> from main.o(.text) referenced 2 times from main.o(.text)
  <LI><a href="#[f8]">Task_GetControl</a> from main.o(.text) referenced 2 times from main.o(.text)
  <LI><a href="#[f7]">Task_KeyControl</a> from main.o(.text) referenced from main.o(.text)
- <LI><a href="#[de]">Task_LcdUpdate</a> from main.o(.text) referenced 2 times from main.o(.text)
+ <LI><a href="#[dd]">Task_LcdUpdate</a> from main.o(.text) referenced 2 times from main.o(.text)
  <LI><a href="#[f6]">Task_LockModeUnit</a> from main.o(.text) referenced from main.o(.text)
  <LI><a href="#[ec]">Task_PollingRS485</a> from main.o(.text) referenced 2 times from main.o(.text)
- <LI><a href="#[dc]">Task_PriorityGet</a> from main.o(.text) referenced 2 times from main.o(.text)
+ <LI><a href="#[db]">Task_PriorityGet</a> from main.o(.text) referenced 2 times from main.o(.text)
  <LI><a href="#[e2]">Task_RS485ParsingCmdFromMB</a> from main.o(.text) referenced from main.o(.text)
  <LI><a href="#[32]">USART1_IRQHandler</a> from uart_st.o(.text) referenced from startup_stm32f10x_md.o(RESET)
  <LI><a href="#[33]">USART2_IRQHandler</a> from startup_stm32f10x_md.o(.text) referenced from startup_stm32f10x_md.o(RESET)
@@ -401,9 +401,9 @@ Global Symbols
 <LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_GetControl
 <LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_KeyControl
 <LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_PollingRS485
-<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LcdUpdate
-<LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_FaultsGet
-<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_PriorityGet
+<LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LcdUpdate
+<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_FaultsGet
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_PriorityGet
 </UL>
 
 <P><STRONG><a name="[50]"></a>Scheduler_TimerService</STRONG> (Thumb, 96 bytes, Stack size 8 bytes, scheduler.o(.text))
@@ -449,7 +449,7 @@ Global Symbols
 <P><STRONG><a name="[97]"></a>KeyGetState</STRONG> (Thumb, 66 bytes, Stack size 0 bytes, gpio_st.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RS485_TxDataToMB
 <LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_KeyControl
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
+<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
 </UL>
 
 <P><STRONG><a name="[130]"></a>MicGetStateIs</STRONG> (Thumb, 88 bytes, Stack size 0 bytes, gpio_st.o(.text), UNUSED)
@@ -460,7 +460,7 @@ Global Symbols
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Faults_Loop
 <LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LockModeUnit
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_ControlModeUnit
-<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_PriorityGet
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_PriorityGet
 </UL>
 
 <P><STRONG><a name="[59]"></a>Lcd12864_Send</STRONG> (Thumb, 58 bytes, Stack size 16 bytes, lcd12864.o(.text))
@@ -693,8 +693,8 @@ Global Symbols
 <LI><a href="#[c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
 <LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_CofigModeUnit
 <LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_ErrorConnectMB
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
-<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AlgorithmAlert
+<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
+<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AlgorithmAlert
 </UL>
 
 <P><STRONG><a name="[136]"></a>Button</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, buttons.o(.text), UNUSED)
@@ -722,32 +722,32 @@ Global Symbols
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_UpDown
 </UL>
 
-<P><STRONG><a name="[db]"></a>Button_IsPress</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, buttons.o(.text))
+<P><STRONG><a name="[da]"></a>Button_IsPress</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, buttons.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LockModeUnit
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_ControlModeUnit
 <LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_CofigModeUnit
-<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_PriorityGet
-<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AlgorithmAlert
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_PriorityGet
+<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AlgorithmAlert
 </UL>
 
-<P><STRONG><a name="[d9]"></a>Button_IsRelease</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, buttons.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_PriorityGet
-<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AlgorithmAlert
+<P><STRONG><a name="[d8]"></a>Button_IsRelease</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, buttons.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_PriorityGet
+<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AlgorithmAlert
 </UL>
 
-<P><STRONG><a name="[d7]"></a>Button_IsToggle</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, buttons.o(.text))
+<P><STRONG><a name="[d6]"></a>Button_IsToggle</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, buttons.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_CofigModeUnit
-<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AlgorithmAlert
-<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedDisactiveSound
+<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AlgorithmAlert
+<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedDisactiveSound
 </UL>
 
-<P><STRONG><a name="[d6]"></a>Button_ClrToggle</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, buttons.o(.text))
+<P><STRONG><a name="[d5]"></a>Button_ClrToggle</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, buttons.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LockModeUnit
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_ControlModeUnit
 <LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_CofigModeUnit
 <LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_RS485ParsingCmdFromMB
-<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AlgorithmAlert
-<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedDisactiveSound
+<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AlgorithmAlert
+<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedDisactiveSound
 </UL>
 
 <P><STRONG><a name="[74]"></a>Button_UpDown</STRONG> (Thumb, 170 bytes, Stack size 12 bytes, buttons.o(.text))
@@ -775,16 +775,15 @@ Global Symbols
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FireLine_GetLineState
 <LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MicState
 </UL>
-<BR>[Called By]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_FaultsGet
+<BR>[Called By]<UL><LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_FaultsGet
 </UL>
 
 <P><STRONG><a name="[137]"></a>Faults_CompareAllLinesWith</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, faults.o(.text), UNUSED)
 
-<P><STRONG><a name="[cf]"></a>Faults</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, faults.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Faults
-<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LockModeUnit
+<P><STRONG><a name="[e1]"></a>Faults</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, faults.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LockModeUnit
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_ControlModeUnit
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
+<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
 </UL>
 
 <P><STRONG><a name="[7d]"></a>LedUpdate</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, led.o(.text))
@@ -793,14 +792,14 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sm1628SendLed
 </UL>
 <BR>[Called By]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_ErrorConnectMB
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
+<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
 </UL>
 
-<P><STRONG><a name="[e0]"></a>LedSetAll</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, led.o(.text))
+<P><STRONG><a name="[df]"></a>LedSetAll</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, led.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
 <LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_KeyControl
 <LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_ErrorConnectMB
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
+<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
 </UL>
 
 <P><STRONG><a name="[87]"></a>LedControl</STRONG> (Thumb, 120 bytes, Stack size 16 bytes, led.o(.text))
@@ -810,15 +809,15 @@ Global Symbols
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedPresetControl
 <LI><a href="#[c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
 <LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_ErrorConnectMB
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
-<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AlgorithmAlert
+<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
+<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AlgorithmAlert
 </UL>
 
 <P><STRONG><a name="[88]"></a>LedPusk</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, led.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedPresetControl
 <LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LockModeUnit
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_ControlModeUnit
-<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AlgorithmAlert
+<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AlgorithmAlert
 </UL>
 
 <P><STRONG><a name="[89]"></a>LedPoj</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, led.o(.text))
@@ -827,17 +826,17 @@ Global Symbols
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_ControlModeUnit
 </UL>
 
-<P><STRONG><a name="[da]"></a>LedAlert</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, led.o(.text), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AlgorithmAlert
+<P><STRONG><a name="[d9]"></a>LedAlert</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, led.o(.text), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AlgorithmAlert
 </UL>
 
-<P><STRONG><a name="[d5]"></a>LedZummer</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, led.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedDisactiveSound
+<P><STRONG><a name="[d4]"></a>LedZummer</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, led.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedDisactiveSound
 </UL>
 
-<P><STRONG><a name="[e1]"></a>LedCommunication</STRONG> (Thumb, 92 bytes, Stack size 0 bytes, led.o(.text))
+<P><STRONG><a name="[e0]"></a>LedCommunication</STRONG> (Thumb, 92 bytes, Stack size 0 bytes, led.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_ErrorConnectMB
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
+<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
 </UL>
 
 <P><STRONG><a name="[7e]"></a>LedPowerIndication</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, led.o(.text))
@@ -846,7 +845,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedPower
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Blink
 </UL>
-<BR>[Called By]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
+<BR>[Called By]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
 </UL>
 
 <P><STRONG><a name="[81]"></a>LedBatteryIndication</STRONG> (Thumb, 64 bytes, Stack size 16 bytes, led.o(.text))
@@ -855,7 +854,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedBattery
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Blink
 </UL>
-<BR>[Called By]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
+<BR>[Called By]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
 </UL>
 
 <P><STRONG><a name="[83]"></a>LedAmpIndication</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, led.o(.text))
@@ -864,7 +863,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedAmp
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Blink
 </UL>
-<BR>[Called By]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
+<BR>[Called By]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
 </UL>
 
 <P><STRONG><a name="[85]"></a>LedPresetControl</STRONG> (Thumb, 152 bytes, Stack size 32 bytes, led.o(.text))
@@ -906,7 +905,7 @@ Global Symbols
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_ControlModeUnit
 <LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_CofigModeUnit
 <LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_RS485ParsingCmdFromMB
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
+<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
 </UL>
 
 <P><STRONG><a name="[e3]"></a>RS485_RxBuf</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, rs485.o(.text))
@@ -1001,7 +1000,7 @@ Global Symbols
 <LI><a href="#[7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BusFault_Handler
 <LI><a href="#[6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MemManage_Handler
 <LI><a href="#[4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NMI_Handler
-<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LcdUpdate
+<LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LcdUpdate
 </UL>
 
 <P><STRONG><a name="[6c]"></a>LcdUpdateAll</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, lcd.o(.text))
@@ -1022,7 +1021,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[67]"></a>LcdClear</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, lcd.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Test
+<BR><BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Test
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Print_ErrConnect
 <LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Menu_Update
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Menu_Logo
@@ -1066,8 +1065,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[69]"></a>LcdSetCursor</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, lcd.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_AddressGroupAndMicState
-<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Manual
+<BR><BR>[Called By]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_AddressGroupAndMicState
+<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Manual
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Faults
 <LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Fire
 <LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_PuskButtonActivation
@@ -1140,7 +1139,7 @@ Global Symbols
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clean_lcd_buf
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdSetCursor
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Test
+<BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Test
 </UL>
 
 <P><STRONG><a name="[68]"></a>LcdOutStr</STRONG> (Thumb, 34 bytes, Stack size 12 bytes, lcd.o(.text))
@@ -1149,9 +1148,9 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdChr
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clean_lcd_buf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Test
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_AddressGroupAndMicState
-<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Manual
+<BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Test
+<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_AddressGroupAndMicState
+<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Manual
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Faults
 <LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Fire
 <LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_PuskButtonActivation
@@ -1196,7 +1195,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdChr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_AddressGroupAndMicState
+<BR>[Called By]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_AddressGroupAndMicState
 <LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Menu_Update
 <LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Menu_InputConfigUpdate
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Menu_CalendarUpdate
@@ -1379,7 +1378,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Menu_Update
 </UL>
 
-<P><STRONG><a name="[bc]"></a>Menu_Update</STRONG> (Thumb, 1218 bytes, Stack size 24 bytes, lcdmenu.o(.text))
+<P><STRONG><a name="[bc]"></a>Menu_Update</STRONG> (Thumb, 1236 bytes, Stack size 24 bytes, lcdmenu.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = Menu_Update &rArr; Page_Header &rArr; LcdLine &rArr; LcdPixel
 </UL>
 <BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FireLine
@@ -1425,7 +1424,7 @@ Global Symbols
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdOutStr
 <LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MicState
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_AddressGroupAndMicState
+<BR>[Called By]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_AddressGroupAndMicState
 </UL>
 
 <P><STRONG><a name="[c3]"></a>Text_GetBatState</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, lcdmenu.o(.text))
@@ -1464,7 +1463,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_CofigModeUnit
 </UL>
 
-<P><STRONG><a name="[c9]"></a>Display_Header</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, lcdmenu.o(.text))
+<P><STRONG><a name="[c9]"></a>Display_Header</STRONG> (Thumb, 154 bytes, Stack size 8 bytes, lcdmenu.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = Display_Header &rArr; Page_Header &rArr; LcdLine &rArr; LcdPixel
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Page_Header
@@ -1473,7 +1472,7 @@ Global Symbols
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_ControlModeUnit
 </UL>
 
-<P><STRONG><a name="[ca]"></a>Display_Mic</STRONG> (Thumb, 228 bytes, Stack size 8 bytes, lcdmenu.o(.text))
+<P><STRONG><a name="[ca]"></a>Display_Mic</STRONG> (Thumb, 80 bytes, Stack size 8 bytes, lcdmenu.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = Display_Mic &rArr; LcdOutStr &rArr; LcdChr
 </UL>
 <BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpLine_GetOutState
@@ -1484,7 +1483,7 @@ Global Symbols
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_ControlModeUnit
 </UL>
 
-<P><STRONG><a name="[cb]"></a>Display_PuskButtonActivation</STRONG> (Thumb, 72 bytes, Stack size 8 bytes, lcdmenu.o(.text))
+<P><STRONG><a name="[cb]"></a>Display_PuskButtonActivation</STRONG> (Thumb, 70 bytes, Stack size 8 bytes, lcdmenu.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = Display_PuskButtonActivation &rArr; LcdOutStr &rArr; LcdChr
 </UL>
 <BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdSetCursor
@@ -1506,11 +1505,10 @@ Global Symbols
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_ControlModeUnit
 </UL>
 
-<P><STRONG><a name="[ce]"></a>Display_Faults</STRONG> (Thumb, 98 bytes, Stack size 8 bytes, lcdmenu.o(.text))
+<P><STRONG><a name="[ce]"></a>Display_Faults</STRONG> (Thumb, 232 bytes, Stack size 8 bytes, lcdmenu.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = Display_Faults &rArr; PrintFaults &rArr; LcdOutStr &rArr; LcdChr
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PrintFaults
-<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Faults
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdSetCursor
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdOutStr
 </UL>
@@ -1518,7 +1516,7 @@ Global Symbols
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_ControlModeUnit
 </UL>
 
-<P><STRONG><a name="[d0]"></a>Display_Manual</STRONG> (Thumb, 88 bytes, Stack size 8 bytes, lcdmenu.o(.text))
+<P><STRONG><a name="[cf]"></a>Display_Manual</STRONG> (Thumb, 86 bytes, Stack size 8 bytes, lcdmenu.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = Display_Manual &rArr; LcdOutStr &rArr; LcdChr
 </UL>
 <BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpLine_GetOutState
@@ -1529,10 +1527,10 @@ Global Symbols
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_ControlModeUnit
 </UL>
 
-<P><STRONG><a name="[d1]"></a>Display_AddressGroupAndMicState</STRONG> (Thumb, 64 bytes, Stack size 8 bytes, lcdmenu.o(.text))
+<P><STRONG><a name="[d0]"></a>Display_AddressGroupAndMicState</STRONG> (Thumb, 64 bytes, Stack size 8 bytes, lcdmenu.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = Display_AddressGroupAndMicState &rArr; LcdBinToDec &rArr; LcdChr
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotherBoard
+<BR>[Calls]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotherBoard
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Print_MicState
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdBinToDec
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdSetCursor
@@ -1542,7 +1540,7 @@ Global Symbols
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_ControlModeUnit
 </UL>
 
-<P><STRONG><a name="[d3]"></a>Display_Test</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, lcdmenu.o(.text))
+<P><STRONG><a name="[d2]"></a>Display_Test</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, lcdmenu.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = Display_Test &rArr; LcdStringBig &rArr; LcdChrBig
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdStringBig
@@ -1595,39 +1593,39 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_Begin
 </UL>
 
-<P><STRONG><a name="[d4]"></a>LedDisactiveSound</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, main.o(.text))
+<P><STRONG><a name="[d3]"></a>LedDisactiveSound</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = LedDisactiveSound
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedZummer
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_ClrToggle
-<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_IsToggle
+<BR>[Calls]<UL><LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedZummer
+<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_ClrToggle
+<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_IsToggle
 </UL>
-<BR>[Called By]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
+<BR>[Called By]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
 </UL>
 
-<P><STRONG><a name="[d8]"></a>AlgorithmAlert</STRONG> (Thumb, 404 bytes, Stack size 8 bytes, main.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedAlert
+<P><STRONG><a name="[d7]"></a>AlgorithmAlert</STRONG> (Thumb, 404 bytes, Stack size 8 bytes, main.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedAlert
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedPusk
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedControl
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_ClrToggle
-<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_IsToggle
-<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_IsRelease
-<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_IsPress
+<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_ClrToggle
+<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_IsToggle
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_IsRelease
+<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_IsPress
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Blink
 </UL>
 
-<P><STRONG><a name="[dc]"></a>Task_PriorityGet</STRONG> (Thumb, 170 bytes, Stack size 8 bytes, main.o(.text))
+<P><STRONG><a name="[db]"></a>Task_PriorityGet</STRONG> (Thumb, 170 bytes, Stack size 8 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Task_PriorityGet
 </UL>
 <BR>[Calls]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FireLine_GetInState
-<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_IsRelease
-<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_IsPress
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_IsRelease
+<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_IsPress
 <LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MicState
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Scheduler_SetTask
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.text)
 </UL>
-<P><STRONG><a name="[dd]"></a>Task_FaultsGet</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, main.o(.text))
+<P><STRONG><a name="[dc]"></a>Task_FaultsGet</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Task_FaultsGet &rArr; Faults_Loop
 </UL>
 <BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Faults_Loop
@@ -1635,7 +1633,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.text)
 </UL>
-<P><STRONG><a name="[de]"></a>Task_LcdUpdate</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, main.o(.text))
+<P><STRONG><a name="[dd]"></a>Task_LcdUpdate</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = Task_LcdUpdate &rArr; LcdUpdate &rArr; Lcd12864_Update &rArr; Lcd12864_Send &rArr; Lcd12864Strob &rArr; Pause
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdUpdate
@@ -1643,25 +1641,25 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.text)
 </UL>
-<P><STRONG><a name="[df]"></a>Task_LedUpdate</STRONG> (Thumb, 296 bytes, Stack size 8 bytes, main.o(.text))
+<P><STRONG><a name="[de]"></a>Task_LedUpdate</STRONG> (Thumb, 296 bytes, Stack size 8 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = Task_LedUpdate &rArr; LedUpdate &rArr; Sm1628SendLed &rArr; Sm1628SendCmd &rArr; Sm1628SendByte &rArr; Spi2TxData
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotherBoard
+<BR>[Calls]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotherBoard
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RS485_Cmd
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedAmpIndication
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedBatteryIndication
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedPowerIndication
-<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedCommunication
+<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedCommunication
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedControl
-<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedSetAll
+<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedSetAll
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedUpdate
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpLine_GetOutStateForLed
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PowerDevice
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FireLine_GetLineState
-<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Faults
+<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Faults
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Blink
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KeyGetState
-<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedDisactiveSound
+<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedDisactiveSound
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_KeyControl
 </UL>
@@ -1681,7 +1679,7 @@ Global Symbols
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RS485_Cmd
 <LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RS485_Flags
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PowerDevice
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_ClrToggle
+<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_ClrToggle
 <LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Siren_SaveData
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotherBoard_SaveData
 <LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LogSaveEvent
@@ -1693,9 +1691,9 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = Task_ErrorConnectMB &rArr; LedUpdate &rArr; Sm1628SendLed &rArr; Sm1628SendCmd &rArr; Sm1628SendByte &rArr; Spi2TxData
 </UL>
 <BR>[Calls]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Print_ErrConnect
-<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedCommunication
+<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedCommunication
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedControl
-<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedSetAll
+<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedSetAll
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedUpdate
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Blink
 </UL>
@@ -1735,20 +1733,20 @@ Global Symbols
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PowerDevice
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_LeftRigth
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_UpDown
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_ClrToggle
-<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_IsToggle
-<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_IsPress
+<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_ClrToggle
+<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_IsToggle
+<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_IsPress
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Blink
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.text)
 </UL>
-<P><STRONG><a name="[f0]"></a>Task_ControlModeUnit</STRONG> (Thumb, 228 bytes, Stack size 16 bytes, main.o(.text))
+<P><STRONG><a name="[f0]"></a>Task_ControlModeUnit</STRONG> (Thumb, 236 bytes, Stack size 16 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = Task_ControlModeUnit &rArr; Display_Header &rArr; Page_Header &rArr; LcdLine &rArr; LcdPixel
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotherBoard
-<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Test
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_AddressGroupAndMicState
-<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Manual
+<BR>[Calls]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotherBoard
+<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Test
+<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_AddressGroupAndMicState
+<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Manual
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Faults
 <LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Fire
 <LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_PuskButtonActivation
@@ -1763,9 +1761,9 @@ Global Symbols
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedPresetControl
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedPoj
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedPusk
-<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Faults
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_ClrToggle
-<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_IsPress
+<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Faults
+<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_ClrToggle
+<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_IsPress
 <LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_GetControl
 <LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_GetAlg
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdClear
@@ -1775,13 +1773,13 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.text)
 </UL>
-<P><STRONG><a name="[f6]"></a>Task_LockModeUnit</STRONG> (Thumb, 226 bytes, Stack size 16 bytes, main.o(.text))
+<P><STRONG><a name="[f6]"></a>Task_LockModeUnit</STRONG> (Thumb, 234 bytes, Stack size 16 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = Task_LockModeUnit &rArr; Display_Header &rArr; Page_Header &rArr; LcdLine &rArr; LcdPixel
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotherBoard
-<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Test
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_AddressGroupAndMicState
-<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Manual
+<BR>[Calls]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotherBoard
+<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Test
+<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_AddressGroupAndMicState
+<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Manual
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Faults
 <LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Fire
 <LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_PuskButtonActivation
@@ -1796,9 +1794,9 @@ Global Symbols
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedPresetControl
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedPoj
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedPusk
-<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Faults
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_ClrToggle
-<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_IsPress
+<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Faults
+<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_ClrToggle
+<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_IsPress
 <LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Button_GetControl
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdClear
 <LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MicState
@@ -1810,10 +1808,10 @@ Global Symbols
 <P><STRONG><a name="[f7]"></a>Task_KeyControl</STRONG> (Thumb, 86 bytes, Stack size 8 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = Task_KeyControl &rArr; Task_LedUpdate &rArr; LedUpdate &rArr; Sm1628SendLed &rArr; Sm1628SendCmd &rArr; Sm1628SendByte &rArr; Spi2TxData
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedSetAll
+<BR>[Calls]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedSetAll
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KeyGetState
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Scheduler_SetTask
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
+<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.text)
 </UL>
@@ -1860,11 +1858,11 @@ Global Symbols
 <P><STRONG><a name="[c]"></a>SysTick_Handler</STRONG> (Thumb, 66 bytes, Stack size 8 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = SysTick_Handler &rArr; LedControl
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotherBoard
+<BR>[Calls]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotherBoard
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdBackLight
 <LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RS485_TimeOutInc
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedControl
-<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedSetAll
+<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedSetAll
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Blink
 <LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Blink_Loop
 <LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Scheduler_TimerService
@@ -1884,11 +1882,11 @@ Global Symbols
 <P><STRONG><a name="[7a]"></a>SpLine_GetOutStateForLed</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, mb_motherboard.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedPresetControl
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Faults_Loop
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
+<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
 </UL>
 
 <P><STRONG><a name="[86]"></a>SpLine_GetOutState</STRONG> (Thumb, 88 bytes, Stack size 0 bytes, mb_motherboard.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Manual
+<BR><BR>[Called By]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Manual
 <LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Mic
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LedPresetControl
 <LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LockModeUnit
@@ -1908,12 +1906,12 @@ Global Symbols
 <P><STRONG><a name="[7b]"></a>FireLine_GetLineState</STRONG> (Thumb, 52 bytes, Stack size 0 bytes, mb_motherboard.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Print_FireLineState
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Faults_Loop
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
+<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
 </UL>
 
 <P><STRONG><a name="[cd]"></a>FireLine_GetInState</STRONG> (Thumb, 60 bytes, Stack size 0 bytes, mb_motherboard.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Fire
-<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_PriorityGet
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_PriorityGet
 </UL>
 
 <P><STRONG><a name="[f2]"></a>FireLine_CompareAllLinesWith</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, mb_motherboard.o(.text))
@@ -1927,12 +1925,12 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_RS485ParsingCmdFromMB
 </UL>
 
-<P><STRONG><a name="[d2]"></a>MotherBoard</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, mb_motherboard.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_AddressGroupAndMicState
+<P><STRONG><a name="[d1]"></a>MotherBoard</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, mb_motherboard.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_AddressGroupAndMicState
 <LI><a href="#[c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
 <LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LockModeUnit
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_ControlModeUnit
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
+<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
 </UL>
 
 <P><STRONG><a name="[79]"></a>PowerDevice</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, mb_motherboard.o(.text))
@@ -1942,7 +1940,7 @@ Global Symbols
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Faults_Loop
 <LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_CofigModeUnit
 <LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_RS485ParsingCmdFromMB
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
+<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LedUpdate
 </UL>
 
 <P><STRONG><a name="[e8]"></a>LogSaveEvent</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, mb_motherboard.o(.text))
@@ -2178,7 +2176,7 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Fire
 </UL>
 
-<P><STRONG><a name="[c8]"></a>PrintFaults</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, lcdmenu.o(.text))
+<P><STRONG><a name="[c8]"></a>PrintFaults</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, lcdmenu.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = PrintFaults &rArr; LcdOutStr &rArr; LcdChr
 </UL>
 <BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdSetCursor

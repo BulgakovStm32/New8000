@@ -15,7 +15,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x55DB71D0)
 I (.\CMSIS_STM32F1xx\CM3\DeviceSupport\ST\STM32F10x\system_stm32f10x.h)(0x4D7882FA)
 F (.\My\Sheduler\Scheduler.h)(0x5F44A6DD)()
 F (.\My\Drivers\ascii_lm6063.c)(0x5D8A1DE0)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I.\CMSIS_STM32F1xx\CM3\CoreSupport -I.\CMSIS_STM32F1xx\CM3\DeviceSupport\ST\STM32F10x -I.\My\Application -I.\My\Boards\FP_FacePanel -I.\My\Boards\MB_MotherBoard -I.\My\Boards\SB_SirenBoard -I.\My\Drivers -I.\My\FSM -I.\My\Main -I.\My\Sheduler -I.\My\StartUp -I.\AnotherLib-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="517"-o .\outfile\ascii_lm6063.o --omf_browse .\outfile\ascii_lm6063.crf --depend .\outfile\ascii_lm6063.d)
-F (.\My\Drivers\ascii_RusText.h)(0x5F7F086D)()
+F (.\My\Drivers\ascii_RusText.h)(0x5F8FEEEB)()
 F (.\My\Drivers\ascii_wg12864.c)(0x5DF8A4FC)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I.\CMSIS_STM32F1xx\CM3\CoreSupport -I.\CMSIS_STM32F1xx\CM3\DeviceSupport\ST\STM32F10x -I.\My\Application -I.\My\Boards\FP_FacePanel -I.\My\Boards\MB_MotherBoard -I.\My\Boards\SB_SirenBoard -I.\My\Drivers -I.\My\FSM -I.\My\Main -I.\My\Sheduler -I.\My\StartUp -I.\AnotherLib-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="517"-o .\outfile\ascii_wg12864.o --omf_browse .\outfile\ascii_wg12864.crf --depend .\outfile\ascii_wg12864.d)
 F (.\My\Drivers\crc16.c)(0x5EA7ECD5)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I.\CMSIS_STM32F1xx\CM3\CoreSupport -I.\CMSIS_STM32F1xx\CM3\DeviceSupport\ST\STM32F10x -I.\My\Application -I.\My\Boards\FP_FacePanel -I.\My\Boards\MB_MotherBoard -I.\My\Boards\SB_SirenBoard -I.\My\Drivers -I.\My\FSM -I.\My\Main -I.\My\Sheduler -I.\My\StartUp -I.\AnotherLib-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="517"-o .\outfile\crc16.o --omf_browse .\outfile\crc16.crf --depend .\outfile\crc16.d)
 I (My\Drivers\crc16.h)(0x5E860F32)
@@ -132,7 +132,7 @@ I (.\CMSIS_STM32F1xx\CM3\DeviceSupport\ST\STM32F10x\system_stm32f10x.h)(0x4D7882
 I (.\My\Drivers\spi_ST.h)(0x5F7C7BF4)
 I (.\My\Drivers\gpio_ST.h)(0x5F7D9E6F)
 I (.\My\Drivers\sm1628.h)(0x5F7C7651)
-I (My\Application\LcdMenu.h)(0x5F7F08FC)
+I (My\Application\LcdMenu.h)(0x5F8FEC1A)
 I (.\My\Drivers\sys_ST.h)(0x5F33EFFD)
 I (.\My\Application\Lcd.h)(0x5F7DAC12)
 I (.\My\Drivers\lcd12864.h)(0x5F33EFB0)
@@ -171,8 +171,8 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x55DB71D0)
 I (.\CMSIS_STM32F1xx\CM3\DeviceSupport\ST\STM32F10x\system_stm32f10x.h)(0x4D7882FA)
 I (My\Application\Rtc.h)(0x5EB5433B)
 F (.\My\Application\Lcd.h)(0x5F7DAC12)()
-F (.\My\Application\LcdMenu.c)(0x5F7F08FC)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I.\CMSIS_STM32F1xx\CM3\CoreSupport -I.\CMSIS_STM32F1xx\CM3\DeviceSupport\ST\STM32F10x -I.\My\Application -I.\My\Boards\FP_FacePanel -I.\My\Boards\MB_MotherBoard -I.\My\Boards\SB_SirenBoard -I.\My\Drivers -I.\My\FSM -I.\My\Main -I.\My\Sheduler -I.\My\StartUp -I.\AnotherLib-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="517"-o .\outfile\lcdmenu.o --omf_browse .\outfile\lcdmenu.crf --depend .\outfile\lcdmenu.d)
-I (My\Application\LcdMenu.h)(0x5F7F08FC)
+F (.\My\Application\LcdMenu.c)(0x5F8FEFE3)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I.\CMSIS_STM32F1xx\CM3\CoreSupport -I.\CMSIS_STM32F1xx\CM3\DeviceSupport\ST\STM32F10x -I.\My\Application -I.\My\Boards\FP_FacePanel -I.\My\Boards\MB_MotherBoard -I.\My\Boards\SB_SirenBoard -I.\My\Drivers -I.\My\FSM -I.\My\Main -I.\My\Sheduler -I.\My\StartUp -I.\AnotherLib-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="517"-o .\outfile\lcdmenu.o --omf_browse .\outfile\lcdmenu.crf --depend .\outfile\lcdmenu.d)
+I (My\Application\LcdMenu.h)(0x5F8FEC1A)
 I (.\My\Drivers\sys_ST.h)(0x5F33EFFD)
 I (.\CMSIS_STM32F1xx\CM3\DeviceSupport\ST\STM32F10x\stm32f10x.h)(0x5F7C4608)
 I (.\CMSIS_STM32F1xx\CM3\CoreSupport\core_cm3.h)(0x4D5281A8)
@@ -190,8 +190,8 @@ I (My\Application\Blink.h)(0x5F46064F)
 I (.\My\Boards\MB_MotherBoard\MB_MotherBoard.h)(0x5F7DAB04)
 I (.\My\Boards\SB_SirenBoard\SB_SirenBoard.h)(0x5F7EE2C1)
 I (My\Application\Faults.h)(0x5F7ED9D4)
-I (.\My\Drivers\ascii_RusText.h)(0x5F7F086D)
-F (.\My\Application\LcdMenu.h)(0x5F7F08FC)()
+I (.\My\Drivers\ascii_RusText.h)(0x5F8FEEEB)
+F (.\My\Application\LcdMenu.h)(0x5F8FEC1A)()
 F (.\My\FSM\FsmMessage.c)(0x5ECC1B64)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I.\CMSIS_STM32F1xx\CM3\CoreSupport -I.\CMSIS_STM32F1xx\CM3\DeviceSupport\ST\STM32F10x -I.\My\Application -I.\My\Boards\FP_FacePanel -I.\My\Boards\MB_MotherBoard -I.\My\Boards\SB_SirenBoard -I.\My\Drivers -I.\My\FSM -I.\My\Main -I.\My\Sheduler -I.\My\StartUp -I.\AnotherLib-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="517"-o .\outfile\fsmmessage.o --omf_browse .\outfile\fsmmessage.crf --depend .\outfile\fsmmessage.d)
 I (My\FSM\FsmMessage.h)(0x5ECC1ACE)
 I (.\CMSIS_STM32F1xx\CM3\DeviceSupport\ST\STM32F10x\stm32f10x.h)(0x5F7C4608)
@@ -206,7 +206,7 @@ I (.\CMSIS_STM32F1xx\CM3\CoreSupport\core_cm3.h)(0x4D5281A8)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x55DB71D0)
 I (.\CMSIS_STM32F1xx\CM3\DeviceSupport\ST\STM32F10x\system_stm32f10x.h)(0x4D7882FA)
 F (.\My\FSM\SwTimers.h)(0x5EF1C671)()
-F (.\My\Main\main.c)(0x5F846222)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I.\CMSIS_STM32F1xx\CM3\CoreSupport -I.\CMSIS_STM32F1xx\CM3\DeviceSupport\ST\STM32F10x -I.\My\Application -I.\My\Boards\FP_FacePanel -I.\My\Boards\MB_MotherBoard -I.\My\Boards\SB_SirenBoard -I.\My\Drivers -I.\My\FSM -I.\My\Main -I.\My\Sheduler -I.\My\StartUp -I.\AnotherLib-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="517"-o .\outfile\main.o --omf_browse .\outfile\main.crf --depend .\outfile\main.d)
+F (.\My\Main\main.c)(0x5F8FEC76)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork -I.\CMSIS_STM32F1xx\CM3\CoreSupport -I.\CMSIS_STM32F1xx\CM3\DeviceSupport\ST\STM32F10x -I.\My\Application -I.\My\Boards\FP_FacePanel -I.\My\Boards\MB_MotherBoard -I.\My\Boards\SB_SirenBoard -I.\My\Drivers -I.\My\FSM -I.\My\Main -I.\My\Sheduler -I.\My\StartUp -I.\AnotherLib-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="517"-o .\outfile\main.o --omf_browse .\outfile\main.crf --depend .\outfile\main.d)
 I (My\Main\main.h)(0x5F4DF8AC)
 I (.\CMSIS_STM32F1xx\CM3\DeviceSupport\ST\STM32F10x\stm32f10x.h)(0x5F7C4608)
 I (.\CMSIS_STM32F1xx\CM3\CoreSupport\core_cm3.h)(0x4D5281A8)
@@ -230,7 +230,7 @@ I (.\My\Application\Buttons.h)(0x5F5B2371)
 I (.\My\Drivers\sm1628.h)(0x5F7C7651)
 I (.\My\Drivers\spi_ST.h)(0x5F7C7BF4)
 I (.\My\Application\Led.h)(0x5F7C8096)
-I (.\My\Application\LcdMenu.h)(0x5F7F08FC)
+I (.\My\Application\LcdMenu.h)(0x5F8FEC1A)
 I (.\My\Application\Faults.h)(0x5F7ED9D4)
 I (.\My\Boards\SB_SirenBoard\SB_SirenBoard.h)(0x5F7EE2C1)
 I (.\My\Application\Blink.h)(0x5F46064F)

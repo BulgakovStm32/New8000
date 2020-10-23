@@ -136,7 +136,7 @@ void Display_Header(const char* txt);
 void Display_Mic(void);
 void Display_PuskButtonActivation(void);
 void Display_Fire(void);
-void Display_Faults(void);
+void Display_Faults(uint32_t faults);
 void Display_Manual(void);
 void Display_AddressGroupAndMicState(void);
 void Display_Test(void);

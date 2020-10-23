@@ -686,14 +686,17 @@ void Menu_Update(Page_t *menuPage, uint8_t mode, uint8_t pointStr){
 					//Табло1.
 					LcdSetCursor(1, 4);
 					LcdOutStr((char*)RusText_Tablo1);
+					LcdChr('-');
 					Print_SirenSate(Siren()->Siren1.LineState);
 					//Табло2.
 					LcdSetCursor(1, 5);
 					LcdOutStr((char*)RusText_Tablo2);
+					LcdChr('-');
 					Print_SirenSate(Siren()->Siren2.LineState);
 					//Табло3.
 					LcdSetCursor(1, 6);
 					LcdOutStr((char*)RusText_Tablo3);
+					LcdChr('-');
 					Print_SirenSate(Siren()->Siren3.LineState);
 				}
 			//-------------
@@ -884,7 +887,7 @@ static void PrintActive(uint8_t string){
 static void PrintFaults(uint8_t string){
 	
 	LcdSetCursor(1, string+1);
-	LcdOutStr((char*)RusText_NotWork);
+	//LcdOutStr((char*)RusText_NotWork);
 	LcdOutStr((char*)RusText_SpLine);
 }
 //***************************************************************
@@ -914,7 +917,7 @@ void Display_Mic(void){
 //***************************************************************
 void Display_PuskButtonActivation(void){
 
-	LcdSetCursor(1, 3);
+	LcdSetCursor(1, String4);
 	LcdOutStr((char*)RusText_PuskVoiceMessageNum);
 	//Линия Гр1.	
 	LcdSetCursor(1, 4);
@@ -930,7 +933,7 @@ void Display_PuskButtonActivation(void){
 //***************************************************************
 void Display_Fire(void){
 
-	LcdSetCursor(1, 3);
+	LcdSetCursor(1, String4);
 	LcdOutStr((char*)RusText_PuskAuto);
 	//Шлейф ПОЖ1
 	if(FireLine_GetInState(Poj1) == FR_IN_FIRE)
@@ -952,48 +955,88 @@ void Display_Fire(void){
 		}				
 }
 //***************************************************************
-void Display_Faults(void){
+void Display_Faults(uint32_t faults){
 
-	uint32_t faults = Faults()->Instant;
-	//--------------------
-	LcdSetCursor(1, 3);
+	LcdSetCursor(1, String4);
 	LcdOutStr((char*)RusText_Defect);	
-	//Линия Гр1.//Шлейф ПОЖ1.
+	//--------------------
+	//Линии пожарных шлейфов.
+  //Шлейф ПОЖ1.
+	if(faults & FaultPoj1_Flag)
+		{
+			LcdSetCursor(1, String5);
+			LcdOutStr((char*)RusText_Poj1);
+		}		
+	//Шлейф ПОЖ2.
+	if(faults & FaultPoj2_Flag)
+		{
+			LcdSetCursor(1, String6);
+			LcdOutStr((char*)RusText_Poj2);
+		}	
+	//Шлейф ПОЖ3.
+	if(faults & FaultPoj3_Flag)
+		{
+			LcdSetCursor(1, String7);
+			LcdOutStr((char*)RusText_Poj3);
+		}	
+	//Шлейф ГОиЧС.
+	if(faults & FaultChS_Flag)
+		{
+			LcdSetCursor(1, String8);
+			LcdOutStr((char*)RusText_GOChS);
+		}		
+	//--------------------
+	//Линии связи с громкоговорителями.	
+	//Линия Гр1.
 	if(faults & FaultLc1Line_Flag)
 		{
-			PrintFaults(String4);
-			LcdOutStr("1");
-		}		
-	//Линия Атт1.
+			PrintFaults(String5);
+			LcdOutStr("1");		
+		}			
+	//Линия Аттенюатора1.
 	if(faults & FaultLc1Att_Flag)
 		{
-			PrintFaults(String5);
-			LcdOutStr("2");
-		}	
-	//Линия Гр2.//Шлейф ПОЖ3.
+			PrintFaults(String6);
+			LcdOutStr("2");			
+		}		
+	//Линия Гр2.
 	if(faults & FaultLc2Line_Flag)
 		{
-			PrintFaults(String6);
-			LcdOutStr("3");
-		}	
-	//Линия Атт2.
+			PrintFaults(String7);
+			LcdOutStr("3");		
+		}			
+	//Линия Аттенюатора2.
 	if(faults & FaultLc2Att_Flag)
 		{
-			PrintFaults(String7);
-			LcdOutStr("4");
+			PrintFaults(String8);
+			LcdOutStr("4");			
+		}
+	//--------------------
+	//Линии связи со световыми табличками.			
+  //Табло1.
+	if(faults & FaultSiren1_Flag)
+		{
+			LcdSetCursor(1, String5);
+			LcdOutStr((char*)RusText_Tablo1);	
+		}		
+	//Табло2.
+	if(faults & FaultSiren2_Flag)
+		{
+			LcdSetCursor(1, String6);
+			LcdOutStr((char*)RusText_Tablo2);	
 		}	
-	//Линия Гр1.
-		
-	//Линия Гр2.
-		
-	//Линия Гр3.
-		
-	//Линия Гр4.
+	//Табло3.
+	if(faults & FaultSiren3_Flag)
+		{
+			LcdSetCursor(1, String7);
+			LcdOutStr((char*)RusText_Tablo3);	
+		}			
+	//--------------------
 }
 //***************************************************************
 void Display_Manual(void){
 
-	LcdSetCursor(1, 3);
+	LcdSetCursor(1, String4);
 	LcdOutStr((char*)RusText_ManualActivation);
 	//Линия Гр1.
 	if(SpLine_GetOutState(Zone1) == ActionManualOn)
@@ -1016,11 +1059,11 @@ void Display_Manual(void){
 void Display_AddressGroupAndMicState(void){
 
   //Адрес
-  LcdSetCursor(1, 3);
+  LcdSetCursor(1, String4);
   LcdOutStr((char*)RusText_Address);
   LcdBinToDec(MotherBoard()->Addres, 2);
   //Группа
-  LcdSetCursor(13, 3);
+  LcdSetCursor(13, String4);
   LcdOutStr((char*)RusText_Group);
   LcdBinToDec(MotherBoard()->Group, 2);	
 	//Cостояние микрофона.  

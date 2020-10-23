@@ -55,9 +55,9 @@ const char RusText_PA[]           = "УМЗЧ -";
 //страница "Световые табло" режима "НАСТРОЙКА".
 const char RusText_PageMenuTablo[]  = "Световые табло";
 const char RusText_PitanieTablo[]   = "Пит.табло=";
-const char RusText_Tablo1[] =         "Табло1-";
-const char RusText_Tablo2[] =         "Табло2-";
-const char RusText_Tablo3[] =         "Табло3-";
+const char RusText_Tablo1[] =         "Табло1";
+const char RusText_Tablo2[] =         "Табло2";
+const char RusText_Tablo3[] =         "Табло3";
 
 //-----------------------------------------------------------------------------
 //страница "Журнал событий" режима "НАСТРОЙКА".

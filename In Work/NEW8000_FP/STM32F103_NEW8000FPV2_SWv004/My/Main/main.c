@@ -536,7 +536,7 @@ void Task_LockModeUnit(void){
 			 if(MicState() == MIC_ACTIVE)                   Display_Mic();	
 	else if(SpLine_GetOutState(Zone1) == ActionPuskOn)  Display_PuskButtonActivation();   
 	else if(FireLine_CompareAllLinesWith(FR_IN_FIRE))   Display_Fire();   //ПУСК.	
-	else if(Faults()->Instant & FAULTS_MASK)            Display_Faults(); //НЕИСПРАВНОСТЬ
+	else if(Faults()->Instant & FAULTS_MASK)            Display_Faults(Faults()->Instant); //НЕИСПРАВНОСТЬ
 	else if(SpLine_CompareAllLinesWith(ActionManualOn)) Display_Manual(); //ручное управление		
 	else                                                Display_AddressGroupAndMicState();
 	//-------------------------------------------------------	
@@ -581,7 +581,7 @@ void Task_ControlModeUnit(void){
 			 if(MicState() == MIC_ACTIVE)                   Display_Mic();	
 	else if(SpLine_GetOutState(Zone1) == ActionPuskOn)  Display_PuskButtonActivation();   
 	else if(FireLine_CompareAllLinesWith(FR_IN_FIRE))   Display_Fire();   //ПУСК.	
-	else if(Faults()->Instant & FAULTS_MASK)            Display_Faults(); //НЕИСПРАВНОСТЬ
+	else if(Faults()->Instant & FAULTS_MASK)            Display_Faults(Faults()->Instant); //НЕИСПРАВНОСТЬ
 	else if(SpLine_CompareAllLinesWith(ActionManualOn)) Display_Manual(); //ручное управление		
 	else                                                Display_AddressGroupAndMicState();
 	//-------------------------------------------------------	

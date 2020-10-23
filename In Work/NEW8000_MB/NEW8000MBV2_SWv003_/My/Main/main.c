@@ -604,7 +604,8 @@ void Task_GetKeyState(void){
 //*************************************************************************************************
 int main(void){
     
-	uint8_t count;
+	uint8_t   count;
+	Config_t* pConfig = Config();
   //--------------------
   //После сброса микроконтроллера программа преходит в main(), минуя SystemInit().
   //В фейле startup_stm32f10x_md_vl.s закоментирован переход на SystemInit.
@@ -631,16 +632,16 @@ int main(void){
   AnalogSwitch_Activate();//Включение выходов мультиплексора.
   //--------------------
 	//Применение конфигурации.
-	MotherBoard_WorkReg()->Address = Config()->Address;
-  MotherBoard_WorkReg()->Group   = Config()->Group;
-	SpeakerLine_Param()->Deviation = Config()->SpDeviation;
-	SpeakerLine_Param()->Check     = Config()->SpCheck;
-	Power()->Check.Byte 					 = Config()->PowerCheckOn;
+	MotherBoard_WorkReg()->Address = pConfig->Address;
+  MotherBoard_WorkReg()->Group   = pConfig->Group;
+	SpeakerLine_Param()->Deviation = pConfig->SpDeviation;
+	SpeakerLine_Param()->Check     = pConfig->SpCheck;
+	Power()->Check.Byte 					 = pConfig->PowerCheckOn;
 	
 	for(count = 0; count < FIRE_LINES_NUMBER; count++)
 		{
-			FireLine(count)->Type    = Config()->FireLineConfig[count].Type;
-			FireLine(count)->TimeOut = Config()->FireLineConfig[count].Timeout;	
+			FireLine(count)->Type    = pConfig->FireLineConfig[count].Type;
+			FireLine(count)->TimeOut = pConfig->FireLineConfig[count].Timeout;	
 		}
 	//--------------------
 	Log_SaveEvent(DeviceOn, NoParam);	
