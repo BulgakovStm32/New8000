@@ -178,14 +178,16 @@ void Task_ParsingCmdFP(void){
 			FireLine(temp)->Type         = configDataForFireLine->Type;
 			FireLine(temp)->TimeOut      = configDataForFireLine->TimeOut;
 		
-			if(FireLine(temp)->Type > FIRE_LINES_TYPE_ON_CONTROL_ON_OPEN) 
-				{
-					FireLine(temp)->Type = FIRE_LINES_TYPE_ON_CONTROL_ON_OPEN;
-				}
-			if(FireLine(temp)->TimeOut > FIRE_LINES_TIMEOUT_MAX)
-				{
-					FireLine(temp)->Type = FIRE_LINES_TIMEOUT_MAX;
-				}
+			//Проверка.
+			//if(FireLine(temp)->Type > FIRE_LINES_TYPE_ON_CONTROL_ON_OPEN) 
+			//	{
+			//		FireLine(temp)->Type = FIRE_LINES_TYPE_ON_CONTROL_ON_OPEN;
+			//	}
+			//if(FireLine(temp)->TimeOut > FIRE_LINES_TIMEOUT_MAX)
+			//	{
+			//		FireLine(temp)->Type = FIRE_LINES_TIMEOUT_MAX;
+			//	}
+		
 			//Сохранение во флеш микроконтроллера.
 			Config_Save()->FireLineConfig[temp].Type    = FireLine(temp)->Type;	
 			Config_Save()->FireLineConfig[temp].Timeout = FireLine(temp)->TimeOut;
