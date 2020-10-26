@@ -48,6 +48,8 @@ uint8_t PriorityGet(void){
 //Выполнение основных процессов в блоке. Максимальное время выполнения функции 25мкС.
 void Task_Executors(void){
 	
+	uint32_t faultsInst = Faults()->Instant;
+	//--------------------
 	Config_SaveLoop();//Запись конфигурации после ее изменения.
 	Faults_Loop();    //Определение неисправностей блока.
 	Log_Loop();       //Логирование неисправностей блока.
@@ -56,7 +58,7 @@ void Task_Executors(void){
   if(MotherBoard_WorkReg()->State == MB_WORK_STATE && 
 		 FacePanel()->Key != KEY_CONFIG_STATE) 						
 		{
-			Zummer_Fault(Faults()->Instant);
+			Zummer_Fault(faultsInst);
 		}
 	//В режиме настройки зуммер не работает.
 	else
@@ -65,11 +67,11 @@ void Task_Executors(void){
 		}
 	//--------------------
   //Управление реле "НЕИСПРАВНОСТЬ ОБЩАЯ".
-	if(Faults()->Instant != 0) Relay_On (RELAY_FAULT_GENERAL);//Активация реле "Н.О.".
-  else                       Relay_Off(RELAY_FAULT_GENERAL);//Отключение реле "Н.О.". 
+	if(faultsInst != 0) Relay_On (RELAY_FAULT_GENERAL);//Активация реле "Н.О.".
+  else                Relay_Off(RELAY_FAULT_GENERAL);//Отключение реле "Н.О.". 
   //Управление реле "НЕИСПРАВНОСТЬ ПИТАНИЯ". 
-	if(Faults()->Instant & FAULT_MASK_FOR_RELAY_FAULT_POWER) Relay_On(RELAY_FAULT_POWER); //Активация реле "Н.П.". 
-  else 																								 		 Relay_Off(RELAY_FAULT_POWER);//Отключение реле "Н.П.". 
+	if(faultsInst & FAULT_MASK_FOR_RELAY_FAULT_POWER) Relay_On(RELAY_FAULT_POWER); //Активация реле "Н.П.". 
+  else 																							Relay_Off(RELAY_FAULT_POWER);//Отключение реле "Н.П.". 
 	//--------------------
 	if(FacePanel()->Key == KEY_CONFIG_STATE) Relay_Off(RELAY_ALL); 
 	SpeakerLine_FSMLoop();		//Работа с линиями Гр.
@@ -83,8 +85,8 @@ void Task_Executors(void){
 //Обработка команд от FP.
 void Task_ParsingCmdFP(void){
 	
-	FPData_t   *dataFromFacePanel = (FPData_t*)RS485_RxBuf()->Str.Data;
-	FireLine_t *rxFireLineData    = (FireLine_t*)RS485_RxBuf()->Str.Data;
+	FPData_t   *dataFromFacePanel     = (FPData_t*)RS485_RxBuf()->Str.Data;
+	FireLine_t *configDataForFireLine = (FireLine_t*)RS485_RxBuf()->Str.Data;
 	uint8_t	temp;
 	//--------------------
 	RS485_Flags()->FPNewData = FLAG_CLEAR;
@@ -163,18 +165,18 @@ void Task_ParsingCmdFP(void){
 		//Команда получения параметров одного логического входа.
 		//в Address номер входа для которого запрашиваем конфигурацию.
 		case(FP_CMD_GET_INPUT_CONFIG):
-			RS485_FP_BuildAndTxFireLineContextPack(rxFireLineData->Number);
+			RS485_FP_BuildAndTxFireLineContextPack(configDataForFireLine->Number);
 		break;		
 		//--------------------
 		//Команда сохранения параметров одного входа пожарного шлейфа.
 		case(FP_CMD_SET_INPUT_CONFIG):
 			Zummer_Beep(3, 50);
 		
-			temp = rxFireLineData->Number;
+			temp = configDataForFireLine->Number;
 		
 			FireLine(temp)->LogicalState = FIRE_LINES_CONTROL_OFF;
-			FireLine(temp)->Type         = rxFireLineData->Type;
-			FireLine(temp)->TimeOut      = rxFireLineData->TimeOut;
+			FireLine(temp)->Type         = configDataForFireLine->Type;
+			FireLine(temp)->TimeOut      = configDataForFireLine->TimeOut;
 		
 			if(FireLine(temp)->Type > FIRE_LINES_TYPE_ON_CONTROL_ON_OPEN) 
 				{

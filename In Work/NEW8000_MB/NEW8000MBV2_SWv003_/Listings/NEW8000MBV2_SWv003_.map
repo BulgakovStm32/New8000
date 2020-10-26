@@ -340,12 +340,12 @@ Section Cross References
     main.o(i.Task_ControlModeUnit) refers to jq6500.o(i.VoiceMessage_Cmd) for VoiceMessage_Cmd
     main.o(i.Task_ControlModeUnit) refers to pojline.o(i.FireLine) for FireLine
     main.o(i.Task_ControlModeUnit) refers to buttons.o(i.ButtonForManual) for ButtonForManual
+    main.o(i.Task_Executors) refers to faults.o(i.Faults) for Faults
     main.o(i.Task_Executors) refers to config.o(i.Config_SaveLoop) for Config_SaveLoop
     main.o(i.Task_Executors) refers to faults.o(i.Faults_Loop) for Faults_Loop
     main.o(i.Task_Executors) refers to logging.o(i.Log_Loop) for Log_Loop
     main.o(i.Task_Executors) refers to mb_motherboard.o(i.MotherBoard_WorkReg) for MotherBoard_WorkReg
     main.o(i.Task_Executors) refers to fp_facepanel.o(i.FacePanel) for FacePanel
-    main.o(i.Task_Executors) refers to faults.o(i.Faults) for Faults
     main.o(i.Task_Executors) refers to zummer.o(i.Zummer_Fault) for Zummer_Fault
     main.o(i.Task_Executors) refers to relay.o(i.Relay_On) for Relay_On
     main.o(i.Task_Executors) refers to relay.o(i.Relay_Off) for Relay_Off
@@ -938,38 +938,38 @@ Image Symbol Table
     i.Task_ConfigModeUnit                    0x08003008   Section        0  main.o(i.Task_ConfigModeUnit)
     i.Task_ControlModeUnit                   0x0800304e   Section        0  main.o(i.Task_ControlModeUnit)
     i.Task_Executors                         0x080032d4   Section        0  main.o(i.Task_Executors)
-    i.Task_GetKeyState                       0x08003370   Section        0  main.o(i.Task_GetKeyState)
-    i.Task_ParsingCmdFP                      0x080033cc   Section        0  main.o(i.Task_ParsingCmdFP)
-    i.Task_ParsingCmdSB                      0x0800358c   Section        0  main.o(i.Task_ParsingCmdSB)
-    i.Task_PojLineControlModeUnit            0x080035aa   Section        0  main.o(i.Task_PojLineControlModeUnit)
-    i.Task_PollingRS485                      0x08003738   Section        0  main.o(i.Task_PollingRS485)
-    i.TimeUTC_Get                            0x080037a4   Section        0  time.o(i.TimeUTC_Get)
-    i.TimeUTC_Set                            0x080037ac   Section        0  time.o(i.TimeUTC_Set)
-    i.Time_Init                              0x080037b8   Section        0  time.o(i.Time_Init)
-    i.USART1_IRQHandler                      0x080037c0   Section        0  uart_st.o(i.USART1_IRQHandler)
-    i.USART3_IRQHandler                      0x08003840   Section        0  uart_st.o(i.USART3_IRQHandler)
-    i.Uart1_Init                             0x080038b4   Section        0  uart_st.o(i.Uart1_Init)
-    i.Uart3_Handler                          0x08003934   Section        0  uart_st.o(i.Uart3_Handler)
-    i.Uart3_Init                             0x0800393c   Section        0  uart_st.o(i.Uart3_Init)
-    i.UsageFault_Handler                     0x080039cc   Section        0  sys_st.o(i.UsageFault_Handler)
-    i.Usart1_ClrErrFlag                      0x080039d0   Section        0  uart_st.o(i.Usart1_ClrErrFlag)
-    Usart1_ClrErrFlag                        0x080039d1   Thumb Code    12  uart_st.o(i.Usart1_ClrErrFlag)
-    i.Usart3_ClrErrFlag                      0x080039e0   Section        0  uart_st.o(i.Usart3_ClrErrFlag)
-    Usart3_ClrErrFlag                        0x080039e1   Thumb Code    12  uart_st.o(i.Usart3_ClrErrFlag)
-    i.VoiceMessage_Cmd                       0x080039f0   Section        0  jq6500.o(i.VoiceMessage_Cmd)
-    i.VoiceMessage_Init                      0x080039fc   Section        0  jq6500.o(i.VoiceMessage_Init)
-    i.VoiceMessage_UpdateLoop                0x08003a08   Section        0  jq6500.o(i.VoiceMessage_UpdateLoop)
-    i.WriteOneEventToEep                     0x08003a50   Section        0  logging.o(i.WriteOneEventToEep)
-    WriteOneEventToEep                       0x08003a51   Thumb Code    68  logging.o(i.WriteOneEventToEep)
-    i.WriteWorkRegToEep                      0x08003a98   Section        0  logging.o(i.WriteWorkRegToEep)
-    WriteWorkRegToEep                        0x08003a99   Thumb Code    14  logging.o(i.WriteWorkRegToEep)
-    i.Zummer_Beep                            0x08003aac   Section        0  zummer.o(i.Zummer_Beep)
-    i.Zummer_Control                         0x08003ad8   Section        0  zummer.o(i.Zummer_Control)
-    i.Zummer_Fault                           0x08003af0   Section        0  zummer.o(i.Zummer_Fault)
-    i.Zummer_Init                            0x08003b3c   Section        0  zummer.o(i.Zummer_Init)
-    i.Zummer_Loop                            0x08003b44   Section        0  zummer.o(i.Zummer_Loop)
-    i.main                                   0x08003be4   Section        0  main.o(i.main)
-    .constdata                               0x08003ccc   Section       41  jq6500.o(.constdata)
+    i.Task_GetKeyState                       0x08003364   Section        0  main.o(i.Task_GetKeyState)
+    i.Task_ParsingCmdFP                      0x080033c0   Section        0  main.o(i.Task_ParsingCmdFP)
+    i.Task_ParsingCmdSB                      0x08003580   Section        0  main.o(i.Task_ParsingCmdSB)
+    i.Task_PojLineControlModeUnit            0x0800359e   Section        0  main.o(i.Task_PojLineControlModeUnit)
+    i.Task_PollingRS485                      0x0800372c   Section        0  main.o(i.Task_PollingRS485)
+    i.TimeUTC_Get                            0x08003798   Section        0  time.o(i.TimeUTC_Get)
+    i.TimeUTC_Set                            0x080037a0   Section        0  time.o(i.TimeUTC_Set)
+    i.Time_Init                              0x080037ac   Section        0  time.o(i.Time_Init)
+    i.USART1_IRQHandler                      0x080037b4   Section        0  uart_st.o(i.USART1_IRQHandler)
+    i.USART3_IRQHandler                      0x08003834   Section        0  uart_st.o(i.USART3_IRQHandler)
+    i.Uart1_Init                             0x080038a8   Section        0  uart_st.o(i.Uart1_Init)
+    i.Uart3_Handler                          0x08003928   Section        0  uart_st.o(i.Uart3_Handler)
+    i.Uart3_Init                             0x08003930   Section        0  uart_st.o(i.Uart3_Init)
+    i.UsageFault_Handler                     0x080039c0   Section        0  sys_st.o(i.UsageFault_Handler)
+    i.Usart1_ClrErrFlag                      0x080039c4   Section        0  uart_st.o(i.Usart1_ClrErrFlag)
+    Usart1_ClrErrFlag                        0x080039c5   Thumb Code    12  uart_st.o(i.Usart1_ClrErrFlag)
+    i.Usart3_ClrErrFlag                      0x080039d4   Section        0  uart_st.o(i.Usart3_ClrErrFlag)
+    Usart3_ClrErrFlag                        0x080039d5   Thumb Code    12  uart_st.o(i.Usart3_ClrErrFlag)
+    i.VoiceMessage_Cmd                       0x080039e4   Section        0  jq6500.o(i.VoiceMessage_Cmd)
+    i.VoiceMessage_Init                      0x080039f0   Section        0  jq6500.o(i.VoiceMessage_Init)
+    i.VoiceMessage_UpdateLoop                0x080039fc   Section        0  jq6500.o(i.VoiceMessage_UpdateLoop)
+    i.WriteOneEventToEep                     0x08003a44   Section        0  logging.o(i.WriteOneEventToEep)
+    WriteOneEventToEep                       0x08003a45   Thumb Code    68  logging.o(i.WriteOneEventToEep)
+    i.WriteWorkRegToEep                      0x08003a8c   Section        0  logging.o(i.WriteWorkRegToEep)
+    WriteWorkRegToEep                        0x08003a8d   Thumb Code    14  logging.o(i.WriteWorkRegToEep)
+    i.Zummer_Beep                            0x08003aa0   Section        0  zummer.o(i.Zummer_Beep)
+    i.Zummer_Control                         0x08003acc   Section        0  zummer.o(i.Zummer_Control)
+    i.Zummer_Fault                           0x08003ae4   Section        0  zummer.o(i.Zummer_Fault)
+    i.Zummer_Init                            0x08003b30   Section        0  zummer.o(i.Zummer_Init)
+    i.Zummer_Loop                            0x08003b38   Section        0  zummer.o(i.Zummer_Loop)
+    i.main                                   0x08003bd8   Section        0  main.o(i.main)
+    .constdata                               0x08003cc0   Section       41  jq6500.o(.constdata)
     .data                                    0x20000000   Section      512  crc16.o(.data)
     .data                                    0x20000200   Section       26  gpio_st.o(.data)
     GpioAState                               0x20000200   Data           2  gpio_st.o(.data)
@@ -1347,42 +1347,42 @@ Image Symbol Table
     TIM1_Init                                0x08002f71   Thumb Code   138  timers_st.o(i.TIM1_Init)
     Task_ConfigModeUnit                      0x08003009   Thumb Code    70  main.o(i.Task_ConfigModeUnit)
     Task_ControlModeUnit                     0x0800304f   Thumb Code   646  main.o(i.Task_ControlModeUnit)
-    Task_Executors                           0x080032d5   Thumb Code   154  main.o(i.Task_Executors)
-    Task_GetKeyState                         0x08003371   Thumb Code    80  main.o(i.Task_GetKeyState)
-    Task_ParsingCmdFP                        0x080033cd   Thumb Code   448  main.o(i.Task_ParsingCmdFP)
-    Task_ParsingCmdSB                        0x0800358d   Thumb Code    30  main.o(i.Task_ParsingCmdSB)
-    Task_PojLineControlModeUnit              0x080035ab   Thumb Code   398  main.o(i.Task_PojLineControlModeUnit)
-    Task_PollingRS485                        0x08003739   Thumb Code    98  main.o(i.Task_PollingRS485)
-    TimeUTC_Get                              0x080037a5   Thumb Code     8  time.o(i.TimeUTC_Get)
-    TimeUTC_Set                              0x080037ad   Thumb Code    12  time.o(i.TimeUTC_Set)
-    Time_Init                                0x080037b9   Thumb Code     8  time.o(i.Time_Init)
-    USART1_IRQHandler                        0x080037c1   Thumb Code   118  uart_st.o(i.USART1_IRQHandler)
-    USART3_IRQHandler                        0x08003841   Thumb Code   106  uart_st.o(i.USART3_IRQHandler)
-    Uart1_Init                               0x080038b5   Thumb Code   116  uart_st.o(i.Uart1_Init)
-    Uart3_Handler                            0x08003935   Thumb Code     4  uart_st.o(i.Uart3_Handler)
-    Uart3_Init                               0x0800393d   Thumb Code   130  uart_st.o(i.Uart3_Init)
-    UsageFault_Handler                       0x080039cd   Thumb Code     2  sys_st.o(i.UsageFault_Handler)
-    VoiceMessage_Cmd                         0x080039f1   Thumb Code     6  jq6500.o(i.VoiceMessage_Cmd)
-    VoiceMessage_Init                        0x080039fd   Thumb Code    12  jq6500.o(i.VoiceMessage_Init)
-    VoiceMessage_UpdateLoop                  0x08003a09   Thumb Code    68  jq6500.o(i.VoiceMessage_UpdateLoop)
-    Zummer_Beep                              0x08003aad   Thumb Code    30  zummer.o(i.Zummer_Beep)
-    Zummer_Control                           0x08003ad9   Thumb Code    22  zummer.o(i.Zummer_Control)
-    Zummer_Fault                             0x08003af1   Thumb Code    72  zummer.o(i.Zummer_Fault)
-    Zummer_Init                              0x08003b3d   Thumb Code     8  zummer.o(i.Zummer_Init)
-    Zummer_Loop                              0x08003b45   Thumb Code   138  zummer.o(i.Zummer_Loop)
-    main                                     0x08003be5   Thumb Code   220  main.o(i.main)
-    JqCmdChipResetArray                      0x08003ccc   Data           4  jq6500.o(.constdata)
-    JqCmdPlayArray                           0x08003cd0   Data           4  jq6500.o(.constdata)
-    JqCmdPauseArray                          0x08003cd4   Data           4  jq6500.o(.constdata)
-    JqCmdSleepModeArray                      0x08003cd8   Data           4  jq6500.o(.constdata)
-    JqCmdNextArray                           0x08003cdc   Data           4  jq6500.o(.constdata)
-    JqCmdPreArray                            0x08003ce0   Data           4  jq6500.o(.constdata)
-    JqCmdVolMaxArray                         0x08003ce4   Data           5  jq6500.o(.constdata)
-    JqCmdVolUpArray                          0x08003ce9   Data           4  jq6500.o(.constdata)
-    JqCmdVolDownArray                        0x08003ced   Data           4  jq6500.o(.constdata)
-    JqCmdReservArray                         0x08003cf1   Data           4  jq6500.o(.constdata)
-    Region$$Table$$Base                      0x08003cf8   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08003d18   Number         0  anon$$obj.o(Region$$Table)
+    Task_Executors                           0x080032d5   Thumb Code   142  main.o(i.Task_Executors)
+    Task_GetKeyState                         0x08003365   Thumb Code    80  main.o(i.Task_GetKeyState)
+    Task_ParsingCmdFP                        0x080033c1   Thumb Code   448  main.o(i.Task_ParsingCmdFP)
+    Task_ParsingCmdSB                        0x08003581   Thumb Code    30  main.o(i.Task_ParsingCmdSB)
+    Task_PojLineControlModeUnit              0x0800359f   Thumb Code   398  main.o(i.Task_PojLineControlModeUnit)
+    Task_PollingRS485                        0x0800372d   Thumb Code    98  main.o(i.Task_PollingRS485)
+    TimeUTC_Get                              0x08003799   Thumb Code     8  time.o(i.TimeUTC_Get)
+    TimeUTC_Set                              0x080037a1   Thumb Code    12  time.o(i.TimeUTC_Set)
+    Time_Init                                0x080037ad   Thumb Code     8  time.o(i.Time_Init)
+    USART1_IRQHandler                        0x080037b5   Thumb Code   118  uart_st.o(i.USART1_IRQHandler)
+    USART3_IRQHandler                        0x08003835   Thumb Code   106  uart_st.o(i.USART3_IRQHandler)
+    Uart1_Init                               0x080038a9   Thumb Code   116  uart_st.o(i.Uart1_Init)
+    Uart3_Handler                            0x08003929   Thumb Code     4  uart_st.o(i.Uart3_Handler)
+    Uart3_Init                               0x08003931   Thumb Code   130  uart_st.o(i.Uart3_Init)
+    UsageFault_Handler                       0x080039c1   Thumb Code     2  sys_st.o(i.UsageFault_Handler)
+    VoiceMessage_Cmd                         0x080039e5   Thumb Code     6  jq6500.o(i.VoiceMessage_Cmd)
+    VoiceMessage_Init                        0x080039f1   Thumb Code    12  jq6500.o(i.VoiceMessage_Init)
+    VoiceMessage_UpdateLoop                  0x080039fd   Thumb Code    68  jq6500.o(i.VoiceMessage_UpdateLoop)
+    Zummer_Beep                              0x08003aa1   Thumb Code    30  zummer.o(i.Zummer_Beep)
+    Zummer_Control                           0x08003acd   Thumb Code    22  zummer.o(i.Zummer_Control)
+    Zummer_Fault                             0x08003ae5   Thumb Code    72  zummer.o(i.Zummer_Fault)
+    Zummer_Init                              0x08003b31   Thumb Code     8  zummer.o(i.Zummer_Init)
+    Zummer_Loop                              0x08003b39   Thumb Code   138  zummer.o(i.Zummer_Loop)
+    main                                     0x08003bd9   Thumb Code   220  main.o(i.main)
+    JqCmdChipResetArray                      0x08003cc0   Data           4  jq6500.o(.constdata)
+    JqCmdPlayArray                           0x08003cc4   Data           4  jq6500.o(.constdata)
+    JqCmdPauseArray                          0x08003cc8   Data           4  jq6500.o(.constdata)
+    JqCmdSleepModeArray                      0x08003ccc   Data           4  jq6500.o(.constdata)
+    JqCmdNextArray                           0x08003cd0   Data           4  jq6500.o(.constdata)
+    JqCmdPreArray                            0x08003cd4   Data           4  jq6500.o(.constdata)
+    JqCmdVolMaxArray                         0x08003cd8   Data           5  jq6500.o(.constdata)
+    JqCmdVolUpArray                          0x08003cdd   Data           4  jq6500.o(.constdata)
+    JqCmdVolDownArray                        0x08003ce1   Data           4  jq6500.o(.constdata)
+    JqCmdReservArray                         0x08003ce5   Data           4  jq6500.o(.constdata)
+    Region$$Table$$Base                      0x08003cec   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08003d0c   Number         0  anon$$obj.o(Region$$Table)
     Crc16Table                               0x20000000   Data         512  crc16.o(.data)
     JqCmdLoopArray                           0x20000248   Data           5  jq6500.o(.data)
     JqCmdFolderSwArray                       0x2000024d   Data           5  jq6500.o(.data)
@@ -1400,9 +1400,9 @@ Memory Map of the image
 
   Image Entry point : 0x080000ed
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00003fd8, Max: 0x00020000, ABSOLUTE, COMPRESSED[0x00003f28])
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00003fcc, Max: 0x00020000, ABSOLUTE, COMPRESSED[0x00003f1c])
 
-    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x00003d18, Max: 0x00020000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x00003d0c, Max: 0x00020000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -1625,40 +1625,40 @@ Memory Map of the image
     0x08002f70   0x00000098   Code   RO          385    i.TIM1_Init         timers_st.o
     0x08003008   0x00000046   Code   RO         1611    i.Task_ConfigModeUnit  main.o
     0x0800304e   0x00000286   Code   RO         1612    i.Task_ControlModeUnit  main.o
-    0x080032d4   0x0000009a   Code   RO         1613    i.Task_Executors    main.o
-    0x0800336e   0x00000002   PAD
-    0x08003370   0x0000005c   Code   RO         1614    i.Task_GetKeyState  main.o
-    0x080033cc   0x000001c0   Code   RO         1616    i.Task_ParsingCmdFP  main.o
-    0x0800358c   0x0000001e   Code   RO         1617    i.Task_ParsingCmdSB  main.o
-    0x080035aa   0x0000018e   Code   RO         1618    i.Task_PojLineControlModeUnit  main.o
-    0x08003738   0x0000006c   Code   RO         1619    i.Task_PollingRS485  main.o
-    0x080037a4   0x00000008   Code   RO         1336    i.TimeUTC_Get       time.o
-    0x080037ac   0x0000000c   Code   RO         1337    i.TimeUTC_Set       time.o
-    0x080037b8   0x00000008   Code   RO         1339    i.Time_Init         time.o
-    0x080037c0   0x00000080   Code   RO          412    i.USART1_IRQHandler  uart_st.o
-    0x08003840   0x00000074   Code   RO          413    i.USART3_IRQHandler  uart_st.o
-    0x080038b4   0x00000080   Code   RO          414    i.Uart1_Init        uart_st.o
-    0x08003934   0x00000008   Code   RO          416    i.Uart3_Handler     uart_st.o
-    0x0800393c   0x00000090   Code   RO          417    i.Uart3_Init        uart_st.o
-    0x080039cc   0x00000002   Code   RO          294    i.UsageFault_Handler  sys_st.o
-    0x080039ce   0x00000002   PAD
-    0x080039d0   0x00000010   Code   RO          418    i.Usart1_ClrErrFlag  uart_st.o
-    0x080039e0   0x00000010   Code   RO          419    i.Usart3_ClrErrFlag  uart_st.o
-    0x080039f0   0x0000000c   Code   RO          876    i.VoiceMessage_Cmd  jq6500.o
-    0x080039fc   0x0000000c   Code   RO          877    i.VoiceMessage_Init  jq6500.o
-    0x08003a08   0x00000048   Code   RO          878    i.VoiceMessage_UpdateLoop  jq6500.o
-    0x08003a50   0x00000048   Code   RO         1009    i.WriteOneEventToEep  logging.o
-    0x08003a98   0x00000014   Code   RO         1010    i.WriteWorkRegToEep  logging.o
-    0x08003aac   0x0000002c   Code   RO         1382    i.Zummer_Beep       zummer.o
-    0x08003ad8   0x00000016   Code   RO         1384    i.Zummer_Control    zummer.o
-    0x08003aee   0x00000002   PAD
-    0x08003af0   0x0000004c   Code   RO         1385    i.Zummer_Fault      zummer.o
-    0x08003b3c   0x00000008   Code   RO         1386    i.Zummer_Init       zummer.o
-    0x08003b44   0x000000a0   Code   RO         1387    i.Zummer_Loop       zummer.o
-    0x08003be4   0x000000e8   Code   RO         1620    i.main              main.o
-    0x08003ccc   0x00000029   Data   RO          879    .constdata          jq6500.o
-    0x08003cf5   0x00000003   PAD
-    0x08003cf8   0x00000020   Data   RO         1965    Region$$Table       anon$$obj.o
+    0x080032d4   0x0000008e   Code   RO         1613    i.Task_Executors    main.o
+    0x08003362   0x00000002   PAD
+    0x08003364   0x0000005c   Code   RO         1614    i.Task_GetKeyState  main.o
+    0x080033c0   0x000001c0   Code   RO         1616    i.Task_ParsingCmdFP  main.o
+    0x08003580   0x0000001e   Code   RO         1617    i.Task_ParsingCmdSB  main.o
+    0x0800359e   0x0000018e   Code   RO         1618    i.Task_PojLineControlModeUnit  main.o
+    0x0800372c   0x0000006c   Code   RO         1619    i.Task_PollingRS485  main.o
+    0x08003798   0x00000008   Code   RO         1336    i.TimeUTC_Get       time.o
+    0x080037a0   0x0000000c   Code   RO         1337    i.TimeUTC_Set       time.o
+    0x080037ac   0x00000008   Code   RO         1339    i.Time_Init         time.o
+    0x080037b4   0x00000080   Code   RO          412    i.USART1_IRQHandler  uart_st.o
+    0x08003834   0x00000074   Code   RO          413    i.USART3_IRQHandler  uart_st.o
+    0x080038a8   0x00000080   Code   RO          414    i.Uart1_Init        uart_st.o
+    0x08003928   0x00000008   Code   RO          416    i.Uart3_Handler     uart_st.o
+    0x08003930   0x00000090   Code   RO          417    i.Uart3_Init        uart_st.o
+    0x080039c0   0x00000002   Code   RO          294    i.UsageFault_Handler  sys_st.o
+    0x080039c2   0x00000002   PAD
+    0x080039c4   0x00000010   Code   RO          418    i.Usart1_ClrErrFlag  uart_st.o
+    0x080039d4   0x00000010   Code   RO          419    i.Usart3_ClrErrFlag  uart_st.o
+    0x080039e4   0x0000000c   Code   RO          876    i.VoiceMessage_Cmd  jq6500.o
+    0x080039f0   0x0000000c   Code   RO          877    i.VoiceMessage_Init  jq6500.o
+    0x080039fc   0x00000048   Code   RO          878    i.VoiceMessage_UpdateLoop  jq6500.o
+    0x08003a44   0x00000048   Code   RO         1009    i.WriteOneEventToEep  logging.o
+    0x08003a8c   0x00000014   Code   RO         1010    i.WriteWorkRegToEep  logging.o
+    0x08003aa0   0x0000002c   Code   RO         1382    i.Zummer_Beep       zummer.o
+    0x08003acc   0x00000016   Code   RO         1384    i.Zummer_Control    zummer.o
+    0x08003ae2   0x00000002   PAD
+    0x08003ae4   0x0000004c   Code   RO         1385    i.Zummer_Fault      zummer.o
+    0x08003b30   0x00000008   Code   RO         1386    i.Zummer_Init       zummer.o
+    0x08003b38   0x000000a0   Code   RO         1387    i.Zummer_Loop       zummer.o
+    0x08003bd8   0x000000e8   Code   RO         1620    i.main              main.o
+    0x08003cc0   0x00000029   Data   RO          879    .constdata          jq6500.o
+    0x08003ce9   0x00000003   PAD
+    0x08003cec   0x00000020   Data   RO         1965    Region$$Table       anon$$obj.o
 
 
     Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00001000, Max: 0x00005000, ABSOLUTE, COMPRESSED[0x00000210])
@@ -1737,7 +1737,7 @@ Image component sizes
        368         82         41         13          0       4781   jq6500.o
       1356        104          0         22         40       8819   linecheck.o
        850         44          0          4         20       7719   logging.o
-      2396         68          0          2          0       7842   main.o
+      2384         68          0          2          0       7870   main.o
        520         10          0          3          0       3329   mb_motherboard.o
        846         54          0          7         56       6472   pojline.o
        412         52          0         14          0       4479   powerandcharge.o
@@ -1757,7 +1757,7 @@ Image component sizes
        310         40          0         16          0       2934   zummer.o
 
     ----------------------------------------------------------------------
-     14944       1376        312        704       3292     373505   Object Totals
+     14932       1376        312        704       3292     373533   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         26          0          3          8          4          0   (incl. Padding)
 
@@ -1807,15 +1807,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     15328       1392        312        704       3392     365013   Grand Totals
-     15328       1392        312        528       3392     365013   ELF Image Totals (compressed)
-     15328       1392        312        528          0          0   ROM Totals
+     15316       1392        312        704       3392     365041   Grand Totals
+     15316       1392        312        528       3392     365041   ELF Image Totals (compressed)
+     15316       1392        312        528          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                15640 (  15.27kB)
+    Total RO  Size (Code + RO Data)                15628 (  15.26kB)
     Total RW  Size (RW Data + ZI Data)              4096 (   4.00kB)
-    Total ROM Size (Code + RO Data + RW Data)      16168 (  15.79kB)
+    Total ROM Size (Code + RO Data + RW Data)      16156 (  15.78kB)
 
 ==============================================================================
 
