@@ -41,8 +41,8 @@ void    GpioInit (void);
 uint8_t GpioCheck(void); 
 
 uint8_t KeyGetState(void);
-//uint8_t MicGetState(void);
 
+void    MicGetState(uint16_t micPinsState);
 uint8_t MicState(void);
 //-----------------------------------------------------------------------------
 #endif /*_gpio_ST_H*/

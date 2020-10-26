@@ -68,8 +68,9 @@ uint8_t GpioCheck(void){
 						 (MicState[1] & MicState[2]) |
 						 (MicState[0] & MicState[2]));
 		
-	     if(micTemp == (MicTxPin | MicOkPin)) MicStateReg = MIC_CONNECTED;
-  else if(micTemp == (MicRxPin))            MicStateReg = MIC_ACTIVE;
+//	     if(micTemp == (MicTxPin | MicOkPin)) MicStateReg = MIC_CONNECTED;
+//  else if(micTemp == (MicRxPin))            MicStateReg = MIC_ACTIVE;	
+	MicGetState(micTemp);	
 		
 	return 1;
   //-------------------------
@@ -99,29 +100,28 @@ uint8_t KeyGetState(void){
 }
 //-----------------------------------------------------------------------------
 //Получение состояния микрофона.
-uint8_t MicGetStateIs(void){
+void MicGetState(uint16_t micPinsState){
 
 	static uint16_t CountForMicState = 0;
   //--------------------  	
-	if(MicStateReg == (MicTxPin | MicOkPin))
+	if(micPinsState == (MicTxPin | MicOkPin))
 		{
 			CountForMicState = 0;
-      return MIC_CONNECTED;    
+      MicStateReg = MIC_CONNECTED;    
     }
   //--------------------
-	if(MicStateReg == (MicRxPin))
+	if(micPinsState == (MicRxPin))
     {
 			CountForMicState = 0;
-      return MIC_ACTIVE;    
+      MicStateReg = MIC_ACTIVE;    
     }
   //--------------------
-  if(++CountForMicState >= 200) //500) //100)
+		if(++CountForMicState >= 33) //Константа для отсчитывания ~1сек
     {
-			if(MicStateReg == (MicRxPin | MicTxPin | MicOkPin))return MIC_NOT_CONNECT;
-      if(MicStateReg == (MicRxPin | MicOkPin))           return MIC_FAULT;
+			if(micPinsState == (MicRxPin | MicTxPin | MicOkPin))MicStateReg = MIC_NOT_CONNECT;
+      if(micPinsState == (MicRxPin | MicOkPin))           MicStateReg = MIC_FAULT;
     }
 	//--------------------
-	return 0;//MicNotConnectedConst;    
 }
 //-----------------------------------------------------------------------------
 uint8_t MicState(void){
