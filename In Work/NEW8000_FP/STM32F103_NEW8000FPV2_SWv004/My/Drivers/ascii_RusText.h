@@ -9,7 +9,7 @@ const char RusText_ControlModeUnit[] = "УПРАВЛЕНИЕ";
 //-----------------------------------------------------------------------------
 //страница "Общие настройки" режима "НАСТРОЙКА".
 const char RusText_CofigModeUnit[] = "Общие настройки";
-const char RusText_Address[]       = "Адрес -";
+const char RusText_Address[]       = "Адрес";//"Адрес -";
 const char RusText_Group[]         = "Группа-";
 const char RusText_Time[]          = "Время -";
 const char RusText_Date[]          = "Дата  -";

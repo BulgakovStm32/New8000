@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\OutFile\STM32F103_NEW8000FPV2_SWv004.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\OutFile\STM32F103_NEW8000FPV2_SWv004.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Fri Oct 23 16:30:29 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Mon Oct 26 11:17:45 2020
 <BR><P>
 <H3>Maximum Stack Usage =        124 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1105,7 +1105,8 @@ Global Symbols
 <P><STRONG><a name="[a7]"></a>LcdChr</STRONG> (Thumb, 66 bytes, Stack size 12 bytes, lcd.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = LcdChr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Menu_Update
+<BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_AddressGroupAndMicState
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Menu_Update
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Menu_CalendarUpdate
 <LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Menu_TimeUpdate
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayDateAndTimeEvent
@@ -1386,7 +1387,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Menu_Update
 </UL>
 
-<P><STRONG><a name="[be]"></a>Menu_Update</STRONG> (Thumb, 1236 bytes, Stack size 24 bytes, lcdmenu.o(.text))
+<P><STRONG><a name="[be]"></a>Menu_Update</STRONG> (Thumb, 1248 bytes, Stack size 24 bytes, lcdmenu.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = Menu_Update &rArr; Page_Header &rArr; LcdLine &rArr; LcdPixel
 </UL>
 <BR>[Calls]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FireLine
@@ -1535,12 +1536,13 @@ Global Symbols
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_ControlModeUnit
 </UL>
 
-<P><STRONG><a name="[d2]"></a>Display_AddressGroupAndMicState</STRONG> (Thumb, 64 bytes, Stack size 8 bytes, lcdmenu.o(.text))
+<P><STRONG><a name="[d2]"></a>Display_AddressGroupAndMicState</STRONG> (Thumb, 70 bytes, Stack size 8 bytes, lcdmenu.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = Display_AddressGroupAndMicState &rArr; LcdBinToDec &rArr; LcdChr
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotherBoard
 <LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Print_MicState
 <LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdBinToDec
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdChr
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdSetCursor
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdOutStr
 </UL>

@@ -528,6 +528,8 @@ void Menu_Update(Page_t *menuPage, uint8_t mode, uint8_t pointStr){
       //Адрес
       LcdSetCursor(1, 3);
 			LcdOutStr((char*)menuPage->Item1.Name);
+			LcdSetCursor(7, 3);
+			LcdChr('-');
       Menu_AddressUpdate(3, 0, 0);
       //Группа
       LcdSetCursor(1, 4);
@@ -1061,6 +1063,7 @@ void Display_AddressGroupAndMicState(void){
   //Адрес
   LcdSetCursor(1, String4);
   LcdOutStr((char*)RusText_Address);
+	LcdChr('-');
   LcdBinToDec(MotherBoard()->Addres, 2);
   //Группа
   LcdSetCursor(13, String4);

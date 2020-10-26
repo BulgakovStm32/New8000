@@ -8,16 +8,6 @@ static uint8_t priorityState              = NO_ACT;
 extern const char RusText_ControlModeUnit[];
 extern const char RusText_LockModeUnit[];
 //**************************************************************************************************************
-//void Task_PriorityGet(void);//Получение приоритета управления блоком. Запускает сам себя
-//void Task_FaultsGet  (void);//Получение неисправностей.
-//void Task_LcdUpdate  (void);
-//void Task_LedUpdate  (void);
-//void Task_Begin      (void);
-//void Task_GetControl (void);
-//void Task_RS485ParsingCmdFromMB(void);
-//void Task_ErrorConnectMB(void);
-//void Task_KeyControl    (void);
-
 void Task_LockModeUnit(void);
 void Task_ControlModeUnit(void);
 void Task_CofigModeUnit(void);
