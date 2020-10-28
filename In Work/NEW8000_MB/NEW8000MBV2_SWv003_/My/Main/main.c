@@ -639,6 +639,8 @@ int main(void){
 	//-------------------- 
 	Charger_Activate();		  //Активация ЗУ.
   AnalogSwitch_Activate();//Включение выходов мультиплексора.
+	
+	Relay_On(RELAY_SP1_ATT_LIN | RELAY_SP2_ATT_LIN);//Переключение выхода УМ с линии Аттенюации на линию Оповещения.
   //--------------------
 	//Применение конфигурации.
 	MotherBoard_WorkReg()->Address = pConfig->Address;

@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\NEW8000MBV2_SWv003_.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\NEW8000MBV2_SWv003_.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Mon Oct 26 10:10:00 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Wed Oct 28 16:24:31 2020
 <BR><P>
 <H3>Maximum Stack Usage =        184 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -973,6 +973,7 @@ Global Symbols
 
 <P><STRONG><a name="[bb]"></a>Relay_On</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, relay.o(i.Relay_On))
 <BR><BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpeakerRelays
+<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_PojLineControlModeUnit
 <LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_Executors
 <LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_ControlModeUnit
@@ -1449,7 +1450,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
 </UL>
 
-<P><STRONG><a name="[4e]"></a>main</STRONG> (Thumb, 220 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[4e]"></a>main</STRONG> (Thumb, 226 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = main &rArr; Log_SaveEvent &rArr; WriteOneEventToEep &rArr; EepM95128_WriteBuffer &rArr; EepM95128_WritePage &rArr; EepM95128_WaitStandbyState &rArr; EepM95128_SendInstruction &rArr; Spi2_TxRxByte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AnalogSwitch_Init
@@ -1471,6 +1472,7 @@ Global Symbols
 <LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FireLine_Init
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Log_SaveEvent
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Log_Init
+<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Relay_On
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpeakerLine_Param
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpeakerLine_Init
 <LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VoiceMessage_Init
@@ -1610,7 +1612,7 @@ Local Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpeakerLine_MeasLoop
 </UL>
 
-<P><STRONG><a name="[b3]"></a>SpeakerRelays</STRONG> (Thumb, 108 bytes, Stack size 16 bytes, linecheck.o(i.SpeakerRelays))
+<P><STRONG><a name="[b3]"></a>SpeakerRelays</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, linecheck.o(i.SpeakerRelays))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = SpeakerRelays
 </UL>
 <BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Relay_On

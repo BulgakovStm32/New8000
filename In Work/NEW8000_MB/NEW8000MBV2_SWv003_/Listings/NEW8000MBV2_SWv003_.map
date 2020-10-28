@@ -422,6 +422,7 @@ Section Cross References
     main.o(i.main) refers to sb_sirenboard.o(i.SirenBoard_Init) for SirenBoard_Init
     main.o(i.main) refers to powerandcharge.o(i.Charger_Activate) for Charger_Activate
     main.o(i.main) refers to analogswitch.o(i.AnalogSwitch_Activate) for AnalogSwitch_Activate
+    main.o(i.main) refers to relay.o(i.Relay_On) for Relay_On
     main.o(i.main) refers to mb_motherboard.o(i.MotherBoard_WorkReg) for MotherBoard_WorkReg
     main.o(i.main) refers to linecheck.o(i.SpeakerLine_Param) for SpeakerLine_Param
     main.o(i.main) refers to powerandcharge.o(i.Power) for Power
@@ -921,55 +922,55 @@ Image Symbol Table
     i.SpeakerLine_Param                      0x08002b38   Section        0  linecheck.o(i.SpeakerLine_Param)
     i.SpeakerLine_SaveRef                    0x08002b40   Section        0  linecheck.o(i.SpeakerLine_SaveRef)
     i.SpeakerRelays                          0x08002b6a   Section        0  linecheck.o(i.SpeakerRelays)
-    SpeakerRelays                            0x08002b6b   Thumb Code   108  linecheck.o(i.SpeakerRelays)
-    i.Spi2_Init                              0x08002bd8   Section        0  spi_st.o(i.Spi2_Init)
-    i.Spi2_TxRxByte                          0x08002c94   Section        0  spi_st.o(i.Spi2_TxRxByte)
-    i.Stm32Flash_ErasePage                   0x08002d04   Section        0  sys_st.o(i.Stm32Flash_ErasePage)
-    i.Stm32Flash_Lock                        0x08002d60   Section        0  sys_st.o(i.Stm32Flash_Lock)
-    i.Stm32Flash_Unlock                      0x08002d74   Section        0  sys_st.o(i.Stm32Flash_Unlock)
-    i.Stm32Flash_WriteWord                   0x08002d8c   Section        0  sys_st.o(i.Stm32Flash_WriteWord)
-    i.SwTimers_Init                          0x08002df4   Section        0  swtimers.o(i.SwTimers_Init)
-    i.SwTimers_Loop                          0x08002e20   Section        0  swtimers.o(i.SwTimers_Loop)
-    i.SysTick_Handler                        0x08002e60   Section        0  main.o(i.SysTick_Handler)
-    i.SysTick_Init                           0x08002ee4   Section        0  sys_tick_st.o(i.SysTick_Init)
-    i.Sys_Init                               0x08002ef8   Section        0  sys_st.o(i.Sys_Init)
-    i.TIM1_Control                           0x08002f4c   Section        0  timers_st.o(i.TIM1_Control)
-    i.TIM1_Init                              0x08002f70   Section        0  timers_st.o(i.TIM1_Init)
-    i.Task_ConfigModeUnit                    0x08003008   Section        0  main.o(i.Task_ConfigModeUnit)
-    i.Task_ControlModeUnit                   0x0800304e   Section        0  main.o(i.Task_ControlModeUnit)
-    i.Task_Executors                         0x080032d4   Section        0  main.o(i.Task_Executors)
-    i.Task_GetKeyState                       0x08003364   Section        0  main.o(i.Task_GetKeyState)
-    i.Task_ParsingCmdFP                      0x080033c0   Section        0  main.o(i.Task_ParsingCmdFP)
-    i.Task_ParsingCmdSB                      0x08003554   Section        0  main.o(i.Task_ParsingCmdSB)
-    i.Task_PojLineControlModeUnit            0x08003572   Section        0  main.o(i.Task_PojLineControlModeUnit)
-    i.Task_PollingRS485                      0x08003700   Section        0  main.o(i.Task_PollingRS485)
-    i.TimeUTC_Get                            0x0800376c   Section        0  time.o(i.TimeUTC_Get)
-    i.TimeUTC_Set                            0x08003774   Section        0  time.o(i.TimeUTC_Set)
-    i.Time_Init                              0x08003780   Section        0  time.o(i.Time_Init)
-    i.USART1_IRQHandler                      0x08003788   Section        0  uart_st.o(i.USART1_IRQHandler)
-    i.USART3_IRQHandler                      0x08003808   Section        0  uart_st.o(i.USART3_IRQHandler)
-    i.Uart1_Init                             0x0800387c   Section        0  uart_st.o(i.Uart1_Init)
-    i.Uart3_Handler                          0x080038fc   Section        0  uart_st.o(i.Uart3_Handler)
-    i.Uart3_Init                             0x08003904   Section        0  uart_st.o(i.Uart3_Init)
-    i.UsageFault_Handler                     0x08003994   Section        0  sys_st.o(i.UsageFault_Handler)
-    i.Usart1_ClrErrFlag                      0x08003998   Section        0  uart_st.o(i.Usart1_ClrErrFlag)
-    Usart1_ClrErrFlag                        0x08003999   Thumb Code    12  uart_st.o(i.Usart1_ClrErrFlag)
-    i.Usart3_ClrErrFlag                      0x080039a8   Section        0  uart_st.o(i.Usart3_ClrErrFlag)
-    Usart3_ClrErrFlag                        0x080039a9   Thumb Code    12  uart_st.o(i.Usart3_ClrErrFlag)
-    i.VoiceMessage_Cmd                       0x080039b8   Section        0  jq6500.o(i.VoiceMessage_Cmd)
-    i.VoiceMessage_Init                      0x080039c4   Section        0  jq6500.o(i.VoiceMessage_Init)
-    i.VoiceMessage_UpdateLoop                0x080039d0   Section        0  jq6500.o(i.VoiceMessage_UpdateLoop)
-    i.WriteOneEventToEep                     0x08003a18   Section        0  logging.o(i.WriteOneEventToEep)
-    WriteOneEventToEep                       0x08003a19   Thumb Code    68  logging.o(i.WriteOneEventToEep)
-    i.WriteWorkRegToEep                      0x08003a60   Section        0  logging.o(i.WriteWorkRegToEep)
-    WriteWorkRegToEep                        0x08003a61   Thumb Code    14  logging.o(i.WriteWorkRegToEep)
-    i.Zummer_Beep                            0x08003a74   Section        0  zummer.o(i.Zummer_Beep)
-    i.Zummer_Control                         0x08003aa0   Section        0  zummer.o(i.Zummer_Control)
-    i.Zummer_Fault                           0x08003ab8   Section        0  zummer.o(i.Zummer_Fault)
-    i.Zummer_Init                            0x08003b04   Section        0  zummer.o(i.Zummer_Init)
-    i.Zummer_Loop                            0x08003b0c   Section        0  zummer.o(i.Zummer_Loop)
-    i.main                                   0x08003bac   Section        0  main.o(i.main)
-    .constdata                               0x08003c94   Section       41  jq6500.o(.constdata)
+    SpeakerRelays                            0x08002b6b   Thumb Code    72  linecheck.o(i.SpeakerRelays)
+    i.Spi2_Init                              0x08002bb4   Section        0  spi_st.o(i.Spi2_Init)
+    i.Spi2_TxRxByte                          0x08002c70   Section        0  spi_st.o(i.Spi2_TxRxByte)
+    i.Stm32Flash_ErasePage                   0x08002ce0   Section        0  sys_st.o(i.Stm32Flash_ErasePage)
+    i.Stm32Flash_Lock                        0x08002d3c   Section        0  sys_st.o(i.Stm32Flash_Lock)
+    i.Stm32Flash_Unlock                      0x08002d50   Section        0  sys_st.o(i.Stm32Flash_Unlock)
+    i.Stm32Flash_WriteWord                   0x08002d68   Section        0  sys_st.o(i.Stm32Flash_WriteWord)
+    i.SwTimers_Init                          0x08002dd0   Section        0  swtimers.o(i.SwTimers_Init)
+    i.SwTimers_Loop                          0x08002dfc   Section        0  swtimers.o(i.SwTimers_Loop)
+    i.SysTick_Handler                        0x08002e3c   Section        0  main.o(i.SysTick_Handler)
+    i.SysTick_Init                           0x08002ec0   Section        0  sys_tick_st.o(i.SysTick_Init)
+    i.Sys_Init                               0x08002ed4   Section        0  sys_st.o(i.Sys_Init)
+    i.TIM1_Control                           0x08002f28   Section        0  timers_st.o(i.TIM1_Control)
+    i.TIM1_Init                              0x08002f4c   Section        0  timers_st.o(i.TIM1_Init)
+    i.Task_ConfigModeUnit                    0x08002fe4   Section        0  main.o(i.Task_ConfigModeUnit)
+    i.Task_ControlModeUnit                   0x0800302a   Section        0  main.o(i.Task_ControlModeUnit)
+    i.Task_Executors                         0x080032b0   Section        0  main.o(i.Task_Executors)
+    i.Task_GetKeyState                       0x08003340   Section        0  main.o(i.Task_GetKeyState)
+    i.Task_ParsingCmdFP                      0x0800339c   Section        0  main.o(i.Task_ParsingCmdFP)
+    i.Task_ParsingCmdSB                      0x08003530   Section        0  main.o(i.Task_ParsingCmdSB)
+    i.Task_PojLineControlModeUnit            0x0800354e   Section        0  main.o(i.Task_PojLineControlModeUnit)
+    i.Task_PollingRS485                      0x080036dc   Section        0  main.o(i.Task_PollingRS485)
+    i.TimeUTC_Get                            0x08003748   Section        0  time.o(i.TimeUTC_Get)
+    i.TimeUTC_Set                            0x08003750   Section        0  time.o(i.TimeUTC_Set)
+    i.Time_Init                              0x0800375c   Section        0  time.o(i.Time_Init)
+    i.USART1_IRQHandler                      0x08003764   Section        0  uart_st.o(i.USART1_IRQHandler)
+    i.USART3_IRQHandler                      0x080037e4   Section        0  uart_st.o(i.USART3_IRQHandler)
+    i.Uart1_Init                             0x08003858   Section        0  uart_st.o(i.Uart1_Init)
+    i.Uart3_Handler                          0x080038d8   Section        0  uart_st.o(i.Uart3_Handler)
+    i.Uart3_Init                             0x080038e0   Section        0  uart_st.o(i.Uart3_Init)
+    i.UsageFault_Handler                     0x08003970   Section        0  sys_st.o(i.UsageFault_Handler)
+    i.Usart1_ClrErrFlag                      0x08003974   Section        0  uart_st.o(i.Usart1_ClrErrFlag)
+    Usart1_ClrErrFlag                        0x08003975   Thumb Code    12  uart_st.o(i.Usart1_ClrErrFlag)
+    i.Usart3_ClrErrFlag                      0x08003984   Section        0  uart_st.o(i.Usart3_ClrErrFlag)
+    Usart3_ClrErrFlag                        0x08003985   Thumb Code    12  uart_st.o(i.Usart3_ClrErrFlag)
+    i.VoiceMessage_Cmd                       0x08003994   Section        0  jq6500.o(i.VoiceMessage_Cmd)
+    i.VoiceMessage_Init                      0x080039a0   Section        0  jq6500.o(i.VoiceMessage_Init)
+    i.VoiceMessage_UpdateLoop                0x080039ac   Section        0  jq6500.o(i.VoiceMessage_UpdateLoop)
+    i.WriteOneEventToEep                     0x080039f4   Section        0  logging.o(i.WriteOneEventToEep)
+    WriteOneEventToEep                       0x080039f5   Thumb Code    68  logging.o(i.WriteOneEventToEep)
+    i.WriteWorkRegToEep                      0x08003a3c   Section        0  logging.o(i.WriteWorkRegToEep)
+    WriteWorkRegToEep                        0x08003a3d   Thumb Code    14  logging.o(i.WriteWorkRegToEep)
+    i.Zummer_Beep                            0x08003a50   Section        0  zummer.o(i.Zummer_Beep)
+    i.Zummer_Control                         0x08003a7c   Section        0  zummer.o(i.Zummer_Control)
+    i.Zummer_Fault                           0x08003a94   Section        0  zummer.o(i.Zummer_Fault)
+    i.Zummer_Init                            0x08003ae0   Section        0  zummer.o(i.Zummer_Init)
+    i.Zummer_Loop                            0x08003ae8   Section        0  zummer.o(i.Zummer_Loop)
+    i.main                                   0x08003b88   Section        0  main.o(i.main)
+    .constdata                               0x08003c78   Section       41  jq6500.o(.constdata)
     .data                                    0x20000000   Section      512  crc16.o(.data)
     .data                                    0x20000200   Section       26  gpio_st.o(.data)
     GpioAState                               0x20000200   Data           2  gpio_st.o(.data)
@@ -1332,57 +1333,57 @@ Image Symbol Table
     SpeakerLine_MeasLoop                     0x08002a21   Thumb Code   148  linecheck.o(i.SpeakerLine_MeasLoop)
     SpeakerLine_Param                        0x08002b39   Thumb Code     4  linecheck.o(i.SpeakerLine_Param)
     SpeakerLine_SaveRef                      0x08002b41   Thumb Code    42  linecheck.o(i.SpeakerLine_SaveRef)
-    Spi2_Init                                0x08002bd9   Thumb Code   166  spi_st.o(i.Spi2_Init)
-    Spi2_TxRxByte                            0x08002c95   Thumb Code   102  spi_st.o(i.Spi2_TxRxByte)
-    Stm32Flash_ErasePage                     0x08002d05   Thumb Code    86  sys_st.o(i.Stm32Flash_ErasePage)
-    Stm32Flash_Lock                          0x08002d61   Thumb Code    14  sys_st.o(i.Stm32Flash_Lock)
-    Stm32Flash_Unlock                        0x08002d75   Thumb Code    12  sys_st.o(i.Stm32Flash_Unlock)
-    Stm32Flash_WriteWord                     0x08002d8d   Thumb Code   100  sys_st.o(i.Stm32Flash_WriteWord)
-    SwTimers_Init                            0x08002df5   Thumb Code    32  swtimers.o(i.SwTimers_Init)
-    SwTimers_Loop                            0x08002e21   Thumb Code    50  swtimers.o(i.SwTimers_Loop)
-    SysTick_Handler                          0x08002e61   Thumb Code   126  main.o(i.SysTick_Handler)
-    SysTick_Init                             0x08002ee5   Thumb Code    16  sys_tick_st.o(i.SysTick_Init)
-    Sys_Init                                 0x08002ef9   Thumb Code    70  sys_st.o(i.Sys_Init)
-    TIM1_Control                             0x08002f4d   Thumb Code    32  timers_st.o(i.TIM1_Control)
-    TIM1_Init                                0x08002f71   Thumb Code   138  timers_st.o(i.TIM1_Init)
-    Task_ConfigModeUnit                      0x08003009   Thumb Code    70  main.o(i.Task_ConfigModeUnit)
-    Task_ControlModeUnit                     0x0800304f   Thumb Code   646  main.o(i.Task_ControlModeUnit)
-    Task_Executors                           0x080032d5   Thumb Code   142  main.o(i.Task_Executors)
-    Task_GetKeyState                         0x08003365   Thumb Code    80  main.o(i.Task_GetKeyState)
-    Task_ParsingCmdFP                        0x080033c1   Thumb Code   404  main.o(i.Task_ParsingCmdFP)
-    Task_ParsingCmdSB                        0x08003555   Thumb Code    30  main.o(i.Task_ParsingCmdSB)
-    Task_PojLineControlModeUnit              0x08003573   Thumb Code   398  main.o(i.Task_PojLineControlModeUnit)
-    Task_PollingRS485                        0x08003701   Thumb Code    98  main.o(i.Task_PollingRS485)
-    TimeUTC_Get                              0x0800376d   Thumb Code     8  time.o(i.TimeUTC_Get)
-    TimeUTC_Set                              0x08003775   Thumb Code    12  time.o(i.TimeUTC_Set)
-    Time_Init                                0x08003781   Thumb Code     8  time.o(i.Time_Init)
-    USART1_IRQHandler                        0x08003789   Thumb Code   118  uart_st.o(i.USART1_IRQHandler)
-    USART3_IRQHandler                        0x08003809   Thumb Code   106  uart_st.o(i.USART3_IRQHandler)
-    Uart1_Init                               0x0800387d   Thumb Code   116  uart_st.o(i.Uart1_Init)
-    Uart3_Handler                            0x080038fd   Thumb Code     4  uart_st.o(i.Uart3_Handler)
-    Uart3_Init                               0x08003905   Thumb Code   130  uart_st.o(i.Uart3_Init)
-    UsageFault_Handler                       0x08003995   Thumb Code     2  sys_st.o(i.UsageFault_Handler)
-    VoiceMessage_Cmd                         0x080039b9   Thumb Code     6  jq6500.o(i.VoiceMessage_Cmd)
-    VoiceMessage_Init                        0x080039c5   Thumb Code    12  jq6500.o(i.VoiceMessage_Init)
-    VoiceMessage_UpdateLoop                  0x080039d1   Thumb Code    68  jq6500.o(i.VoiceMessage_UpdateLoop)
-    Zummer_Beep                              0x08003a75   Thumb Code    30  zummer.o(i.Zummer_Beep)
-    Zummer_Control                           0x08003aa1   Thumb Code    22  zummer.o(i.Zummer_Control)
-    Zummer_Fault                             0x08003ab9   Thumb Code    72  zummer.o(i.Zummer_Fault)
-    Zummer_Init                              0x08003b05   Thumb Code     8  zummer.o(i.Zummer_Init)
-    Zummer_Loop                              0x08003b0d   Thumb Code   138  zummer.o(i.Zummer_Loop)
-    main                                     0x08003bad   Thumb Code   220  main.o(i.main)
-    JqCmdChipResetArray                      0x08003c94   Data           4  jq6500.o(.constdata)
-    JqCmdPlayArray                           0x08003c98   Data           4  jq6500.o(.constdata)
-    JqCmdPauseArray                          0x08003c9c   Data           4  jq6500.o(.constdata)
-    JqCmdSleepModeArray                      0x08003ca0   Data           4  jq6500.o(.constdata)
-    JqCmdNextArray                           0x08003ca4   Data           4  jq6500.o(.constdata)
-    JqCmdPreArray                            0x08003ca8   Data           4  jq6500.o(.constdata)
-    JqCmdVolMaxArray                         0x08003cac   Data           5  jq6500.o(.constdata)
-    JqCmdVolUpArray                          0x08003cb1   Data           4  jq6500.o(.constdata)
-    JqCmdVolDownArray                        0x08003cb5   Data           4  jq6500.o(.constdata)
-    JqCmdReservArray                         0x08003cb9   Data           4  jq6500.o(.constdata)
-    Region$$Table$$Base                      0x08003cc0   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08003ce0   Number         0  anon$$obj.o(Region$$Table)
+    Spi2_Init                                0x08002bb5   Thumb Code   166  spi_st.o(i.Spi2_Init)
+    Spi2_TxRxByte                            0x08002c71   Thumb Code   102  spi_st.o(i.Spi2_TxRxByte)
+    Stm32Flash_ErasePage                     0x08002ce1   Thumb Code    86  sys_st.o(i.Stm32Flash_ErasePage)
+    Stm32Flash_Lock                          0x08002d3d   Thumb Code    14  sys_st.o(i.Stm32Flash_Lock)
+    Stm32Flash_Unlock                        0x08002d51   Thumb Code    12  sys_st.o(i.Stm32Flash_Unlock)
+    Stm32Flash_WriteWord                     0x08002d69   Thumb Code   100  sys_st.o(i.Stm32Flash_WriteWord)
+    SwTimers_Init                            0x08002dd1   Thumb Code    32  swtimers.o(i.SwTimers_Init)
+    SwTimers_Loop                            0x08002dfd   Thumb Code    50  swtimers.o(i.SwTimers_Loop)
+    SysTick_Handler                          0x08002e3d   Thumb Code   126  main.o(i.SysTick_Handler)
+    SysTick_Init                             0x08002ec1   Thumb Code    16  sys_tick_st.o(i.SysTick_Init)
+    Sys_Init                                 0x08002ed5   Thumb Code    70  sys_st.o(i.Sys_Init)
+    TIM1_Control                             0x08002f29   Thumb Code    32  timers_st.o(i.TIM1_Control)
+    TIM1_Init                                0x08002f4d   Thumb Code   138  timers_st.o(i.TIM1_Init)
+    Task_ConfigModeUnit                      0x08002fe5   Thumb Code    70  main.o(i.Task_ConfigModeUnit)
+    Task_ControlModeUnit                     0x0800302b   Thumb Code   646  main.o(i.Task_ControlModeUnit)
+    Task_Executors                           0x080032b1   Thumb Code   142  main.o(i.Task_Executors)
+    Task_GetKeyState                         0x08003341   Thumb Code    80  main.o(i.Task_GetKeyState)
+    Task_ParsingCmdFP                        0x0800339d   Thumb Code   404  main.o(i.Task_ParsingCmdFP)
+    Task_ParsingCmdSB                        0x08003531   Thumb Code    30  main.o(i.Task_ParsingCmdSB)
+    Task_PojLineControlModeUnit              0x0800354f   Thumb Code   398  main.o(i.Task_PojLineControlModeUnit)
+    Task_PollingRS485                        0x080036dd   Thumb Code    98  main.o(i.Task_PollingRS485)
+    TimeUTC_Get                              0x08003749   Thumb Code     8  time.o(i.TimeUTC_Get)
+    TimeUTC_Set                              0x08003751   Thumb Code    12  time.o(i.TimeUTC_Set)
+    Time_Init                                0x0800375d   Thumb Code     8  time.o(i.Time_Init)
+    USART1_IRQHandler                        0x08003765   Thumb Code   118  uart_st.o(i.USART1_IRQHandler)
+    USART3_IRQHandler                        0x080037e5   Thumb Code   106  uart_st.o(i.USART3_IRQHandler)
+    Uart1_Init                               0x08003859   Thumb Code   116  uart_st.o(i.Uart1_Init)
+    Uart3_Handler                            0x080038d9   Thumb Code     4  uart_st.o(i.Uart3_Handler)
+    Uart3_Init                               0x080038e1   Thumb Code   130  uart_st.o(i.Uart3_Init)
+    UsageFault_Handler                       0x08003971   Thumb Code     2  sys_st.o(i.UsageFault_Handler)
+    VoiceMessage_Cmd                         0x08003995   Thumb Code     6  jq6500.o(i.VoiceMessage_Cmd)
+    VoiceMessage_Init                        0x080039a1   Thumb Code    12  jq6500.o(i.VoiceMessage_Init)
+    VoiceMessage_UpdateLoop                  0x080039ad   Thumb Code    68  jq6500.o(i.VoiceMessage_UpdateLoop)
+    Zummer_Beep                              0x08003a51   Thumb Code    30  zummer.o(i.Zummer_Beep)
+    Zummer_Control                           0x08003a7d   Thumb Code    22  zummer.o(i.Zummer_Control)
+    Zummer_Fault                             0x08003a95   Thumb Code    72  zummer.o(i.Zummer_Fault)
+    Zummer_Init                              0x08003ae1   Thumb Code     8  zummer.o(i.Zummer_Init)
+    Zummer_Loop                              0x08003ae9   Thumb Code   138  zummer.o(i.Zummer_Loop)
+    main                                     0x08003b89   Thumb Code   226  main.o(i.main)
+    JqCmdChipResetArray                      0x08003c78   Data           4  jq6500.o(.constdata)
+    JqCmdPlayArray                           0x08003c7c   Data           4  jq6500.o(.constdata)
+    JqCmdPauseArray                          0x08003c80   Data           4  jq6500.o(.constdata)
+    JqCmdSleepModeArray                      0x08003c84   Data           4  jq6500.o(.constdata)
+    JqCmdNextArray                           0x08003c88   Data           4  jq6500.o(.constdata)
+    JqCmdPreArray                            0x08003c8c   Data           4  jq6500.o(.constdata)
+    JqCmdVolMaxArray                         0x08003c90   Data           5  jq6500.o(.constdata)
+    JqCmdVolUpArray                          0x08003c95   Data           4  jq6500.o(.constdata)
+    JqCmdVolDownArray                        0x08003c99   Data           4  jq6500.o(.constdata)
+    JqCmdReservArray                         0x08003c9d   Data           4  jq6500.o(.constdata)
+    Region$$Table$$Base                      0x08003ca4   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08003cc4   Number         0  anon$$obj.o(Region$$Table)
     Crc16Table                               0x20000000   Data         512  crc16.o(.data)
     JqCmdLoopArray                           0x20000248   Data           5  jq6500.o(.data)
     JqCmdFolderSwArray                       0x2000024d   Data           5  jq6500.o(.data)
@@ -1400,9 +1401,9 @@ Memory Map of the image
 
   Image Entry point : 0x080000ed
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00003fa0, Max: 0x00020000, ABSOLUTE, COMPRESSED[0x00003ef0])
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00003f84, Max: 0x00020000, ABSOLUTE, COMPRESSED[0x00003ed4])
 
-    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x00003ce0, Max: 0x00020000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x00003cc4, Max: 0x00020000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -1608,57 +1609,57 @@ Memory Map of the image
     0x08002ac4   0x00000074   Code   RO          925    i.SpeakerLine_OptoReley  linecheck.o
     0x08002b38   0x00000008   Code   RO          926    i.SpeakerLine_Param  linecheck.o
     0x08002b40   0x0000002a   Code   RO          927    i.SpeakerLine_SaveRef  linecheck.o
-    0x08002b6a   0x0000006c   Code   RO          928    i.SpeakerRelays     linecheck.o
-    0x08002bd6   0x00000002   PAD
-    0x08002bd8   0x000000bc   Code   RO          249    i.Spi2_Init         spi_st.o
-    0x08002c94   0x00000070   Code   RO          250    i.Spi2_TxRxByte     spi_st.o
-    0x08002d04   0x0000005c   Code   RO          288    i.Stm32Flash_ErasePage  sys_st.o
-    0x08002d60   0x00000014   Code   RO          289    i.Stm32Flash_Lock   sys_st.o
-    0x08002d74   0x00000018   Code   RO          291    i.Stm32Flash_Unlock  sys_st.o
-    0x08002d8c   0x00000068   Code   RO          292    i.Stm32Flash_WriteWord  sys_st.o
-    0x08002df4   0x0000002c   Code   RO         1550    i.SwTimers_Init     swtimers.o
-    0x08002e20   0x00000040   Code   RO         1551    i.SwTimers_Loop     swtimers.o
-    0x08002e60   0x00000084   Code   RO         1610    i.SysTick_Handler   main.o
-    0x08002ee4   0x00000014   Code   RO          368    i.SysTick_Init      sys_tick_st.o
-    0x08002ef8   0x00000054   Code   RO          293    i.Sys_Init          sys_st.o
-    0x08002f4c   0x00000024   Code   RO          383    i.TIM1_Control      timers_st.o
-    0x08002f70   0x00000098   Code   RO          385    i.TIM1_Init         timers_st.o
-    0x08003008   0x00000046   Code   RO         1611    i.Task_ConfigModeUnit  main.o
-    0x0800304e   0x00000286   Code   RO         1612    i.Task_ControlModeUnit  main.o
-    0x080032d4   0x0000008e   Code   RO         1613    i.Task_Executors    main.o
-    0x08003362   0x00000002   PAD
-    0x08003364   0x0000005c   Code   RO         1614    i.Task_GetKeyState  main.o
-    0x080033c0   0x00000194   Code   RO         1616    i.Task_ParsingCmdFP  main.o
-    0x08003554   0x0000001e   Code   RO         1617    i.Task_ParsingCmdSB  main.o
-    0x08003572   0x0000018e   Code   RO         1618    i.Task_PojLineControlModeUnit  main.o
-    0x08003700   0x0000006c   Code   RO         1619    i.Task_PollingRS485  main.o
-    0x0800376c   0x00000008   Code   RO         1336    i.TimeUTC_Get       time.o
-    0x08003774   0x0000000c   Code   RO         1337    i.TimeUTC_Set       time.o
-    0x08003780   0x00000008   Code   RO         1339    i.Time_Init         time.o
-    0x08003788   0x00000080   Code   RO          412    i.USART1_IRQHandler  uart_st.o
-    0x08003808   0x00000074   Code   RO          413    i.USART3_IRQHandler  uart_st.o
-    0x0800387c   0x00000080   Code   RO          414    i.Uart1_Init        uart_st.o
-    0x080038fc   0x00000008   Code   RO          416    i.Uart3_Handler     uart_st.o
-    0x08003904   0x00000090   Code   RO          417    i.Uart3_Init        uart_st.o
-    0x08003994   0x00000002   Code   RO          294    i.UsageFault_Handler  sys_st.o
-    0x08003996   0x00000002   PAD
-    0x08003998   0x00000010   Code   RO          418    i.Usart1_ClrErrFlag  uart_st.o
-    0x080039a8   0x00000010   Code   RO          419    i.Usart3_ClrErrFlag  uart_st.o
-    0x080039b8   0x0000000c   Code   RO          876    i.VoiceMessage_Cmd  jq6500.o
-    0x080039c4   0x0000000c   Code   RO          877    i.VoiceMessage_Init  jq6500.o
-    0x080039d0   0x00000048   Code   RO          878    i.VoiceMessage_UpdateLoop  jq6500.o
-    0x08003a18   0x00000048   Code   RO         1009    i.WriteOneEventToEep  logging.o
-    0x08003a60   0x00000014   Code   RO         1010    i.WriteWorkRegToEep  logging.o
-    0x08003a74   0x0000002c   Code   RO         1382    i.Zummer_Beep       zummer.o
-    0x08003aa0   0x00000016   Code   RO         1384    i.Zummer_Control    zummer.o
-    0x08003ab6   0x00000002   PAD
-    0x08003ab8   0x0000004c   Code   RO         1385    i.Zummer_Fault      zummer.o
-    0x08003b04   0x00000008   Code   RO         1386    i.Zummer_Init       zummer.o
-    0x08003b0c   0x000000a0   Code   RO         1387    i.Zummer_Loop       zummer.o
-    0x08003bac   0x000000e8   Code   RO         1620    i.main              main.o
-    0x08003c94   0x00000029   Data   RO          879    .constdata          jq6500.o
-    0x08003cbd   0x00000003   PAD
-    0x08003cc0   0x00000020   Data   RO         1965    Region$$Table       anon$$obj.o
+    0x08002b6a   0x00000048   Code   RO          928    i.SpeakerRelays     linecheck.o
+    0x08002bb2   0x00000002   PAD
+    0x08002bb4   0x000000bc   Code   RO          249    i.Spi2_Init         spi_st.o
+    0x08002c70   0x00000070   Code   RO          250    i.Spi2_TxRxByte     spi_st.o
+    0x08002ce0   0x0000005c   Code   RO          288    i.Stm32Flash_ErasePage  sys_st.o
+    0x08002d3c   0x00000014   Code   RO          289    i.Stm32Flash_Lock   sys_st.o
+    0x08002d50   0x00000018   Code   RO          291    i.Stm32Flash_Unlock  sys_st.o
+    0x08002d68   0x00000068   Code   RO          292    i.Stm32Flash_WriteWord  sys_st.o
+    0x08002dd0   0x0000002c   Code   RO         1550    i.SwTimers_Init     swtimers.o
+    0x08002dfc   0x00000040   Code   RO         1551    i.SwTimers_Loop     swtimers.o
+    0x08002e3c   0x00000084   Code   RO         1610    i.SysTick_Handler   main.o
+    0x08002ec0   0x00000014   Code   RO          368    i.SysTick_Init      sys_tick_st.o
+    0x08002ed4   0x00000054   Code   RO          293    i.Sys_Init          sys_st.o
+    0x08002f28   0x00000024   Code   RO          383    i.TIM1_Control      timers_st.o
+    0x08002f4c   0x00000098   Code   RO          385    i.TIM1_Init         timers_st.o
+    0x08002fe4   0x00000046   Code   RO         1611    i.Task_ConfigModeUnit  main.o
+    0x0800302a   0x00000286   Code   RO         1612    i.Task_ControlModeUnit  main.o
+    0x080032b0   0x0000008e   Code   RO         1613    i.Task_Executors    main.o
+    0x0800333e   0x00000002   PAD
+    0x08003340   0x0000005c   Code   RO         1614    i.Task_GetKeyState  main.o
+    0x0800339c   0x00000194   Code   RO         1616    i.Task_ParsingCmdFP  main.o
+    0x08003530   0x0000001e   Code   RO         1617    i.Task_ParsingCmdSB  main.o
+    0x0800354e   0x0000018e   Code   RO         1618    i.Task_PojLineControlModeUnit  main.o
+    0x080036dc   0x0000006c   Code   RO         1619    i.Task_PollingRS485  main.o
+    0x08003748   0x00000008   Code   RO         1336    i.TimeUTC_Get       time.o
+    0x08003750   0x0000000c   Code   RO         1337    i.TimeUTC_Set       time.o
+    0x0800375c   0x00000008   Code   RO         1339    i.Time_Init         time.o
+    0x08003764   0x00000080   Code   RO          412    i.USART1_IRQHandler  uart_st.o
+    0x080037e4   0x00000074   Code   RO          413    i.USART3_IRQHandler  uart_st.o
+    0x08003858   0x00000080   Code   RO          414    i.Uart1_Init        uart_st.o
+    0x080038d8   0x00000008   Code   RO          416    i.Uart3_Handler     uart_st.o
+    0x080038e0   0x00000090   Code   RO          417    i.Uart3_Init        uart_st.o
+    0x08003970   0x00000002   Code   RO          294    i.UsageFault_Handler  sys_st.o
+    0x08003972   0x00000002   PAD
+    0x08003974   0x00000010   Code   RO          418    i.Usart1_ClrErrFlag  uart_st.o
+    0x08003984   0x00000010   Code   RO          419    i.Usart3_ClrErrFlag  uart_st.o
+    0x08003994   0x0000000c   Code   RO          876    i.VoiceMessage_Cmd  jq6500.o
+    0x080039a0   0x0000000c   Code   RO          877    i.VoiceMessage_Init  jq6500.o
+    0x080039ac   0x00000048   Code   RO          878    i.VoiceMessage_UpdateLoop  jq6500.o
+    0x080039f4   0x00000048   Code   RO         1009    i.WriteOneEventToEep  logging.o
+    0x08003a3c   0x00000014   Code   RO         1010    i.WriteWorkRegToEep  logging.o
+    0x08003a50   0x0000002c   Code   RO         1382    i.Zummer_Beep       zummer.o
+    0x08003a7c   0x00000016   Code   RO         1384    i.Zummer_Control    zummer.o
+    0x08003a92   0x00000002   PAD
+    0x08003a94   0x0000004c   Code   RO         1385    i.Zummer_Fault      zummer.o
+    0x08003ae0   0x00000008   Code   RO         1386    i.Zummer_Init       zummer.o
+    0x08003ae8   0x000000a0   Code   RO         1387    i.Zummer_Loop       zummer.o
+    0x08003b88   0x000000f0   Code   RO         1620    i.main              main.o
+    0x08003c78   0x00000029   Data   RO          879    .constdata          jq6500.o
+    0x08003ca1   0x00000003   PAD
+    0x08003ca4   0x00000020   Data   RO         1965    Region$$Table       anon$$obj.o
 
 
     Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00001000, Max: 0x00005000, ABSOLUTE, COMPRESSED[0x00000210])
@@ -1735,9 +1736,9 @@ Image component sizes
         28          4          0          0         20       1471   fsmmessage.o
        544         90          0         26          0       2265   gpio_st.o
        368         82         41         13          0       4781   jq6500.o
-      1356        104          0         22         40       8819   linecheck.o
+      1320        104          0         22         40       8783   linecheck.o
        850         44          0          4         20       7719   logging.o
-      2340         68          0          2          0       7846   main.o
+      2348         70          0          2          0       7850   main.o
        520         10          0          3          0       3329   mb_motherboard.o
        846         54          0          7         56       6472   pojline.o
        412         52          0         14          0       4479   powerandcharge.o
@@ -1757,7 +1758,7 @@ Image component sizes
        310         40          0         16          0       2934   zummer.o
 
     ----------------------------------------------------------------------
-     14888       1376        312        704       3292     373509   Object Totals
+     14860       1378        312        704       3292     373477   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         26          0          3          8          4          0   (incl. Padding)
 
@@ -1807,15 +1808,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     15272       1392        312        704       3392     365017   Grand Totals
-     15272       1392        312        528       3392     365017   ELF Image Totals (compressed)
-     15272       1392        312        528          0          0   ROM Totals
+     15244       1394        312        704       3392     364985   Grand Totals
+     15244       1394        312        528       3392     364985   ELF Image Totals (compressed)
+     15244       1394        312        528          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                15584 (  15.22kB)
+    Total RO  Size (Code + RO Data)                15556 (  15.19kB)
     Total RW  Size (RW Data + ZI Data)              4096 (   4.00kB)
-    Total ROM Size (Code + RO Data + RW Data)      16112 (  15.73kB)
+    Total ROM Size (Code + RO Data + RW Data)      16084 (  15.71kB)
 
 ==============================================================================
 

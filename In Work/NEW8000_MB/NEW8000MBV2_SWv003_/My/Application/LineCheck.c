@@ -293,13 +293,13 @@ static void SpeakerRelays(uint8_t state, uint8_t relay){
 		break;
 		//--------------------
 		case(ATTEN_LINE_1):
-			if(state == ON) Relay_On (RELAY_SP1_ATT_LIN);
-			else            Relay_Off(RELAY_SP1_ATT_LIN);
+//			if(state == ON) Relay_On (RELAY_SP1_ATT_LIN);
+//			else            Relay_Off(RELAY_SP1_ATT_LIN);
 		break;
 		//--------------------
 		case(ATTEN_LINE_2):
-			if(state == ON) Relay_On (RELAY_SP2_ATT_LIN);
-			else            Relay_Off(RELAY_SP2_ATT_LIN);
+//			if(state == ON) Relay_On (RELAY_SP2_ATT_LIN);
+//			else            Relay_Off(RELAY_SP2_ATT_LIN);
 		break;
 		//--------------------
 //		case():
