@@ -107,7 +107,7 @@ const char RusText_BelowNorm[] = "Ниже нормы";
 const char RusText_Break[]     = "Обрыв";
 const char RusText_Short[]     = "КЗ";
 const char RusText_Undef[]     = "Неоп.";
-const char RusText_Analyze[]   = "Опрос..";
+const char RusText_Analyze[]   = "Опрос";
 const char RusText_LcOn[]    	 = "Контр.Вкл.";
 const char RusText_LcOff[]   	 = "Контр.Откл.";
 //-------------------------------------------------------

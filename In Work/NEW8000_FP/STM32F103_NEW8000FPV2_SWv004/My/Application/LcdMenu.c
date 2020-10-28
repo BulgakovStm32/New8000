@@ -826,8 +826,9 @@ void Print_SirenSate(uint8_t line){
 void Print_FireLineState(uint8_t line){
 	
 	uint8_t frState = FireLine_GetLineState(line);	
-	//----------------------	
-			 if(frState == FR_LINE_UNDEF )     LcdOutStr((char*)&RusText_Undef);
+	//----------------------
+	if(FireLine_GetInState(line) == FR_IN_CONTROL_OFF) LcdOutStr((char*)&RusText_Disactive);	
+	else if(frState == FR_LINE_UNDEF )     LcdOutStr((char*)&RusText_Analyze);//LcdOutStr((char*)&RusText_Undef);
   else if(frState == FR_LINE_NORM_OPEN)  LcdOutStr((char*)&RusText_Open);
   else if(frState == FR_LINE_NORM_CLOSE) LcdOutStr((char*)&RusText_Close);
   else if(frState == FR_LINE_SHORT) 		 LcdOutStr((char*)&RusText_Short);
