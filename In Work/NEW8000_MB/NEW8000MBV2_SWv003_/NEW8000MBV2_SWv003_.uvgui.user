@@ -2588,11 +2588,11 @@
       <ActiveTab>0</ActiveTab>
       <Doc>
         <Name>.\My\Main\main.c</Name>
-        <ColumnNumber>11</ColumnNumber>
-        <TopLine>46</TopLine>
-        <CurrentLine>640</CurrentLine>
+        <ColumnNumber>66</ColumnNumber>
+        <TopLine>26</TopLine>
+        <CurrentLine>523</CurrentLine>
         <Folding>1</Folding>
-        <ContractedFolders>6,48,85,220,228,247,363,508,526,599,681</ContractedFolders>
+        <ContractedFolders>6,48,85,220,228,247,363,527,600,682</ContractedFolders>
         <PaneID>0</PaneID>
       </Doc>
     </MDIGroup>
