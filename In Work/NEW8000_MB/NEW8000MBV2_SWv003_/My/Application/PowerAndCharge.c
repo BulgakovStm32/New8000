@@ -79,7 +79,7 @@ void PowerAndCharge_Loop(void){
     }
 	//--------------------
 	//контроль отключен.
-	if(PowerSTR.Check.bit.MainPower == 0) PowerSTR.ACState = POWER_CONTROL_OFF;
+	if(PowerSTR.Check.bit.MainPower == 0) PowerSTR.ACState = POWER_AC_OK;
 }
 //*****************************************************************************
 PowerSTR_t* Power(void){

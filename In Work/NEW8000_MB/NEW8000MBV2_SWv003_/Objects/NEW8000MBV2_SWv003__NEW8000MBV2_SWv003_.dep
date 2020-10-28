@@ -244,7 +244,7 @@ I (.\CMSIS_STM32F1xx\system_stm32f10x.h)(0x5F929059)
 I (.\My\FSM\SwTimers.h)(0x5F929059)
 I (.\My\FSM\FsmMessage.h)(0x5F929059)
 F (.\My\Application\PojLine.h)(0x5F92A869)()
-F (.\My\Application\PowerAndCharge.c)(0x5F92AF65)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I.\My\Application -I.\My\Boards\FP_FacePanel -I.\My\Boards\MB_MotherBoard -I.\My\Boards\SB_SirenBoard -I.\My\Drivers -I.\My\FSM -I.\My\Main -I.\My\Sheduler -I.\My\StartUp -I.\CMSIS_STM32F1xx -I.\AnotherLib-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="517"-o .\objects\powerandcharge.o --omf_browse .\objects\powerandcharge.crf --depend .\objects\powerandcharge.d)
+F (.\My\Application\PowerAndCharge.c)(0x5F997922)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I.\My\Application -I.\My\Boards\FP_FacePanel -I.\My\Boards\MB_MotherBoard -I.\My\Boards\SB_SirenBoard -I.\My\Drivers -I.\My\FSM -I.\My\Main -I.\My\Sheduler -I.\My\StartUp -I.\CMSIS_STM32F1xx -I.\AnotherLib-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\ST\STM32F10x-D__UVISION_VERSION="517"-o .\objects\powerandcharge.o --omf_browse .\objects\powerandcharge.crf --depend .\objects\powerandcharge.d)
 I (My\Application\PowerAndCharge.h)(0x5F929059)
 I (.\My\Drivers\gpio_ST.h)(0x5F929059)
 I (.\CMSIS_STM32F1xx\stm32f10x.h)(0x5F929059)
