@@ -163,10 +163,10 @@ const char RusText_ConnectFault[] 	= "Сбой обмена данными";
 
 //-------------------------------------------------------
 
-const char RusText_PuskVoiceMessageNum[] = "Акт. сообщение ";
+const char RusText_PuskVoiceMessageNum[] = "АКТ.СООБЩЕНИЕ"; //"Акт. сообщение ";
 const char RusText_PuskAuto[]   				 = "ПУСК АВТОМАТИКИ";
 const char RusText_Defect[]     			   = "НЕИСПРАВНОСТЬ";
-const char RusText_ManualActivation[]    = "Ручная активация";
+const char RusText_ManualActivation[]    = "РУЧНАЯ АКТИВАЦИЯ"; //"Ручная активация";
 const char RusText_TESTMode[] 			 		 = "РЕЖИМ ТЕСТИРОВАНИЯ.";
 //-----------------------------------------------------------------------------
 #endif 
