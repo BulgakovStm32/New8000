@@ -9,6 +9,8 @@ void MotherBoard_BuildingPackForRS485(uint8_t *dataBuf){
 	
 	MBData_t *dataForTx = (MBData_t*)dataBuf;
   //--------------------
+  dataForTx->TimeUTC  = TimeUTC_Get();
+	//-----------	
   dataForTx->Addres   = MBWorkRegStr.Address;
   dataForTx->Group    = MBWorkRegStr.Group;
   dataForTx->MB_State = MBWorkRegStr.State;
@@ -46,12 +48,10 @@ void MotherBoard_BuildingPackForRS485(uint8_t *dataBuf){
 	dataForTx->FrChS.OutState  = FireLine(ChS)->LogicalState;	
 	//-----------
 	//Питание блока.
-  dataForTx->StatusPOWER = (Power()->BatState | Power()->ACState | Power()->DCState); 
+  dataForTx->StatusPOWER = Power()->State.Byte; //(Power()->BatState | Power()->ACState | Power()->DCState); 
   dataForTx->StatusPA    = PAmp_GetStat();
-  dataForTx->TimeUTC     = TimeUTC_Get();
-	//-----------
-  dataForTx->DebugData1      = Power()->BatMeas;
-  dataForTx->DebugData2   	 = 0x1234;//(uint16_t)(LcGetValue(5)*5.62)/10;
+  dataForTx->DebugData1  = Power()->BatMeas;
+  dataForTx->DebugData2  = 0x1234;//(uint16_t)(LcGetValue(5)*5.62)/10;
 	//-----------
 	//Журнал событий.
 	dataForTx->TotalEvents   = Log_Counts()->SavedEvents; //Всего записей в журнале. 

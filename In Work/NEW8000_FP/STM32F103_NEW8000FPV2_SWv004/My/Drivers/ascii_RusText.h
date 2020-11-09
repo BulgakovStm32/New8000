@@ -117,6 +117,7 @@ const char RusText_NotWork[]       = "Неиспр.";
 const char RusText_NotWorkDcDc[]   = "Неиспр.Инверт.";
 
 const char RusText_BatCharge[]     = "Заряд";
+const char RusText_BatChargeEnd[]  = "Заряд окончен";
 const char RusText_BatDeepCharge[] = "Гл.разряд";
 const char RusText_BatNo[]         = "Нет АКБ";//"Не подкл.";
 

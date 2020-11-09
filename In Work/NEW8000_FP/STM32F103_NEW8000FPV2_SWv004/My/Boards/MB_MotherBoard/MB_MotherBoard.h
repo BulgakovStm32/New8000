@@ -68,31 +68,49 @@ typedef enum{
 	OUT_AUTO_OFF,
 	OUT_DEFECT,
 }SpOutEnum_t;
-//----------------------------------------
-//Состояния основного питания 220V и инвертора.
-#define PowerMask        0x0F
-#define PowerBlink     	(0<<0) //Для мигания.
-#define PowerControlOff	(1<<0) //контроль отключен.
-#define PowerACOk      	(2<<0) //Есть питание 220V
-#define PowerDCOk      	(3<<0) //Инвертор исправен.
-#define PowerACNo       (4<<0) //Питание 220V отсутствует
-#define PowerDCFault    (5<<0) //Инвертор неисправен.
-#define PowerFault      (6<<0) //Неисправны оба блока питания.
+//*****************************************************************************
+//*****************************************************************************
+//Состояние основного питания 220V
+#define POWER_AC_CHECK_OFF	0 //контроль отключен.
+#define POWER_AC_OK		  		1 //Есть питание 220V
+#define POWER_AC_FAULT  		2 //Питание 220V отсутствует
+//Состояние инвертора.
+#define POWER_DC_CHECK_OFF	0 //контроль отключен.
+#define POWER_DC_OK      		1 //Инвертор исправен.
+#define POWER_DC_FAULT   		2 //Инвертор неисправен.
 //Состояние батареи.
-#define BatMask          0xF0
-#define BatBlink        (0<<4) //Для мигания.
-#define BatControlOff   (1<<4) //контроль отключен.
-#define BatOk           (2<<4) //Напряжение на АКБ от 21В до 27,2В.
-#define BatCharge       (3<<4) //Идет заряд АКБ
-#define BatChargeEnd    (4<<4) //Заряд окончен, напряжение АКБ 27,2В.
-#define BatAttention    (5<<4) //Напряжение на АКБ <= 20,5В.
-#define BatDeep         (6<<4) //Напряжение на АКБ <= 18,5В - глубокий разряд АКБ.
-#define BatNo           (7<<4) //АКБ отсутствует.
+#define BAT_CHECK_OFF   0 //контроль отключен.
+#define BAT_OK          1 //Напряжение на АКБ от 21В до 27,2В.
+#define BAT_CHARGE      2 //Идет заряд АКБ
+#define BAT_CHARGE_END  3 //Заряд окончен, напряжение АКБ 27,2В.
+#define BAT_ATTENTION   4 //Напряжение на АКБ <= 20,5В.
+#define BAT_DEEP        5 //Напряжение на АКБ <= 18,5В - глубокий разряд АКБ.
+#define BAT_NOT_CONNECT 6 //АКБ не подключена.
 //Состояние УМЗЧ.
-#define AmpBlink        (0<<0) //Для мигания.
-#define AmpDisactive    (1<<0) //УМЗЧ отключен.
-#define AmpActive       (2<<0) //УМЗЧ активен.
-#define AmpProt         (3<<0) //УМЗЧ в защите.
+#define PAMP_OFF  1
+#define PAMP_ON   2
+#define PAMP_PROT 3
+//**************************************************
+#pragma pack(push, 1)//размер выравнивания в 1 байт
+
+typedef union{
+	struct{	
+			uint8_t AC  :2;//Состояние основного питания 220V
+			uint8_t DC  :2;//Состояние инвертора.
+			uint8_t Bat :4;//Состояние батареи.
+	}bits;
+	uint8_t Byte;
+}PowerState_t;	
+//**************************************************
+//Состояния основного питания 220V, инвертора И УМЗЧ.
+typedef struct{	
+	uint16_t BatMeas;//Напряжение на АКБ.
+	//----------
+	PowerState_t State;
+	PowerState_t StateFromMB;
+	//----------
+}PowerSTR_t;
+#pragma pack(pop)//вернули предыдущую настройку.
 //*****************************************************************************
 //*****************************************************************************
 #pragma pack(push, 1)//размер выравнивания в 1 байт
@@ -171,34 +189,6 @@ typedef struct{
 #define NO_ACT 		 		   0 //Нет активации
 //*****************************************************************************************
 //*****************************************************************************************
-//Состояния основного питания 220V, инвертора И УМЗЧ.
-typedef struct{
-	uint8_t MainPower;
-	uint8_t Bat;
-	uint8_t Amp;
-	//----------
-	union {
-		struct 
-		{	
-			uint8_t MainPower :1;
-			uint8_t Bat       :1;
-			uint8_t :6;
-		}bit;
-		uint8_t Byte;
-	}CheckFromMB;	
-	//----------
-	union {
-		struct 
-		{	
-			uint8_t MainPower :1;
-			uint8_t Bat       :1;
-			uint8_t :6;
-		}bit;
-		uint8_t Byte;
-	}Check;
-	//----------
-}PowerSTR_t;
-//*********************************
 #pragma pack(push, 1)//размер выравнивания в 1 байт
 typedef struct{
 	//---------
@@ -227,9 +217,13 @@ uint8_t FireLine_CompareAllLinesWith(uint8_t state);
 //*********************************
 void 			MotherBoard_SaveData(uint8_t *dataBuf);
 MBData_t* MotherBoard(void);
-//---------
+//*********************************
 
-PowerSTR_t* PowerDevice(void);
+PowerSTR_t* Power(void);
+//*********************************
+
+void    Amp_SaveState(uint8_t state);
+uint8_t Amp_GetState(void);
 //*****************************************************************************
 //*****************************************************************************
 //Работа с журналом событий.

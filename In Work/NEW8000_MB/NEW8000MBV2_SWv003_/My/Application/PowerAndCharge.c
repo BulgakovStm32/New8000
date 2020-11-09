@@ -11,10 +11,10 @@ static uint8_t Bat_StateCalc(void){
 	uint16_t tempBatMeas = PowerSTR.BatMeas;
   //--------------------
 	//контроль отключен.
-	if(PowerSTR.Check.bit.Bat == 0) return BAT_CONTROL_OFF; 
+	if(PowerSTR.StateFromFP.bits.Bat == BAT_CHECK_OFF) return BAT_CHECK_OFF; 
 	//--------------------
   if( tempBatMeas >  2720)                           return BAT_CHARGE_END; 
-  if((tempBatMeas >  2100) && (tempBatMeas <= 2720)) return BAT_BLINK;
+  if((tempBatMeas >  2100) && (tempBatMeas <= 2720)) return BAT_CHARGE;
   if((tempBatMeas >  1850) && (tempBatMeas <= 2100)) return BAT_ATTENTION;
 	if( tempBatMeas <  1500)                           return BAT_NOT_CONNECT; 
   if( tempBatMeas <= 1850)                           return BAT_DEEP; 
@@ -33,9 +33,6 @@ void PowerAndCharge_Init(void){
   //ZU_On - PA2 - выход.
   ZuOnGPIO->CRL &= ~GPIO_CRL_CNF2; //PA2 - выход, режим - push-pull.
   ZuOnGPIO->CRL |=  GPIO_CRL_MODE2;//PA2 - тактирование 50МГц.
-	//--------------------
-	PowerSTR.Check.Byte = POWER_ALL_CHECK_ON;
-	PowerSTR.ACState    = POWER_AC_OK;
 }
 //*****************************************************************************
 //Получение состояния основного ввода питания 220В и напряжения на АКБ.
@@ -52,7 +49,7 @@ void PowerAndCharge_Loop(void){
     {
 			PowerSTR.BatMeas  = (uint16_t)(batMeasTemp >> BAT_MEAS_SHIFT);
 			PowerSTR.BatMeas  = (uint16_t)(((PowerSTR.BatMeas * 11) + 5)/10);
-			PowerSTR.BatState = Bat_StateCalc();
+			PowerSTR.State.bits.Bat = Bat_StateCalc();
       batMeasTemp  = 0;
       batMeasCount = 0;
     }	
@@ -61,25 +58,25 @@ void PowerAndCharge_Loop(void){
 	uint16_t gpio = Gpio_GetState(PowerGPOI);
 		
 	if( (gpio & DcOkPIN) &&
-     !(gpio & DcFaultPIN)) PowerSTR.DCState = POWER_DC_OK;
+     !(gpio & DcFaultPIN)) PowerSTR.State.bits.DC = POWER_DC_OK;
 
   if(!(gpio & DcOkPIN) &&
-      (gpio & DcFaultPIN)) PowerSTR.DCState = POWER_DC_FAULT;
+      (gpio & DcFaultPIN)) PowerSTR.State.bits.DC = POWER_DC_FAULT;
   //--------------------		
 	//Получение состояния основного ввода питания 220В.
   if(!(AcGPOI->IDR & AcPIN))
     {
       acCheckCount = 0;
-			PowerSTR.ACState = POWER_AC_OK;
+			PowerSTR.State.bits.AC = POWER_AC_OK;
     }
 	if(++acCheckCount >= (TIMEOUT_AC_CHECK_mS / 5))// делим на 5 т.к. эта ф-я вызывается каждые 5 мс.
     {
       acCheckCount = 0;
-      PowerSTR.ACState = POWER_AC_NOT_CONNECT;
+      PowerSTR.State.bits.AC = POWER_AC_FAULT;
     }
 	//--------------------
 	//контроль отключен.
-	if(PowerSTR.Check.bit.MainPower == 0) PowerSTR.ACState = POWER_AC_OK;
+	if(PowerSTR.StateFromFP.bits.AC == POWER_AC_CHECK_OFF) PowerSTR.State.bits.AC = POWER_AC_CHECK_OFF;
 }
 //*****************************************************************************
 PowerSTR_t* Power(void){

@@ -216,22 +216,20 @@ void RS485_TxDataToMB(void){
 		case(FP_CMD_SET_ADDRES):
 			RS485_TxBuf()->Str.CmdCode = FP_CMD_SET_ADDRES;
 			txBuf->Address = FacePanel_WorkReg()->Address; //Address;
-//			MenuBackgroundPage()->PageItems.StringVar[String1] = Address;
 		break;
 		//--------------------
 		//Команда устновки группы блока
 		case(FP_CMD_SET_GROUP):
 			RS485_TxBuf()->Str.CmdCode = FP_CMD_SET_GROUP;
 			txBuf->Group = FacePanel_WorkReg()->Group; //Group;
-//			MenuBackgroundPage()->PageItems.StringVar[String2] = Group;
 		break;
 		//--------------------
-		//Команда установики времени
+		//Команда установки времени
 		case(FP_CMD_SET_TIME):
 			RS485_TxBuf()->Str.CmdCode = FP_CMD_SET_TIME;
 		break;
 		//-------------------- 
-		//Команда установики даты
+		//Команда установки даты
 		case(FP_CMD_SET_DATA):
 			RS485_TxBuf()->Str.CmdCode = FP_CMD_SET_DATA;
 		break;
@@ -265,7 +263,7 @@ void RS485_TxDataToMB(void){
 			RS485_TxBuf()->Str.CmdCode = FP_CMD_GET_INPUT_CONFIG;
 		break;			
 		//--------------------
-		//Команда усатноки параметров одного входа пожарного шлейфа.
+		//Команда усатновки параметров одного входа пожарного шлейфа.
 		case(FP_CMD_SET_INPUT_CONFIG):
 			RS485_TxBuf()->Str.CmdCode = FP_CMD_SET_INPUT_CONFIG;
 		break;	
@@ -273,13 +271,13 @@ void RS485_TxDataToMB(void){
 		//Команда сохранения контроля питания блока.
 		case(FP_CMD_SET_POWER_CHECK):
 			RS485_TxBuf()->Str.CmdCode = FP_CMD_SET_POWER_CHECK;
-			txBuf->MicState = PowerDevice()->Check.Byte; 
+			txBuf->MicState = Power()->State.Byte; 
 		break;	
 		//--------------------
 		//Команда получения информацио о EEPROM.
-		case(FP_CMD_GET_EEPROM_INFO):
-			RS485_TxBuf()->Str.CmdCode = FP_CMD_GET_EEPROM_INFO;
-		break;	
+//		case(FP_CMD_GET_EEPROM_INFO):
+//			RS485_TxBuf()->Str.CmdCode = FP_CMD_GET_EEPROM_INFO;
+//		break;	
 		//--------------------
 		//Команда "Выдача статуса от FP".
 		default:

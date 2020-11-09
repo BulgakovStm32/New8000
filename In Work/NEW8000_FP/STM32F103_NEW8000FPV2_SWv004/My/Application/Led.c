@@ -4,12 +4,12 @@
 //-----------------------------------------------------------------------------
 static SM1628Leds_t	  LedStr;
 //-----------------------------------------------------------------------------
-void LedUpdate(void){
+void Led_Update(void){
 
   Sm1628SendLed((uint8_t*)&LedStr);
 }
 //-----------------------------------------------------------------------------
-void LedSetAll(uint8_t state){
+void Led_SetAll(uint8_t state){
 	
 	uint8_t* p = (uint8_t*)&LedStr;
 	//-------------------
@@ -19,7 +19,7 @@ void LedSetAll(uint8_t state){
 		}	
 }
 //-----------------------------------------------------------------------------
-void LedControl(uint8_t ledBit, uint8_t state){
+void Led_Control(uint8_t ledBit, uint8_t state){
 
 	uint8_t offset;
   uint8_t bit;
@@ -44,31 +44,31 @@ void LedControl(uint8_t ledBit, uint8_t state){
   else                          p[offset] &= ~(3<<bit);//Гашение обоих светодиодов.
 }
 //-----------------------------------------------------------------------------
-void LedPusk(uint8_t state){
+void Led_Pusk(uint8_t state){
 
   if(state == LedOn) LedStr.START_LED_bit = 1;
   else               LedStr.START_LED_bit = 0;
 }
 //-----------------------------------------------------------------------------
-void LedPoj(uint8_t state){
+void Led_Poj(uint8_t state){
 
   if(state == LedOn) LedStr.FIRE_LED_bit = 1;
   else               LedStr.FIRE_LED_bit = 0;
 }
 //-----------------------------------------------------------------------------
-void LedAlert(uint8_t state){
+void Led_Alert(uint8_t state){
 	
 	if(state == LedOn) LedStr.ALERT_LED_bit = 1;
 	else							 LedStr.ALERT_LED_bit = 0;
 }
 //-----------------------------------------------------------------------------
-void LedZummer(uint8_t state){
+void Led_Zummer(uint8_t state){
 	
 	if(state == LedOn) LedStr.ZUMMER_LED_bit = 1;
 	else							 LedStr.ZUMMER_LED_bit = 0;
 }
 //-----------------------------------------------------------------------------
-void LedCommunication(uint8_t state){
+void Led_Link(uint8_t state){
 
   //Гашение обоих светодиодов.
   LedStr.Communication_GREEN_LED_bit = 0;
@@ -98,11 +98,12 @@ static void LedPower(uint8_t state){
     }
 }
 //-----------------------------------------------------------------------------
-void LedPowerIndication(uint8_t powerState){
-	
-       if(powerState <= PowerDCOk)    LedPower(GreenColor);//Питание в норме.
-  else if(powerState == PowerACNo)    LedPower(RedColor);  //Отсутствует основное питание.
-  else if(powerState == PowerDCFault) LedPower(YellowColor & Blink(INTERVAL_250_mS));//Неисправен инвертор.
+void Led_Power(PowerSTR_t* power){
+		
+       if(power->State.bits.AC == POWER_AC_OK &&
+				  power->State.bits.DC == POWER_DC_OK)    LedPower(GreenColor);//Питание в норме.
+  else if(power->State.bits.AC == POWER_AC_FAULT) LedPower(RedColor);  //Отсутствует основное питание.
+  else if(power->State.bits.DC == POWER_DC_FAULT) LedPower(YellowColor & Blink(INTERVAL_250_mS));//Неисправен инвертор.
 }
 //-----------------------------------------------------------------------------
 static void LedBattery(uint8_t state){
@@ -120,12 +121,13 @@ static void LedBattery(uint8_t state){
     }
 }
 //-----------------------------------------------------------------------------
-void LedBatteryIndication(uint8_t batState){
+void Led_Bat(uint8_t state){
 	
-  if(batState == BatChargeEnd) LedBattery(GreenColor);
-  if(batState == BatBlink)     LedBattery(GreenColor  & (uint8_t)Blink(INTERVAL_250_mS));
-  if(batState == BatAttention) LedBattery(YellowColor & (uint8_t)Blink(INTERVAL_250_mS));
-  if(batState >= BatDeep)      LedBattery(RedColor);
+	if(state == BAT_CHECK_OFF)  LedBattery(LedOff);
+  if(state == BAT_CHARGE_END) LedBattery(GreenColor);
+  if(state == BAT_CHARGE)     LedBattery(GreenColor  & (uint8_t)Blink(INTERVAL_250_mS));
+  if(state == BAT_ATTENTION)  LedBattery(YellowColor & (uint8_t)Blink(INTERVAL_250_mS));
+  if(state >= BAT_DEEP)       LedBattery(RedColor);
 }
 //-----------------------------------------------------------------------------
 static void LedAmp(uint8_t state){
@@ -143,14 +145,14 @@ static void LedAmp(uint8_t state){
     }
 }
 //-----------------------------------------------------------------------------
-void LedAmpIndication(uint8_t ampState){
+void Led_Amp(uint8_t ampState){
 	
-  if(ampState == AmpProt) LedAmp(YellowColor & Blink(INTERVAL_250_mS));
-  else                    LedAmp(GreenColor);
+  if(ampState == PAMP_PROT) LedAmp(YellowColor & Blink(INTERVAL_250_mS));
+  else                      LedAmp(GreenColor);
 }
 //-----------------------------------------------------------------------------
 //
-void LedPresetControl(uint8_t led, uint8_t line, uint8_t spLine, BlinkIntervalEnum_t blinkPeriod){
+void Led_Algorithm(uint8_t led, uint8_t line, uint8_t spLine, BlinkIntervalEnum_t blinkPeriod){
 
   uint8_t spState = SpLine_GetOutState(spLine);
 	uint8_t blink   = (uint8_t)Blink(blinkPeriod);
@@ -159,25 +161,21 @@ void LedPresetControl(uint8_t led, uint8_t line, uint8_t spLine, BlinkIntervalEn
   if(SpLine_GetOutStateForLed(line) >= LineBreak)
     {
       //Активация зоны микрофоном или пож.шлейфом+неисправность - мигающий желтый+статичный красный..
-      if(spState >= ActionMicOn) LedControl(led, RedColor | (YellowColor & blink));
+      if(spState >= ActionMicOn) Led_Control(led, RedColor | (YellowColor & blink));
       //Зона активирована в ручную+неисправность - мигающий желтый+статичный зеленый.
-      else if(spState == ActionManualOn) LedControl(led, GreenColor | (YellowColor & blink));
+      else if(spState == ActionManualOn) Led_Control(led, GreenColor | (YellowColor & blink));
       //Зоана не активирована - Мигающий оражевый.
-      else LedControl(led, (YellowColor & blink));
+      else Led_Control(led, (YellowColor & blink));
     }
   //Зона не активна - гасим светодиод.          
-  else if(spState == ActionOff) LedControl(led, LedOff);
+  else if(spState == ActionOff)      Led_Control(led, LedOff);
   //Ручная активация зоны - зеленый цвет светодиода.
-  else if(spState == ActionManualOn) LedControl(led, GreenColor);
+  else if(spState == ActionManualOn) Led_Control(led, GreenColor);
   //Активация зоны микрофоном или пож.шлейфом - красный цвет светодиода.
-  else if(spState >= ActionMicOn)
-        {
-					//Светодиоды "Алгоритмы оповещения".
-          LedControl(led, RedColor);    
-        }
+  else if(spState >= ActionMicOn)    Led_Control(led, RedColor);    
 	//--------------------
 	//Светодиод "ПУСК".
-	if(spState == ActionPuskOn) LedPusk(LedOn);			
+	if(spState == ActionPuskOn) Led_Pusk(LedOn);			
 }
 //-----------------------------------------------------------------------------
 

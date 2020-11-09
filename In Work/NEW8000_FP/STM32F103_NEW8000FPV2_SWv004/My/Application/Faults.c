@@ -14,14 +14,14 @@ void Faults_Loop(void){
   if(MicState()== MIC_NOT_CONNECT || MicState()== MIC_FAULT) faultsReg |= FaultMic_Flag;
 	//--------------------- 
   //Неисправность "ПИТАНИЕ"
-  if(PowerDevice()->MainPower == PowerACNo)    faultsReg |= FaultACNo_Flag;   //Отсутствует основное питание.
-  if(PowerDevice()->MainPower == PowerDCFault) faultsReg |= FaultDCFault_Flag;//Неисправен инвертор.
+  if(Power()->State.bits.AC == POWER_AC_FAULT) faultsReg |= FaultACNo_Flag;   //Отсутствует основное питание.
+  if(Power()->State.bits.DC == POWER_DC_FAULT) faultsReg |= FaultDCFault_Flag;//Неисправен инвертор.
   //--------------------
   //Неисправность "АКБ" 
-  if(PowerDevice()->Bat >= BatAttention) faultsReg |= FaultBat_Flag;
+  if(Power()->State.bits.Bat >= BAT_ATTENTION) faultsReg |= FaultBat_Flag;
   //--------------------
   //Неисправность "УМЗЧ" 
-  if(PowerDevice()->Amp == AmpProt) faultsReg |= FaultPA_Flag;
+  if(Amp_GetState() == PAMP_PROT) faultsReg |= FaultPA_Flag;
   //--------------------
   //Неисправность "НЕИСП.Л.О."
   if(SpLine_GetOutStateForLed(Line1) >= LineBreak) faultsReg |= FaultLc1Line_Flag;

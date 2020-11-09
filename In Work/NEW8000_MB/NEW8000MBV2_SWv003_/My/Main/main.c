@@ -177,17 +177,6 @@ void Task_ParsingCmdFP(void){
 			FireLine(temp)->LogicalState = FIRE_LINES_CONTROL_OFF;
 			FireLine(temp)->Type         = configDataForFireLine->Type;
 			FireLine(temp)->TimeOut      = configDataForFireLine->TimeOut;
-		
-			//Проверка.
-			//if(FireLine(temp)->Type > FIRE_LINES_TYPE_ON_CONTROL_ON_OPEN) 
-			//	{
-			//		FireLine(temp)->Type = FIRE_LINES_TYPE_ON_CONTROL_ON_OPEN;
-			//	}
-			//if(FireLine(temp)->TimeOut > FIRE_LINES_TIMEOUT_MAX)
-			//	{
-			//		FireLine(temp)->Type = FIRE_LINES_TIMEOUT_MAX;
-			//	}
-		
 			//Сохранение во флеш микроконтроллера.
 			Config_Save()->FireLineConfig[temp].Type    = FireLine(temp)->Type;	
 			Config_Save()->FireLineConfig[temp].Timeout = FireLine(temp)->TimeOut;
@@ -195,18 +184,11 @@ void Task_ParsingCmdFP(void){
 		//--------------------
 		//Команда сохранения контроля питания блока.
 		case(FP_CMD_SET_POWER_CHECK):
-			Zummer_Beep(3, 50);
-			//Power()->Check.Byte = RS485RxBuf()->Data.FP.KeyAndMicState;
+			Zummer_Beep(5, 100);
+			Power()->StateFromFP.Byte = dataFromFacePanel->Mic;
 			//Сохранение во флеш микроконтроллера.
-			//ConfigSave()->PowerCheckOn = RS485RxBufPtr()->BLK[FP_KeyAndMicStatePoint]; 
-		break;			
-		//--------------------
-		//Команда получения информации о EEPROM.
-//		case(FP_CMD_GET_EEPROM_INFO):
-//			//ZummerBeep(3, 100);
-//			RS485_FP_BuildAndTxEepInfoPack();
-//		return;
-		//break;			
+			Config_Save()->PowerCheck = dataFromFacePanel->Mic; 
+		break;					
 		//--------------------
 		//Неверный код команды.
 		default:
@@ -504,9 +486,8 @@ void Task_ControlModeUnit(void){
 		}
 	//-----------------------------------------------------
 	//Управление и контроль ЗУ и основного питяния.
-	if(Power()->Check.bit.Bat) Charger_Activate(); 
-	else 											 Charger_Deactivate(); 
-		
+	if(Power()->StateFromFP.bits.Bat == BAT_CHECK_OFF) Charger_Deactivate(); 
+	else 											 										     Charger_Activate(); 
 	//-----------------------------------------------------		
 }
 //*************************************************************************************************
@@ -654,7 +635,7 @@ int main(void){
   MotherBoard_WorkReg()->Group   = pConfig->Group;
 	SpeakerLine_Param()->Deviation = pConfig->SpDeviation;
 	SpeakerLine_Param()->Check     = pConfig->SpCheck;
-	Power()->Check.Byte 					 = pConfig->PowerCheckOn;
+	Power()->StateFromFP.Byte      = pConfig->PowerCheck;
 	
 	for(count = 0; count < FIRE_LINES_NUMBER; count++)
 		{

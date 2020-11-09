@@ -110,16 +110,18 @@ void Menu_Update(Page_t *menuPage, uint8_t mode, uint8_t pointStr);
 void Print_Testmode  (void);
 void Print_ErrConnect(void);
 void Print_MicState  (void);
+void Print_PowerStateFromMB(void);
 void Print_PowerState(void);
 void Print_SpLineState(uint8_t line);
 void Print_SirenSate(uint8_t line);
 void Print_FireLineState(uint8_t line);
 
 
-char* Text_GetBatState   (uint8_t batState);
-char* Text_GetPowerState (uint8_t mainPowerState);
-char* Text_GetAmpState   (uint8_t ampState);
-char* Text_GetSpLineState(uint8_t line);
+char* Text_GetBatState    (uint8_t state);
+char* Text_GetAcPowerState(uint8_t state);
+char* Text_GetDcPowerState(uint8_t state);
+char* Text_GetAmpState    (uint8_t state);
+char* Text_GetSpLineState (uint8_t line);
 //**********************************************
 typedef enum{
 	OTHER = 0,

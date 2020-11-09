@@ -150,17 +150,12 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>FaultsRegStr</ItemText>
+          <ItemText>dataFromMB</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>MotherBoardDataStr</ItemText>
-        </Ww>
-        <Ww>
-          <count>2</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>Siren</ItemText>
+          <ItemText>PowerSTR</ItemText>
         </Ww>
       </WatchWindow1>
       <MemoryWindow1>

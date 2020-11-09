@@ -30,7 +30,7 @@ void LedDisactiveSound(uint32_t fault){
   //Нет неисправностей - гасим светодиод и выходим.
   if(fault == 0)
     {
-      LedZummer(LedOff);
+      Led_Zummer(LedOff);
       faultOldState = 0;
     }
   //--------------------
@@ -38,14 +38,14 @@ void LedDisactiveSound(uint32_t fault){
   else if((faultOldState ^ fault) & fault)
     {
       Button_ClrToggle(ZUMMERbut);//сброс состояния кнопки ОТКЛ.ЗВУК.
-      LedZummer(LedOff);
+      Led_Zummer(LedOff);
       faultOldState = fault;
     }
   else
     {
       if(Button_IsToggle(ZUMMERbut)) 
         {
-          LedZummer(LedOn);
+          Led_Zummer(LedOn);
           faultOldState = fault;
         }
     }
@@ -66,27 +66,27 @@ uint8_t AlgorithmAlert(void){
 		//--------------------
 		case(1):
 			//Мигающая индикация светодиода ОПОВЕЩЕНИЕ.
-			LedAlert(LedOn & Blink(INTERVAL_250_mS));
+			Led_Alert(LedOn & Blink(INTERVAL_250_mS));
 			//Мигающая зеленая индикация у светодиодов выбранных АЛГОРИТМОВ ОПОВЕЩЕНИЯ
 			if(Button_IsToggle(ALG1but))
 				{
-					LedControl(Alg1Led, GreenColor & Blink(INTERVAL_250_mS));
+					Led_Control(Alg1Led, GreenColor & Blink(INTERVAL_250_mS));
 					selectAlg |= (1 << ALG1but); 
 				}				
 			else 	
 				{
-					LedControl(Alg1Led, LedOff);
+					Led_Control(Alg1Led, LedOff);
 					selectAlg &= ~(1 << ALG1but); 
 				}
 		
 			if(Button_IsToggle(ALG2but))
 				{
-					LedControl(Alg2Led, GreenColor & Blink(INTERVAL_250_mS));
+					Led_Control(Alg2Led, GreenColor & Blink(INTERVAL_250_mS));
 					selectAlg |= (1 << ALG2but); 
 				}				
 			else 	
 				{
-					LedControl(Alg2Led, LedOff);
+					Led_Control(Alg2Led, LedOff);
 					selectAlg &= ~(1 << ALG2but); 
 				}
 			//Переход на активацию выбранных АЛГОРИТМОВ ОПОВЕЩЕНИЯ по нажатию СТАРТ.
@@ -109,23 +109,23 @@ uint8_t AlgorithmAlert(void){
 		//Активацию выбранных АЛГОРИТМОВ ОПОВЕЩЕНИЯ по нажатию СТАРТ.		
 		case(2):
 			//Постоянно светящийся индикатор ОПОВЕЩЕНИЕ и ПУСК.
-			LedAlert(LedOn);
-		  LedPusk(LedOn);
+			Led_Alert(LedOn);
+		  Led_Pusk(LedOn);
 		  //Красна индикация выбранных алгоритмов оповещения. 
 			if(selectAlg & (1 << ALG1but)) 
 				{
-					LedControl(Alg1Led, RedColor & Blink(INTERVAL_250_mS));
+					Led_Control(Alg1Led, RedColor & Blink(INTERVAL_250_mS));
 					ControlModeUnitAlgButState |= ALG1_BUTTON;
 				}
 			
-			else LedControl(Alg1Led, LedOff);
+			else Led_Control(Alg1Led, LedOff);
 			//-------
 			if(selectAlg & (1 << ALG2but)) 
 				{
-					LedControl(Alg2Led, RedColor & Blink(INTERVAL_250_mS));
+					Led_Control(Alg2Led, RedColor & Blink(INTERVAL_250_mS));
 					ControlModeUnitAlgButState |= ALG2_BUTTON;
 				}	
-			else LedControl(Alg2Led, LedOff);		
+			else Led_Control(Alg2Led, LedOff);		
 			
 			//Выход из ручного включения алгоритмов оповещения по нажатию СТОП.
 			if(Button_IsPress(STOPbut))
@@ -238,7 +238,7 @@ void Task_FaultsGet(void){
 	Scheduler_SetTask(Task_FaultsGet);
 }
 //********************************************************************************
-//Очистка видеопамяти в MenuUpdate(), LockModeUnit() и в ControlModeUnit().
+//Обновление дисплея.
 void Task_LcdUpdate(void){
 	
   LcdUpdate();
@@ -255,42 +255,42 @@ void Task_LedUpdate(void){
 	if(MotherBoard()->MB_State == MB_TEST_STATE)
 		{ 
 			ledState = MB_TEST_STATE;
-			LedUpdate(); //Обновление светодиодов. 
+			Led_Update(); //Обновление светодиодов. 
 			return;
 		}
 	//это нужно для отключения светодиодов после тестирования.
 	if(ledState != MB_WORK_STATE)
 		{
 			ledState = MB_WORK_STATE;
-			LedSetAll(LedAllOff);
+			Led_SetAll(LedAllOff);
 		}	
   //--------------------
-	LedPowerIndication(PowerDevice()->MainPower);//Индикатор "ПИТАНИЕ"
-	LedBatteryIndication(PowerDevice()->Bat);    //Индикатор "АКБ" 
-	LedAmpIndication(PowerDevice()->Amp);		     //Индикатор "УМЗЧ" 	
+	Led_Power(Power());              //Индикатор "ПИТАНИЕ"
+	Led_Bat(Power()->State.bits.Bat);//Индикатор "АКБ" 
+	Led_Amp(Amp_GetState());		     //Индикатор "УМЗЧ" 	
   //--------------------
   //Индикатор "СВЯЗЬ" 
-	LedCommunication(GreenColor & Blink(INTERVAL_250_mS));//есть обмен - мигающий земеный.	
+	Led_Link(GreenColor & Blink(INTERVAL_250_mS));//есть обмен - мигающий земеный.	
   //--------------------
   //Индикатор "НЕИСП.ОБЩ." 
-	if(Faults()->Instant & FAULTS_MASK) LedControl(GENERAL_FAULT_LED, LedOn);		
-	else 																LedControl(GENERAL_FAULT_LED, LedOff);	
+	if(Faults()->Instant & FAULTS_MASK) Led_Control(GENERAL_FAULT_LED, LedOn);		
+	else 																Led_Control(GENERAL_FAULT_LED, LedOff);	
   //--------------------
   //Индикатор "НЕИСП.Л.О."
   if((SpLine_GetOutStateForLed(Line1) >= LineBreak) || (SpLine_GetOutStateForLed(Att1) >= LineBreak)||
      (SpLine_GetOutStateForLed(Line2) >= LineBreak) || (SpLine_GetOutStateForLed(Att2) >= LineBreak))
     {
-       LedControl(ALERT_LINES_FAUL_LED, LedOn);
+       Led_Control(ALERT_LINES_FAUL_LED, LedOn);
     }
-  else LedControl(ALERT_LINES_FAUL_LED, LedOff); 
+  else Led_Control(ALERT_LINES_FAUL_LED, LedOff); 
   //--------------------
   //Индикатор "НЕИСП.П.Ш." 
   if((FireLine_GetLineState(Poj1) >= FR_LINE_SHORT)||(FireLine_GetLineState(Poj2) >= FR_LINE_SHORT)||
      (FireLine_GetLineState(Poj3) >= FR_LINE_SHORT)||(FireLine_GetLineState(ChS)  >= FR_LINE_SHORT))
     {
-       LedControl(FIRE_LINES_FAUL_LED, LedOn);
+       Led_Control(FIRE_LINES_FAUL_LED, LedOn);
     }
-  else LedControl(FIRE_LINES_FAUL_LED, LedOff);
+  else Led_Control(FIRE_LINES_FAUL_LED, LedOff);
   //--------------------- 
   //Управление светодиодом ОТКЛ.ЗВУК.
   LedDisactiveSound(Faults()->Instant);
@@ -299,16 +299,16 @@ void Task_LedUpdate(void){
   if(MotherBoard()->MB_State == MB_TEST_STATE) *RS485_Cmd() = FP_CMD_TEST_ZUMMER;
   //---------------------
   //Мигающая индикация в режиме настройки блока.
-  if(KeyGetState() == KEY_CONFIG_STATE) LedSetAll(Blink(INTERVAL_250_mS));//мигающая индикация всеми светодиодами.                                                        
+  if(KeyGetState() == KEY_CONFIG_STATE) Led_SetAll(Blink(INTERVAL_250_mS));//мигающая индикация всеми светодиодами.                                                        
   //---------------------  
-  LedUpdate(); //Обновление светодиодов. 
+  Led_Update(); //Обновление светодиодов. 
 	//---------------------  
 }
 //********************************************************************************
 void Task_RS485ParsingCmdFromMB(void){
 
-	MBData_t *dataFromMB   = (MBData_t*)RS485_RxBuf()->Str.Data;
-	FPData_t *dataForTx    = (FPData_t*)RS485_TxBuf()->Str.Data;
+	MBData_t *dataFromMB   = (MBData_t*)  RS485_RxBuf()->Str.Data;
+	FPData_t *dataForTx    = (FPData_t*)  RS485_TxBuf()->Str.Data;
 	FireLine_t *txFireLine = (FireLine_t*)RS485_TxBuf()->Str.Data;
 	static uint8_t fireLineCount = 0;
  	//---------------------	
@@ -319,22 +319,13 @@ void Task_RS485ParsingCmdFromMB(void){
 		{
 			//**************ОТЛАДКА****************
 			
-			MotherBoard_SaveData(RS485_RxBuf()->Str.Data);
-			Siren_SaveData(RS485_RxBuf()->Str.Data);
+			MotherBoard_SaveData(RS485_RxBuf()->Str.Data);      //
+			Siren_SaveData(RS485_RxBuf()->Str.Data);            //
+			Amp_SaveState(dataFromMB->StatusPA);					      //Сохранение состояния УМЗЧ
+			Power()->StateFromMB.Byte = dataFromMB->StatusPOWER;//Сохранение соcтояния питания.
+			TimeFromMBSave(dataFromMB->TimeUTC);			          //Cохранение времени ЦП.
 			
 			//*************************************
-			PowerDevice()->MainPower = dataFromMB->StatusPOWER & PowerMask;//Сохранение состояния питания и ЗУ.
-			PowerDevice()->Bat			 = dataFromMB->StatusPOWER & BatMask;
-			
-			if(PowerDevice()->MainPower == PowerControlOff) PowerDevice()->CheckFromMB.bit.MainPower = Off;
-			else                                            PowerDevice()->CheckFromMB.bit.MainPower = On;
-			
-			if(PowerDevice()->Bat == BatControlOff) PowerDevice()->CheckFromMB.bit.Bat = Off;
-			else                                    PowerDevice()->CheckFromMB.bit.Bat = On;			
-			
-			PowerDevice()->Amp = dataFromMB->StatusPA;//Сохранение состояния УМЗЧ.
-			TimeFromMBSave(dataFromMB->TimeUTC);			//Cохранение времени ЦП.
-			//---------------------
 			//Вывод на дисплей адреса и группы
 			Menu(Page1)->Item1.Var = dataFromMB->Addres;
       Menu(Page1)->Item2.Var = dataFromMB->Group;
@@ -342,7 +333,7 @@ void Task_RS485ParsingCmdFromMB(void){
 			//MenuPage(Page4)->PageItems.StringText[String1] = TextGetPowerState(PowerGet());
 			//MenuPage(Page4)->PageItems.StringText[String2] = TextGetBatState(BatGet()); 
 			Menu(Page4)->Item3.Var  = dataFromMB->DebugData1;//Uакб
-			Menu(Page4)->Item4.Text = Text_GetAmpState(PowerDevice()->Amp);
+			Menu(Page4)->Item4.Text = Text_GetAmpState(Amp_GetState());
 			//---------------------
 			//сохранение параметров журнала событий. 
  		  Log()->TotalEvents   = dataFromMB->TotalEvents;
@@ -390,9 +381,9 @@ void Task_RS485ParsingCmdFromMB(void){
 			//в KeyAndMicState номер входа для которого применяется конфигурацию.
 			else if(*RS485_Cmd() == FP_CMD_SET_INPUT_CONFIG)
 				{
-					txFireLine->Number  = FireLine(Menu_IndexReg()->Item - 1)->Number;
-					txFireLine->Type	  = FireLine(Menu_IndexReg()->Item - 1)->Type;
-					txFireLine->TimeOut = FireLine(Menu_IndexReg()->Item - 1)->TimeOut;
+					txFireLine->Number  = FireLine(Menu_IndexReg()->Item-1)->Number;
+					txFireLine->Type	  = FireLine(Menu_IndexReg()->Item-1)->Type;
+					txFireLine->TimeOut = FireLine(Menu_IndexReg()->Item-1)->TimeOut;
 					//Запросим параметры для всех 4-х входов (с 0 по 3).
 					fireLineCount = 0;
 					//Для выхода из редактирования 
@@ -414,10 +405,10 @@ void Task_RS485ParsingCmdFromMB(void){
 //Ошибка обмена с ЦП.
 void Task_ErrorConnectMB(void){
 
-  LedSetAll(LedAllOff);
-  LedCommunication(YellowColor & Blink(INTERVAL_250_mS));//нет обмена - мигающий желтый.
-  LedControl(GENERAL_FAULT_LED, LedOn);
-  LedUpdate(); 					//Обновление светодиодов.
+  Led_SetAll(LedAllOff);
+  Led_Link(YellowColor & Blink(INTERVAL_250_mS));//нет обмена - мигающий желтый.
+  Led_Control(GENERAL_FAULT_LED, LedOn);
+  Led_Update(); 					//Обновление светодиодов.
   Print_ErrConnect();    //Вывод надписи "Нет связи с ЦП!!!".
 	//MotherBoard()->MB_State = MB_WORK_STATE;//Окончание тестирования индикации.
 }
@@ -441,7 +432,7 @@ void Task_KeyControl(void){
   if((OldKeyState   == KEY_CONFIG_STATE) &&
  		 (KeyGetState() != KEY_CONFIG_STATE))
     {
-      LedSetAll(LedAllOff);
+      Led_SetAll(LedAllOff);
     }
 	OldKeyState = KeyGetState();
   //--------------------
@@ -514,13 +505,13 @@ void Task_LockModeUnit(void){
 	else                                                Display_AddressGroupAndMicState();
 	//-------------------------------------------------------	
   //Управление светодиодами.
-  LedPresetControl(Alg1Led, Line1, Zone1, INTERVAL_250_mS);//Cветодиод ПРЕСЕТ1.
-  LedPresetControl(Alg2Led, Line2, Zone3, INTERVAL_250_mS);//Cветодиод ПРЕСЕТ2.
+  Led_Algorithm(Alg1Led, Line1, Zone1, INTERVAL_250_mS);//Cветодиод ПРЕСЕТ1.
+  Led_Algorithm(Alg2Led, Line2, Zone3, INTERVAL_250_mS);//Cветодиод ПРЕСЕТ2.
   //Гашение светодиодов СТАРТ и ПОЖАР.
   if((SpLine_GetOutState(Zone1) <= ActionManualOn) && (SpLine_GetOutState(Zone2) <= ActionManualOn))
     {
-      LedPusk(LedOff);
-      LedPoj(LedOff);
+      Led_Pusk(LedOff);
+      Led_Poj(LedOff);
     }
 	//-------------------------------------------------------	
   //Передача состояний кнопки ОТКЛ.ЗВУК и ТЕСТ в ЦП.
@@ -550,27 +541,33 @@ void Task_ControlModeUnit(void){
 	//-------------------------------------------------------	
 	LcdClear(); //Очистка дисплея
 	Display_Header(RusText_ControlModeUnit);//Вывод шапки окна.
-	//Отображение событий системы: 
-			 if(MicState() == MIC_ACTIVE)                   Display_Mic();	
+	//Отображение событий системы:
+	//Активация тангентного микрофона
+			 if(MicState() == MIC_ACTIVE)                   Display_Mic();
+	//Активация встроенного сообщения кнопкой ПУСК. 		
 	else if(SpLine_GetOutState(Zone1) == ActionPuskOn)  Display_PuskButtonActivation();   
+	//Активация встроенного сообщения по сработке пожарного шлейфа.		
 	else if(FireLine_CompareAllLinesWith(FR_IN_FIRE))   Display_Fire();   
-	else if(Faults()->Instant & FAULTS_MASK)            Display_Faults(Faults()->Instant); 
+	//Ручная активация зон.
 	else if(SpLine_CompareAllLinesWith(ActionManualOn)) Display_Manual(); 
+	//Отображение неисправностей блока 
+	else if(Faults()->Instant & FAULTS_MASK)            Display_Faults(Faults()->Instant); 
+	//Вывод состояния микрофона, адресса и группы блока. 
 	else                                                Display_AddressGroupAndMicState();
 	//-------------------------------------------------------	
 	//Управление светодиодами.
-	LedPresetControl(Alg1Led, Line1, Zone1, INTERVAL_250_mS);//Cветодиод АЛГОРИТМ УПРАВЛЕНИЯ 1.
-  LedPresetControl(Alg2Led, Line2, Zone3, INTERVAL_250_mS);//Cветодиод АЛГОРИТМ УПРАВЛЕНИЯ 2.
+	Led_Algorithm(Alg1Led, Line1, Zone1, INTERVAL_250_mS);//Cветодиод АЛГОРИТМ УПРАВЛЕНИЯ 1.
+  Led_Algorithm(Alg2Led, Line2, Zone3, INTERVAL_250_mS);//Cветодиод АЛГОРИТМ УПРАВЛЕНИЯ 2.
   //Управление светодиодом ПУСК.
   if((SpLine_GetOutState(Zone1) == ActionPuskOn) || 
 	   (SpLine_GetOutState(Zone2) == ActionPuskOn))
     {
-			 LedPusk(LedOn);
+			 Led_Pusk(LedOn);
     }	
-	else LedPusk(LedOff);
+	else Led_Pusk(LedOff);
 	//Управление светодиодом ПОЖАР.
-	if(FireLine_CompareAllLinesWith(FR_IN_FIRE)) LedPoj(LedOn);	
-	else 																				 LedPoj(LedOff);	
+	if(FireLine_CompareAllLinesWith(FR_IN_FIRE)) Led_Poj(LedOn);	
+	else 																				 Led_Poj(LedOff);	
 	//-------------------------------------------------------		
   //Передача состояний кнопок в ЦП.
 //  txBuf->Control_Buttons = Button_GetControl();
@@ -849,21 +846,19 @@ void Task_CofigModeUnit(void){
 					//постановка на контроль основного питания.
 					if(Menu_IndexReg()->Item == String1)
 						{
-							if(Button_IsPress(ZUMMERbut)) PowerDevice()->Check.bit.MainPower = On;
-							if(Button_IsPress(TESTbut))   PowerDevice()->Check.bit.MainPower = Off;
+							if(Button_IsPress(ZUMMERbut)) Power()->State.bits.AC = POWER_AC_OK;
+							if(Button_IsPress(TESTbut))   Power()->State.bits.AC = POWER_AC_CHECK_OFF;
 						}
 					//постановка на контроль резервного питания.
 					if(Menu_IndexReg()->Item == String2)
 						{
-							if(Button_IsPress(ZUMMERbut)) PowerDevice()->Check.bit.Bat = On;
-							if(Button_IsPress(TESTbut))   PowerDevice()->Check.bit.Bat = Off;
+							if(Button_IsPress(ZUMMERbut)) Power()->State.bits.Bat = BAT_OK;
+							if(Button_IsPress(TESTbut))   Power()->State.bits.Bat = BAT_CHECK_OFF;
 						}	
 					//Cохранение параметров по нажатию кнопки ПУСК.          
 					if(Button_IsPress(PUSKbut))
 						{
 							Button_ClrToggle(RESETbut);
-							
-							txBuf->MicState = PowerDevice()->Check.Byte; 
 							*RS485_Cmd() = FP_CMD_SET_POWER_CHECK;	
 						}							
 				break;
@@ -898,10 +893,10 @@ void Task_CofigModeUnit(void){
 				//******************************************************************************
 				//7-я страница меню.
 				case(Page7):
-					if(Button_IsPress(RESETbut))
-						{
-							*RS485_Cmd() = FP_CMD_GET_EEPROM_INFO;
-						}					
+//					if(Button_IsPress(RESETbut))
+//						{
+//							*RS485_Cmd() = FP_CMD_GET_EEPROM_INFO;
+//						}					
 					Button_ClrToggle(RESETbut);	
 				break;
 				//******************************************************************************
@@ -930,7 +925,7 @@ void Task_CofigModeUnit(void){
 			FireLineIndex	= 2;
 			
       Menu_IndexReg()->Item = 0;
-			Print_PowerState();   							 									//Вывод на дисплей состояния питания.
+			Print_PowerStateFromMB();   							 						//Вывод на дисплей состояния питания.
 			Log()->EventIndex = Log()->TotalEvents;								//Отображение журнала с последнего записаного события
 			FacePanel_WorkReg()->Address = Menu(Page1)->Item1.Var;//адрес от ЦП
       FacePanel_WorkReg()->Group   = Menu(Page1)->Item2.Var;//группа от ЦП.
@@ -997,9 +992,9 @@ void SysTick_Handler(void){
 	if(MotherBoard()->MB_State == MB_TEST_STATE)
 		{ 
 			//Мигаем всеми индикаторами.
-			LedSetAll(blink);
+			Led_SetAll(blink);
 			LcdBackLight(blink);
-			LedControl(TEST_LED, LedOn); 
+			Led_Control(TEST_LED, LedOn); 
 		}
 	else LcdBackLight(On);
 	//--------------------

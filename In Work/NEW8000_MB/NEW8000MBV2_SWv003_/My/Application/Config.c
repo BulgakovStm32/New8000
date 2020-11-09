@@ -41,7 +41,7 @@ void Config_Init(void){
 			strcpy(DataForFLASHStr.config.HW, "HW01");		
 			DataForFLASHStr.config.Address      = 1;
 			DataForFLASHStr.config.Group        = 1;
-			DataForFLASHStr.config.PowerCheckOn = POWER_ALL_CHECK_ON;
+			DataForFLASHStr.config.PowerCheck   = POWER_ALL_CHECK_ON;
 			DataForFLASHStr.config.SpDeviation  = SP_LINE_DEVIATION_DEFAULT;
 			DataForFLASHStr.config.SpCheck      = SP_LINE_ALL_OFF;
 			

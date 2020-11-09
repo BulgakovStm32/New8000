@@ -659,12 +659,12 @@ void Menu_Update(Page_t *menuPage, uint8_t mode, uint8_t pointStr){
       LcdSetCursor(1, 5);
       LcdOutStr((char*)menuPage->Item3.Name);
 			
-			if(PowerDevice()->Bat != BatControlOff) LcdBinToDecWithDot(menuPage->Item3.Var, 2, "B");
-      else                             				LcdOutStr((char*)RusText_Undef);
+			if(Power()->State.bits.Bat != BAT_CHECK_OFF) LcdBinToDecWithDot(menuPage->Item3.Var, 2, "B");
+      else                             				     LcdOutStr((char*)RusText_Undef);
       //Состояние УМЗЧ.
       LcdSetCursor(1, 6);
       LcdOutStr((char*)menuPage->Item4.Name);
-      LcdOutStr((char*)Text_GetAmpState(PowerDevice()->Amp));
+      LcdOutStr((char*)Text_GetAmpState(Amp_GetState()));
 			//-------------
 			return;
     }
@@ -767,36 +767,46 @@ void Print_MicState(void){
 		//--------------------
 		case(MIC_CONNECTED):
 			LcdOutStr((char*)RusText_MicConnect);
-			LedControl(MIC_LED, GreenColor);
+			Led_Control(MIC_LED, GreenColor);
 		break;
 		//--------------------
 		case(MIC_NOT_CONNECT):
 			LcdOutStr((char*)RusText_MicNotConnect);
-			LedControl(MIC_LED, YellowColor);
+			Led_Control(MIC_LED, YellowColor);
 		break;
 		//--------------------
 		case(MIC_FAULT):
 			LcdOutStr((char*)RusText_MicFault);
-			LedControl(MIC_LED, YellowColor);
+			Led_Control(MIC_LED, YellowColor);
 		break;
 		//--------------------
 		case(MIC_ACTIVE):
 			LcdOutStr((char*)RusText_MicActive);
-			LedControl(MIC_LED, RedColor);
+			Led_Control(MIC_LED, RedColor);
 		break;
 		//--------------------
   }
   //--------------------
 }
 //-----------------------------------------------------------------------------
+void Print_PowerStateFromMB(void){
+	
+	//Вывод состояния основного питания.
+	if(Power()->StateFromMB.bits.AC == POWER_AC_CHECK_OFF) Menu(Page4)->Item1.Text = (char*)&RusText_LcOff;
+	else	                                                 Menu(Page4)->Item1.Text = Text_GetAcPowerState(Power()->StateFromMB.bits.AC);
+	//Вывод состояния АКБ
+	if(Power()->StateFromMB.bits.Bat == BAT_CHECK_OFF) Menu(Page4)->Item2.Text = (char*)&RusText_LcOff;
+	else																							 Menu(Page4)->Item2.Text = Text_GetBatState(Power()->StateFromMB.bits.Bat);
+}
+//-----------------------------------------------------------------------------
 void Print_PowerState(void){
 	
 	//Вывод сотсояния основного питания.
-	if(PowerDevice()->Check.bit.MainPower) Menu(Page4)->Item1.Text = Text_GetPowerState(PowerDevice()->MainPower);
-	else																	 Menu(Page4)->Item1.Text = (char*)&RusText_LcOff;
+	if(Power()->State.bits.AC == POWER_AC_CHECK_OFF) Menu(Page4)->Item1.Text = (char*)&RusText_LcOff;
+	else												  	                 Menu(Page4)->Item1.Text = Text_GetAcPowerState(Power()->StateFromMB.bits.AC);
 	//Вывод состояния АКБ
-	if(PowerDevice()->Check.bit.Bat) Menu(Page4)->Item2.Text = Text_GetBatState(PowerDevice()->Bat);
-	else														 Menu(Page4)->Item2.Text = (char*)&RusText_LcOff;	
+	if(Power()->State.bits.Bat == BAT_CHECK_OFF) Menu(Page4)->Item2.Text = (char*)&RusText_LcOff;	
+	else											                   Menu(Page4)->Item2.Text = Text_GetBatState(Power()->StateFromMB.bits.Bat);
 }
 //-----------------------------------------------------------------------------
 //Вывод на дисплей состояния линий Гр. поставленных на контроль.
@@ -837,32 +847,38 @@ void Print_FireLineState(uint8_t line){
 }
 //******************************************************************************************
 //******************************************************************************************
-char* Text_GetBatState(uint8_t batState){
+char* Text_GetBatState(uint8_t state){
 
-	if(batState == BatControlOff) return (char*)&RusText_LcOn[0];
-	if(batState == BatChargeEnd) 	return (char*)&RusText_Norm[0];
-	if(batState == BatAttention) 	return (char*)&RusText_BelowNorm[0];
-	if(batState == BatDeep)      	return (char*)&RusText_BatDeepCharge[0];	
-	if(batState == BatNo)        	return (char*)&RusText_BatNo[0];
-																return (char*)&RusText_BatCharge[0];
+	if(state == BAT_CHECK_OFF)   return (char*)RusText_LcOn;
+	if(state == BAT_OK)	         return (char*)RusText_Norm;
+	if(state == BAT_CHARGE)	     return (char*)RusText_BatCharge;       	
+	if(state == BAT_CHARGE_END)  return (char*)RusText_BatChargeEnd;
+	if(state == BAT_ATTENTION) 	 return (char*)RusText_BelowNorm;
+	if(state == BAT_DEEP)      	 return (char*)RusText_BatDeepCharge;	
+															 return (char*)RusText_BatNo;
 }
 //-----------------------------------------------------------------------------
-char* Text_GetPowerState(uint8_t mainPowerState){
-
-	if(mainPowerState == PowerControlOff) return (char*)&RusText_LcOn[0];
-	if(mainPowerState == PowerACOk)    		return (char*)&RusText_Norm[0];
-	if(mainPowerState == PowerDCOk)    		return (char*)&RusText_Norm[0];
-	if(mainPowerState == PowerACNo)    		return (char*)&RusText_NotWork[0];
-	if(mainPowerState == PowerDCFault) 		return (char*)&RusText_NotWorkDcDc[0];
-	if(mainPowerState == PowerFault)   		return (char*)&RusText_NotWork[0];	
+char* Text_GetAcPowerState(uint8_t state){
+	
+	if(state == POWER_AC_CHECK_OFF) return (char*)RusText_LcOn;
+	if(state == POWER_AC_OK)    		return (char*)RusText_Norm;
+	if(state == POWER_AC_FAULT)  		return (char*)RusText_NotWork;
 	return 0;
-}
+}	
 //-----------------------------------------------------------------------------
-char* Text_GetAmpState(uint8_t ampState){
+char* Text_GetDcPowerState(uint8_t state){
+
+	if(state == POWER_DC_CHECK_OFF) return (char*)RusText_LcOn;
+	if(state == POWER_DC_OK)    		return (char*)RusText_Norm;
+	if(state == POWER_DC_FAULT)  		return (char*)RusText_NotWorkDcDc;
+	return 0;
+}	
+//-----------------------------------------------------------------------------
+char* Text_GetAmpState(uint8_t state){
   
-	if(ampState == AmpDisactive) return (char*)&RusText_Disactive[0];
-	if(ampState == AmpActive)    return (char*)&RusText_On[0];
-	if(ampState == AmpProt)      return (char*)&RusText_PAProt[0];
+	if(state == PAMP_OFF)  return (char*)RusText_Disactive;
+	if(state == PAMP_ON)   return (char*)RusText_On;
+	if(state == PAMP_PROT) return (char*)RusText_PAProt;
 	return 0;
 }
 //-----------------------------------------------------------------------------
@@ -870,12 +886,12 @@ char* Text_GetSpLineState(uint8_t line){
 	
 	uint8_t outState = SpLine_GetOutStateForTxt(line);
 	//----------------------
-	if(outState == LineOffControl) return (char*)&RusText_LcOn[0];
-  if(outState == LineNorm)  		 return (char*)&RusText_Norm[0];
-  if(outState == LineUndef) 		 return (char*)&RusText_Analyze[0];
-  if(outState == LineBreak) 		 return (char*)&RusText_Break[0];
-  if(outState == LineOver)  		 return (char*)&RusText_AboveNorm[0];
-  if(outState == LineUnder) 		 return (char*)&RusText_BelowNorm[0];
+	if(outState == LineOffControl) return (char*)RusText_LcOn;
+  if(outState == LineNorm)  		 return (char*)RusText_Norm;
+  if(outState == LineUndef) 		 return (char*)RusText_Analyze;
+  if(outState == LineBreak) 		 return (char*)RusText_Break;
+  if(outState == LineOver)  		 return (char*)RusText_AboveNorm;
+  if(outState == LineUnder) 		 return (char*)RusText_BelowNorm;
 	return (char*)&RusText_Short[0];
 }
 //******************************************************************************************

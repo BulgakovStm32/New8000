@@ -29,44 +29,40 @@
 #define POWER_ALL_CHECK_ON		0xFF//Все линии питания под контролем.
 #define TIMEOUT_AC_CHECK_mS   2000 
 //--------------------
-//Состояния основного питания 220V и инвертора.
-#define POWER_MASK         		0x0F
-#define POWER_BLINK     		 (0<<0) //Для мигания.
-#define POWER_CONTROL_OFF		 (1<<0) //контроль отключен.
-#define POWER_AC_OK      		 (2<<0) //Есть питание 220V
-#define POWER_DC_OK      	   (3<<0) //Инвертор исправен.
-#define POWER_AC_NOT_CONNECT (4<<0) //Питание 220V отсутствует
-#define POWER_DC_FAULT       (5<<0) //Инвертор неисправен.
-#define POWER_FAULT          (6<<0) //Неисправны оба блока питания.
+//Состояние основного питания 220V
+#define POWER_AC_CHECK_OFF	0 //контроль отключен.
+#define POWER_AC_OK		  		1 //Есть питание 220V
+#define POWER_AC_FAULT  		2 //Питание 220V отсутствует
+//Состояние инвертора.
+#define POWER_DC_CHECK_OFF	0 //контроль отключен.
+#define POWER_DC_OK      		1 //Инвертор исправен.
+#define POWER_DC_FAULT   		2 //Инвертор неисправен.
 //Состояние батареи.
-#define BAT_MASK         0xF0
-#define BAT_BLINK        (0<<4) //Для мигания.
-#define BAT_CONTROL_OFF  (1<<4) //контроль отключен.
-#define BAT_OK           (2<<4) //Напряжение на АКБ от 21В до 27,2В.
-#define BAT_CHARGE       (3<<4) //Идет заряд АКБ
-#define BAT_CHARGE_END   (4<<4) //Заряд окончен, напряжение АКБ 27,2В.
-#define BAT_ATTENTION    (5<<4) //Напряжение на АКБ <= 20,5В.
-#define BAT_DEEP         (6<<4) //Напряжение на АКБ <= 18,5В - глубокий разряд АКБ.
-#define BAT_NOT_CONNECT  (7<<4) //АКБ не подключена.
+#define BAT_CHECK_OFF   0 //контроль отключен.
+#define BAT_OK          1 //Напряжение на АКБ от 21В до 27,2В.
+#define BAT_CHARGE      2 //Идет заряд АКБ
+#define BAT_CHARGE_END  3 //Заряд окончен, напряжение АКБ 27,2В.
+#define BAT_ATTENTION   4 //Напряжение на АКБ <= 20,5В.
+#define BAT_DEEP        5 //Напряжение на АКБ <= 18,5В - глубокий разряд АКБ.
+#define BAT_NOT_CONNECT 6 //АКБ не подключена.
 //-----------------------------------------------------------------------------
-//Состояния основного питания 220V, инвертора И УМЗЧ.
 #pragma pack(push, 1)//размер выравнивания в 1 байт
-typedef struct{
-	uint8_t  ACState;
-	uint8_t  DCState;
-	uint8_t  BatState;
-	uint16_t BatMeas;
+
+typedef union{
+	struct{	
+			uint8_t AC  :2;//Состояние основного питания 220V
+			uint8_t DC  :2;//Состояние инвертора.
+			uint8_t Bat :4;//Состояние батареи.
+	}bits;
+	uint8_t Byte;
+}PowerState_t;	
+//**************************************************
+//Состояния основного питания 220V, инвертора И УМЗЧ.
+typedef struct{	
+	uint16_t BatMeas;//Напряжение на АКБ.
 	//----------
-	union
-	{
-		struct 
-		{	
-			uint8_t MainPower :1;
-			uint8_t Bat       :1;
-			uint8_t :6;
-		}bit;
-		uint8_t Byte;
-	}Check;
+	PowerState_t State;
+	PowerState_t StateFromFP;
 	//----------
 }PowerSTR_t;
 #pragma pack(pop)//вернули предыдущую настройку.

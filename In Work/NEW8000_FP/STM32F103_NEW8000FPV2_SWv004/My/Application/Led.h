@@ -85,22 +85,21 @@
 #define	Power_LED			          22
 #define	MIC_LED                 53  
 //-----------------------------------------------------------------------------
-void LedInit   (void);
-void LedUpdate (void);
-void LedSetAll (uint8_t state);
-void LedControl(uint8_t ledBit, uint8_t state);
+void Led_Update (void);
+void Led_SetAll (uint8_t state);
+void Led_Control(uint8_t ledBit, uint8_t state);
 
-void LedPusk  (uint8_t state);
-void LedPoj   (uint8_t state);
-void LedAlert (uint8_t state);
-void LedZummer(uint8_t state);
+void Led_Pusk  (uint8_t state);
+void Led_Poj   (uint8_t state);
+void Led_Alert (uint8_t state);
+void Led_Zummer(uint8_t state);
 
-void LedCommunication    (uint8_t state);
-void LedPowerIndication  (uint8_t powerState);
-void LedBatteryIndication(uint8_t batState);
-void LedAmpIndication    (uint8_t ampState);
+void Led_Link (uint8_t state);
+void Led_Power(PowerSTR_t* power);
+void Led_Bat  (uint8_t batState);
+void Led_Amp  (uint8_t ampState);
 
-void LedPresetControl(uint8_t led, uint8_t line, uint8_t spLine, BlinkIntervalEnum_t blinkPeriod);
+void Led_Algorithm(uint8_t led, uint8_t line, uint8_t spLine, BlinkIntervalEnum_t blinkPeriod);
 //-----------------------------------------------------------------------------
 #endif //_Led_H
 
