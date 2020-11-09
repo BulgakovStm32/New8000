@@ -177,8 +177,7 @@ void LedPresetControl(uint8_t led, uint8_t line, uint8_t spLine, BlinkIntervalEn
         }
 	//--------------------
 	//Светодиод "ПУСК".
-	if(spState == ActionPuskOn) LedPusk(LedOn);
-	if(spState == ActionAutoOn) LedPoj(LedOn);				
+	if(spState == ActionPuskOn) LedPusk(LedOn);			
 }
 //-----------------------------------------------------------------------------
 

@@ -553,20 +553,24 @@ void Task_ControlModeUnit(void){
 	//Отображение событий системы: 
 			 if(MicState() == MIC_ACTIVE)                   Display_Mic();	
 	else if(SpLine_GetOutState(Zone1) == ActionPuskOn)  Display_PuskButtonActivation();   
-	else if(FireLine_CompareAllLinesWith(FR_IN_FIRE))   Display_Fire();   //ПУСК.	
-	else if(Faults()->Instant & FAULTS_MASK)            Display_Faults(Faults()->Instant); //НЕИСПРАВНОСТЬ
-	else if(SpLine_CompareAllLinesWith(ActionManualOn)) Display_Manual(); //ручное управление		
+	else if(FireLine_CompareAllLinesWith(FR_IN_FIRE))   Display_Fire();   
+	else if(Faults()->Instant & FAULTS_MASK)            Display_Faults(Faults()->Instant); 
+	else if(SpLine_CompareAllLinesWith(ActionManualOn)) Display_Manual(); 
 	else                                                Display_AddressGroupAndMicState();
 	//-------------------------------------------------------	
 	//Управление светодиодами.
-	LedPresetControl(Alg1Led, Line1, Zone1, INTERVAL_250_mS);//Cветодиод ПРЕСЕТ1.
-  LedPresetControl(Alg2Led, Line2, Zone3, INTERVAL_250_mS);//Cветодиод ПРЕСЕТ2.
-  //Гашение светодиодов СТАРТ и ПОЖАР.
-  if((SpLine_GetOutState(Zone1) <= ActionManualOn) && (SpLine_GetOutState(Zone2) <= ActionManualOn))
+	LedPresetControl(Alg1Led, Line1, Zone1, INTERVAL_250_mS);//Cветодиод АЛГОРИТМ УПРАВЛЕНИЯ 1.
+  LedPresetControl(Alg2Led, Line2, Zone3, INTERVAL_250_mS);//Cветодиод АЛГОРИТМ УПРАВЛЕНИЯ 2.
+  //Управление светодиодом ПУСК.
+  if((SpLine_GetOutState(Zone1) == ActionPuskOn) || 
+	   (SpLine_GetOutState(Zone2) == ActionPuskOn))
     {
-      LedPusk(LedOff);
-      LedPoj(LedOff);
-    }		
+			 LedPusk(LedOn);
+    }	
+	else LedPusk(LedOff);
+	//Управление светодиодом ПОЖАР.
+	if(FireLine_CompareAllLinesWith(FR_IN_FIRE)) LedPoj(LedOn);	
+	else 																				 LedPoj(LedOff);	
 	//-------------------------------------------------------		
   //Передача состояний кнопок в ЦП.
 //  txBuf->Control_Buttons = Button_GetControl();
