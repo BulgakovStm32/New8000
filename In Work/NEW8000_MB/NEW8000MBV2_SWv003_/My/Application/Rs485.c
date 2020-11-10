@@ -22,8 +22,8 @@ static void RS485_RxBufClrHead(void){
 //Прием пакета.
 static uint8_t RS485_RxPacket(volatile uint8_t rxByte){
 	
-	static uint32_t rxCountByte = 0;
 	RS485Buf_t *rxBuf = &RS485RxBufStr;
+	static uint32_t rxCountByte = 0;
   //--------------------
   rxCountByte++;
 	if(rxBuf->Str.Size > 0)
@@ -144,7 +144,7 @@ static void RS485_TxBufComplete(void){
 }
 //*****************************************************************************
 //Отсчет таймаута приема пакета.
-//Если не сбрасывался счетчик в течении 1с значит небыло запросов/ответов на запросы
+//Если не сбрасывался счетчик в течении 1с значит небыло ответов на запросы
 //что говорит об отсутсвии связи.
 static void RS485_TimeOutInc(void){
   
@@ -328,27 +328,6 @@ void RS485_FP_BuildAndTxEventPack(uint16_t numEvent){
 	//-----------
 	//Данные пакета. 
 	Log_GetEvent(txBuf->Str.Data ,numEvent);	
-	//-----------
-	RS485_PackCrcCalc();
-	RS485_StartBufTx(txBuf->Buf, txBuf->Str.Size);
-}
-//*****************************************************************************
-void RS485_FP_BuildAndTxEepInfoPack(void){
-	
-	EepInfo_t  *eepInfo = (EepInfo_t*)&RS485TxBufStr.Str.Data;
-	RS485Buf_t *txBuf   = &RS485TxBufStr;
-	//----------
-	//Шапка пакета.
-	txBuf->Str.SinhroByte1 = RS485_SINCHRO_BYTE_1;
-	txBuf->Str.SinhroByte2 = RS485_SINCHRO_BYTE_2;
-	txBuf->Str.Type        = FP_TYPE;
-	txBuf->Str.Size        = (uint8_t)sizeof(EepInfo_t) + RS485_BUF_HEAD_SIZE + RS485_BUF_CRC_SIZE;
-	txBuf->Str.CmdCode     = FP_CMD_GET_EEPROM_INFO;
-	//-----------
-	//Данные пакета.
-	eepInfo->BadSectorsCount = EepM95128_Info()->BadSectorsCount;
-	eepInfo->WriteCount 		 = EepM95128_Info()->WriteCount;
-	eepInfo->ReadCount  		 = EepM95128_Info()->ReadCount;
 	//-----------
 	RS485_PackCrcCalc();
 	RS485_StartBufTx(txBuf->Buf, txBuf->Str.Size);

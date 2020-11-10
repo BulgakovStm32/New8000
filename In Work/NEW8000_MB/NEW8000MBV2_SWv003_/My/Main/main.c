@@ -55,13 +55,24 @@ void Task_Executors(void){
 	Log_Loop();       //Логирование неисправностей блока.
 	//--------------------
 	//Управление зуммером.
-  if(MotherBoard_WorkReg()->State == MB_WORK_STATE && 
-		 FacePanel()->Key != KEY_CONFIG_STATE) 						
-		{
-			Zummer_Fault(faultsInst);
-		}
-	//В режиме настройки зуммер не работает.
-	else Zummer_Fault(0);
+	
+	
+//  if(MotherBoard_WorkReg()->State == MB_WORK_STATE && 
+//		 FacePanel()->Key != KEY_CONFIG_STATE) 						
+//		{
+//			Zummer_Fault(faultsInst);
+//		}
+//	//В режиме настройки зуммер не работает.
+//	else Zummer_Control(ZUMM_OFF);//Zummer_Fault(0);		
+		
+	
+//  if(MotherBoard_WorkReg()->State == MB_WORK_STATE && 
+//		 FacePanel()->Key != KEY_CONFIG_STATE) 						
+//		{
+//			Zummer_Fault(faultsInst);
+//		}
+//	//В режиме настройки зуммер не работает.
+//	else Zummer_Fault(0);
 	//--------------------
   //Управление реле "НЕИСПРАВНОСТЬ ОБЩАЯ".
 	if(faultsInst != 0) Relay_On (RELAY_FAULT_GENERAL);//Активация реле "Н.О.".
@@ -125,13 +136,13 @@ void Task_ParsingCmdFP(void){
 		//Команда установки времени 
 		case(FP_CMD_SET_TIME):
 			Zummer_Beep(3, 50);            //Пикнем по приему команды.
-			TimeUTC_Set(dataFromFacePanel->TimeUTC);//Установка времени.
+			TimeUTC_Set(dataFromFacePanel->TimeUTC);
 		break;
 		//--------------------
 		//Команда установки даты 
 		case(FP_CMD_SET_DATA):
 			Zummer_Beep(3, 50);            //Пикнем по приему команды.
-			TimeUTC_Set(dataFromFacePanel->TimeUTC);//Установка времени.
+			TimeUTC_Set(dataFromFacePanel->TimeUTC);
 		break;
 		//--------------------
 		//Команда влючение тестирования зуммера ЦП
@@ -140,24 +151,20 @@ void Task_ParsingCmdFP(void){
 		break;
 		//--------------------
 		//Команда сохранения опорных значений для Lc.
-		//В KeyAndMicState будут линии установленные на контроль.
+		//В Mic будут линии установленные на контроль.
 		//В Address будет номер канала для которого сохряняются опроные значения. 
-		//В Group будет занчение чуствительности (отклонения от установившегося значения для фиксации перех-го проц-са на линии). 
+		//В TimeUTC будет занчение чуствительности (отклонения от установившегося значения для фиксации перех-го проц-са на линии). 
 		case(FP_CMD_LC_SAVE_REF):
-			Zummer_Beep(1, 100);//Пикнем по приему команды.
+			Zummer_Beep(3, 50);//Пикнем по приему команды.
 			//Сохранение линий установленных на контроль.
 			SpeakerLine_Param()->Check = dataFromFacePanel->Mic;
 			Config_Save()->SpCheck     = dataFromFacePanel->Mic;
 			//Сохранение импеданса линии (опорных величин для определния состояния линии).
-			if(SpeakerLine_SaveRef(dataFromFacePanel->Address) != 0) 
-				{
-					Zummer_Beep(2, 100);//Пикнем по приему команды.
-				}
+		  SpeakerLine_SaveRef(dataFromFacePanel->Address);
 			//Сохранение чувствительности.
 		  if(dataFromFacePanel->TimeUTC >= SP_LINE_DEVIATION_MIN &&
 				 dataFromFacePanel->TimeUTC <= SP_LINE_DEVIATION_MAX)
 				{
-					Zummer_Beep(3, 100);//Пикнем по приему команды.
 					SpeakerLine_Param()->Deviation  = (uint16_t)dataFromFacePanel->TimeUTC;
 					Config_Save()->SpDeviation = SpeakerLine_Param()->Deviation;
 				}
@@ -167,7 +174,7 @@ void Task_ParsingCmdFP(void){
 		//Команда получения журнала событий. 
 		case(FP_CMD_GET_LOG):
 			//Очистка непросмотренных сообщения.
-			if((uint16_t)dataFromFacePanel->TimeUTC == RESET_UNREAD_EVENTS) Log_ResetCountUnreadEvents();
+			if(dataFromFacePanel->TimeUTC == RESET_UNREAD_EVENTS) Log_ResetCountUnreadEvents();
 			//Передача события из журнала на лицевую панель.
 			else RS485_FP_BuildAndTxEventPack((uint16_t)dataFromFacePanel->TimeUTC);		
 		break;
@@ -194,7 +201,7 @@ void Task_ParsingCmdFP(void){
 		//--------------------
 		//Команда сохранения контроля питания блока.
 		case(FP_CMD_SET_POWER_CHECK):
-			Zummer_Beep(5, 100);
+			Zummer_Beep(3, 50);
 			Power()->CheckConfig.Byte = dataFromFacePanel->Mic;
 			//Сохранение во флеш микроконтроллера.
 			Config_Save()->PowerCheck = dataFromFacePanel->Mic; 
@@ -626,13 +633,12 @@ int main(void){
   VoiceMessage_Init();
   RS485_Init();
 	Config_Init(); 		
-//	Zummer_Init();
+	Zummer_Init();
 	Log_Init();
 	Relay_Init();
 	SirenBoard_Init();
 	//-------------------- 
   AnalogSwitch_Activate();//Включение выходов мультиплексора.
-
   //--------------------
 	//Применение конфигурации.
 	MotherBoard_WorkReg()->Address = pConfig->Address;

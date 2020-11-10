@@ -280,7 +280,7 @@ void RS485_TxDataToMB(void){
 			txBuf->MicState        = MicState();
 			txBuf->KeyState        = KeyGetState();
 		
-		//Состояния кнопока передаются 
+		//Состояния кнопок передаются 
 		//в режиме БЛОКИРОВКА УПРАВЛЕНИЯ и УПРАВЛЕНИЕ
 //			txBuf->Control_Buttons = Button_GetControl();
 //			txBuf->Alg_Buttons     = Button_GetAlg();

@@ -12,10 +12,8 @@
 .\outfile\lcdmenu.o: .\My\Drivers\sm1628.h
 .\outfile\lcdmenu.o: .\My\Drivers\spi_ST.h
 .\outfile\lcdmenu.o: .\My\Drivers\gpio_ST.h
-.\outfile\lcdmenu.o: My\Application\Led.h
-.\outfile\lcdmenu.o: My\Application\LcdMenu.h
 .\outfile\lcdmenu.o: My\Application\Blink.h
+.\outfile\lcdmenu.o: My\Application\Faults.h
 .\outfile\lcdmenu.o: .\My\Boards\MB_MotherBoard\MB_MotherBoard.h
 .\outfile\lcdmenu.o: .\My\Boards\SB_SirenBoard\SB_SirenBoard.h
-.\outfile\lcdmenu.o: My\Application\Faults.h
 .\outfile\lcdmenu.o: .\My\Drivers\ascii_RusText.h

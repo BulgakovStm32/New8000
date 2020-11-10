@@ -56,13 +56,13 @@ typedef union{
 //********************************************************
 //***********Флаги.***************************************
 typedef struct{
-	
 	uint16_t TxContinues  :1;
 	uint16_t TimeOutError :1;
 	uint16_t MB_NewData   :1;
 	uint16_t MB_Error     :1;
 	uint16_t :12;
 }RS485Flags_t;
+
 #define FLAG_CLEAR	0
 #define FLAG_SET	  1
 //******************************************************************************************

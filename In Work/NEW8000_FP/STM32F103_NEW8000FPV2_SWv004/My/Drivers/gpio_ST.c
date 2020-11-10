@@ -67,11 +67,7 @@ uint8_t GpioCheck(void){
 	micTemp = ((MicState[0] & MicState[1]) |
 						 (MicState[1] & MicState[2]) |
 						 (MicState[0] & MicState[2]));
-		
-//	     if(micTemp == (MicTxPin | MicOkPin)) MicStateReg = MIC_CONNECTED;
-//  else if(micTemp == (MicRxPin))            MicStateReg = MIC_ACTIVE;	
-	MicGetState(micTemp);	
-		
+	MicGetState(micTemp);		
 	return 1;
   //-------------------------
 }

@@ -22,8 +22,7 @@
 .\outfile\main.o: .\My\Boards\MB_MotherBoard\MB_MotherBoard.h
 .\outfile\main.o: .\My\Boards\FP_FacePanel\FP_FacePanel.h
 .\outfile\main.o: .\My\Application\Led.h
-.\outfile\main.o: .\My\Application\LcdMenu.h
-.\outfile\main.o: .\My\Application\Led.h
-.\outfile\main.o: .\My\Application\Faults.h
-.\outfile\main.o: .\My\Boards\SB_SirenBoard\SB_SirenBoard.h
 .\outfile\main.o: .\My\Application\Blink.h
+.\outfile\main.o: .\My\Boards\SB_SirenBoard\SB_SirenBoard.h
+.\outfile\main.o: .\My\Application\Faults.h
+.\outfile\main.o: .\My\Application\LcdMenu.h

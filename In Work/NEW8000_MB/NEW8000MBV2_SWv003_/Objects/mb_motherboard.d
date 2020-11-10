@@ -1,11 +1,11 @@
 .\objects\mb_motherboard.o: My\Boards\MB_MotherBoard\MB_MotherBoard.c
 .\objects\mb_motherboard.o: My\Boards\MB_MotherBoard\MB_MotherBoard.h
+.\objects\mb_motherboard.o: .\My\Application\LineCheck.h
+.\objects\mb_motherboard.o: .\My\Drivers\adc_ST.h
 .\objects\mb_motherboard.o: .\CMSIS_STM32F1xx\stm32f10x.h
 .\objects\mb_motherboard.o: .\CMSIS_STM32F1xx\core_cm3.h
 .\objects\mb_motherboard.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\mb_motherboard.o: .\CMSIS_STM32F1xx\system_stm32f10x.h
-.\objects\mb_motherboard.o: .\My\Application\LineCheck.h
-.\objects\mb_motherboard.o: .\My\Drivers\adc_ST.h
 .\objects\mb_motherboard.o: .\My\Drivers\gpio_ST.h
 .\objects\mb_motherboard.o: .\My\Application\Relay.h
 .\objects\mb_motherboard.o: .\My\Drivers\spi_ST.h

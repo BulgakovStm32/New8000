@@ -208,10 +208,6 @@ Section Cross References
     relay.o(i.Relay_UpdateLoop) refers to relay.o(i.Pause) for Pause
     relay.o(i.Relay_UpdateLoop) refers to spi_st.o(i.Spi2_TxRxByte) for Spi2_TxRxByte
     relay.o(i.Relay_UpdateLoop) refers to relay.o(.data) for StpicReg
-    rs485.o(i.RS485_FP_BuildAndTxEepInfoPack) refers to eepm95128.o(i.EepM95128_Info) for EepM95128_Info
-    rs485.o(i.RS485_FP_BuildAndTxEepInfoPack) refers to rs485.o(i.RS485_PackCrcCalc) for RS485_PackCrcCalc
-    rs485.o(i.RS485_FP_BuildAndTxEepInfoPack) refers to rs485.o(i.RS485_StartBufTx) for RS485_StartBufTx
-    rs485.o(i.RS485_FP_BuildAndTxEepInfoPack) refers to rs485.o(.bss) for RS485TxBufStr
     rs485.o(i.RS485_FP_BuildAndTxEventPack) refers to logging.o(i.Log_GetEvent) for Log_GetEvent
     rs485.o(i.RS485_FP_BuildAndTxEventPack) refers to rs485.o(i.RS485_PackCrcCalc) for RS485_PackCrcCalc
     rs485.o(i.RS485_FP_BuildAndTxEventPack) refers to rs485.o(i.RS485_StartBufTx) for RS485_StartBufTx
@@ -344,11 +340,9 @@ Section Cross References
     main.o(i.Task_Executors) refers to config.o(i.Config_SaveLoop) for Config_SaveLoop
     main.o(i.Task_Executors) refers to faults.o(i.Faults_Loop) for Faults_Loop
     main.o(i.Task_Executors) refers to logging.o(i.Log_Loop) for Log_Loop
-    main.o(i.Task_Executors) refers to mb_motherboard.o(i.MotherBoard_WorkReg) for MotherBoard_WorkReg
-    main.o(i.Task_Executors) refers to fp_facepanel.o(i.FacePanel) for FacePanel
-    main.o(i.Task_Executors) refers to zummer.o(i.Zummer_Fault) for Zummer_Fault
     main.o(i.Task_Executors) refers to relay.o(i.Relay_On) for Relay_On
     main.o(i.Task_Executors) refers to relay.o(i.Relay_Off) for Relay_Off
+    main.o(i.Task_Executors) refers to fp_facepanel.o(i.FacePanel) for FacePanel
     main.o(i.Task_Executors) refers to powerandcharge.o(i.Charger_Deactivate) for Charger_Deactivate
     main.o(i.Task_Executors) refers to powerandcharge.o(i.Power) for Power
     main.o(i.Task_Executors) refers to powerandcharge.o(i.Charger_Activate) for Charger_Activate
@@ -420,6 +414,7 @@ Section Cross References
     main.o(i.main) refers to jq6500.o(i.VoiceMessage_Init) for VoiceMessage_Init
     main.o(i.main) refers to rs485.o(i.RS485_Init) for RS485_Init
     main.o(i.main) refers to config.o(i.Config_Init) for Config_Init
+    main.o(i.main) refers to zummer.o(i.Zummer_Init) for Zummer_Init
     main.o(i.main) refers to logging.o(i.Log_Init) for Log_Init
     main.o(i.main) refers to relay.o(i.Relay_Init) for Relay_Init
     main.o(i.main) refers to sb_sirenboard.o(i.SirenBoard_Init) for SirenBoard_Init
@@ -575,11 +570,11 @@ Removing Unused input sections from the image.
     Removing spi_st.o(i.Spi2_GetStat), (16 bytes).
     Removing sys_st.o(i.Stm32Flash_ReadWord), (6 bytes).
     Removing timers_st.o(i.TIM1_Handler), (2 bytes).
-    Removing timers_st.o(i.TIM1_Init), (152 bytes).
     Removing uart_st.o(i.Uart1_StarTx), (56 bytes).
     Removing analogswitch.o(i.AnalogSwitch_Deactivate), (12 bytes).
     Removing buttons.o(i.Button), (8 bytes).
     Removing buttons.o(i.ButtonFP_Clr), (16 bytes).
+    Removing buttons.o(i.Button_ClrToggle), (16 bytes).
     Removing buttons.o(i.Button_Instant), (16 bytes).
     Removing buttons.o(i.Button_IsPress), (16 bytes).
     Removing buttons.o(i.Button_IsRelease), (16 bytes).
@@ -587,13 +582,12 @@ Removing Unused input sections from the image.
     Removing buttons.o(i.Button_UpDown), (188 bytes).
     Removing pojline.o(i.FireLine_GetPhysicalState), (40 bytes).
     Removing relay.o(i.Relay_GetState), (12 bytes).
-    Removing rs485.o(i.RS485_FP_BuildAndTxEepInfoPack), (68 bytes).
     Removing time.o(i.Rtc_To_Time), (48 bytes).
     Removing time.o(i.Time_Get), (8 bytes).
     Removing time.o(i.Time_To_Rtc), (28 bytes).
     Removing time.o(.data), (6 bytes).
     Removing zummer.o(i.Zummer_BeepOff), (36 bytes).
-    Removing zummer.o(i.Zummer_Init), (8 bytes).
+    Removing zummer.o(i.Zummer_Fault), (76 bytes).
     Removing scheduler.o(i.Scheduler_GetTickCount), (12 bytes).
     Removing scheduler.o(i.Scheduler_Start), (8 bytes).
     Removing fsmmessage.o(i.FsmMessage_Send), (28 bytes).
@@ -608,7 +602,7 @@ Removing Unused input sections from the image.
     Removing main.o(i.Task_LockModeUnit), (508 bytes).
     Removing main.o(.bss), (252 bytes).
 
-46 unused section(s) (total 3004 bytes) removed from the image.
+45 unused section(s) (total 2868 bytes) removed from the image.
 
 ==============================================================================
 
@@ -618,51 +612,51 @@ Image Symbol Table
 
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
-    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit1.o ABSOLUTE
-    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit2.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit1.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardshut.o ABSOLUTE
     ../clib/angel/dczerorl.s                 0x00000000   Number         0  __dczerorl.o ABSOLUTE
     ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_zi.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry4.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry2.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry4.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit2.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry.o ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  rt_raise.o ABSOLUTE
     ../clib/angel/scatter.s                  0x00000000   Number         0  __scatter.o ABSOLUTE
     ../clib/angel/startup.s                  0x00000000   Number         0  __main.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  indicate_semi.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  use_no_semi.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  libspace.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  indicate_semi.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  sys_stackheap_outer.o ABSOLUTE
-    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_exit.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_wrch.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_command.o ABSOLUTE
+    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_exit.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
-    ../clib/armsys.c                         0x00000000   Number         0  _get_argv_nomalloc.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  no_argv.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  _get_argv_nomalloc.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
     ../clib/heapalloc.c                      0x00000000   Number         0  hrguard.o ABSOLUTE
     ../clib/heapaux.c                        0x00000000   Number         0  heapauxi.o ABSOLUTE
-    ../clib/libinit.s                        0x00000000   Number         0  libinit.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libinit2.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libshutdown.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libinit.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libshutdown2.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_outer.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  __raise.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_other.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_segv_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_formal.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_outer.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  __raise.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_formal.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_inner.o ABSOLUTE
     ../clib/signal.s                         0x00000000   Number         0  defsig.o ABSOLUTE
     ../clib/stdlib.c                         0x00000000   Number         0  exit.o ABSOLUTE
     ../clib/string.c                         0x00000000   Number         0  strcpy.o ABSOLUTE
@@ -775,203 +769,203 @@ Image Symbol Table
     i.ButtonForManual_Update                 0x080005ec   Section        0  buttons.o(i.ButtonForManual_Update)
     i.ButtonForMic                           0x08000628   Section        0  buttons.o(i.ButtonForMic)
     i.ButtonForMic_Update                    0x08000630   Section        0  buttons.o(i.ButtonForMic_Update)
-    i.Button_ClrToggle                       0x0800066c   Section        0  buttons.o(i.Button_ClrToggle)
-    i.Button_IsToggle                        0x0800067c   Section        0  buttons.o(i.Button_IsToggle)
-    i.Button_Update                          0x0800068c   Section        0  buttons.o(i.Button_Update)
-    i.Charger_Activate                       0x080006cc   Section        0  powerandcharge.o(i.Charger_Activate)
-    i.Charger_Deactivate                     0x080006dc   Section        0  powerandcharge.o(i.Charger_Deactivate)
-    i.Config                                 0x080006e8   Section        0  config.o(i.Config)
-    i.Config_Init                            0x080006f0   Section        0  config.o(i.Config_Init)
-    i.Config_Save                            0x080007d0   Section        0  config.o(i.Config_Save)
-    i.Config_SaveLoop                        0x080007e8   Section        0  config.o(i.Config_SaveLoop)
-    i.DMA1Ch2InitForTX                       0x08000840   Section        0  dma_st.o(i.DMA1Ch2InitForTX)
-    i.DMA1Ch2StartTX                         0x08000884   Section        0  dma_st.o(i.DMA1Ch2StartTX)
-    i.DMA1_Channel2_IRQHandler               0x080008a4   Section        0  dma_st.o(i.DMA1_Channel2_IRQHandler)
-    i.DMA1_Channel5_IRQHandler               0x080008dc   Section        0  dma_st.o(i.DMA1_Channel5_IRQHandler)
-    i.EepM95128_Info                         0x0800090c   Section        0  eepm95128.o(i.EepM95128_Info)
-    i.EepM95128_Init                         0x08000914   Section        0  eepm95128.o(i.EepM95128_Init)
-    i.EepM95128_ReadBuffer                   0x08000950   Section        0  eepm95128.o(i.EepM95128_ReadBuffer)
-    i.EepM95128_SendInstruction              0x0800099c   Section        0  eepm95128.o(i.EepM95128_SendInstruction)
-    EepM95128_SendInstruction                0x0800099d   Thumb Code    24  eepm95128.o(i.EepM95128_SendInstruction)
-    i.EepM95128_WaitStandbyState             0x080009b4   Section        0  eepm95128.o(i.EepM95128_WaitStandbyState)
-    EepM95128_WaitStandbyState               0x080009b5   Thumb Code    76  eepm95128.o(i.EepM95128_WaitStandbyState)
-    i.EepM95128_WriteBuffer                  0x08000a08   Section        0  eepm95128.o(i.EepM95128_WriteBuffer)
-    i.EepM95128_WriteDisable                 0x08000bb0   Section        0  eepm95128.o(i.EepM95128_WriteDisable)
-    EepM95128_WriteDisable                   0x08000bb1   Thumb Code    26  eepm95128.o(i.EepM95128_WriteDisable)
-    i.EepM95128_WriteEnable                  0x08000bd0   Section        0  eepm95128.o(i.EepM95128_WriteEnable)
-    EepM95128_WriteEnable                    0x08000bd1   Thumb Code    26  eepm95128.o(i.EepM95128_WriteEnable)
-    i.EepM95128_WritePage                    0x08000bf0   Section        0  eepm95128.o(i.EepM95128_WritePage)
-    i.FacePanel                              0x08000c54   Section        0  fp_facepanel.o(i.FacePanel)
-    i.FacePanelSaveData                      0x08000c5c   Section        0  fp_facepanel.o(i.FacePanelSaveData)
-    i.Faults                                 0x08000c98   Section        0  faults.o(i.Faults)
-    i.Faults_Loop                            0x08000ca0   Section        0  faults.o(i.Faults_Loop)
-    i.FireLine                               0x08000dcc   Section        0  pojline.o(i.FireLine)
-    i.FireLine_Cal_u0421_u0403Status         0x08000de0   Section        0  pojline.o(i.FireLine_Cal_u0421_u0403Status)
-    FireLine_Cal_u0421_u0403Status           0x08000de1   Thumb Code    54  pojline.o(i.FireLine_Cal_u0421_u0403Status)
-    i.FireLine_FSMLoop                       0x08000e18   Section        0  pojline.o(i.FireLine_FSMLoop)
-    i.FireLine_FaultFSM                      0x08000e44   Section        0  pojline.o(i.FireLine_FaultFSM)
-    FireLine_FaultFSM                        0x08000e45   Thumb Code   244  pojline.o(i.FireLine_FaultFSM)
-    i.FireLine_GetContext                    0x08000f3c   Section        0  pojline.o(i.FireLine_GetContext)
-    i.FireLine_Init                          0x08000f84   Section        0  pojline.o(i.FireLine_Init)
-    i.FireLine_LogicFSM                      0x08000fcc   Section        0  pojline.o(i.FireLine_LogicFSM)
-    FireLine_LogicFSM                        0x08000fcd   Thumb Code   186  pojline.o(i.FireLine_LogicFSM)
-    i.FireLine_MeasLoop                      0x0800108c   Section        0  pojline.o(i.FireLine_MeasLoop)
-    i.FsmMessages_Init                       0x0800111c   Section        0  fsmmessage.o(i.FsmMessages_Init)
-    i.Get_Crc16                              0x08001138   Section        0  crc16.o(i.Get_Crc16)
-    i.GlobSwTimer_Get                        0x08001174   Section        0  swtimers.o(i.GlobSwTimer_Get)
-    i.GlobSwTimer_Start                      0x08001184   Section        0  swtimers.o(i.GlobSwTimer_Start)
-    i.GlobSwTimer_Stop                       0x080011a4   Section        0  swtimers.o(i.GlobSwTimer_Stop)
-    i.Gpio_CheckLoop                         0x080011b0   Section        0  gpio_st.o(i.Gpio_CheckLoop)
-    i.Gpio_GetState                          0x080012a8   Section        0  gpio_st.o(i.Gpio_GetState)
-    i.Gpio_Init                              0x080012d0   Section        0  gpio_st.o(i.Gpio_Init)
-    i.HardFault_Handler                      0x080013d0   Section        0  sys_st.o(i.HardFault_Handler)
-    i.IdleTask                               0x080013e8   Section        0  scheduler.o(i.IdleTask)
-    i.Init_RCC                               0x080013ec   Section        0  sys_st.o(i.Init_RCC)
-    Init_RCC                                 0x080013ed   Thumb Code   194  sys_st.o(i.Init_RCC)
-    i.JQ6500_Reset                           0x080014b8   Section        0  jq6500.o(i.JQ6500_Reset)
-    JQ6500_Reset                             0x080014b9   Thumb Code    44  jq6500.o(i.JQ6500_Reset)
-    i.JQ6500_TxCmd                           0x080014e4   Section        0  jq6500.o(i.JQ6500_TxCmd)
-    JQ6500_TxCmd                             0x080014e5   Thumb Code   174  jq6500.o(i.JQ6500_TxCmd)
-    i.LedRs485Act                            0x080015c8   Section        0  relay.o(i.LedRs485Act)
-    i.Log_Counts                             0x080015ec   Section        0  logging.o(i.Log_Counts)
-    i.Log_GetEvent                           0x080015f4   Section        0  logging.o(i.Log_GetEvent)
-    i.Log_Init                               0x08001664   Section        0  logging.o(i.Log_Init)
-    i.Log_Loop                               0x08001670   Section        0  logging.o(i.Log_Loop)
-    i.Log_ResetCountUnreadEvents             0x08001824   Section        0  logging.o(i.Log_ResetCountUnreadEvents)
-    i.Log_SaveEvent                          0x08001838   Section        0  logging.o(i.Log_SaveEvent)
-    i.MemManage_Handler                      0x080018ac   Section        0  sys_st.o(i.MemManage_Handler)
-    i.MotherBoard_BuildingPackForRS485       0x080018b8   Section        0  mb_motherboard.o(i.MotherBoard_BuildingPackForRS485)
-    i.MotherBoard_WorkReg                    0x08001aa4   Section        0  mb_motherboard.o(i.MotherBoard_WorkReg)
-    i.NMI_Handler                            0x08001aac   Section        0  sys_st.o(i.NMI_Handler)
-    i.NVIC_EnableIRQ                         0x08001aae   Section        0  dma_st.o(i.NVIC_EnableIRQ)
-    NVIC_EnableIRQ                           0x08001aaf   Thumb Code    22  dma_st.o(i.NVIC_EnableIRQ)
-    i.NVIC_EnableIRQ                         0x08001ac4   Section        0  uart_st.o(i.NVIC_EnableIRQ)
-    NVIC_EnableIRQ                           0x08001ac5   Thumb Code    22  uart_st.o(i.NVIC_EnableIRQ)
-    i.NVIC_SetPriority                       0x08001adc   Section        0  uart_st.o(i.NVIC_SetPriority)
-    NVIC_SetPriority                         0x08001add   Thumb Code    32  uart_st.o(i.NVIC_SetPriority)
-    i.PAmp_Control                           0x08001b04   Section        0  amplifier.o(i.PAmp_Control)
-    i.PAmp_GetStat                           0x08001b48   Section        0  amplifier.o(i.PAmp_GetStat)
-    i.PAmp_Init                              0x08001b54   Section        0  amplifier.o(i.PAmp_Init)
-    i.Pause                                  0x08001b80   Section        0  relay.o(i.Pause)
-    Pause                                    0x08001b81   Thumb Code    16  relay.o(i.Pause)
-    i.Power                                  0x08001b90   Section        0  powerandcharge.o(i.Power)
-    i.PowerAndCharge_Init                    0x08001b98   Section        0  powerandcharge.o(i.PowerAndCharge_Init)
-    i.PowerAndCharge_Loop                    0x08001bc4   Section        0  powerandcharge.o(i.PowerAndCharge_Loop)
-    i.PriorityGet                            0x08001cd0   Section        0  main.o(i.PriorityGet)
-    i.RS485_FP_BuildAndTxEventPack           0x08001d28   Section        0  rs485.o(i.RS485_FP_BuildAndTxEventPack)
-    i.RS485_FP_BuildAndTxFireLineContextPack 0x08001d5c   Section        0  rs485.o(i.RS485_FP_BuildAndTxFireLineContextPack)
-    i.RS485_Flags                            0x08001d90   Section        0  rs485.o(i.RS485_Flags)
-    i.RS485_Init                             0x08001d98   Section        0  rs485.o(i.RS485_Init)
-    i.RS485_MB_BuildAndTxPack                0x08001dfc   Section        0  rs485.o(i.RS485_MB_BuildAndTxPack)
-    i.RS485_MB_MasterLoop                    0x08001e2c   Section        0  rs485.o(i.RS485_MB_MasterLoop)
-    i.RS485_PackCrcCalc                      0x08001e98   Section        0  rs485.o(i.RS485_PackCrcCalc)
-    RS485_PackCrcCalc                        0x08001e99   Thumb Code    34  rs485.o(i.RS485_PackCrcCalc)
-    i.RS485_RxBuf                            0x08001ebc   Section        0  rs485.o(i.RS485_RxBuf)
-    i.RS485_RxBufClrHead                     0x08001ec4   Section        0  rs485.o(i.RS485_RxBufClrHead)
-    RS485_RxBufClrHead                       0x08001ec5   Thumb Code    14  rs485.o(i.RS485_RxBufClrHead)
-    i.RS485_RxPacket                         0x08001ed8   Section        0  rs485.o(i.RS485_RxPacket)
-    RS485_RxPacket                           0x08001ed9   Thumb Code   348  rs485.o(i.RS485_RxPacket)
-    i.RS485_SB_BuildAndTxPack                0x08002044   Section        0  rs485.o(i.RS485_SB_BuildAndTxPack)
-    i.RS485_SB_ErrorConnect                  0x08002074   Section        0  rs485.o(i.RS485_SB_ErrorConnect)
-    i.RS485_StartBufTx                       0x0800207c   Section        0  rs485.o(i.RS485_StartBufTx)
-    i.RS485_TimeOutInc                       0x080020b8   Section        0  rs485.o(i.RS485_TimeOutInc)
-    RS485_TimeOutInc                         0x080020b9   Thumb Code   154  rs485.o(i.RS485_TimeOutInc)
-    i.RS485_TxBuf                            0x0800215c   Section        0  rs485.o(i.RS485_TxBuf)
-    RS485_TxBuf                              0x0800215d   Thumb Code     4  rs485.o(i.RS485_TxBuf)
-    i.RS485_TxBufComplete                    0x08002164   Section        0  rs485.o(i.RS485_TxBufComplete)
-    RS485_TxBufComplete                      0x08002165   Thumb Code    22  rs485.o(i.RS485_TxBufComplete)
-    i.RTC_IRQHandler                         0x08002184   Section        0  rtc_st.o(i.RTC_IRQHandler)
-    i.ReadOneEventFromEep                    0x080021cc   Section        0  logging.o(i.ReadOneEventFromEep)
-    ReadOneEventFromEep                      0x080021cd   Thumb Code    34  logging.o(i.ReadOneEventFromEep)
-    i.ReadWorkRegFromEep                     0x080021f0   Section        0  logging.o(i.ReadWorkRegFromEep)
-    ReadWorkRegFromEep                       0x080021f1   Thumb Code    14  logging.o(i.ReadWorkRegFromEep)
-    i.Relay_Init                             0x08002204   Section        0  relay.o(i.Relay_Init)
-    i.Relay_Off                              0x08002254   Section        0  relay.o(i.Relay_Off)
-    i.Relay_On                               0x08002264   Section        0  relay.o(i.Relay_On)
-    i.Relay_UpdateLoop                       0x08002274   Section        0  relay.o(i.Relay_UpdateLoop)
-    i.RtcGetCounter                          0x080022a8   Section        0  rtc_st.o(i.RtcGetCounter)
-    i.RtcInit                                0x080022bc   Section        0  rtc_st.o(i.RtcInit)
-    i.RtcSetCounter                          0x0800239c   Section        0  rtc_st.o(i.RtcSetCounter)
-    i.SPI2_IRQHandler                        0x080023c8   Section        0  spi_st.o(i.SPI2_IRQHandler)
-    i.SVC_Handler                            0x080023f4   Section        0  sys_st.o(i.SVC_Handler)
-    i.Scheduler                              0x080023f8   Section        0  scheduler.o(i.Scheduler)
-    i.Scheduler_Init                         0x08002458   Section        0  scheduler.o(i.Scheduler_Init)
-    i.Scheduler_SetTask                      0x0800248c   Section        0  scheduler.o(i.Scheduler_SetTask)
-    i.Scheduler_SetTimerTask                 0x080024c0   Section        0  scheduler.o(i.Scheduler_SetTimerTask)
-    i.Scheduler_TimerService                 0x08002520   Section        0  scheduler.o(i.Scheduler_TimerService)
-    i.SirenBoard                             0x0800258c   Section        0  sb_sirenboard.o(i.SirenBoard)
-    i.SirenBoard_BuildingPackForRS485        0x08002594   Section        0  sb_sirenboard.o(i.SirenBoard_BuildingPackForRS485)
-    i.SirenBoard_ClrData                     0x080025c0   Section        0  sb_sirenboard.o(i.SirenBoard_ClrData)
-    i.SirenBoard_Init                        0x080025d0   Section        0  sb_sirenboard.o(i.SirenBoard_Init)
-    i.SirenBoard_SaveData                    0x08002600   Section        0  sb_sirenboard.o(i.SirenBoard_SaveData)
-    i.SirenBoard_Set                         0x08002618   Section        0  sb_sirenboard.o(i.SirenBoard_Set)
-    i.SpeakerLine                            0x080026a0   Section        0  linecheck.o(i.SpeakerLine)
-    i.SpeakerLine_CalcLcStatus               0x080026b4   Section        0  linecheck.o(i.SpeakerLine_CalcLcStatus)
-    SpeakerLine_CalcLcStatus                 0x080026b5   Thumb Code   194  linecheck.o(i.SpeakerLine_CalcLcStatus)
-    i.SpeakerLine_FSM                        0x0800277c   Section        0  linecheck.o(i.SpeakerLine_FSM)
-    SpeakerLine_FSM                          0x0800277d   Thumb Code    50  linecheck.o(i.SpeakerLine_FSM)
-    i.SpeakerLine_FSMLoop                    0x080027b0   Section        0  linecheck.o(i.SpeakerLine_FSMLoop)
-    i.SpeakerLine_GetAvrMeas                 0x080027d4   Section        0  linecheck.o(i.SpeakerLine_GetAvrMeas)
-    SpeakerLine_GetAvrMeas                   0x080027d5   Thumb Code    62  linecheck.o(i.SpeakerLine_GetAvrMeas)
-    i.SpeakerLine_GetDefStatus               0x08002820   Section        0  linecheck.o(i.SpeakerLine_GetDefStatus)
-    i.SpeakerLine_GetSteadyStateLoop         0x08002868   Section        0  linecheck.o(i.SpeakerLine_GetSteadyStateLoop)
-    SpeakerLine_GetSteadyStateLoop           0x08002869   Thumb Code   202  linecheck.o(i.SpeakerLine_GetSteadyStateLoop)
-    i.SpeakerLine_Init                       0x08002940   Section        0  linecheck.o(i.SpeakerLine_Init)
-    i.SpeakerLine_Led                        0x08002970   Section        0  linecheck.o(i.SpeakerLine_Led)
-    SpeakerLine_Led                          0x08002971   Thumb Code   190  linecheck.o(i.SpeakerLine_Led)
-    i.SpeakerLine_MeasLoop                   0x08002a38   Section        0  linecheck.o(i.SpeakerLine_MeasLoop)
-    i.SpeakerLine_OptoReley                  0x08002adc   Section        0  linecheck.o(i.SpeakerLine_OptoReley)
-    SpeakerLine_OptoReley                    0x08002add   Thumb Code   108  linecheck.o(i.SpeakerLine_OptoReley)
-    i.SpeakerLine_Param                      0x08002b50   Section        0  linecheck.o(i.SpeakerLine_Param)
-    i.SpeakerLine_SaveRef                    0x08002b58   Section        0  linecheck.o(i.SpeakerLine_SaveRef)
-    i.SpeakerRelays                          0x08002b82   Section        0  linecheck.o(i.SpeakerRelays)
-    SpeakerRelays                            0x08002b83   Thumb Code    72  linecheck.o(i.SpeakerRelays)
-    i.Spi2_Init                              0x08002bcc   Section        0  spi_st.o(i.Spi2_Init)
-    i.Spi2_TxRxByte                          0x08002c88   Section        0  spi_st.o(i.Spi2_TxRxByte)
-    i.Stm32Flash_ErasePage                   0x08002cf8   Section        0  sys_st.o(i.Stm32Flash_ErasePage)
-    i.Stm32Flash_Lock                        0x08002d54   Section        0  sys_st.o(i.Stm32Flash_Lock)
-    i.Stm32Flash_Unlock                      0x08002d68   Section        0  sys_st.o(i.Stm32Flash_Unlock)
-    i.Stm32Flash_WriteWord                   0x08002d80   Section        0  sys_st.o(i.Stm32Flash_WriteWord)
-    i.SwTimers_Init                          0x08002de8   Section        0  swtimers.o(i.SwTimers_Init)
-    i.SwTimers_Loop                          0x08002e14   Section        0  swtimers.o(i.SwTimers_Loop)
-    i.SysTick_Handler                        0x08002e54   Section        0  main.o(i.SysTick_Handler)
-    i.SysTick_Init                           0x08002ed8   Section        0  sys_tick_st.o(i.SysTick_Init)
-    i.Sys_Init                               0x08002eec   Section        0  sys_st.o(i.Sys_Init)
-    i.TIM1_Control                           0x08002f40   Section        0  timers_st.o(i.TIM1_Control)
-    i.Task_ConfigModeUnit                    0x08002f64   Section        0  main.o(i.Task_ConfigModeUnit)
-    i.Task_ControlModeUnit                   0x08002fae   Section        0  main.o(i.Task_ControlModeUnit)
-    i.Task_Executors                         0x08003234   Section        0  main.o(i.Task_Executors)
-    i.Task_GetKeyState                       0x080032e8   Section        0  main.o(i.Task_GetKeyState)
-    i.Task_ParsingCmdFP                      0x08003344   Section        0  main.o(i.Task_ParsingCmdFP)
-    i.Task_ParsingCmdSB                      0x080034e8   Section        0  main.o(i.Task_ParsingCmdSB)
-    i.Task_PojLineControlModeUnit            0x08003506   Section        0  main.o(i.Task_PojLineControlModeUnit)
-    i.Task_PollingRS485                      0x08003694   Section        0  main.o(i.Task_PollingRS485)
-    i.TimeUTC_Get                            0x08003700   Section        0  time.o(i.TimeUTC_Get)
-    i.TimeUTC_Set                            0x08003708   Section        0  time.o(i.TimeUTC_Set)
-    i.Time_Init                              0x08003714   Section        0  time.o(i.Time_Init)
-    i.USART1_IRQHandler                      0x0800371c   Section        0  uart_st.o(i.USART1_IRQHandler)
-    i.USART3_IRQHandler                      0x0800379c   Section        0  uart_st.o(i.USART3_IRQHandler)
-    i.Uart1_Init                             0x08003810   Section        0  uart_st.o(i.Uart1_Init)
-    i.Uart3_Handler                          0x08003890   Section        0  uart_st.o(i.Uart3_Handler)
-    i.Uart3_Init                             0x08003898   Section        0  uart_st.o(i.Uart3_Init)
-    i.UsageFault_Handler                     0x08003928   Section        0  sys_st.o(i.UsageFault_Handler)
-    i.Usart1_ClrErrFlag                      0x0800392c   Section        0  uart_st.o(i.Usart1_ClrErrFlag)
-    Usart1_ClrErrFlag                        0x0800392d   Thumb Code    12  uart_st.o(i.Usart1_ClrErrFlag)
-    i.Usart3_ClrErrFlag                      0x0800393c   Section        0  uart_st.o(i.Usart3_ClrErrFlag)
-    Usart3_ClrErrFlag                        0x0800393d   Thumb Code    12  uart_st.o(i.Usart3_ClrErrFlag)
-    i.VoiceMessage_Cmd                       0x0800394c   Section        0  jq6500.o(i.VoiceMessage_Cmd)
-    i.VoiceMessage_Init                      0x08003958   Section        0  jq6500.o(i.VoiceMessage_Init)
-    i.VoiceMessage_UpdateLoop                0x08003964   Section        0  jq6500.o(i.VoiceMessage_UpdateLoop)
-    i.WriteOneEventToEep                     0x080039ac   Section        0  logging.o(i.WriteOneEventToEep)
-    WriteOneEventToEep                       0x080039ad   Thumb Code    68  logging.o(i.WriteOneEventToEep)
-    i.WriteWorkRegToEep                      0x080039f4   Section        0  logging.o(i.WriteWorkRegToEep)
-    WriteWorkRegToEep                        0x080039f5   Thumb Code    14  logging.o(i.WriteWorkRegToEep)
-    i.Zummer_Beep                            0x08003a08   Section        0  zummer.o(i.Zummer_Beep)
-    i.Zummer_Control                         0x08003a34   Section        0  zummer.o(i.Zummer_Control)
-    i.Zummer_Fault                           0x08003a4c   Section        0  zummer.o(i.Zummer_Fault)
-    i.Zummer_Loop                            0x08003a98   Section        0  zummer.o(i.Zummer_Loop)
-    i.main                                   0x08003b38   Section        0  main.o(i.main)
-    .constdata                               0x08003c18   Section       41  jq6500.o(.constdata)
+    i.Button_IsToggle                        0x0800066c   Section        0  buttons.o(i.Button_IsToggle)
+    i.Button_Update                          0x0800067c   Section        0  buttons.o(i.Button_Update)
+    i.Charger_Activate                       0x080006bc   Section        0  powerandcharge.o(i.Charger_Activate)
+    i.Charger_Deactivate                     0x080006cc   Section        0  powerandcharge.o(i.Charger_Deactivate)
+    i.Config                                 0x080006d8   Section        0  config.o(i.Config)
+    i.Config_Init                            0x080006e0   Section        0  config.o(i.Config_Init)
+    i.Config_Save                            0x080007c0   Section        0  config.o(i.Config_Save)
+    i.Config_SaveLoop                        0x080007d8   Section        0  config.o(i.Config_SaveLoop)
+    i.DMA1Ch2InitForTX                       0x08000830   Section        0  dma_st.o(i.DMA1Ch2InitForTX)
+    i.DMA1Ch2StartTX                         0x08000874   Section        0  dma_st.o(i.DMA1Ch2StartTX)
+    i.DMA1_Channel2_IRQHandler               0x08000894   Section        0  dma_st.o(i.DMA1_Channel2_IRQHandler)
+    i.DMA1_Channel5_IRQHandler               0x080008cc   Section        0  dma_st.o(i.DMA1_Channel5_IRQHandler)
+    i.EepM95128_Info                         0x080008fc   Section        0  eepm95128.o(i.EepM95128_Info)
+    i.EepM95128_Init                         0x08000904   Section        0  eepm95128.o(i.EepM95128_Init)
+    i.EepM95128_ReadBuffer                   0x08000940   Section        0  eepm95128.o(i.EepM95128_ReadBuffer)
+    i.EepM95128_SendInstruction              0x0800098c   Section        0  eepm95128.o(i.EepM95128_SendInstruction)
+    EepM95128_SendInstruction                0x0800098d   Thumb Code    24  eepm95128.o(i.EepM95128_SendInstruction)
+    i.EepM95128_WaitStandbyState             0x080009a4   Section        0  eepm95128.o(i.EepM95128_WaitStandbyState)
+    EepM95128_WaitStandbyState               0x080009a5   Thumb Code    76  eepm95128.o(i.EepM95128_WaitStandbyState)
+    i.EepM95128_WriteBuffer                  0x080009f8   Section        0  eepm95128.o(i.EepM95128_WriteBuffer)
+    i.EepM95128_WriteDisable                 0x08000ba0   Section        0  eepm95128.o(i.EepM95128_WriteDisable)
+    EepM95128_WriteDisable                   0x08000ba1   Thumb Code    26  eepm95128.o(i.EepM95128_WriteDisable)
+    i.EepM95128_WriteEnable                  0x08000bc0   Section        0  eepm95128.o(i.EepM95128_WriteEnable)
+    EepM95128_WriteEnable                    0x08000bc1   Thumb Code    26  eepm95128.o(i.EepM95128_WriteEnable)
+    i.EepM95128_WritePage                    0x08000be0   Section        0  eepm95128.o(i.EepM95128_WritePage)
+    i.FacePanel                              0x08000c44   Section        0  fp_facepanel.o(i.FacePanel)
+    i.FacePanelSaveData                      0x08000c4c   Section        0  fp_facepanel.o(i.FacePanelSaveData)
+    i.Faults                                 0x08000c88   Section        0  faults.o(i.Faults)
+    i.Faults_Loop                            0x08000c90   Section        0  faults.o(i.Faults_Loop)
+    i.FireLine                               0x08000dbc   Section        0  pojline.o(i.FireLine)
+    i.FireLine_Cal_u0421_u0403Status         0x08000dd0   Section        0  pojline.o(i.FireLine_Cal_u0421_u0403Status)
+    FireLine_Cal_u0421_u0403Status           0x08000dd1   Thumb Code    54  pojline.o(i.FireLine_Cal_u0421_u0403Status)
+    i.FireLine_FSMLoop                       0x08000e08   Section        0  pojline.o(i.FireLine_FSMLoop)
+    i.FireLine_FaultFSM                      0x08000e34   Section        0  pojline.o(i.FireLine_FaultFSM)
+    FireLine_FaultFSM                        0x08000e35   Thumb Code   244  pojline.o(i.FireLine_FaultFSM)
+    i.FireLine_GetContext                    0x08000f2c   Section        0  pojline.o(i.FireLine_GetContext)
+    i.FireLine_Init                          0x08000f74   Section        0  pojline.o(i.FireLine_Init)
+    i.FireLine_LogicFSM                      0x08000fbc   Section        0  pojline.o(i.FireLine_LogicFSM)
+    FireLine_LogicFSM                        0x08000fbd   Thumb Code   186  pojline.o(i.FireLine_LogicFSM)
+    i.FireLine_MeasLoop                      0x0800107c   Section        0  pojline.o(i.FireLine_MeasLoop)
+    i.FsmMessages_Init                       0x0800110c   Section        0  fsmmessage.o(i.FsmMessages_Init)
+    i.Get_Crc16                              0x08001128   Section        0  crc16.o(i.Get_Crc16)
+    i.GlobSwTimer_Get                        0x08001164   Section        0  swtimers.o(i.GlobSwTimer_Get)
+    i.GlobSwTimer_Start                      0x08001174   Section        0  swtimers.o(i.GlobSwTimer_Start)
+    i.GlobSwTimer_Stop                       0x08001194   Section        0  swtimers.o(i.GlobSwTimer_Stop)
+    i.Gpio_CheckLoop                         0x080011a0   Section        0  gpio_st.o(i.Gpio_CheckLoop)
+    i.Gpio_GetState                          0x08001298   Section        0  gpio_st.o(i.Gpio_GetState)
+    i.Gpio_Init                              0x080012c0   Section        0  gpio_st.o(i.Gpio_Init)
+    i.HardFault_Handler                      0x080013c0   Section        0  sys_st.o(i.HardFault_Handler)
+    i.IdleTask                               0x080013d8   Section        0  scheduler.o(i.IdleTask)
+    i.Init_RCC                               0x080013dc   Section        0  sys_st.o(i.Init_RCC)
+    Init_RCC                                 0x080013dd   Thumb Code   194  sys_st.o(i.Init_RCC)
+    i.JQ6500_Reset                           0x080014a8   Section        0  jq6500.o(i.JQ6500_Reset)
+    JQ6500_Reset                             0x080014a9   Thumb Code    44  jq6500.o(i.JQ6500_Reset)
+    i.JQ6500_TxCmd                           0x080014d4   Section        0  jq6500.o(i.JQ6500_TxCmd)
+    JQ6500_TxCmd                             0x080014d5   Thumb Code   174  jq6500.o(i.JQ6500_TxCmd)
+    i.LedRs485Act                            0x080015b8   Section        0  relay.o(i.LedRs485Act)
+    i.Log_Counts                             0x080015dc   Section        0  logging.o(i.Log_Counts)
+    i.Log_GetEvent                           0x080015e4   Section        0  logging.o(i.Log_GetEvent)
+    i.Log_Init                               0x08001654   Section        0  logging.o(i.Log_Init)
+    i.Log_Loop                               0x08001660   Section        0  logging.o(i.Log_Loop)
+    i.Log_ResetCountUnreadEvents             0x08001814   Section        0  logging.o(i.Log_ResetCountUnreadEvents)
+    i.Log_SaveEvent                          0x08001828   Section        0  logging.o(i.Log_SaveEvent)
+    i.MemManage_Handler                      0x0800189c   Section        0  sys_st.o(i.MemManage_Handler)
+    i.MotherBoard_BuildingPackForRS485       0x080018a8   Section        0  mb_motherboard.o(i.MotherBoard_BuildingPackForRS485)
+    i.MotherBoard_WorkReg                    0x08001a94   Section        0  mb_motherboard.o(i.MotherBoard_WorkReg)
+    i.NMI_Handler                            0x08001a9c   Section        0  sys_st.o(i.NMI_Handler)
+    i.NVIC_EnableIRQ                         0x08001a9e   Section        0  dma_st.o(i.NVIC_EnableIRQ)
+    NVIC_EnableIRQ                           0x08001a9f   Thumb Code    22  dma_st.o(i.NVIC_EnableIRQ)
+    i.NVIC_EnableIRQ                         0x08001ab4   Section        0  uart_st.o(i.NVIC_EnableIRQ)
+    NVIC_EnableIRQ                           0x08001ab5   Thumb Code    22  uart_st.o(i.NVIC_EnableIRQ)
+    i.NVIC_SetPriority                       0x08001acc   Section        0  uart_st.o(i.NVIC_SetPriority)
+    NVIC_SetPriority                         0x08001acd   Thumb Code    32  uart_st.o(i.NVIC_SetPriority)
+    i.PAmp_Control                           0x08001af4   Section        0  amplifier.o(i.PAmp_Control)
+    i.PAmp_GetStat                           0x08001b38   Section        0  amplifier.o(i.PAmp_GetStat)
+    i.PAmp_Init                              0x08001b44   Section        0  amplifier.o(i.PAmp_Init)
+    i.Pause                                  0x08001b70   Section        0  relay.o(i.Pause)
+    Pause                                    0x08001b71   Thumb Code    16  relay.o(i.Pause)
+    i.Power                                  0x08001b80   Section        0  powerandcharge.o(i.Power)
+    i.PowerAndCharge_Init                    0x08001b88   Section        0  powerandcharge.o(i.PowerAndCharge_Init)
+    i.PowerAndCharge_Loop                    0x08001bb4   Section        0  powerandcharge.o(i.PowerAndCharge_Loop)
+    i.PriorityGet                            0x08001cc0   Section        0  main.o(i.PriorityGet)
+    i.RS485_FP_BuildAndTxEventPack           0x08001d18   Section        0  rs485.o(i.RS485_FP_BuildAndTxEventPack)
+    i.RS485_FP_BuildAndTxFireLineContextPack 0x08001d4c   Section        0  rs485.o(i.RS485_FP_BuildAndTxFireLineContextPack)
+    i.RS485_Flags                            0x08001d80   Section        0  rs485.o(i.RS485_Flags)
+    i.RS485_Init                             0x08001d88   Section        0  rs485.o(i.RS485_Init)
+    i.RS485_MB_BuildAndTxPack                0x08001dec   Section        0  rs485.o(i.RS485_MB_BuildAndTxPack)
+    i.RS485_MB_MasterLoop                    0x08001e1c   Section        0  rs485.o(i.RS485_MB_MasterLoop)
+    i.RS485_PackCrcCalc                      0x08001e88   Section        0  rs485.o(i.RS485_PackCrcCalc)
+    RS485_PackCrcCalc                        0x08001e89   Thumb Code    34  rs485.o(i.RS485_PackCrcCalc)
+    i.RS485_RxBuf                            0x08001eac   Section        0  rs485.o(i.RS485_RxBuf)
+    i.RS485_RxBufClrHead                     0x08001eb4   Section        0  rs485.o(i.RS485_RxBufClrHead)
+    RS485_RxBufClrHead                       0x08001eb5   Thumb Code    14  rs485.o(i.RS485_RxBufClrHead)
+    i.RS485_RxPacket                         0x08001ec8   Section        0  rs485.o(i.RS485_RxPacket)
+    RS485_RxPacket                           0x08001ec9   Thumb Code   348  rs485.o(i.RS485_RxPacket)
+    i.RS485_SB_BuildAndTxPack                0x08002034   Section        0  rs485.o(i.RS485_SB_BuildAndTxPack)
+    i.RS485_SB_ErrorConnect                  0x08002064   Section        0  rs485.o(i.RS485_SB_ErrorConnect)
+    i.RS485_StartBufTx                       0x0800206c   Section        0  rs485.o(i.RS485_StartBufTx)
+    i.RS485_TimeOutInc                       0x080020a8   Section        0  rs485.o(i.RS485_TimeOutInc)
+    RS485_TimeOutInc                         0x080020a9   Thumb Code   154  rs485.o(i.RS485_TimeOutInc)
+    i.RS485_TxBuf                            0x0800214c   Section        0  rs485.o(i.RS485_TxBuf)
+    RS485_TxBuf                              0x0800214d   Thumb Code     4  rs485.o(i.RS485_TxBuf)
+    i.RS485_TxBufComplete                    0x08002154   Section        0  rs485.o(i.RS485_TxBufComplete)
+    RS485_TxBufComplete                      0x08002155   Thumb Code    22  rs485.o(i.RS485_TxBufComplete)
+    i.RTC_IRQHandler                         0x08002174   Section        0  rtc_st.o(i.RTC_IRQHandler)
+    i.ReadOneEventFromEep                    0x080021bc   Section        0  logging.o(i.ReadOneEventFromEep)
+    ReadOneEventFromEep                      0x080021bd   Thumb Code    34  logging.o(i.ReadOneEventFromEep)
+    i.ReadWorkRegFromEep                     0x080021e0   Section        0  logging.o(i.ReadWorkRegFromEep)
+    ReadWorkRegFromEep                       0x080021e1   Thumb Code    14  logging.o(i.ReadWorkRegFromEep)
+    i.Relay_Init                             0x080021f4   Section        0  relay.o(i.Relay_Init)
+    i.Relay_Off                              0x08002244   Section        0  relay.o(i.Relay_Off)
+    i.Relay_On                               0x08002254   Section        0  relay.o(i.Relay_On)
+    i.Relay_UpdateLoop                       0x08002264   Section        0  relay.o(i.Relay_UpdateLoop)
+    i.RtcGetCounter                          0x08002298   Section        0  rtc_st.o(i.RtcGetCounter)
+    i.RtcInit                                0x080022ac   Section        0  rtc_st.o(i.RtcInit)
+    i.RtcSetCounter                          0x0800238c   Section        0  rtc_st.o(i.RtcSetCounter)
+    i.SPI2_IRQHandler                        0x080023b8   Section        0  spi_st.o(i.SPI2_IRQHandler)
+    i.SVC_Handler                            0x080023e4   Section        0  sys_st.o(i.SVC_Handler)
+    i.Scheduler                              0x080023e8   Section        0  scheduler.o(i.Scheduler)
+    i.Scheduler_Init                         0x08002448   Section        0  scheduler.o(i.Scheduler_Init)
+    i.Scheduler_SetTask                      0x0800247c   Section        0  scheduler.o(i.Scheduler_SetTask)
+    i.Scheduler_SetTimerTask                 0x080024b0   Section        0  scheduler.o(i.Scheduler_SetTimerTask)
+    i.Scheduler_TimerService                 0x08002510   Section        0  scheduler.o(i.Scheduler_TimerService)
+    i.SirenBoard                             0x0800257c   Section        0  sb_sirenboard.o(i.SirenBoard)
+    i.SirenBoard_BuildingPackForRS485        0x08002584   Section        0  sb_sirenboard.o(i.SirenBoard_BuildingPackForRS485)
+    i.SirenBoard_ClrData                     0x080025b0   Section        0  sb_sirenboard.o(i.SirenBoard_ClrData)
+    i.SirenBoard_Init                        0x080025c0   Section        0  sb_sirenboard.o(i.SirenBoard_Init)
+    i.SirenBoard_SaveData                    0x080025f0   Section        0  sb_sirenboard.o(i.SirenBoard_SaveData)
+    i.SirenBoard_Set                         0x08002608   Section        0  sb_sirenboard.o(i.SirenBoard_Set)
+    i.SpeakerLine                            0x08002690   Section        0  linecheck.o(i.SpeakerLine)
+    i.SpeakerLine_CalcLcStatus               0x080026a4   Section        0  linecheck.o(i.SpeakerLine_CalcLcStatus)
+    SpeakerLine_CalcLcStatus                 0x080026a5   Thumb Code   194  linecheck.o(i.SpeakerLine_CalcLcStatus)
+    i.SpeakerLine_FSM                        0x0800276c   Section        0  linecheck.o(i.SpeakerLine_FSM)
+    SpeakerLine_FSM                          0x0800276d   Thumb Code    50  linecheck.o(i.SpeakerLine_FSM)
+    i.SpeakerLine_FSMLoop                    0x080027a0   Section        0  linecheck.o(i.SpeakerLine_FSMLoop)
+    i.SpeakerLine_GetAvrMeas                 0x080027c4   Section        0  linecheck.o(i.SpeakerLine_GetAvrMeas)
+    SpeakerLine_GetAvrMeas                   0x080027c5   Thumb Code    62  linecheck.o(i.SpeakerLine_GetAvrMeas)
+    i.SpeakerLine_GetDefStatus               0x08002810   Section        0  linecheck.o(i.SpeakerLine_GetDefStatus)
+    i.SpeakerLine_GetSteadyStateLoop         0x08002858   Section        0  linecheck.o(i.SpeakerLine_GetSteadyStateLoop)
+    SpeakerLine_GetSteadyStateLoop           0x08002859   Thumb Code   202  linecheck.o(i.SpeakerLine_GetSteadyStateLoop)
+    i.SpeakerLine_Init                       0x08002930   Section        0  linecheck.o(i.SpeakerLine_Init)
+    i.SpeakerLine_Led                        0x08002960   Section        0  linecheck.o(i.SpeakerLine_Led)
+    SpeakerLine_Led                          0x08002961   Thumb Code   190  linecheck.o(i.SpeakerLine_Led)
+    i.SpeakerLine_MeasLoop                   0x08002a28   Section        0  linecheck.o(i.SpeakerLine_MeasLoop)
+    i.SpeakerLine_OptoReley                  0x08002acc   Section        0  linecheck.o(i.SpeakerLine_OptoReley)
+    SpeakerLine_OptoReley                    0x08002acd   Thumb Code   108  linecheck.o(i.SpeakerLine_OptoReley)
+    i.SpeakerLine_Param                      0x08002b40   Section        0  linecheck.o(i.SpeakerLine_Param)
+    i.SpeakerLine_SaveRef                    0x08002b48   Section        0  linecheck.o(i.SpeakerLine_SaveRef)
+    i.SpeakerRelays                          0x08002b72   Section        0  linecheck.o(i.SpeakerRelays)
+    SpeakerRelays                            0x08002b73   Thumb Code    72  linecheck.o(i.SpeakerRelays)
+    i.Spi2_Init                              0x08002bbc   Section        0  spi_st.o(i.Spi2_Init)
+    i.Spi2_TxRxByte                          0x08002c78   Section        0  spi_st.o(i.Spi2_TxRxByte)
+    i.Stm32Flash_ErasePage                   0x08002ce8   Section        0  sys_st.o(i.Stm32Flash_ErasePage)
+    i.Stm32Flash_Lock                        0x08002d44   Section        0  sys_st.o(i.Stm32Flash_Lock)
+    i.Stm32Flash_Unlock                      0x08002d58   Section        0  sys_st.o(i.Stm32Flash_Unlock)
+    i.Stm32Flash_WriteWord                   0x08002d70   Section        0  sys_st.o(i.Stm32Flash_WriteWord)
+    i.SwTimers_Init                          0x08002dd8   Section        0  swtimers.o(i.SwTimers_Init)
+    i.SwTimers_Loop                          0x08002e04   Section        0  swtimers.o(i.SwTimers_Loop)
+    i.SysTick_Handler                        0x08002e44   Section        0  main.o(i.SysTick_Handler)
+    i.SysTick_Init                           0x08002ec8   Section        0  sys_tick_st.o(i.SysTick_Init)
+    i.Sys_Init                               0x08002edc   Section        0  sys_st.o(i.Sys_Init)
+    i.TIM1_Control                           0x08002f30   Section        0  timers_st.o(i.TIM1_Control)
+    i.TIM1_Init                              0x08002f54   Section        0  timers_st.o(i.TIM1_Init)
+    i.Task_ConfigModeUnit                    0x08002fec   Section        0  main.o(i.Task_ConfigModeUnit)
+    i.Task_ControlModeUnit                   0x08003036   Section        0  main.o(i.Task_ControlModeUnit)
+    i.Task_Executors                         0x080032bc   Section        0  main.o(i.Task_Executors)
+    i.Task_GetKeyState                       0x08003350   Section        0  main.o(i.Task_GetKeyState)
+    i.Task_ParsingCmdFP                      0x080033ac   Section        0  main.o(i.Task_ParsingCmdFP)
+    i.Task_ParsingCmdSB                      0x0800353c   Section        0  main.o(i.Task_ParsingCmdSB)
+    i.Task_PojLineControlModeUnit            0x0800355a   Section        0  main.o(i.Task_PojLineControlModeUnit)
+    i.Task_PollingRS485                      0x080036e8   Section        0  main.o(i.Task_PollingRS485)
+    i.TimeUTC_Get                            0x08003754   Section        0  time.o(i.TimeUTC_Get)
+    i.TimeUTC_Set                            0x0800375c   Section        0  time.o(i.TimeUTC_Set)
+    i.Time_Init                              0x08003768   Section        0  time.o(i.Time_Init)
+    i.USART1_IRQHandler                      0x08003770   Section        0  uart_st.o(i.USART1_IRQHandler)
+    i.USART3_IRQHandler                      0x080037f0   Section        0  uart_st.o(i.USART3_IRQHandler)
+    i.Uart1_Init                             0x08003864   Section        0  uart_st.o(i.Uart1_Init)
+    i.Uart3_Handler                          0x080038e4   Section        0  uart_st.o(i.Uart3_Handler)
+    i.Uart3_Init                             0x080038ec   Section        0  uart_st.o(i.Uart3_Init)
+    i.UsageFault_Handler                     0x0800397c   Section        0  sys_st.o(i.UsageFault_Handler)
+    i.Usart1_ClrErrFlag                      0x08003980   Section        0  uart_st.o(i.Usart1_ClrErrFlag)
+    Usart1_ClrErrFlag                        0x08003981   Thumb Code    12  uart_st.o(i.Usart1_ClrErrFlag)
+    i.Usart3_ClrErrFlag                      0x08003990   Section        0  uart_st.o(i.Usart3_ClrErrFlag)
+    Usart3_ClrErrFlag                        0x08003991   Thumb Code    12  uart_st.o(i.Usart3_ClrErrFlag)
+    i.VoiceMessage_Cmd                       0x080039a0   Section        0  jq6500.o(i.VoiceMessage_Cmd)
+    i.VoiceMessage_Init                      0x080039ac   Section        0  jq6500.o(i.VoiceMessage_Init)
+    i.VoiceMessage_UpdateLoop                0x080039b8   Section        0  jq6500.o(i.VoiceMessage_UpdateLoop)
+    i.WriteOneEventToEep                     0x08003a00   Section        0  logging.o(i.WriteOneEventToEep)
+    WriteOneEventToEep                       0x08003a01   Thumb Code    68  logging.o(i.WriteOneEventToEep)
+    i.WriteWorkRegToEep                      0x08003a48   Section        0  logging.o(i.WriteWorkRegToEep)
+    WriteWorkRegToEep                        0x08003a49   Thumb Code    14  logging.o(i.WriteWorkRegToEep)
+    i.Zummer_Beep                            0x08003a5c   Section        0  zummer.o(i.Zummer_Beep)
+    i.Zummer_Control                         0x08003a88   Section        0  zummer.o(i.Zummer_Control)
+    i.Zummer_Init                            0x08003a9e   Section        0  zummer.o(i.Zummer_Init)
+    i.Zummer_Loop                            0x08003aa8   Section        0  zummer.o(i.Zummer_Loop)
+    i.main                                   0x08003b48   Section        0  main.o(i.main)
+    .constdata                               0x08003c2c   Section       41  jq6500.o(.constdata)
     .data                                    0x20000000   Section      512  crc16.o(.data)
     .data                                    0x20000200   Section       26  gpio_st.o(.data)
     GpioAState                               0x20000200   Data           2  gpio_st.o(.data)
@@ -1242,148 +1236,148 @@ Image Symbol Table
     ButtonForManual_Update                   0x080005ed   Thumb Code    50  buttons.o(i.ButtonForManual_Update)
     ButtonForMic                             0x08000629   Thumb Code     4  buttons.o(i.ButtonForMic)
     ButtonForMic_Update                      0x08000631   Thumb Code    50  buttons.o(i.ButtonForMic_Update)
-    Button_ClrToggle                         0x0800066d   Thumb Code    12  buttons.o(i.Button_ClrToggle)
-    Button_IsToggle                          0x0800067d   Thumb Code    10  buttons.o(i.Button_IsToggle)
-    Button_Update                            0x0800068d   Thumb Code    54  buttons.o(i.Button_Update)
-    Charger_Activate                         0x080006cd   Thumb Code    10  powerandcharge.o(i.Charger_Activate)
-    Charger_Deactivate                       0x080006dd   Thumb Code     8  powerandcharge.o(i.Charger_Deactivate)
-    Config                                   0x080006e9   Thumb Code     4  config.o(i.Config)
-    Config_Init                              0x080006f1   Thumb Code   192  config.o(i.Config_Init)
-    Config_Save                              0x080007d1   Thumb Code    18  config.o(i.Config_Save)
-    Config_SaveLoop                          0x080007e9   Thumb Code    74  config.o(i.Config_SaveLoop)
-    DMA1Ch2InitForTX                         0x08000841   Thumb Code    60  dma_st.o(i.DMA1Ch2InitForTX)
-    DMA1Ch2StartTX                           0x08000885   Thumb Code    28  dma_st.o(i.DMA1Ch2StartTX)
-    DMA1_Channel2_IRQHandler                 0x080008a5   Thumb Code    46  dma_st.o(i.DMA1_Channel2_IRQHandler)
-    DMA1_Channel5_IRQHandler                 0x080008dd   Thumb Code    42  dma_st.o(i.DMA1_Channel5_IRQHandler)
-    EepM95128_Info                           0x0800090d   Thumb Code     4  eepm95128.o(i.EepM95128_Info)
-    EepM95128_Init                           0x08000915   Thumb Code    50  eepm95128.o(i.EepM95128_Init)
-    EepM95128_ReadBuffer                     0x08000951   Thumb Code    72  eepm95128.o(i.EepM95128_ReadBuffer)
-    EepM95128_WriteBuffer                    0x08000a09   Thumb Code   422  eepm95128.o(i.EepM95128_WriteBuffer)
-    EepM95128_WritePage                      0x08000bf1   Thumb Code    94  eepm95128.o(i.EepM95128_WritePage)
-    FacePanel                                0x08000c55   Thumb Code     4  fp_facepanel.o(i.FacePanel)
-    FacePanelSaveData                        0x08000c5d   Thumb Code    54  fp_facepanel.o(i.FacePanelSaveData)
-    Faults                                   0x08000c99   Thumb Code     4  faults.o(i.Faults)
-    Faults_Loop                              0x08000ca1   Thumb Code   290  faults.o(i.Faults_Loop)
-    FireLine                                 0x08000dcd   Thumb Code    14  pojline.o(i.FireLine)
-    FireLine_FSMLoop                         0x08000e19   Thumb Code    40  pojline.o(i.FireLine_FSMLoop)
-    FireLine_GetContext                      0x08000f3d   Thumb Code    66  pojline.o(i.FireLine_GetContext)
-    FireLine_Init                            0x08000f85   Thumb Code    68  pojline.o(i.FireLine_Init)
-    FireLine_MeasLoop                        0x0800108d   Thumb Code   126  pojline.o(i.FireLine_MeasLoop)
-    FsmMessages_Init                         0x0800111d   Thumb Code    24  fsmmessage.o(i.FsmMessages_Init)
-    Get_Crc16                                0x08001139   Thumb Code    56  crc16.o(i.Get_Crc16)
-    GlobSwTimer_Get                          0x08001175   Thumb Code    10  swtimers.o(i.GlobSwTimer_Get)
-    GlobSwTimer_Start                        0x08001185   Thumb Code    22  swtimers.o(i.GlobSwTimer_Start)
-    GlobSwTimer_Stop                         0x080011a5   Thumb Code     8  swtimers.o(i.GlobSwTimer_Stop)
-    Gpio_CheckLoop                           0x080011b1   Thumb Code   204  gpio_st.o(i.Gpio_CheckLoop)
-    Gpio_GetState                            0x080012a9   Thumb Code    28  gpio_st.o(i.Gpio_GetState)
-    Gpio_Init                                0x080012d1   Thumb Code   222  gpio_st.o(i.Gpio_Init)
-    HardFault_Handler                        0x080013d1   Thumb Code    14  sys_st.o(i.HardFault_Handler)
-    IdleTask                                 0x080013e9   Thumb Code     2  scheduler.o(i.IdleTask)
-    LedRs485Act                              0x080015c9   Thumb Code    30  relay.o(i.LedRs485Act)
-    Log_Counts                               0x080015ed   Thumb Code     4  logging.o(i.Log_Counts)
-    Log_GetEvent                             0x080015f5   Thumb Code   102  logging.o(i.Log_GetEvent)
-    Log_Init                                 0x08001665   Thumb Code    12  logging.o(i.Log_Init)
-    Log_Loop                                 0x08001671   Thumb Code   436  logging.o(i.Log_Loop)
-    Log_ResetCountUnreadEvents               0x08001825   Thumb Code    14  logging.o(i.Log_ResetCountUnreadEvents)
-    Log_SaveEvent                            0x08001839   Thumb Code   108  logging.o(i.Log_SaveEvent)
-    MemManage_Handler                        0x080018ad   Thumb Code     8  sys_st.o(i.MemManage_Handler)
-    MotherBoard_BuildingPackForRS485         0x080018b9   Thumb Code   488  mb_motherboard.o(i.MotherBoard_BuildingPackForRS485)
-    MotherBoard_WorkReg                      0x08001aa5   Thumb Code     4  mb_motherboard.o(i.MotherBoard_WorkReg)
-    NMI_Handler                              0x08001aad   Thumb Code     2  sys_st.o(i.NMI_Handler)
-    PAmp_Control                             0x08001b05   Thumb Code    60  amplifier.o(i.PAmp_Control)
-    PAmp_GetStat                             0x08001b49   Thumb Code     6  amplifier.o(i.PAmp_GetStat)
-    PAmp_Init                                0x08001b55   Thumb Code    36  amplifier.o(i.PAmp_Init)
-    Power                                    0x08001b91   Thumb Code     4  powerandcharge.o(i.Power)
-    PowerAndCharge_Init                      0x08001b99   Thumb Code    36  powerandcharge.o(i.PowerAndCharge_Init)
-    PowerAndCharge_Loop                      0x08001bc5   Thumb Code   246  powerandcharge.o(i.PowerAndCharge_Loop)
-    PriorityGet                              0x08001cd1   Thumb Code    86  main.o(i.PriorityGet)
-    RS485_FP_BuildAndTxEventPack             0x08001d29   Thumb Code    48  rs485.o(i.RS485_FP_BuildAndTxEventPack)
-    RS485_FP_BuildAndTxFireLineContextPack   0x08001d5d   Thumb Code    48  rs485.o(i.RS485_FP_BuildAndTxFireLineContextPack)
-    RS485_Flags                              0x08001d91   Thumb Code     4  rs485.o(i.RS485_Flags)
-    RS485_Init                               0x08001d99   Thumb Code    74  rs485.o(i.RS485_Init)
-    RS485_MB_BuildAndTxPack                  0x08001dfd   Thumb Code    44  rs485.o(i.RS485_MB_BuildAndTxPack)
-    RS485_MB_MasterLoop                      0x08001e2d   Thumb Code   100  rs485.o(i.RS485_MB_MasterLoop)
-    RS485_RxBuf                              0x08001ebd   Thumb Code     4  rs485.o(i.RS485_RxBuf)
-    RS485_SB_BuildAndTxPack                  0x08002045   Thumb Code    44  rs485.o(i.RS485_SB_BuildAndTxPack)
-    RS485_SB_ErrorConnect                    0x08002075   Thumb Code     8  rs485.o(i.RS485_SB_ErrorConnect)
-    RS485_StartBufTx                         0x0800207d   Thumb Code    50  rs485.o(i.RS485_StartBufTx)
-    RTC_IRQHandler                           0x08002185   Thumb Code    68  rtc_st.o(i.RTC_IRQHandler)
-    Relay_Init                               0x08002205   Thumb Code    70  relay.o(i.Relay_Init)
-    Relay_Off                                0x08002255   Thumb Code    12  relay.o(i.Relay_Off)
-    Relay_On                                 0x08002265   Thumb Code    12  relay.o(i.Relay_On)
-    Relay_UpdateLoop                         0x08002275   Thumb Code    42  relay.o(i.Relay_UpdateLoop)
-    RtcGetCounter                            0x080022a9   Thumb Code    16  rtc_st.o(i.RtcGetCounter)
-    RtcInit                                  0x080022bd   Thumb Code   210  rtc_st.o(i.RtcInit)
-    RtcSetCounter                            0x0800239d   Thumb Code    38  rtc_st.o(i.RtcSetCounter)
-    SPI2_IRQHandler                          0x080023c9   Thumb Code    38  spi_st.o(i.SPI2_IRQHandler)
-    SVC_Handler                              0x080023f5   Thumb Code     2  sys_st.o(i.SVC_Handler)
-    Scheduler                                0x080023f9   Thumb Code    86  scheduler.o(i.Scheduler)
-    Scheduler_Init                           0x08002459   Thumb Code    38  scheduler.o(i.Scheduler_Init)
-    Scheduler_SetTask                        0x0800248d   Thumb Code    44  scheduler.o(i.Scheduler_SetTask)
-    Scheduler_SetTimerTask                   0x080024c1   Thumb Code    86  scheduler.o(i.Scheduler_SetTimerTask)
-    Scheduler_TimerService                   0x08002521   Thumb Code    94  scheduler.o(i.Scheduler_TimerService)
-    SirenBoard                               0x0800258d   Thumb Code     4  sb_sirenboard.o(i.SirenBoard)
-    SirenBoard_BuildingPackForRS485          0x08002595   Thumb Code    40  sb_sirenboard.o(i.SirenBoard_BuildingPackForRS485)
-    SirenBoard_ClrData                       0x080025c1   Thumb Code    10  sb_sirenboard.o(i.SirenBoard_ClrData)
-    SirenBoard_Init                          0x080025d1   Thumb Code    44  sb_sirenboard.o(i.SirenBoard_Init)
-    SirenBoard_SaveData                      0x08002601   Thumb Code    20  sb_sirenboard.o(i.SirenBoard_SaveData)
-    SirenBoard_Set                           0x08002619   Thumb Code   132  sb_sirenboard.o(i.SirenBoard_Set)
-    SpeakerLine                              0x080026a1   Thumb Code    14  linecheck.o(i.SpeakerLine)
-    SpeakerLine_FSMLoop                      0x080027b1   Thumb Code    32  linecheck.o(i.SpeakerLine_FSMLoop)
-    SpeakerLine_GetDefStatus                 0x08002821   Thumb Code    62  linecheck.o(i.SpeakerLine_GetDefStatus)
-    SpeakerLine_Init                         0x08002941   Thumb Code    36  linecheck.o(i.SpeakerLine_Init)
-    SpeakerLine_MeasLoop                     0x08002a39   Thumb Code   148  linecheck.o(i.SpeakerLine_MeasLoop)
-    SpeakerLine_Param                        0x08002b51   Thumb Code     4  linecheck.o(i.SpeakerLine_Param)
-    SpeakerLine_SaveRef                      0x08002b59   Thumb Code    42  linecheck.o(i.SpeakerLine_SaveRef)
-    Spi2_Init                                0x08002bcd   Thumb Code   166  spi_st.o(i.Spi2_Init)
-    Spi2_TxRxByte                            0x08002c89   Thumb Code   102  spi_st.o(i.Spi2_TxRxByte)
-    Stm32Flash_ErasePage                     0x08002cf9   Thumb Code    86  sys_st.o(i.Stm32Flash_ErasePage)
-    Stm32Flash_Lock                          0x08002d55   Thumb Code    14  sys_st.o(i.Stm32Flash_Lock)
-    Stm32Flash_Unlock                        0x08002d69   Thumb Code    12  sys_st.o(i.Stm32Flash_Unlock)
-    Stm32Flash_WriteWord                     0x08002d81   Thumb Code   100  sys_st.o(i.Stm32Flash_WriteWord)
-    SwTimers_Init                            0x08002de9   Thumb Code    32  swtimers.o(i.SwTimers_Init)
-    SwTimers_Loop                            0x08002e15   Thumb Code    50  swtimers.o(i.SwTimers_Loop)
-    SysTick_Handler                          0x08002e55   Thumb Code   126  main.o(i.SysTick_Handler)
-    SysTick_Init                             0x08002ed9   Thumb Code    16  sys_tick_st.o(i.SysTick_Init)
-    Sys_Init                                 0x08002eed   Thumb Code    70  sys_st.o(i.Sys_Init)
-    TIM1_Control                             0x08002f41   Thumb Code    32  timers_st.o(i.TIM1_Control)
-    Task_ConfigModeUnit                      0x08002f65   Thumb Code    74  main.o(i.Task_ConfigModeUnit)
-    Task_ControlModeUnit                     0x08002faf   Thumb Code   646  main.o(i.Task_ControlModeUnit)
-    Task_Executors                           0x08003235   Thumb Code   180  main.o(i.Task_Executors)
-    Task_GetKeyState                         0x080032e9   Thumb Code    80  main.o(i.Task_GetKeyState)
-    Task_ParsingCmdFP                        0x08003345   Thumb Code   420  main.o(i.Task_ParsingCmdFP)
-    Task_ParsingCmdSB                        0x080034e9   Thumb Code    30  main.o(i.Task_ParsingCmdSB)
-    Task_PojLineControlModeUnit              0x08003507   Thumb Code   398  main.o(i.Task_PojLineControlModeUnit)
-    Task_PollingRS485                        0x08003695   Thumb Code    98  main.o(i.Task_PollingRS485)
-    TimeUTC_Get                              0x08003701   Thumb Code     8  time.o(i.TimeUTC_Get)
-    TimeUTC_Set                              0x08003709   Thumb Code    12  time.o(i.TimeUTC_Set)
-    Time_Init                                0x08003715   Thumb Code     8  time.o(i.Time_Init)
-    USART1_IRQHandler                        0x0800371d   Thumb Code   118  uart_st.o(i.USART1_IRQHandler)
-    USART3_IRQHandler                        0x0800379d   Thumb Code   106  uart_st.o(i.USART3_IRQHandler)
-    Uart1_Init                               0x08003811   Thumb Code   116  uart_st.o(i.Uart1_Init)
-    Uart3_Handler                            0x08003891   Thumb Code     4  uart_st.o(i.Uart3_Handler)
-    Uart3_Init                               0x08003899   Thumb Code   130  uart_st.o(i.Uart3_Init)
-    UsageFault_Handler                       0x08003929   Thumb Code     2  sys_st.o(i.UsageFault_Handler)
-    VoiceMessage_Cmd                         0x0800394d   Thumb Code     6  jq6500.o(i.VoiceMessage_Cmd)
-    VoiceMessage_Init                        0x08003959   Thumb Code    12  jq6500.o(i.VoiceMessage_Init)
-    VoiceMessage_UpdateLoop                  0x08003965   Thumb Code    68  jq6500.o(i.VoiceMessage_UpdateLoop)
-    Zummer_Beep                              0x08003a09   Thumb Code    30  zummer.o(i.Zummer_Beep)
-    Zummer_Control                           0x08003a35   Thumb Code    22  zummer.o(i.Zummer_Control)
-    Zummer_Fault                             0x08003a4d   Thumb Code    72  zummer.o(i.Zummer_Fault)
-    Zummer_Loop                              0x08003a99   Thumb Code   138  zummer.o(i.Zummer_Loop)
-    main                                     0x08003b39   Thumb Code   212  main.o(i.main)
-    JqCmdChipResetArray                      0x08003c18   Data           4  jq6500.o(.constdata)
-    JqCmdPlayArray                           0x08003c1c   Data           4  jq6500.o(.constdata)
-    JqCmdPauseArray                          0x08003c20   Data           4  jq6500.o(.constdata)
-    JqCmdSleepModeArray                      0x08003c24   Data           4  jq6500.o(.constdata)
-    JqCmdNextArray                           0x08003c28   Data           4  jq6500.o(.constdata)
-    JqCmdPreArray                            0x08003c2c   Data           4  jq6500.o(.constdata)
-    JqCmdVolMaxArray                         0x08003c30   Data           5  jq6500.o(.constdata)
-    JqCmdVolUpArray                          0x08003c35   Data           4  jq6500.o(.constdata)
-    JqCmdVolDownArray                        0x08003c39   Data           4  jq6500.o(.constdata)
-    JqCmdReservArray                         0x08003c3d   Data           4  jq6500.o(.constdata)
-    Region$$Table$$Base                      0x08003c44   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08003c64   Number         0  anon$$obj.o(Region$$Table)
+    Button_IsToggle                          0x0800066d   Thumb Code    10  buttons.o(i.Button_IsToggle)
+    Button_Update                            0x0800067d   Thumb Code    54  buttons.o(i.Button_Update)
+    Charger_Activate                         0x080006bd   Thumb Code    10  powerandcharge.o(i.Charger_Activate)
+    Charger_Deactivate                       0x080006cd   Thumb Code     8  powerandcharge.o(i.Charger_Deactivate)
+    Config                                   0x080006d9   Thumb Code     4  config.o(i.Config)
+    Config_Init                              0x080006e1   Thumb Code   192  config.o(i.Config_Init)
+    Config_Save                              0x080007c1   Thumb Code    18  config.o(i.Config_Save)
+    Config_SaveLoop                          0x080007d9   Thumb Code    74  config.o(i.Config_SaveLoop)
+    DMA1Ch2InitForTX                         0x08000831   Thumb Code    60  dma_st.o(i.DMA1Ch2InitForTX)
+    DMA1Ch2StartTX                           0x08000875   Thumb Code    28  dma_st.o(i.DMA1Ch2StartTX)
+    DMA1_Channel2_IRQHandler                 0x08000895   Thumb Code    46  dma_st.o(i.DMA1_Channel2_IRQHandler)
+    DMA1_Channel5_IRQHandler                 0x080008cd   Thumb Code    42  dma_st.o(i.DMA1_Channel5_IRQHandler)
+    EepM95128_Info                           0x080008fd   Thumb Code     4  eepm95128.o(i.EepM95128_Info)
+    EepM95128_Init                           0x08000905   Thumb Code    50  eepm95128.o(i.EepM95128_Init)
+    EepM95128_ReadBuffer                     0x08000941   Thumb Code    72  eepm95128.o(i.EepM95128_ReadBuffer)
+    EepM95128_WriteBuffer                    0x080009f9   Thumb Code   422  eepm95128.o(i.EepM95128_WriteBuffer)
+    EepM95128_WritePage                      0x08000be1   Thumb Code    94  eepm95128.o(i.EepM95128_WritePage)
+    FacePanel                                0x08000c45   Thumb Code     4  fp_facepanel.o(i.FacePanel)
+    FacePanelSaveData                        0x08000c4d   Thumb Code    54  fp_facepanel.o(i.FacePanelSaveData)
+    Faults                                   0x08000c89   Thumb Code     4  faults.o(i.Faults)
+    Faults_Loop                              0x08000c91   Thumb Code   290  faults.o(i.Faults_Loop)
+    FireLine                                 0x08000dbd   Thumb Code    14  pojline.o(i.FireLine)
+    FireLine_FSMLoop                         0x08000e09   Thumb Code    40  pojline.o(i.FireLine_FSMLoop)
+    FireLine_GetContext                      0x08000f2d   Thumb Code    66  pojline.o(i.FireLine_GetContext)
+    FireLine_Init                            0x08000f75   Thumb Code    68  pojline.o(i.FireLine_Init)
+    FireLine_MeasLoop                        0x0800107d   Thumb Code   126  pojline.o(i.FireLine_MeasLoop)
+    FsmMessages_Init                         0x0800110d   Thumb Code    24  fsmmessage.o(i.FsmMessages_Init)
+    Get_Crc16                                0x08001129   Thumb Code    56  crc16.o(i.Get_Crc16)
+    GlobSwTimer_Get                          0x08001165   Thumb Code    10  swtimers.o(i.GlobSwTimer_Get)
+    GlobSwTimer_Start                        0x08001175   Thumb Code    22  swtimers.o(i.GlobSwTimer_Start)
+    GlobSwTimer_Stop                         0x08001195   Thumb Code     8  swtimers.o(i.GlobSwTimer_Stop)
+    Gpio_CheckLoop                           0x080011a1   Thumb Code   204  gpio_st.o(i.Gpio_CheckLoop)
+    Gpio_GetState                            0x08001299   Thumb Code    28  gpio_st.o(i.Gpio_GetState)
+    Gpio_Init                                0x080012c1   Thumb Code   222  gpio_st.o(i.Gpio_Init)
+    HardFault_Handler                        0x080013c1   Thumb Code    14  sys_st.o(i.HardFault_Handler)
+    IdleTask                                 0x080013d9   Thumb Code     2  scheduler.o(i.IdleTask)
+    LedRs485Act                              0x080015b9   Thumb Code    30  relay.o(i.LedRs485Act)
+    Log_Counts                               0x080015dd   Thumb Code     4  logging.o(i.Log_Counts)
+    Log_GetEvent                             0x080015e5   Thumb Code   102  logging.o(i.Log_GetEvent)
+    Log_Init                                 0x08001655   Thumb Code    12  logging.o(i.Log_Init)
+    Log_Loop                                 0x08001661   Thumb Code   436  logging.o(i.Log_Loop)
+    Log_ResetCountUnreadEvents               0x08001815   Thumb Code    14  logging.o(i.Log_ResetCountUnreadEvents)
+    Log_SaveEvent                            0x08001829   Thumb Code   108  logging.o(i.Log_SaveEvent)
+    MemManage_Handler                        0x0800189d   Thumb Code     8  sys_st.o(i.MemManage_Handler)
+    MotherBoard_BuildingPackForRS485         0x080018a9   Thumb Code   488  mb_motherboard.o(i.MotherBoard_BuildingPackForRS485)
+    MotherBoard_WorkReg                      0x08001a95   Thumb Code     4  mb_motherboard.o(i.MotherBoard_WorkReg)
+    NMI_Handler                              0x08001a9d   Thumb Code     2  sys_st.o(i.NMI_Handler)
+    PAmp_Control                             0x08001af5   Thumb Code    60  amplifier.o(i.PAmp_Control)
+    PAmp_GetStat                             0x08001b39   Thumb Code     6  amplifier.o(i.PAmp_GetStat)
+    PAmp_Init                                0x08001b45   Thumb Code    36  amplifier.o(i.PAmp_Init)
+    Power                                    0x08001b81   Thumb Code     4  powerandcharge.o(i.Power)
+    PowerAndCharge_Init                      0x08001b89   Thumb Code    36  powerandcharge.o(i.PowerAndCharge_Init)
+    PowerAndCharge_Loop                      0x08001bb5   Thumb Code   246  powerandcharge.o(i.PowerAndCharge_Loop)
+    PriorityGet                              0x08001cc1   Thumb Code    86  main.o(i.PriorityGet)
+    RS485_FP_BuildAndTxEventPack             0x08001d19   Thumb Code    48  rs485.o(i.RS485_FP_BuildAndTxEventPack)
+    RS485_FP_BuildAndTxFireLineContextPack   0x08001d4d   Thumb Code    48  rs485.o(i.RS485_FP_BuildAndTxFireLineContextPack)
+    RS485_Flags                              0x08001d81   Thumb Code     4  rs485.o(i.RS485_Flags)
+    RS485_Init                               0x08001d89   Thumb Code    74  rs485.o(i.RS485_Init)
+    RS485_MB_BuildAndTxPack                  0x08001ded   Thumb Code    44  rs485.o(i.RS485_MB_BuildAndTxPack)
+    RS485_MB_MasterLoop                      0x08001e1d   Thumb Code   100  rs485.o(i.RS485_MB_MasterLoop)
+    RS485_RxBuf                              0x08001ead   Thumb Code     4  rs485.o(i.RS485_RxBuf)
+    RS485_SB_BuildAndTxPack                  0x08002035   Thumb Code    44  rs485.o(i.RS485_SB_BuildAndTxPack)
+    RS485_SB_ErrorConnect                    0x08002065   Thumb Code     8  rs485.o(i.RS485_SB_ErrorConnect)
+    RS485_StartBufTx                         0x0800206d   Thumb Code    50  rs485.o(i.RS485_StartBufTx)
+    RTC_IRQHandler                           0x08002175   Thumb Code    68  rtc_st.o(i.RTC_IRQHandler)
+    Relay_Init                               0x080021f5   Thumb Code    70  relay.o(i.Relay_Init)
+    Relay_Off                                0x08002245   Thumb Code    12  relay.o(i.Relay_Off)
+    Relay_On                                 0x08002255   Thumb Code    12  relay.o(i.Relay_On)
+    Relay_UpdateLoop                         0x08002265   Thumb Code    42  relay.o(i.Relay_UpdateLoop)
+    RtcGetCounter                            0x08002299   Thumb Code    16  rtc_st.o(i.RtcGetCounter)
+    RtcInit                                  0x080022ad   Thumb Code   210  rtc_st.o(i.RtcInit)
+    RtcSetCounter                            0x0800238d   Thumb Code    38  rtc_st.o(i.RtcSetCounter)
+    SPI2_IRQHandler                          0x080023b9   Thumb Code    38  spi_st.o(i.SPI2_IRQHandler)
+    SVC_Handler                              0x080023e5   Thumb Code     2  sys_st.o(i.SVC_Handler)
+    Scheduler                                0x080023e9   Thumb Code    86  scheduler.o(i.Scheduler)
+    Scheduler_Init                           0x08002449   Thumb Code    38  scheduler.o(i.Scheduler_Init)
+    Scheduler_SetTask                        0x0800247d   Thumb Code    44  scheduler.o(i.Scheduler_SetTask)
+    Scheduler_SetTimerTask                   0x080024b1   Thumb Code    86  scheduler.o(i.Scheduler_SetTimerTask)
+    Scheduler_TimerService                   0x08002511   Thumb Code    94  scheduler.o(i.Scheduler_TimerService)
+    SirenBoard                               0x0800257d   Thumb Code     4  sb_sirenboard.o(i.SirenBoard)
+    SirenBoard_BuildingPackForRS485          0x08002585   Thumb Code    40  sb_sirenboard.o(i.SirenBoard_BuildingPackForRS485)
+    SirenBoard_ClrData                       0x080025b1   Thumb Code    10  sb_sirenboard.o(i.SirenBoard_ClrData)
+    SirenBoard_Init                          0x080025c1   Thumb Code    44  sb_sirenboard.o(i.SirenBoard_Init)
+    SirenBoard_SaveData                      0x080025f1   Thumb Code    20  sb_sirenboard.o(i.SirenBoard_SaveData)
+    SirenBoard_Set                           0x08002609   Thumb Code   132  sb_sirenboard.o(i.SirenBoard_Set)
+    SpeakerLine                              0x08002691   Thumb Code    14  linecheck.o(i.SpeakerLine)
+    SpeakerLine_FSMLoop                      0x080027a1   Thumb Code    32  linecheck.o(i.SpeakerLine_FSMLoop)
+    SpeakerLine_GetDefStatus                 0x08002811   Thumb Code    62  linecheck.o(i.SpeakerLine_GetDefStatus)
+    SpeakerLine_Init                         0x08002931   Thumb Code    36  linecheck.o(i.SpeakerLine_Init)
+    SpeakerLine_MeasLoop                     0x08002a29   Thumb Code   148  linecheck.o(i.SpeakerLine_MeasLoop)
+    SpeakerLine_Param                        0x08002b41   Thumb Code     4  linecheck.o(i.SpeakerLine_Param)
+    SpeakerLine_SaveRef                      0x08002b49   Thumb Code    42  linecheck.o(i.SpeakerLine_SaveRef)
+    Spi2_Init                                0x08002bbd   Thumb Code   166  spi_st.o(i.Spi2_Init)
+    Spi2_TxRxByte                            0x08002c79   Thumb Code   102  spi_st.o(i.Spi2_TxRxByte)
+    Stm32Flash_ErasePage                     0x08002ce9   Thumb Code    86  sys_st.o(i.Stm32Flash_ErasePage)
+    Stm32Flash_Lock                          0x08002d45   Thumb Code    14  sys_st.o(i.Stm32Flash_Lock)
+    Stm32Flash_Unlock                        0x08002d59   Thumb Code    12  sys_st.o(i.Stm32Flash_Unlock)
+    Stm32Flash_WriteWord                     0x08002d71   Thumb Code   100  sys_st.o(i.Stm32Flash_WriteWord)
+    SwTimers_Init                            0x08002dd9   Thumb Code    32  swtimers.o(i.SwTimers_Init)
+    SwTimers_Loop                            0x08002e05   Thumb Code    50  swtimers.o(i.SwTimers_Loop)
+    SysTick_Handler                          0x08002e45   Thumb Code   126  main.o(i.SysTick_Handler)
+    SysTick_Init                             0x08002ec9   Thumb Code    16  sys_tick_st.o(i.SysTick_Init)
+    Sys_Init                                 0x08002edd   Thumb Code    70  sys_st.o(i.Sys_Init)
+    TIM1_Control                             0x08002f31   Thumb Code    32  timers_st.o(i.TIM1_Control)
+    TIM1_Init                                0x08002f55   Thumb Code   138  timers_st.o(i.TIM1_Init)
+    Task_ConfigModeUnit                      0x08002fed   Thumb Code    74  main.o(i.Task_ConfigModeUnit)
+    Task_ControlModeUnit                     0x08003037   Thumb Code   646  main.o(i.Task_ControlModeUnit)
+    Task_Executors                           0x080032bd   Thumb Code   148  main.o(i.Task_Executors)
+    Task_GetKeyState                         0x08003351   Thumb Code    80  main.o(i.Task_GetKeyState)
+    Task_ParsingCmdFP                        0x080033ad   Thumb Code   400  main.o(i.Task_ParsingCmdFP)
+    Task_ParsingCmdSB                        0x0800353d   Thumb Code    30  main.o(i.Task_ParsingCmdSB)
+    Task_PojLineControlModeUnit              0x0800355b   Thumb Code   398  main.o(i.Task_PojLineControlModeUnit)
+    Task_PollingRS485                        0x080036e9   Thumb Code    98  main.o(i.Task_PollingRS485)
+    TimeUTC_Get                              0x08003755   Thumb Code     8  time.o(i.TimeUTC_Get)
+    TimeUTC_Set                              0x0800375d   Thumb Code    12  time.o(i.TimeUTC_Set)
+    Time_Init                                0x08003769   Thumb Code     8  time.o(i.Time_Init)
+    USART1_IRQHandler                        0x08003771   Thumb Code   118  uart_st.o(i.USART1_IRQHandler)
+    USART3_IRQHandler                        0x080037f1   Thumb Code   106  uart_st.o(i.USART3_IRQHandler)
+    Uart1_Init                               0x08003865   Thumb Code   116  uart_st.o(i.Uart1_Init)
+    Uart3_Handler                            0x080038e5   Thumb Code     4  uart_st.o(i.Uart3_Handler)
+    Uart3_Init                               0x080038ed   Thumb Code   130  uart_st.o(i.Uart3_Init)
+    UsageFault_Handler                       0x0800397d   Thumb Code     2  sys_st.o(i.UsageFault_Handler)
+    VoiceMessage_Cmd                         0x080039a1   Thumb Code     6  jq6500.o(i.VoiceMessage_Cmd)
+    VoiceMessage_Init                        0x080039ad   Thumb Code    12  jq6500.o(i.VoiceMessage_Init)
+    VoiceMessage_UpdateLoop                  0x080039b9   Thumb Code    68  jq6500.o(i.VoiceMessage_UpdateLoop)
+    Zummer_Beep                              0x08003a5d   Thumb Code    30  zummer.o(i.Zummer_Beep)
+    Zummer_Control                           0x08003a89   Thumb Code    22  zummer.o(i.Zummer_Control)
+    Zummer_Init                              0x08003a9f   Thumb Code     8  zummer.o(i.Zummer_Init)
+    Zummer_Loop                              0x08003aa9   Thumb Code   138  zummer.o(i.Zummer_Loop)
+    main                                     0x08003b49   Thumb Code   216  main.o(i.main)
+    JqCmdChipResetArray                      0x08003c2c   Data           4  jq6500.o(.constdata)
+    JqCmdPlayArray                           0x08003c30   Data           4  jq6500.o(.constdata)
+    JqCmdPauseArray                          0x08003c34   Data           4  jq6500.o(.constdata)
+    JqCmdSleepModeArray                      0x08003c38   Data           4  jq6500.o(.constdata)
+    JqCmdNextArray                           0x08003c3c   Data           4  jq6500.o(.constdata)
+    JqCmdPreArray                            0x08003c40   Data           4  jq6500.o(.constdata)
+    JqCmdVolMaxArray                         0x08003c44   Data           5  jq6500.o(.constdata)
+    JqCmdVolUpArray                          0x08003c49   Data           4  jq6500.o(.constdata)
+    JqCmdVolDownArray                        0x08003c4d   Data           4  jq6500.o(.constdata)
+    JqCmdReservArray                         0x08003c51   Data           4  jq6500.o(.constdata)
+    Region$$Table$$Base                      0x08003c58   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08003c78   Number         0  anon$$obj.o(Region$$Table)
     Crc16Table                               0x20000000   Data         512  crc16.o(.data)
     JqCmdLoopArray                           0x20000248   Data           5  jq6500.o(.data)
     JqCmdFolderSwArray                       0x2000024d   Data           5  jq6500.o(.data)
@@ -1401,70 +1395,70 @@ Memory Map of the image
 
   Image Entry point : 0x080000ed
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00003f24, Max: 0x00020000, ABSOLUTE, COMPRESSED[0x00003e74])
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00003f38, Max: 0x00020000, ABSOLUTE, COMPRESSED[0x00003e88])
 
-    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x00003c64, Max: 0x00020000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x00003c78, Max: 0x00020000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x08000000   0x000000ec   Data   RO           19    RESET               startup_stm32f10x_md.o
-    0x080000ec   0x00000008   Code   RO         1810  * !!!main             c_w.l(__main.o)
-    0x080000f4   0x00000034   Code   RO         1969    !!!scatter          c_w.l(__scatter.o)
-    0x08000128   0x0000003a   Code   RO         1967    !!dczerorl          c_w.l(__dczerorl.o)
+    0x080000ec   0x00000008   Code   RO         1804  * !!!main             c_w.l(__main.o)
+    0x080000f4   0x00000034   Code   RO         1963    !!!scatter          c_w.l(__scatter.o)
+    0x08000128   0x0000003a   Code   RO         1961    !!dczerorl          c_w.l(__dczerorl.o)
     0x08000162   0x00000002   PAD
-    0x08000164   0x0000001c   Code   RO         1971    !!handler_zi        c_w.l(__scatter_zi.o)
-    0x08000180   0x00000002   Code   RO         1837    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
-    0x08000182   0x00000000   Code   RO         1844    .ARM.Collect$$libinit$$00000002  c_w.l(libinit2.o)
-    0x08000182   0x00000000   Code   RO         1846    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
-    0x08000182   0x00000000   Code   RO         1849    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
-    0x08000182   0x00000000   Code   RO         1851    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
-    0x08000182   0x00000000   Code   RO         1853    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
-    0x08000182   0x00000000   Code   RO         1856    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
-    0x08000182   0x00000000   Code   RO         1858    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
-    0x08000182   0x00000000   Code   RO         1860    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
-    0x08000182   0x00000000   Code   RO         1862    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
-    0x08000182   0x00000000   Code   RO         1864    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
-    0x08000182   0x00000000   Code   RO         1866    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
-    0x08000182   0x00000000   Code   RO         1868    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
-    0x08000182   0x00000000   Code   RO         1870    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
-    0x08000182   0x00000000   Code   RO         1872    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
-    0x08000182   0x00000000   Code   RO         1874    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
-    0x08000182   0x00000000   Code   RO         1876    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
-    0x08000182   0x00000000   Code   RO         1880    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
-    0x08000182   0x00000000   Code   RO         1882    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
-    0x08000182   0x00000000   Code   RO         1884    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
-    0x08000182   0x00000000   Code   RO         1886    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
-    0x08000182   0x00000002   Code   RO         1887    .ARM.Collect$$libinit$$00000033  c_w.l(libinit2.o)
-    0x08000184   0x00000002   Code   RO         1907    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
-    0x08000186   0x00000000   Code   RO         1920    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
-    0x08000186   0x00000000   Code   RO         1922    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
-    0x08000186   0x00000000   Code   RO         1925    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
-    0x08000186   0x00000000   Code   RO         1928    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
-    0x08000186   0x00000000   Code   RO         1930    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
-    0x08000186   0x00000000   Code   RO         1933    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
-    0x08000186   0x00000002   Code   RO         1934    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
-    0x08000188   0x00000000   Code   RO         1812    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
-    0x08000188   0x00000000   Code   RO         1814    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
-    0x08000188   0x00000006   Code   RO         1826    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
-    0x0800018e   0x00000000   Code   RO         1816    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
-    0x0800018e   0x00000004   Code   RO         1817    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
-    0x08000192   0x00000000   Code   RO         1819    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
-    0x08000192   0x00000008   Code   RO         1820    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
-    0x0800019a   0x00000002   Code   RO         1841    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
-    0x0800019c   0x00000000   Code   RO         1889    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
-    0x0800019c   0x00000004   Code   RO         1890    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
-    0x080001a0   0x00000006   Code   RO         1891    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
+    0x08000164   0x0000001c   Code   RO         1965    !!handler_zi        c_w.l(__scatter_zi.o)
+    0x08000180   0x00000002   Code   RO         1831    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
+    0x08000182   0x00000000   Code   RO         1838    .ARM.Collect$$libinit$$00000002  c_w.l(libinit2.o)
+    0x08000182   0x00000000   Code   RO         1840    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
+    0x08000182   0x00000000   Code   RO         1843    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
+    0x08000182   0x00000000   Code   RO         1845    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
+    0x08000182   0x00000000   Code   RO         1847    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
+    0x08000182   0x00000000   Code   RO         1850    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
+    0x08000182   0x00000000   Code   RO         1852    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
+    0x08000182   0x00000000   Code   RO         1854    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
+    0x08000182   0x00000000   Code   RO         1856    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
+    0x08000182   0x00000000   Code   RO         1858    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
+    0x08000182   0x00000000   Code   RO         1860    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
+    0x08000182   0x00000000   Code   RO         1862    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
+    0x08000182   0x00000000   Code   RO         1864    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
+    0x08000182   0x00000000   Code   RO         1866    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
+    0x08000182   0x00000000   Code   RO         1868    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
+    0x08000182   0x00000000   Code   RO         1870    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
+    0x08000182   0x00000000   Code   RO         1874    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
+    0x08000182   0x00000000   Code   RO         1876    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
+    0x08000182   0x00000000   Code   RO         1878    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
+    0x08000182   0x00000000   Code   RO         1880    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
+    0x08000182   0x00000002   Code   RO         1881    .ARM.Collect$$libinit$$00000033  c_w.l(libinit2.o)
+    0x08000184   0x00000002   Code   RO         1901    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
+    0x08000186   0x00000000   Code   RO         1914    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
+    0x08000186   0x00000000   Code   RO         1916    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
+    0x08000186   0x00000000   Code   RO         1919    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
+    0x08000186   0x00000000   Code   RO         1922    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
+    0x08000186   0x00000000   Code   RO         1924    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
+    0x08000186   0x00000000   Code   RO         1927    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
+    0x08000186   0x00000002   Code   RO         1928    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
+    0x08000188   0x00000000   Code   RO         1806    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
+    0x08000188   0x00000000   Code   RO         1808    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
+    0x08000188   0x00000006   Code   RO         1820    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
+    0x0800018e   0x00000000   Code   RO         1810    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
+    0x0800018e   0x00000004   Code   RO         1811    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
+    0x08000192   0x00000000   Code   RO         1813    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
+    0x08000192   0x00000008   Code   RO         1814    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
+    0x0800019a   0x00000002   Code   RO         1835    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
+    0x0800019c   0x00000000   Code   RO         1883    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
+    0x0800019c   0x00000004   Code   RO         1884    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
+    0x080001a0   0x00000006   Code   RO         1885    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
     0x080001a6   0x00000002   PAD
     0x080001a8   0x00000038   Code   RO           20    .text               startup_stm32f10x_md.o
-    0x080001e0   0x00000048   Code   RO         1806    .text               c_w.l(strcpy.o)
-    0x08000228   0x00000006   Code   RO         1808    .text               c_w.l(heapauxi.o)
-    0x0800022e   0x0000004a   Code   RO         1828    .text               c_w.l(sys_stackheap_outer.o)
-    0x08000278   0x00000012   Code   RO         1830    .text               c_w.l(exit.o)
+    0x080001e0   0x00000048   Code   RO         1800    .text               c_w.l(strcpy.o)
+    0x08000228   0x00000006   Code   RO         1802    .text               c_w.l(heapauxi.o)
+    0x0800022e   0x0000004a   Code   RO         1822    .text               c_w.l(sys_stackheap_outer.o)
+    0x08000278   0x00000012   Code   RO         1824    .text               c_w.l(exit.o)
     0x0800028a   0x00000002   PAD
-    0x0800028c   0x00000008   Code   RO         1838    .text               c_w.l(libspace.o)
-    0x08000294   0x0000000c   Code   RO         1899    .text               c_w.l(sys_exit.o)
-    0x080002a0   0x00000002   Code   RO         1910    .text               c_w.l(use_no_semi.o)
-    0x080002a2   0x00000000   Code   RO         1912    .text               c_w.l(indicate_semi.o)
+    0x0800028c   0x00000008   Code   RO         1832    .text               c_w.l(libspace.o)
+    0x08000294   0x0000000c   Code   RO         1893    .text               c_w.l(sys_exit.o)
+    0x080002a0   0x00000002   Code   RO         1904    .text               c_w.l(use_no_semi.o)
+    0x080002a2   0x00000000   Code   RO         1906    .text               c_w.l(indicate_semi.o)
     0x080002a2   0x00000002   PAD
     0x080002a4   0x00000048   Code   RO           24    i.Adc_GetMeas       adc_st.o
     0x080002ec   0x000000a4   Code   RO           25    i.Adc_Init          adc_st.o
@@ -1480,184 +1474,184 @@ Memory Map of the image
     0x080005ec   0x0000003c   Code   RO          574    i.ButtonForManual_Update  buttons.o
     0x08000628   0x00000008   Code   RO          575    i.ButtonForMic      buttons.o
     0x08000630   0x0000003c   Code   RO          576    i.ButtonForMic_Update  buttons.o
-    0x0800066c   0x00000010   Code   RO          577    i.Button_ClrToggle  buttons.o
-    0x0800067c   0x00000010   Code   RO          581    i.Button_IsToggle   buttons.o
-    0x0800068c   0x00000040   Code   RO          584    i.Button_Update     buttons.o
-    0x080006cc   0x00000010   Code   RO         1133    i.Charger_Activate  powerandcharge.o
-    0x080006dc   0x0000000c   Code   RO         1134    i.Charger_Deactivate  powerandcharge.o
-    0x080006e8   0x00000008   Code   RO          676    i.Config            config.o
-    0x080006f0   0x000000e0   Code   RO          677    i.Config_Init       config.o
-    0x080007d0   0x00000018   Code   RO          678    i.Config_Save       config.o
-    0x080007e8   0x00000058   Code   RO          679    i.Config_SaveLoop   config.o
-    0x08000840   0x00000044   Code   RO           74    i.DMA1Ch2InitForTX  dma_st.o
-    0x08000884   0x00000020   Code   RO           75    i.DMA1Ch2StartTX    dma_st.o
-    0x080008a4   0x00000038   Code   RO           77    i.DMA1_Channel2_IRQHandler  dma_st.o
-    0x080008dc   0x00000030   Code   RO           78    i.DMA1_Channel5_IRQHandler  dma_st.o
-    0x0800090c   0x00000008   Code   RO          780    i.EepM95128_Info    eepm95128.o
-    0x08000914   0x0000003c   Code   RO          781    i.EepM95128_Init    eepm95128.o
-    0x08000950   0x0000004c   Code   RO          782    i.EepM95128_ReadBuffer  eepm95128.o
-    0x0800099c   0x00000018   Code   RO          783    i.EepM95128_SendInstruction  eepm95128.o
-    0x080009b4   0x00000054   Code   RO          784    i.EepM95128_WaitStandbyState  eepm95128.o
-    0x08000a08   0x000001a6   Code   RO          785    i.EepM95128_WriteBuffer  eepm95128.o
-    0x08000bae   0x00000002   PAD
-    0x08000bb0   0x00000020   Code   RO          786    i.EepM95128_WriteDisable  eepm95128.o
-    0x08000bd0   0x00000020   Code   RO          787    i.EepM95128_WriteEnable  eepm95128.o
-    0x08000bf0   0x00000064   Code   RO          788    i.EepM95128_WritePage  eepm95128.o
-    0x08000c54   0x00000008   Code   RO         1711    i.FacePanel         fp_facepanel.o
-    0x08000c5c   0x0000003c   Code   RO         1712    i.FacePanelSaveData  fp_facepanel.o
-    0x08000c98   0x00000008   Code   RO          841    i.Faults            faults.o
-    0x08000ca0   0x0000012c   Code   RO          842    i.Faults_Loop       faults.o
-    0x08000dcc   0x00000014   Code   RO         1069    i.FireLine          pojline.o
-    0x08000de0   0x00000036   Code   RO         1070    i.FireLine_Cal_u0421_u0403Status  pojline.o
-    0x08000e16   0x00000002   PAD
-    0x08000e18   0x0000002c   Code   RO         1071    i.FireLine_FSMLoop  pojline.o
-    0x08000e44   0x000000f8   Code   RO         1072    i.FireLine_FaultFSM  pojline.o
-    0x08000f3c   0x00000048   Code   RO         1073    i.FireLine_GetContext  pojline.o
-    0x08000f84   0x00000048   Code   RO         1075    i.FireLine_Init     pojline.o
-    0x08000fcc   0x000000c0   Code   RO         1076    i.FireLine_LogicFSM  pojline.o
-    0x0800108c   0x00000090   Code   RO         1077    i.FireLine_MeasLoop  pojline.o
-    0x0800111c   0x0000001c   Code   RO         1499    i.FsmMessages_Init  fsmmessage.o
-    0x08001138   0x0000003c   Code   RO           56    i.Get_Crc16         crc16.o
-    0x08001174   0x00000010   Code   RO         1544    i.GlobSwTimer_Get   swtimers.o
-    0x08001184   0x00000020   Code   RO         1546    i.GlobSwTimer_Start  swtimers.o
-    0x080011a4   0x0000000c   Code   RO         1547    i.GlobSwTimer_Stop  swtimers.o
-    0x080011b0   0x000000f8   Code   RO          128    i.Gpio_CheckLoop    gpio_st.o
-    0x080012a8   0x00000028   Code   RO          129    i.Gpio_GetState     gpio_st.o
-    0x080012d0   0x00000100   Code   RO          130    i.Gpio_Init         gpio_st.o
-    0x080013d0   0x00000018   Code   RO          283    i.HardFault_Handler  sys_st.o
-    0x080013e8   0x00000002   Code   RO         1432    i.IdleTask          scheduler.o
-    0x080013ea   0x00000002   PAD
-    0x080013ec   0x000000cc   Code   RO          284    i.Init_RCC          sys_st.o
-    0x080014b8   0x0000002c   Code   RO          874    i.JQ6500_Reset      jq6500.o
-    0x080014e4   0x000000e4   Code   RO          875    i.JQ6500_TxCmd      jq6500.o
-    0x080015c8   0x00000024   Code   RO         1178    i.LedRs485Act       relay.o
-    0x080015ec   0x00000008   Code   RO         1001    i.Log_Counts        logging.o
-    0x080015f4   0x00000070   Code   RO         1002    i.Log_GetEvent      logging.o
-    0x08001664   0x0000000c   Code   RO         1003    i.Log_Init          logging.o
-    0x08001670   0x000001b4   Code   RO         1004    i.Log_Loop          logging.o
-    0x08001824   0x00000014   Code   RO         1005    i.Log_ResetCountUnreadEvents  logging.o
-    0x08001838   0x00000074   Code   RO         1006    i.Log_SaveEvent     logging.o
-    0x080018ac   0x0000000c   Code   RO          285    i.MemManage_Handler  sys_st.o
-    0x080018b8   0x000001ec   Code   RO         1734    i.MotherBoard_BuildingPackForRS485  mb_motherboard.o
-    0x08001aa4   0x00000008   Code   RO         1735    i.MotherBoard_WorkReg  mb_motherboard.o
-    0x08001aac   0x00000002   Code   RO          286    i.NMI_Handler       sys_st.o
-    0x08001aae   0x00000016   Code   RO           79    i.NVIC_EnableIRQ    dma_st.o
-    0x08001ac4   0x00000016   Code   RO          410    i.NVIC_EnableIRQ    uart_st.o
-    0x08001ada   0x00000002   PAD
-    0x08001adc   0x00000028   Code   RO          411    i.NVIC_SetPriority  uart_st.o
-    0x08001b04   0x00000044   Code   RO          482    i.PAmp_Control      amplifier.o
-    0x08001b48   0x0000000c   Code   RO          483    i.PAmp_GetStat      amplifier.o
-    0x08001b54   0x0000002c   Code   RO          484    i.PAmp_Init         amplifier.o
-    0x08001b80   0x00000010   Code   RO         1179    i.Pause             relay.o
-    0x08001b90   0x00000008   Code   RO         1135    i.Power             powerandcharge.o
-    0x08001b98   0x0000002c   Code   RO         1136    i.PowerAndCharge_Init  powerandcharge.o
-    0x08001bc4   0x0000010c   Code   RO         1137    i.PowerAndCharge_Loop  powerandcharge.o
-    0x08001cd0   0x00000056   Code   RO         1609    i.PriorityGet       main.o
-    0x08001d26   0x00000002   PAD
-    0x08001d28   0x00000034   Code   RO         1228    i.RS485_FP_BuildAndTxEventPack  rs485.o
-    0x08001d5c   0x00000034   Code   RO         1229    i.RS485_FP_BuildAndTxFireLineContextPack  rs485.o
-    0x08001d90   0x00000008   Code   RO         1230    i.RS485_Flags       rs485.o
-    0x08001d98   0x00000064   Code   RO         1231    i.RS485_Init        rs485.o
-    0x08001dfc   0x00000030   Code   RO         1232    i.RS485_MB_BuildAndTxPack  rs485.o
-    0x08001e2c   0x0000006c   Code   RO         1233    i.RS485_MB_MasterLoop  rs485.o
-    0x08001e98   0x00000022   Code   RO         1234    i.RS485_PackCrcCalc  rs485.o
-    0x08001eba   0x00000002   PAD
-    0x08001ebc   0x00000008   Code   RO         1235    i.RS485_RxBuf       rs485.o
-    0x08001ec4   0x00000014   Code   RO         1236    i.RS485_RxBufClrHead  rs485.o
-    0x08001ed8   0x0000016c   Code   RO         1237    i.RS485_RxPacket    rs485.o
-    0x08002044   0x00000030   Code   RO         1238    i.RS485_SB_BuildAndTxPack  rs485.o
-    0x08002074   0x00000008   Code   RO         1239    i.RS485_SB_ErrorConnect  rs485.o
-    0x0800207c   0x0000003c   Code   RO         1240    i.RS485_StartBufTx  rs485.o
-    0x080020b8   0x000000a4   Code   RO         1241    i.RS485_TimeOutInc  rs485.o
-    0x0800215c   0x00000008   Code   RO         1242    i.RS485_TxBuf       rs485.o
-    0x08002164   0x00000020   Code   RO         1243    i.RS485_TxBufComplete  rs485.o
-    0x08002184   0x00000048   Code   RO          214    i.RTC_IRQHandler    rtc_st.o
-    0x080021cc   0x00000022   Code   RO         1007    i.ReadOneEventFromEep  logging.o
-    0x080021ee   0x00000002   PAD
-    0x080021f0   0x00000014   Code   RO         1008    i.ReadWorkRegFromEep  logging.o
-    0x08002204   0x00000050   Code   RO         1181    i.Relay_Init        relay.o
-    0x08002254   0x00000010   Code   RO         1182    i.Relay_Off         relay.o
-    0x08002264   0x00000010   Code   RO         1183    i.Relay_On          relay.o
-    0x08002274   0x00000034   Code   RO         1184    i.Relay_UpdateLoop  relay.o
-    0x080022a8   0x00000014   Code   RO          215    i.RtcGetCounter     rtc_st.o
-    0x080022bc   0x000000e0   Code   RO          216    i.RtcInit           rtc_st.o
-    0x0800239c   0x0000002c   Code   RO          217    i.RtcSetCounter     rtc_st.o
-    0x080023c8   0x0000002c   Code   RO          247    i.SPI2_IRQHandler   spi_st.o
-    0x080023f4   0x00000002   Code   RO          287    i.SVC_Handler       sys_st.o
-    0x080023f6   0x00000002   PAD
-    0x080023f8   0x00000060   Code   RO         1433    i.Scheduler         scheduler.o
-    0x08002458   0x00000034   Code   RO         1435    i.Scheduler_Init    scheduler.o
-    0x0800248c   0x00000034   Code   RO         1436    i.Scheduler_SetTask  scheduler.o
-    0x080024c0   0x00000060   Code   RO         1437    i.Scheduler_SetTimerTask  scheduler.o
-    0x08002520   0x0000006c   Code   RO         1439    i.Scheduler_TimerService  scheduler.o
-    0x0800258c   0x00000008   Code   RO         1757    i.SirenBoard        sb_sirenboard.o
-    0x08002594   0x0000002c   Code   RO         1758    i.SirenBoard_BuildingPackForRS485  sb_sirenboard.o
-    0x080025c0   0x00000010   Code   RO         1759    i.SirenBoard_ClrData  sb_sirenboard.o
-    0x080025d0   0x00000030   Code   RO         1760    i.SirenBoard_Init   sb_sirenboard.o
-    0x08002600   0x00000018   Code   RO         1761    i.SirenBoard_SaveData  sb_sirenboard.o
-    0x08002618   0x00000088   Code   RO         1762    i.SirenBoard_Set    sb_sirenboard.o
-    0x080026a0   0x00000014   Code   RO          915    i.SpeakerLine       linecheck.o
-    0x080026b4   0x000000c8   Code   RO          916    i.SpeakerLine_CalcLcStatus  linecheck.o
-    0x0800277c   0x00000032   Code   RO          917    i.SpeakerLine_FSM   linecheck.o
-    0x080027ae   0x00000002   PAD
-    0x080027b0   0x00000024   Code   RO          918    i.SpeakerLine_FSMLoop  linecheck.o
-    0x080027d4   0x0000004c   Code   RO          919    i.SpeakerLine_GetAvrMeas  linecheck.o
-    0x08002820   0x00000048   Code   RO          920    i.SpeakerLine_GetDefStatus  linecheck.o
-    0x08002868   0x000000d8   Code   RO          921    i.SpeakerLine_GetSteadyStateLoop  linecheck.o
-    0x08002940   0x00000030   Code   RO          922    i.SpeakerLine_Init  linecheck.o
-    0x08002970   0x000000c8   Code   RO          923    i.SpeakerLine_Led   linecheck.o
-    0x08002a38   0x000000a4   Code   RO          924    i.SpeakerLine_MeasLoop  linecheck.o
-    0x08002adc   0x00000074   Code   RO          925    i.SpeakerLine_OptoReley  linecheck.o
-    0x08002b50   0x00000008   Code   RO          926    i.SpeakerLine_Param  linecheck.o
-    0x08002b58   0x0000002a   Code   RO          927    i.SpeakerLine_SaveRef  linecheck.o
-    0x08002b82   0x00000048   Code   RO          928    i.SpeakerRelays     linecheck.o
-    0x08002bca   0x00000002   PAD
-    0x08002bcc   0x000000bc   Code   RO          249    i.Spi2_Init         spi_st.o
-    0x08002c88   0x00000070   Code   RO          250    i.Spi2_TxRxByte     spi_st.o
-    0x08002cf8   0x0000005c   Code   RO          288    i.Stm32Flash_ErasePage  sys_st.o
-    0x08002d54   0x00000014   Code   RO          289    i.Stm32Flash_Lock   sys_st.o
-    0x08002d68   0x00000018   Code   RO          291    i.Stm32Flash_Unlock  sys_st.o
-    0x08002d80   0x00000068   Code   RO          292    i.Stm32Flash_WriteWord  sys_st.o
-    0x08002de8   0x0000002c   Code   RO         1550    i.SwTimers_Init     swtimers.o
-    0x08002e14   0x00000040   Code   RO         1551    i.SwTimers_Loop     swtimers.o
-    0x08002e54   0x00000084   Code   RO         1610    i.SysTick_Handler   main.o
-    0x08002ed8   0x00000014   Code   RO          368    i.SysTick_Init      sys_tick_st.o
-    0x08002eec   0x00000054   Code   RO          293    i.Sys_Init          sys_st.o
-    0x08002f40   0x00000024   Code   RO          383    i.TIM1_Control      timers_st.o
-    0x08002f64   0x0000004a   Code   RO         1611    i.Task_ConfigModeUnit  main.o
-    0x08002fae   0x00000286   Code   RO         1612    i.Task_ControlModeUnit  main.o
-    0x08003234   0x000000b4   Code   RO         1613    i.Task_Executors    main.o
-    0x080032e8   0x0000005c   Code   RO         1614    i.Task_GetKeyState  main.o
-    0x08003344   0x000001a4   Code   RO         1616    i.Task_ParsingCmdFP  main.o
-    0x080034e8   0x0000001e   Code   RO         1617    i.Task_ParsingCmdSB  main.o
-    0x08003506   0x0000018e   Code   RO         1618    i.Task_PojLineControlModeUnit  main.o
-    0x08003694   0x0000006c   Code   RO         1619    i.Task_PollingRS485  main.o
-    0x08003700   0x00000008   Code   RO         1336    i.TimeUTC_Get       time.o
-    0x08003708   0x0000000c   Code   RO         1337    i.TimeUTC_Set       time.o
-    0x08003714   0x00000008   Code   RO         1339    i.Time_Init         time.o
-    0x0800371c   0x00000080   Code   RO          412    i.USART1_IRQHandler  uart_st.o
-    0x0800379c   0x00000074   Code   RO          413    i.USART3_IRQHandler  uart_st.o
-    0x08003810   0x00000080   Code   RO          414    i.Uart1_Init        uart_st.o
-    0x08003890   0x00000008   Code   RO          416    i.Uart3_Handler     uart_st.o
-    0x08003898   0x00000090   Code   RO          417    i.Uart3_Init        uart_st.o
-    0x08003928   0x00000002   Code   RO          294    i.UsageFault_Handler  sys_st.o
-    0x0800392a   0x00000002   PAD
-    0x0800392c   0x00000010   Code   RO          418    i.Usart1_ClrErrFlag  uart_st.o
-    0x0800393c   0x00000010   Code   RO          419    i.Usart3_ClrErrFlag  uart_st.o
-    0x0800394c   0x0000000c   Code   RO          876    i.VoiceMessage_Cmd  jq6500.o
-    0x08003958   0x0000000c   Code   RO          877    i.VoiceMessage_Init  jq6500.o
-    0x08003964   0x00000048   Code   RO          878    i.VoiceMessage_UpdateLoop  jq6500.o
-    0x080039ac   0x00000048   Code   RO         1009    i.WriteOneEventToEep  logging.o
-    0x080039f4   0x00000014   Code   RO         1010    i.WriteWorkRegToEep  logging.o
-    0x08003a08   0x0000002c   Code   RO         1382    i.Zummer_Beep       zummer.o
-    0x08003a34   0x00000016   Code   RO         1384    i.Zummer_Control    zummer.o
-    0x08003a4a   0x00000002   PAD
-    0x08003a4c   0x0000004c   Code   RO         1385    i.Zummer_Fault      zummer.o
-    0x08003a98   0x000000a0   Code   RO         1387    i.Zummer_Loop       zummer.o
-    0x08003b38   0x000000e0   Code   RO         1620    i.main              main.o
-    0x08003c18   0x00000029   Data   RO          879    .constdata          jq6500.o
-    0x08003c41   0x00000003   PAD
-    0x08003c44   0x00000020   Data   RO         1965    Region$$Table       anon$$obj.o
+    0x0800066c   0x00000010   Code   RO          581    i.Button_IsToggle   buttons.o
+    0x0800067c   0x00000040   Code   RO          584    i.Button_Update     buttons.o
+    0x080006bc   0x00000010   Code   RO         1133    i.Charger_Activate  powerandcharge.o
+    0x080006cc   0x0000000c   Code   RO         1134    i.Charger_Deactivate  powerandcharge.o
+    0x080006d8   0x00000008   Code   RO          676    i.Config            config.o
+    0x080006e0   0x000000e0   Code   RO          677    i.Config_Init       config.o
+    0x080007c0   0x00000018   Code   RO          678    i.Config_Save       config.o
+    0x080007d8   0x00000058   Code   RO          679    i.Config_SaveLoop   config.o
+    0x08000830   0x00000044   Code   RO           74    i.DMA1Ch2InitForTX  dma_st.o
+    0x08000874   0x00000020   Code   RO           75    i.DMA1Ch2StartTX    dma_st.o
+    0x08000894   0x00000038   Code   RO           77    i.DMA1_Channel2_IRQHandler  dma_st.o
+    0x080008cc   0x00000030   Code   RO           78    i.DMA1_Channel5_IRQHandler  dma_st.o
+    0x080008fc   0x00000008   Code   RO          780    i.EepM95128_Info    eepm95128.o
+    0x08000904   0x0000003c   Code   RO          781    i.EepM95128_Init    eepm95128.o
+    0x08000940   0x0000004c   Code   RO          782    i.EepM95128_ReadBuffer  eepm95128.o
+    0x0800098c   0x00000018   Code   RO          783    i.EepM95128_SendInstruction  eepm95128.o
+    0x080009a4   0x00000054   Code   RO          784    i.EepM95128_WaitStandbyState  eepm95128.o
+    0x080009f8   0x000001a6   Code   RO          785    i.EepM95128_WriteBuffer  eepm95128.o
+    0x08000b9e   0x00000002   PAD
+    0x08000ba0   0x00000020   Code   RO          786    i.EepM95128_WriteDisable  eepm95128.o
+    0x08000bc0   0x00000020   Code   RO          787    i.EepM95128_WriteEnable  eepm95128.o
+    0x08000be0   0x00000064   Code   RO          788    i.EepM95128_WritePage  eepm95128.o
+    0x08000c44   0x00000008   Code   RO         1705    i.FacePanel         fp_facepanel.o
+    0x08000c4c   0x0000003c   Code   RO         1706    i.FacePanelSaveData  fp_facepanel.o
+    0x08000c88   0x00000008   Code   RO          841    i.Faults            faults.o
+    0x08000c90   0x0000012c   Code   RO          842    i.Faults_Loop       faults.o
+    0x08000dbc   0x00000014   Code   RO         1069    i.FireLine          pojline.o
+    0x08000dd0   0x00000036   Code   RO         1070    i.FireLine_Cal_u0421_u0403Status  pojline.o
+    0x08000e06   0x00000002   PAD
+    0x08000e08   0x0000002c   Code   RO         1071    i.FireLine_FSMLoop  pojline.o
+    0x08000e34   0x000000f8   Code   RO         1072    i.FireLine_FaultFSM  pojline.o
+    0x08000f2c   0x00000048   Code   RO         1073    i.FireLine_GetContext  pojline.o
+    0x08000f74   0x00000048   Code   RO         1075    i.FireLine_Init     pojline.o
+    0x08000fbc   0x000000c0   Code   RO         1076    i.FireLine_LogicFSM  pojline.o
+    0x0800107c   0x00000090   Code   RO         1077    i.FireLine_MeasLoop  pojline.o
+    0x0800110c   0x0000001c   Code   RO         1493    i.FsmMessages_Init  fsmmessage.o
+    0x08001128   0x0000003c   Code   RO           56    i.Get_Crc16         crc16.o
+    0x08001164   0x00000010   Code   RO         1538    i.GlobSwTimer_Get   swtimers.o
+    0x08001174   0x00000020   Code   RO         1540    i.GlobSwTimer_Start  swtimers.o
+    0x08001194   0x0000000c   Code   RO         1541    i.GlobSwTimer_Stop  swtimers.o
+    0x080011a0   0x000000f8   Code   RO          128    i.Gpio_CheckLoop    gpio_st.o
+    0x08001298   0x00000028   Code   RO          129    i.Gpio_GetState     gpio_st.o
+    0x080012c0   0x00000100   Code   RO          130    i.Gpio_Init         gpio_st.o
+    0x080013c0   0x00000018   Code   RO          283    i.HardFault_Handler  sys_st.o
+    0x080013d8   0x00000002   Code   RO         1426    i.IdleTask          scheduler.o
+    0x080013da   0x00000002   PAD
+    0x080013dc   0x000000cc   Code   RO          284    i.Init_RCC          sys_st.o
+    0x080014a8   0x0000002c   Code   RO          874    i.JQ6500_Reset      jq6500.o
+    0x080014d4   0x000000e4   Code   RO          875    i.JQ6500_TxCmd      jq6500.o
+    0x080015b8   0x00000024   Code   RO         1178    i.LedRs485Act       relay.o
+    0x080015dc   0x00000008   Code   RO         1001    i.Log_Counts        logging.o
+    0x080015e4   0x00000070   Code   RO         1002    i.Log_GetEvent      logging.o
+    0x08001654   0x0000000c   Code   RO         1003    i.Log_Init          logging.o
+    0x08001660   0x000001b4   Code   RO         1004    i.Log_Loop          logging.o
+    0x08001814   0x00000014   Code   RO         1005    i.Log_ResetCountUnreadEvents  logging.o
+    0x08001828   0x00000074   Code   RO         1006    i.Log_SaveEvent     logging.o
+    0x0800189c   0x0000000c   Code   RO          285    i.MemManage_Handler  sys_st.o
+    0x080018a8   0x000001ec   Code   RO         1728    i.MotherBoard_BuildingPackForRS485  mb_motherboard.o
+    0x08001a94   0x00000008   Code   RO         1729    i.MotherBoard_WorkReg  mb_motherboard.o
+    0x08001a9c   0x00000002   Code   RO          286    i.NMI_Handler       sys_st.o
+    0x08001a9e   0x00000016   Code   RO           79    i.NVIC_EnableIRQ    dma_st.o
+    0x08001ab4   0x00000016   Code   RO          410    i.NVIC_EnableIRQ    uart_st.o
+    0x08001aca   0x00000002   PAD
+    0x08001acc   0x00000028   Code   RO          411    i.NVIC_SetPriority  uart_st.o
+    0x08001af4   0x00000044   Code   RO          482    i.PAmp_Control      amplifier.o
+    0x08001b38   0x0000000c   Code   RO          483    i.PAmp_GetStat      amplifier.o
+    0x08001b44   0x0000002c   Code   RO          484    i.PAmp_Init         amplifier.o
+    0x08001b70   0x00000010   Code   RO         1179    i.Pause             relay.o
+    0x08001b80   0x00000008   Code   RO         1135    i.Power             powerandcharge.o
+    0x08001b88   0x0000002c   Code   RO         1136    i.PowerAndCharge_Init  powerandcharge.o
+    0x08001bb4   0x0000010c   Code   RO         1137    i.PowerAndCharge_Loop  powerandcharge.o
+    0x08001cc0   0x00000056   Code   RO         1603    i.PriorityGet       main.o
+    0x08001d16   0x00000002   PAD
+    0x08001d18   0x00000034   Code   RO         1227    i.RS485_FP_BuildAndTxEventPack  rs485.o
+    0x08001d4c   0x00000034   Code   RO         1228    i.RS485_FP_BuildAndTxFireLineContextPack  rs485.o
+    0x08001d80   0x00000008   Code   RO         1229    i.RS485_Flags       rs485.o
+    0x08001d88   0x00000064   Code   RO         1230    i.RS485_Init        rs485.o
+    0x08001dec   0x00000030   Code   RO         1231    i.RS485_MB_BuildAndTxPack  rs485.o
+    0x08001e1c   0x0000006c   Code   RO         1232    i.RS485_MB_MasterLoop  rs485.o
+    0x08001e88   0x00000022   Code   RO         1233    i.RS485_PackCrcCalc  rs485.o
+    0x08001eaa   0x00000002   PAD
+    0x08001eac   0x00000008   Code   RO         1234    i.RS485_RxBuf       rs485.o
+    0x08001eb4   0x00000014   Code   RO         1235    i.RS485_RxBufClrHead  rs485.o
+    0x08001ec8   0x0000016c   Code   RO         1236    i.RS485_RxPacket    rs485.o
+    0x08002034   0x00000030   Code   RO         1237    i.RS485_SB_BuildAndTxPack  rs485.o
+    0x08002064   0x00000008   Code   RO         1238    i.RS485_SB_ErrorConnect  rs485.o
+    0x0800206c   0x0000003c   Code   RO         1239    i.RS485_StartBufTx  rs485.o
+    0x080020a8   0x000000a4   Code   RO         1240    i.RS485_TimeOutInc  rs485.o
+    0x0800214c   0x00000008   Code   RO         1241    i.RS485_TxBuf       rs485.o
+    0x08002154   0x00000020   Code   RO         1242    i.RS485_TxBufComplete  rs485.o
+    0x08002174   0x00000048   Code   RO          214    i.RTC_IRQHandler    rtc_st.o
+    0x080021bc   0x00000022   Code   RO         1007    i.ReadOneEventFromEep  logging.o
+    0x080021de   0x00000002   PAD
+    0x080021e0   0x00000014   Code   RO         1008    i.ReadWorkRegFromEep  logging.o
+    0x080021f4   0x00000050   Code   RO         1181    i.Relay_Init        relay.o
+    0x08002244   0x00000010   Code   RO         1182    i.Relay_Off         relay.o
+    0x08002254   0x00000010   Code   RO         1183    i.Relay_On          relay.o
+    0x08002264   0x00000034   Code   RO         1184    i.Relay_UpdateLoop  relay.o
+    0x08002298   0x00000014   Code   RO          215    i.RtcGetCounter     rtc_st.o
+    0x080022ac   0x000000e0   Code   RO          216    i.RtcInit           rtc_st.o
+    0x0800238c   0x0000002c   Code   RO          217    i.RtcSetCounter     rtc_st.o
+    0x080023b8   0x0000002c   Code   RO          247    i.SPI2_IRQHandler   spi_st.o
+    0x080023e4   0x00000002   Code   RO          287    i.SVC_Handler       sys_st.o
+    0x080023e6   0x00000002   PAD
+    0x080023e8   0x00000060   Code   RO         1427    i.Scheduler         scheduler.o
+    0x08002448   0x00000034   Code   RO         1429    i.Scheduler_Init    scheduler.o
+    0x0800247c   0x00000034   Code   RO         1430    i.Scheduler_SetTask  scheduler.o
+    0x080024b0   0x00000060   Code   RO         1431    i.Scheduler_SetTimerTask  scheduler.o
+    0x08002510   0x0000006c   Code   RO         1433    i.Scheduler_TimerService  scheduler.o
+    0x0800257c   0x00000008   Code   RO         1751    i.SirenBoard        sb_sirenboard.o
+    0x08002584   0x0000002c   Code   RO         1752    i.SirenBoard_BuildingPackForRS485  sb_sirenboard.o
+    0x080025b0   0x00000010   Code   RO         1753    i.SirenBoard_ClrData  sb_sirenboard.o
+    0x080025c0   0x00000030   Code   RO         1754    i.SirenBoard_Init   sb_sirenboard.o
+    0x080025f0   0x00000018   Code   RO         1755    i.SirenBoard_SaveData  sb_sirenboard.o
+    0x08002608   0x00000088   Code   RO         1756    i.SirenBoard_Set    sb_sirenboard.o
+    0x08002690   0x00000014   Code   RO          915    i.SpeakerLine       linecheck.o
+    0x080026a4   0x000000c8   Code   RO          916    i.SpeakerLine_CalcLcStatus  linecheck.o
+    0x0800276c   0x00000032   Code   RO          917    i.SpeakerLine_FSM   linecheck.o
+    0x0800279e   0x00000002   PAD
+    0x080027a0   0x00000024   Code   RO          918    i.SpeakerLine_FSMLoop  linecheck.o
+    0x080027c4   0x0000004c   Code   RO          919    i.SpeakerLine_GetAvrMeas  linecheck.o
+    0x08002810   0x00000048   Code   RO          920    i.SpeakerLine_GetDefStatus  linecheck.o
+    0x08002858   0x000000d8   Code   RO          921    i.SpeakerLine_GetSteadyStateLoop  linecheck.o
+    0x08002930   0x00000030   Code   RO          922    i.SpeakerLine_Init  linecheck.o
+    0x08002960   0x000000c8   Code   RO          923    i.SpeakerLine_Led   linecheck.o
+    0x08002a28   0x000000a4   Code   RO          924    i.SpeakerLine_MeasLoop  linecheck.o
+    0x08002acc   0x00000074   Code   RO          925    i.SpeakerLine_OptoReley  linecheck.o
+    0x08002b40   0x00000008   Code   RO          926    i.SpeakerLine_Param  linecheck.o
+    0x08002b48   0x0000002a   Code   RO          927    i.SpeakerLine_SaveRef  linecheck.o
+    0x08002b72   0x00000048   Code   RO          928    i.SpeakerRelays     linecheck.o
+    0x08002bba   0x00000002   PAD
+    0x08002bbc   0x000000bc   Code   RO          249    i.Spi2_Init         spi_st.o
+    0x08002c78   0x00000070   Code   RO          250    i.Spi2_TxRxByte     spi_st.o
+    0x08002ce8   0x0000005c   Code   RO          288    i.Stm32Flash_ErasePage  sys_st.o
+    0x08002d44   0x00000014   Code   RO          289    i.Stm32Flash_Lock   sys_st.o
+    0x08002d58   0x00000018   Code   RO          291    i.Stm32Flash_Unlock  sys_st.o
+    0x08002d70   0x00000068   Code   RO          292    i.Stm32Flash_WriteWord  sys_st.o
+    0x08002dd8   0x0000002c   Code   RO         1544    i.SwTimers_Init     swtimers.o
+    0x08002e04   0x00000040   Code   RO         1545    i.SwTimers_Loop     swtimers.o
+    0x08002e44   0x00000084   Code   RO         1604    i.SysTick_Handler   main.o
+    0x08002ec8   0x00000014   Code   RO          368    i.SysTick_Init      sys_tick_st.o
+    0x08002edc   0x00000054   Code   RO          293    i.Sys_Init          sys_st.o
+    0x08002f30   0x00000024   Code   RO          383    i.TIM1_Control      timers_st.o
+    0x08002f54   0x00000098   Code   RO          385    i.TIM1_Init         timers_st.o
+    0x08002fec   0x0000004a   Code   RO         1605    i.Task_ConfigModeUnit  main.o
+    0x08003036   0x00000286   Code   RO         1606    i.Task_ControlModeUnit  main.o
+    0x080032bc   0x00000094   Code   RO         1607    i.Task_Executors    main.o
+    0x08003350   0x0000005c   Code   RO         1608    i.Task_GetKeyState  main.o
+    0x080033ac   0x00000190   Code   RO         1610    i.Task_ParsingCmdFP  main.o
+    0x0800353c   0x0000001e   Code   RO         1611    i.Task_ParsingCmdSB  main.o
+    0x0800355a   0x0000018e   Code   RO         1612    i.Task_PojLineControlModeUnit  main.o
+    0x080036e8   0x0000006c   Code   RO         1613    i.Task_PollingRS485  main.o
+    0x08003754   0x00000008   Code   RO         1330    i.TimeUTC_Get       time.o
+    0x0800375c   0x0000000c   Code   RO         1331    i.TimeUTC_Set       time.o
+    0x08003768   0x00000008   Code   RO         1333    i.Time_Init         time.o
+    0x08003770   0x00000080   Code   RO          412    i.USART1_IRQHandler  uart_st.o
+    0x080037f0   0x00000074   Code   RO          413    i.USART3_IRQHandler  uart_st.o
+    0x08003864   0x00000080   Code   RO          414    i.Uart1_Init        uart_st.o
+    0x080038e4   0x00000008   Code   RO          416    i.Uart3_Handler     uart_st.o
+    0x080038ec   0x00000090   Code   RO          417    i.Uart3_Init        uart_st.o
+    0x0800397c   0x00000002   Code   RO          294    i.UsageFault_Handler  sys_st.o
+    0x0800397e   0x00000002   PAD
+    0x08003980   0x00000010   Code   RO          418    i.Usart1_ClrErrFlag  uart_st.o
+    0x08003990   0x00000010   Code   RO          419    i.Usart3_ClrErrFlag  uart_st.o
+    0x080039a0   0x0000000c   Code   RO          876    i.VoiceMessage_Cmd  jq6500.o
+    0x080039ac   0x0000000c   Code   RO          877    i.VoiceMessage_Init  jq6500.o
+    0x080039b8   0x00000048   Code   RO          878    i.VoiceMessage_UpdateLoop  jq6500.o
+    0x08003a00   0x00000048   Code   RO         1009    i.WriteOneEventToEep  logging.o
+    0x08003a48   0x00000014   Code   RO         1010    i.WriteWorkRegToEep  logging.o
+    0x08003a5c   0x0000002c   Code   RO         1376    i.Zummer_Beep       zummer.o
+    0x08003a88   0x00000016   Code   RO         1378    i.Zummer_Control    zummer.o
+    0x08003a9e   0x00000008   Code   RO         1380    i.Zummer_Init       zummer.o
+    0x08003aa6   0x00000002   PAD
+    0x08003aa8   0x000000a0   Code   RO         1381    i.Zummer_Loop       zummer.o
+    0x08003b48   0x000000e4   Code   RO         1614    i.main              main.o
+    0x08003c2c   0x00000029   Data   RO          879    .constdata          jq6500.o
+    0x08003c55   0x00000003   PAD
+    0x08003c58   0x00000020   Data   RO         1959    Region$$Table       anon$$obj.o
 
 
     Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00001000, Max: 0x00005000, ABSOLUTE, COMPRESSED[0x00000210])
@@ -1683,13 +1677,13 @@ Memory Map of the image
     0x20000277   0x00000001   PAD
     0x20000278   0x0000000e   Data   RW         1138    .data               powerandcharge.o
     0x20000286   0x00000002   Data   RW         1185    .data               relay.o
-    0x20000288   0x00000010   Data   RW         1245    .data               rs485.o
-    0x20000298   0x00000010   Data   RW         1388    .data               zummer.o
-    0x200002a8   0x00000004   Data   RW         1441    .data               scheduler.o
-    0x200002ac   0x00000008   Data   RW         1553    .data               swtimers.o
-    0x200002b4   0x00000002   Data   RW         1622    .data               main.o
-    0x200002b6   0x00000003   Data   RW         1736    .data               mb_motherboard.o
-    0x200002b9   0x00000005   Data   RW         1763    .data               sb_sirenboard.o
+    0x20000288   0x00000010   Data   RW         1244    .data               rs485.o
+    0x20000298   0x00000010   Data   RW         1382    .data               zummer.o
+    0x200002a8   0x00000004   Data   RW         1435    .data               scheduler.o
+    0x200002ac   0x00000008   Data   RW         1547    .data               swtimers.o
+    0x200002b4   0x00000002   Data   RW         1616    .data               main.o
+    0x200002b6   0x00000003   Data   RW         1730    .data               mb_motherboard.o
+    0x200002b9   0x00000005   Data   RW         1757    .data               sb_sirenboard.o
     0x200002be   0x00000002   PAD
     0x200002c0   0x0000000c   Zero   RW          420    .bss                uart_st.o
     0x200002cc   0x0000003c   Zero   RW          585    .bss                buttons.o
@@ -1699,14 +1693,14 @@ Memory Map of the image
     0x20000720   0x00000028   Zero   RW          929    .bss                linecheck.o
     0x20000748   0x00000014   Zero   RW         1011    .bss                logging.o
     0x2000075c   0x00000038   Zero   RW         1078    .bss                pojline.o
-    0x20000794   0x000000ca   Zero   RW         1244    .bss                rs485.o
+    0x20000794   0x000000ca   Zero   RW         1243    .bss                rs485.o
     0x2000085e   0x00000002   PAD
-    0x20000860   0x000000fc   Zero   RW         1440    .bss                scheduler.o
-    0x2000095c   0x00000014   Zero   RW         1501    .bss                fsmmessage.o
-    0x20000970   0x00000020   Zero   RW         1552    .bss                swtimers.o
-    0x20000990   0x0000000a   Zero   RW         1713    .bss                fp_facepanel.o
+    0x20000860   0x000000fc   Zero   RW         1434    .bss                scheduler.o
+    0x2000095c   0x00000014   Zero   RW         1495    .bss                fsmmessage.o
+    0x20000970   0x00000020   Zero   RW         1546    .bss                swtimers.o
+    0x20000990   0x0000000a   Zero   RW         1707    .bss                fp_facepanel.o
     0x2000099a   0x00000002   PAD
-    0x2000099c   0x00000060   Zero   RW         1839    .bss                c_w.l(libspace.o)
+    0x2000099c   0x00000060   Zero   RW         1833    .bss                c_w.l(libspace.o)
     0x200009fc   0x00000004   PAD
     0x20000a00   0x00000200   Zero   RW           18    HEAP                startup_stm32f10x_md.o
     0x20000c00   0x00000400   Zero   RW           17    STACK               startup_stm32f10x_md.o
@@ -1723,25 +1717,25 @@ Image component sizes
        124         22          0          1          0       1734   amplifier.o
        280         34          0          0          0       2689   analogswitch.o
        200         14          0          4          0       2057   blink.o
-       240         52          0         24         60       8280   buttons.o
-       344         56          0          0       1024       8939   config.o
+       224         48          0         24         60       7757   buttons.o
+       344         56          0          0       1024       7655   config.o
          0          0          0          0          0       4532   core_cm3.o
         60          4          0        512          0       1185   crc16.o
        226         28          0          0          0      17893   dma_st.o
        838         44          0          0         12       7799   eepm95128.o
        308         14          0          4         12       2783   faults.o
-        68         10          0          0         10       2736   fp_facepanel.o
+        68         10          0          0         10       2708   fp_facepanel.o
         28          4          0          0         20       1515   fsmmessage.o
        544         90          0         26          0       2321   gpio_st.o
        368         82         41         13          0       4869   jq6500.o
       1320        104          0         22         40       8947   linecheck.o
        850         44          0          4         20       7859   logging.o
-      2390         68          0          2          0       8018   main.o
-       500          8          0          3          0       3385   mb_motherboard.o
+      2342         68          0          2          0       7990   main.o
+       500          8          0          3          0       3337   mb_motherboard.o
        846         54          0          7         56       6596   pojline.o
        444         50          0         14          0       4880   powerandcharge.o
        216         34          0          2          0       3417   relay.o
-      1114        120          0         16        202      11774   rs485.o
+      1114        120          0         16        202      11770   rs485.o
        360         28          0          0          0       2039   rtc_st.o
        276         26          0          5          0       4797   sb_sirenboard.o
        406         56          0          4        252       4458   scheduler.o
@@ -1751,12 +1745,12 @@ Image component sizes
        582         70          0          0          0       5783   sys_st.o
         20          4          0          0          0        455   sys_tick_st.o
         28          0          0          0          0       1476   time.o
-        36          4          0          0          0        499   timers_st.o
+       188         18          0          0          0        995   timers_st.o
        618         66          0          8         12      20589   uart_st.o
-       302         40          0         16          0       2532   zummer.o
+       234         36          0         16          0       2926   zummer.o
 
     ----------------------------------------------------------------------
-     14764       1358        312        704       3292     375628   Object Totals
+     14784       1364        312        704       3292     374603   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         24          0          3          8          4          0   (incl. Padding)
 
@@ -1806,15 +1800,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     15148       1374        312        704       3392     367188   Grand Totals
-     15148       1374        312        528       3392     367188   ELF Image Totals (compressed)
-     15148       1374        312        528          0          0   ROM Totals
+     15168       1380        312        704       3392     366163   Grand Totals
+     15168       1380        312        528       3392     366163   ELF Image Totals (compressed)
+     15168       1380        312        528          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                15460 (  15.10kB)
+    Total RO  Size (Code + RO Data)                15480 (  15.12kB)
     Total RW  Size (RW Data + ZI Data)              4096 (   4.00kB)
-    Total ROM Size (Code + RO Data + RW Data)      15988 (  15.61kB)
+    Total ROM Size (Code + RO Data + RW Data)      16008 (  15.63kB)
 
 ==============================================================================
 

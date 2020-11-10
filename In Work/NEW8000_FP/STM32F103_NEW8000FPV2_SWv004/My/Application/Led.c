@@ -44,6 +44,30 @@ void Led_Control(uint8_t ledBit, uint8_t state){
   else                          p[offset] &= ~(3<<bit);//Гашение обоих светодиодов.
 }
 //-----------------------------------------------------------------------------
+void Led_Mic(uint8_t state){
+
+  switch(state){
+		//--------------------
+		case(MIC_CONNECTED):
+			Led_Control(MIC_LED, GreenColor);
+		break;
+		//--------------------
+		case(MIC_NOT_CONNECT):
+			Led_Control(MIC_LED, YellowColor);
+		break;
+		//--------------------
+		case(MIC_FAULT):
+			Led_Control(MIC_LED, YellowColor);
+		break;
+		//--------------------
+		case(MIC_ACTIVE):
+			Led_Control(MIC_LED, RedColor);
+		break;
+		//--------------------
+  }
+  //--------------------
+}
+//-----------------------------------------------------------------------------
 void Led_Pusk(uint8_t state){
 
   if(state == LedOn) LedStr.START_LED_bit = 1;

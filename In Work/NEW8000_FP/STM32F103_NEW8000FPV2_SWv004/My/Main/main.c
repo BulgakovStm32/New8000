@@ -457,8 +457,8 @@ void Task_GetControl(void){
 void Task_Begin(void){
 
 	//Вывод на дисплей логотопа.
-  Menu_Logo();
-  Delay_mSec(2000);
+//  Menu_Logo();
+//  Delay_mSec(2000);
 	//--------------------
 	while(!GpioCheck()){};// Delay_mSec(10);//Определение состояния ключа.
 	Menu_Init();     			//Инициализация пунктов меню.
@@ -543,31 +543,38 @@ void Task_ControlModeUnit(void){
 	Display_Header(RusText_ControlModeUnit);//Вывод шапки окна.
 	//Отображение событий системы:
 	//Активация тангентного микрофона
-			 if(MicState() == MIC_ACTIVE)                   Display_Mic();
+			 if(MicState() == MIC_ACTIVE) Display_Mic();
 	//Активация встроенного сообщения кнопкой ПУСК. 		
-	else if(SpLine_GetOutState(Zone1) == ActionPuskOn)  Display_PuskButtonActivation();   
+	else if(SpLine_GetOutState(Zone1) == ActionPuskOn) Display_PuskButtonActivation();   
 	//Активация встроенного сообщения по сработке пожарного шлейфа.		
-	else if(FireLine_CompareAllLinesWith(FR_IN_FIRE))   Display_Fire();   
+	else if(FireLine_CompareAllLinesWith(FR_IN_FIRE)) Display_Fire();   
 	//Ручная активация зон.
 	else if(SpLine_CompareAllLinesWith(ActionManualOn)) Display_Manual(); 
 	//Отображение неисправностей блока 
-	else if(Faults()->Instant & FAULTS_MASK)            Display_Faults(Faults()->Instant); 
+	else if(Faults()->Instant & FAULTS_MASK) Display_Faults(Faults()->Instant); 
 	//Вывод состояния микрофона, адресса и группы блока. 
-	else                                                Display_AddressGroupAndMicState();
+	else Display_AddressGroupAndMicState();
 	//-------------------------------------------------------	
 	//Управление светодиодами.
 	Led_Algorithm(Alg1Led, Line1, Zone1, INTERVAL_250_mS);//Cветодиод АЛГОРИТМ УПРАВЛЕНИЯ 1.
   Led_Algorithm(Alg2Led, Line2, Zone3, INTERVAL_250_mS);//Cветодиод АЛГОРИТМ УПРАВЛЕНИЯ 2.
   //Управление светодиодом ПУСК.
-  if((SpLine_GetOutState(Zone1) == ActionPuskOn) || 
-	   (SpLine_GetOutState(Zone2) == ActionPuskOn))
+  if((SpLine_GetOutState(Zone1) == ActionMicOn) || 
+	   (SpLine_GetOutState(Zone2) == ActionMicOn))
     {
-			 Led_Pusk(LedOn);
-    }	
+			 Led_Pusk(Blink(INTERVAL_500_mS) & LedOn);
+    }
+	else if(SpLine_GetOutState(Zone1) == ActionPuskOn ||
+		      SpLine_GetOutState(Zone2) == ActionPuskOn)
+		{
+			Led_Pusk(LedOn);
+		}
 	else Led_Pusk(LedOff);
 	//Управление светодиодом ПОЖАР.
 	if(FireLine_CompareAllLinesWith(FR_IN_FIRE)) Led_Poj(LedOn);	
 	else 																				 Led_Poj(LedOff);	
+	//Управление светодиодом МИКР.	
+	Led_Mic(MicState());	
 	//-------------------------------------------------------		
   //Передача состояний кнопок в ЦП.
   txBuf->Control_Buttons = Button_GetControl();
@@ -872,19 +879,16 @@ void Task_CofigModeUnit(void){
 				//****************************************************************************** 
 				//6-я страница меню - просмотр журнала событий
 				case(Page6):				
-					Button_UpDown((uint16_t*)&Log()->EventIndex, 1, Log()->TotalEvents); //Перемещение по записям в журнале событий.
-					if(Button_IsPress(ZUMMERbut)) Log()->EventIndex = 1;                  			 //Получение первой записи по нажатию ЗВУК.ОТКЛ.
-					if(Button_IsPress(TESTbut))   Log()->EventIndex = Log()->TotalEvents;//Получение последней записи по нажатию ТЕСТ.
-					if(Button_IsPress(PUSKbut))   Log()->EventIndex = 0xFFFF; 									 //Все непросмотренные события сделать просмотренными при нажатии ПУСК.					
+					Button_UpDown((uint16_t*)&Log()->EventIndex, 1, Log()->TotalEvents);  //Перемещение по записям в журнале событий.
+					if(Button_IsPress(ZUMMERbut)) Log()->EventIndex = 1;                  //Получение первой записи по нажатию ЗВУК.ОТКЛ.
+					if(Button_IsPress(TESTbut))   Log()->EventIndex = Log()->TotalEvents; //Получение последней записи по нажатию ТЕСТ.
+					if(Button_IsPress(PUSKbut))   Log()->EventIndex = RESET_UNREAD_EVENTS;//Все непросмотренные события сделать просмотренными при нажатии ПУСК.					
 					//Отправка запроса только по одному нажатию кнопки. 
 					if(Log()->EventOldIndex != Log()->EventIndex)
 						{
 							Log()->EventOldIndex = Log()->EventIndex;
 							//Все непросмотренные события сделать просмотренными при нажатии ПУСК. 
-							if(Log()->EventIndex == 0xFFFF)
-								{
-									Log()->EventIndex = Log()->TotalEvents;
-								}
+							if(Log()->EventIndex == RESET_UNREAD_EVENTS) Log()->EventIndex = Log()->TotalEvents;
 							//Отправка запроса в ЦП.
 							*RS485_Cmd() = FP_CMD_GET_LOG;
 						}
@@ -892,13 +896,9 @@ void Task_CofigModeUnit(void){
 				//******************************************************************************
 				//******************************************************************************
 				//7-я страница меню.
-				case(Page7):
-//					if(Button_IsPress(RESETbut))
-//						{
-//							*RS485_Cmd() = FP_CMD_GET_EEPROM_INFO;
-//						}					
-					Button_ClrToggle(RESETbut);	
-				break;
+//				case(Page7):				
+//					Button_ClrToggle(RESETbut);	
+//				break;
 				//******************************************************************************
 				//******************************************************************************
 				default:
@@ -938,8 +938,8 @@ void Task_CofigModeUnit(void){
 			if(*RS485_Cmd() != FP_CMD_LC_SAVE_REF) SpLine_Param()->ConfigFlag = FLAG_CLEAR;
 			//--------------------
 			if(Button_IsPress(TESTbut))   Menu_IndexReg()->Page = PAGE_NUM-1;//Переход на последнюю страницу при нажатии кнапки ТЕСТ.
-			if(Button_IsPress(ZUMMERbut)) Menu_IndexReg()->Page = Page1;			//Переход на первую страницу при нажатии кнапки ЗВУК ОТКЛ..
-			Button_UpDown(&Menu_IndexReg()->Page, 0, PAGE_NUM-1); 					  //Перемещение по страницам меню.
+			if(Button_IsPress(ZUMMERbut)) Menu_IndexReg()->Page = Page1;		 //Переход на первую страницу при нажатии кнапки ЗВУК ОТКЛ..
+			Button_UpDown(&Menu_IndexReg()->Page, 0, PAGE_NUM-1); 					 //Перемещение по страницам меню.
       //--------------------
 			Menu_Update(Menu(Menu_IndexReg()->Page), 0, 0);       
     }

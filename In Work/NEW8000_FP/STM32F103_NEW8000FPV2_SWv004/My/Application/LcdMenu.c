@@ -767,22 +767,18 @@ void Print_MicState(void){
 		//--------------------
 		case(MIC_CONNECTED):
 			LcdOutStr((char*)RusText_MicConnect);
-			Led_Control(MIC_LED, GreenColor);
 		break;
 		//--------------------
 		case(MIC_NOT_CONNECT):
 			LcdOutStr((char*)RusText_MicNotConnect);
-			Led_Control(MIC_LED, YellowColor);
 		break;
 		//--------------------
 		case(MIC_FAULT):
 			LcdOutStr((char*)RusText_MicFault);
-			Led_Control(MIC_LED, YellowColor);
 		break;
 		//--------------------
 		case(MIC_ACTIVE):
 			LcdOutStr((char*)RusText_MicActive);
-			Led_Control(MIC_LED, RedColor);
 		break;
 		//--------------------
   }
