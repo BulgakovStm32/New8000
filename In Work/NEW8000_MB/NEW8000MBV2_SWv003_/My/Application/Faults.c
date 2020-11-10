@@ -11,11 +11,11 @@ void Faults_Loop(void){
 				 uint32_t faultReg    = 0;
 	static uint32_t faultOldReg = 0;
   //---------------------  
-	if(Power()->State.bits.AC  != POWER_AC_OK) 	 faultReg |= ACFaultFlag; //Отсутствует основное питание.
-	if(Power()->State.bits.DC  != POWER_DC_OK) 	 faultReg |= DCFaultFlag; //Неисправен инвертор.
-  if(Power()->State.bits.Bat >= BAT_ATTENTION) faultReg |= BatFaultFlag;//глубокий разряд или отсутствие АКБ.
-  if(PAmp_GetStat() == PAMP_PROT)   	         faultReg |= PAFaultFlag; //УМЗЧ в защите.
-	if(RS485_Flags()->NoConnect)		 		         faultReg |= ConnectFaultFlag;
+	if(Power()->State.bits.AC  == POWER_AC_FAULT) faultReg |= ACFaultFlag; //Отсутствует основное питание.
+	if(Power()->State.bits.DC  == POWER_DC_FAULT) faultReg |= DCFaultFlag; //Неисправен инвертор.
+  if(Power()->State.bits.Bat >= BAT_ATTENTION)  faultReg |= BatFaultFlag;//глубокий разряд или отсутствие АКБ.
+  if(PAmp_GetStat() == PAMP_PROT)   	          faultReg |= PAFaultFlag; //УМЗЧ в защите.
+	if(RS485_Flags()->NoConnect)		 		          faultReg |= ConnectFaultFlag;
 	//---------------------
   //Пожарные шлейфы.
 	if(FireLine(POJ_1)->FaultState >= FIRE_LINES_SHORT) faultReg |= FireLine1FaultFlag;

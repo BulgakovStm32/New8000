@@ -48,7 +48,6 @@ void Zummer_Fault(uint32_t faults){
 			faultsOldState = faults;    //Сохранение состояния.
 			Button_ClrToggle(ZUMMERbut);//сброс состояния кнопки ОТКЛ.ЗВУК.
       Zummer_Control(ZUMM_ON);   //Активация зуммера.
-			//Zummer_Beep(3, 100);
     }
   else 
     {

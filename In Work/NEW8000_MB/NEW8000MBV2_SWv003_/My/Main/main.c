@@ -55,24 +55,11 @@ void Task_Executors(void){
 	Log_Loop();       //Логирование неисправностей блока.
 	//--------------------
 	//Управление зуммером.
-	
-	
-//  if(MotherBoard_WorkReg()->State == MB_WORK_STATE && 
-//		 FacePanel()->Key != KEY_CONFIG_STATE) 						
-//		{
-//			Zummer_Fault(faultsInst);
-//		}
-//	//В режиме настройки зуммер не работает.
-//	else Zummer_Control(ZUMM_OFF);//Zummer_Fault(0);		
-		
-	
-//  if(MotherBoard_WorkReg()->State == MB_WORK_STATE && 
-//		 FacePanel()->Key != KEY_CONFIG_STATE) 						
-//		{
-//			Zummer_Fault(faultsInst);
-//		}
-//	//В режиме настройки зуммер не работает.
-//	else Zummer_Fault(0);
+  if(MotherBoard_WorkReg()->State == MB_WORK_STATE && 
+		 FacePanel()->Key != KEY_CONFIG_STATE) 						
+		{
+			Zummer_Fault(faultsInst);	
+		}	
 	//--------------------
   //Управление реле "НЕИСПРАВНОСТЬ ОБЩАЯ".
 	if(faultsInst != 0) Relay_On (RELAY_FAULT_GENERAL);//Активация реле "Н.О.".
@@ -513,6 +500,8 @@ void Task_ConfigModeUnit(void){
   //Button_ClrToggleState(ALG_BUTTONS, ALL_BUTTON);
   //ButTempUnitControl = 0;
   //---------------------
+	MotherBoard_WorkReg()->State = MB_WORK_STATE;
+	
 	SpeakerLine(SP_LINE_1)->IsActivated = ActionOff;//Отключение всех зон.
 	SpeakerLine(SP_LINE_2)->IsActivated = ActionOff;//
   SirenBoard_Set(SIREN_ALL, SIREN_OUT_OFF);  			//Отключение оповещателей.
