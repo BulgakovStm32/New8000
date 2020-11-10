@@ -72,9 +72,8 @@ const char RusText_NoConnectionSB[] = "Нет связи с модулем!!";
 
 //-----------------------------------------------------------------------------
 //МИКР.
-const char RusText_MicNotConnect[] = "Микрофон отсутствует!";
-const char RusText_MicConnect[]    = "Микрофон подключен.";
-const char RusText_MicFault[]      = "Микрофон неисправен!";
+const char RusText_MicNotConnect[] = "Микрофон отсутствует";
+const char RusText_MicConnect[]    = "Микрофон подключен";
 const char RusText_MicActive[]     = "АКТИВИРОВАН МИКР.";
 
 //-----------------------------------------------------------------------------
@@ -158,10 +157,11 @@ const char RusText_Siren2Fault[] 		= "Табло2 неисправно";
 const char RusText_Siren3Norm[]   	= "Табло3 в норме";
 const char RusText_Siren3Fault[] 		= "Табло3 неисправно";
 //
+const char RusText_MicNorm[]        = "Микрофон в норме";
+const char RusText_MicFault[]       = "Микрофон неисправен";
+//
 const char RusText_ConnectNorm[]   	= "Обмен данными норм.";
 const char RusText_ConnectFault[] 	= "Сбой обмена данными";
-
-
 //-------------------------------------------------------
 
 const char RusText_PuskVoiceMessageNum[] = "АКТ.СООБЩЕНИЕ"; //"Акт. сообщение ";

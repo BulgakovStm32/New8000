@@ -227,44 +227,47 @@ typedef enum{
 char* LogGetRusText(uint8_t eventID){
 
 	switch(eventID){
-		case(DeviceOn)   : return (char*)&RusText_PowerOn[0];    
+		case(DeviceOn)   : return (char*)RusText_PowerOn;   
 		//Основное питание.
-		case(LogACNorm)  : return (char*)&RusText_PowerAcNorm[0];
-		case(LogACFault) : return (char*)&RusText_PowerAcFault[0];     
+		case(LogACNorm)  : return (char*)RusText_PowerAcNorm;
+		case(LogACFault) : return (char*)RusText_PowerAcFault;     
 		//Инвертор.
-		case(LogDCNorm)  : return (char*)&RusText_PowerDcNorm[0];   
-		case(LogDCFault) : return (char*)&RusText_PowerDcFault[0];   
+		case(LogDCNorm)  : return (char*)RusText_PowerDcNorm;   
+		case(LogDCFault) : return (char*)RusText_PowerDcFault;  
 		//АКБ.
-		case(LogBatNorm) : return (char*)&RusText_BatNorm[0];   		
-		case(LogBatFault): return (char*)&RusText_BatFault[0];   
+		case(LogBatNorm) : return (char*)RusText_BatNorm;   		
+		case(LogBatFault): return (char*)RusText_BatFault;   
 		//шлейфы пожарные.
-		case(LogFireLine1Norm) : return (char*)&RusText_FireLine1Norm[0];   		
-		case(LogFireLine1Fault): return (char*)&RusText_FireLine1Fault[0];   		
-		case(LogFireLine2Norm) : return (char*)&RusText_FireLine2Norm[0];   		
-		case(LogFireLine2Fault): return (char*)&RusText_FireLine2Fault[0]; 
-		case(LogFireLine3Norm) : return (char*)&RusText_FireLine3Norm[0];   		
-		case(LogFireLine3Fault): return (char*)&RusText_FireLine3Fault[0]; 
-		case(LogChSLineNorm)   : return (char*)&RusText_ChSLineNorm[0];   		
-		case(LogChSLineFault)  : return (char*)&RusText_ChSLineFault[0]; 
+		case(LogFireLine1Norm) : return (char*)RusText_FireLine1Norm; 		
+		case(LogFireLine1Fault): return (char*)RusText_FireLine1Fault;   		
+		case(LogFireLine2Norm) : return (char*)RusText_FireLine2Norm;   		
+		case(LogFireLine2Fault): return (char*)RusText_FireLine2Fault;
+		case(LogFireLine3Norm) : return (char*)RusText_FireLine3Norm;   		
+		case(LogFireLine3Fault): return (char*)RusText_FireLine3Fault;
+		case(LogChSLineNorm)   : return (char*)RusText_ChSLineNorm;  		
+		case(LogChSLineFault)  : return (char*)RusText_ChSLineFault; 
 		//линии связи с Гр.
-		case(LogSpLine1Norm)   : return (char*)&RusText_SpLine1Norm[0];   		
-		case(LogSpLine1Fault)  : return (char*)&RusText_SpLine1Fault[0]; 
-		case(LogSpAtten1Norm)  : return (char*)&RusText_SpAtten1Norm[0];   		
-		case(LogSpAtten1Fault) : return (char*)&RusText_SpAtten1Fault[0]; 
-		case(LogSpLine2Norm)   : return (char*)&RusText_SpLine2Norm[0];   		
-		case(LogSpLine2Fault)  : return (char*)&RusText_SpLine2Fault[0];
-		case(LogSpAtten2Norm)  : return (char*)&RusText_SpAtten2Norm[0];   		
-		case(LogSpAtten2Fault) : return (char*)&RusText_SpAtten2Fault[0]; 
-		//
-		case(LogSiren1Norm) : return (char*)&RusText_Siren1Norm[0];   		
-		case(LogSiren1Fault): return (char*)&RusText_Siren1Fault[0]; 		
-		case(LogSiren2Norm) : return (char*)&RusText_Siren2Norm[0];   		
-		case(LogSiren2Fault): return (char*)&RusText_Siren2Fault[0]; 		
-		case(LogSiren3Norm) : return (char*)&RusText_Siren3Norm[0];   		
-		case(LogSiren3Fault): return (char*)&RusText_Siren3Fault[0]; 
-		//
-		case(LogConnectNorm) : return (char*)&RusText_ConnectNorm[0];   		
-		case(LogConnectFault): return (char*)&RusText_ConnectFault[0]; 		
+		case(LogSpLine1Norm)   : return (char*)RusText_SpLine1Norm;   		
+		case(LogSpLine1Fault)  : return (char*)RusText_SpLine1Fault;
+		case(LogSpAtten1Norm)  : return (char*)RusText_SpAtten1Norm;   		
+		case(LogSpAtten1Fault) : return (char*)RusText_SpAtten1Fault;
+		case(LogSpLine2Norm)   : return (char*)RusText_SpLine2Norm;		
+		case(LogSpLine2Fault)  : return (char*)RusText_SpLine2Fault;
+		case(LogSpAtten2Norm)  : return (char*)RusText_SpAtten2Norm; 		
+		case(LogSpAtten2Fault) : return (char*)RusText_SpAtten2Fault;
+		//линии связи с табличками ВЫХОД
+		case(LogSiren1Norm) : return (char*)RusText_Siren1Norm;   		
+		case(LogSiren1Fault): return (char*)RusText_Siren1Fault; 		
+		case(LogSiren2Norm) : return (char*)RusText_Siren2Norm;   		
+		case(LogSiren2Fault): return (char*)RusText_Siren2Fault;	
+		case(LogSiren3Norm) : return (char*)RusText_Siren3Norm;  		
+		case(LogSiren3Fault): return (char*)RusText_Siren3Fault;
+		//Внешний микрофон.
+		case(LogMicNorm) : return (char*)RusText_MicNorm;   		
+		case(LogMicFault): return (char*)RusText_MicFault; 			
+		//Обмен данными с лицевой пнелью.
+		case(LogConnectNorm) : return (char*)RusText_ConnectNorm;   		
+		case(LogConnectFault): return (char*)RusText_ConnectFault; 		
 		//--------------------
 		default: 
 		  LcdOutStr((char*)&RusText_EventID[0]);//надпись "Код события"
