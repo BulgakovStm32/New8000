@@ -266,7 +266,7 @@ void Task_LedUpdate(void){
 		}	
   //--------------------
 	Led_Power(Power());              //Индикатор "ПИТАНИЕ"
-	Led_Bat(Power()->State.bits.Bat);//Индикатор "АКБ" 
+	Led_Bat(Power()->StateFromMB.bits.Bat);//Индикатор "АКБ" 
 	Led_Amp(Amp_GetState());		     //Индикатор "УМЗЧ" 	
   //--------------------
   //Индикатор "СВЯЗЬ" 

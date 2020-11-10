@@ -100,10 +100,9 @@ static void LedPower(uint8_t state){
 //-----------------------------------------------------------------------------
 void Led_Power(PowerSTR_t* power){
 		
-       if(power->State.bits.AC == POWER_AC_OK &&
-				  power->State.bits.DC == POWER_DC_OK)    LedPower(GreenColor);//Питание в норме.
-  else if(power->State.bits.AC == POWER_AC_FAULT) LedPower(RedColor);  //Отсутствует основное питание.
-  else if(power->State.bits.DC == POWER_DC_FAULT) LedPower(YellowColor & Blink(INTERVAL_250_mS));//Неисправен инвертор.
+       if(power->StateFromMB.bits.AC == POWER_AC_OK)    LedPower(GreenColor);//Питание в норме.
+  else if(power->StateFromMB.bits.AC == POWER_AC_FAULT) LedPower(RedColor);  //Отсутствует основное питание.
+  else if(power->StateFromMB.bits.DC == POWER_DC_FAULT) LedPower(YellowColor & Blink(INTERVAL_250_mS));//Неисправен инвертор.
 }
 //-----------------------------------------------------------------------------
 static void LedBattery(uint8_t state){
