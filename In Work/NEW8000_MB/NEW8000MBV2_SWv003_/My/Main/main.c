@@ -73,6 +73,16 @@ void Task_Executors(void){
 	if(faultsInst & FAULT_MASK_FOR_RELAY_FAULT_POWER) Relay_On(RELAY_FAULT_POWER); //Активация реле "Н.П.". 
   else 																							Relay_Off(RELAY_FAULT_POWER);//Отключение реле "Н.П.". 
 	//--------------------
+	//Управление и контроль ЗУ и основного питяния.
+	if(FacePanel()->Key == KEY_CONFIG_STATE) Charger_Deactivate();//В режиме НАСТРОЙКА ЗУ отключается.
+	else
+		{
+			if(Power()->CheckConfig.bits.Bat != BAT_CHECK_OFF)
+				{
+					Charger_Activate();			
+				}
+		}
+	//--------------------	
 	if(FacePanel()->Key == KEY_CONFIG_STATE) Relay_Off(RELAY_ALL); 
 	SpeakerLine_FSMLoop();		//Работа с линиями Гр.
 	FireLine_FSMLoop();	  		//Работа с входами ШС.
@@ -185,7 +195,7 @@ void Task_ParsingCmdFP(void){
 		//Команда сохранения контроля питания блока.
 		case(FP_CMD_SET_POWER_CHECK):
 			Zummer_Beep(5, 100);
-			Power()->StateFromFP.Byte = dataFromFacePanel->Mic;
+			Power()->CheckConfig.Byte = dataFromFacePanel->Mic;
 			//Сохранение во флеш микроконтроллера.
 			Config_Save()->PowerCheck = dataFromFacePanel->Mic; 
 		break;					
@@ -484,10 +494,6 @@ void Task_ControlModeUnit(void){
 			SirenBoard_Set(SIREN_3, SIREN_OUT_OFF);  
 			Relay_Off(RELAY_FIRE3);			
 		}
-	//-----------------------------------------------------
-	//Управление и контроль ЗУ и основного питяния.
-	if(Power()->StateFromFP.bits.Bat == BAT_CHECK_OFF) Charger_Deactivate(); 
-	else 											 										     Charger_Activate(); 
 	//-----------------------------------------------------		
 }
 //*************************************************************************************************
@@ -620,12 +626,12 @@ int main(void){
   VoiceMessage_Init();
   RS485_Init();
 	Config_Init(); 		
-	Zummer_Init();
+//	Zummer_Init();
 	Log_Init();
 	Relay_Init();
 	SirenBoard_Init();
 	//-------------------- 
-	Charger_Activate();		  //Активация ЗУ.
+//	Charger_Activate();		  //Активация ЗУ.
   AnalogSwitch_Activate();//Включение выходов мультиплексора.
 	
 	Relay_On(RELAY_SP1_ATT_LIN | RELAY_SP2_ATT_LIN);//Переключение выхода УМ с линии Аттенюации на линию Оповещения.
@@ -635,7 +641,7 @@ int main(void){
   MotherBoard_WorkReg()->Group   = pConfig->Group;
 	SpeakerLine_Param()->Deviation = pConfig->SpDeviation;
 	SpeakerLine_Param()->Check     = pConfig->SpCheck;
-	Power()->StateFromFP.Byte      = pConfig->PowerCheck;
+	Power()->CheckConfig.Byte      = pConfig->PowerCheck;
 	
 	for(count = 0; count < FIRE_LINES_NUMBER; count++)
 		{

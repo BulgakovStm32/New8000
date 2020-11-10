@@ -11,7 +11,7 @@ static uint8_t Bat_StateCalc(void){
 	uint16_t tempBatMeas = PowerSTR.BatMeas;
   //--------------------
 	//контроль отключен.
-	if(PowerSTR.StateFromFP.bits.Bat == BAT_CHECK_OFF) return BAT_CHECK_OFF; 
+	if(PowerSTR.CheckConfig.bits.Bat == BAT_CHECK_OFF) return BAT_CHECK_OFF; 
 	//--------------------
   if( tempBatMeas >  2720)                           return BAT_CHARGE_END; 
   if((tempBatMeas >  2100) && (tempBatMeas <= 2720)) return BAT_CHARGE;
@@ -76,7 +76,7 @@ void PowerAndCharge_Loop(void){
     }
 	//--------------------
 	//контроль отключен.
-	if(PowerSTR.StateFromFP.bits.AC == POWER_AC_CHECK_OFF) PowerSTR.State.bits.AC = POWER_AC_CHECK_OFF;
+	if(PowerSTR.CheckConfig.bits.AC == POWER_AC_CHECK_OFF) PowerSTR.State.bits.AC = POWER_AC_CHECK_OFF;
 }
 //*****************************************************************************
 PowerSTR_t* Power(void){

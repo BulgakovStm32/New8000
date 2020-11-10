@@ -134,7 +134,7 @@ void Log_Loop(void){
 	
 	if(faultsRise & Siren3FaultFlag) Log_SaveEvent(LogSiren3Fault, NoParam);
 	if(faultsFall & Siren3FaultFlag) Log_SaveEvent(LogSiren3Norm,  NoParam);	
-	//
+	//Отсутствие связи с лицевой панелью.
 	if(faultsRise & ConnectFaultFlag) Log_SaveEvent(LogConnectFault, NoParam);
 	if(faultsFall & ConnectFaultFlag) Log_SaveEvent(LogConnectNorm,  NoParam);	
 }

@@ -62,7 +62,7 @@ typedef struct{
 	uint16_t BatMeas;//Напряжение на АКБ.
 	//----------
 	PowerState_t State;
-	PowerState_t StateFromFP;
+	PowerState_t CheckConfig;
 	//----------
 }PowerSTR_t;
 #pragma pack(pop)//вернули предыдущую настройку.
