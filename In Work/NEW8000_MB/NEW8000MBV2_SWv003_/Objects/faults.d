@@ -1,11 +1,11 @@
 .\objects\faults.o: My\Application\Faults.c
 .\objects\faults.o: My\Application\Faults.h
+.\objects\faults.o: My\Application\RS485.h
+.\objects\faults.o: .\My\Drivers\uart_ST.h
 .\objects\faults.o: .\CMSIS_STM32F1xx\stm32f10x.h
 .\objects\faults.o: .\CMSIS_STM32F1xx\core_cm3.h
 .\objects\faults.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\faults.o: .\CMSIS_STM32F1xx\system_stm32f10x.h
-.\objects\faults.o: My\Application\RS485.h
-.\objects\faults.o: .\My\Drivers\uart_ST.h
 .\objects\faults.o: .\My\Drivers\dma_ST.h
 .\objects\faults.o: .\My\Drivers\crc16.h
 .\objects\faults.o: .\My\Boards\MB_MotherBoard\MB_MotherBoard.h

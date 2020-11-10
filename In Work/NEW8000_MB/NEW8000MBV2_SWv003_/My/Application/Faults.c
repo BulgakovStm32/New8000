@@ -15,7 +15,11 @@ void Faults_Loop(void){
 	if(Power()->State.bits.DC  == POWER_DC_FAULT) faultReg |= DCFaultFlag; //Неисправен инвертор.
   if(Power()->State.bits.Bat >= BAT_ATTENTION)  faultReg |= BatFaultFlag;//глубокий разряд или отсутствие АКБ.
   if(PAmp_GetStat() == PAMP_PROT)   	          faultReg |= PAFaultFlag; //УМЗЧ в защите.
+	//---------------------	
 	if(RS485_Flags()->NoConnect)		 		          faultReg |= ConnectFaultFlag;
+	
+	if(FacePanel()->Mic == MIC_NOT_CONNECT ||
+		 FacePanel()->Mic == MIC_FAULT)		 		      faultReg |= MicFaultFlag;	
 	//---------------------
   //Пожарные шлейфы.
 	if(FireLine(POJ_1)->FaultState >= FIRE_LINES_SHORT) faultReg |= FireLine1FaultFlag;

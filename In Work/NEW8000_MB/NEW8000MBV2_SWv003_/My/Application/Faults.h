@@ -2,25 +2,18 @@
 #ifndef _Faults_H
 #define _Faults_H
 //*****************************************************************************
-
-#include "stm32f10x.h"
-
-//--------------------
 //AppLayer.
 #include "RS485.h"
-
-//--------------------
+//********************
 //Boards.
 #include "MB_MotherBoard.h"
 #include "SB_SirenBoard.h"
 #include "FP_FacePanel.h"
 //*****************************************************************************
 typedef struct{
-	
 	uint32_t Instant;//действующие неисправности.
 	uint32_t Rise;	 //установки флага.
 	uint32_t Fall;   //сброса флага.
-
 }FaultReg_t;
 //-------------------------------
 //Неисправности
@@ -44,8 +37,6 @@ typedef struct{
 
 //-------------------------------
 #define FAULT_MASK_FOR_RELAY_FAULT_POWER (ACFaultFlag | DCFaultFlag | BatFaultFlag)
-
-
 
 //*****************************************************************************
 void        Faults_Loop(void);

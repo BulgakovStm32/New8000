@@ -136,7 +136,10 @@ void Log_Loop(void){
 	if(faultsFall & Siren3FaultFlag) Log_SaveEvent(LogSiren3Norm,  NoParam);	
 	//Отсутствие связи с лицевой панелью.
 	if(faultsRise & ConnectFaultFlag) Log_SaveEvent(LogConnectFault, NoParam);
-	if(faultsFall & ConnectFaultFlag) Log_SaveEvent(LogConnectNorm,  NoParam);	
+	if(faultsFall & ConnectFaultFlag) Log_SaveEvent(LogConnectNorm,  NoParam);
+	//Неисправность внешнего микрофона.
+	if(faultsRise & MicFaultFlag) Log_SaveEvent(LogMicFault, NoParam);
+	if(faultsFall & MicFaultFlag) Log_SaveEvent(LogMicNorm,  NoParam);	
 }
 //*****************************************************************************
 LogCounts_t *Log_Counts(void){
