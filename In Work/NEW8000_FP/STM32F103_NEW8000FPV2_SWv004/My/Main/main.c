@@ -570,8 +570,8 @@ void Task_ControlModeUnit(void){
 	else 																				 Led_Poj(LedOff);	
 	//-------------------------------------------------------		
   //Передача состояний кнопок в ЦП.
-//  txBuf->Control_Buttons = Button_GetControl();
-//  txBuf->Alg_Buttons     = Button_GetAlg();
+  txBuf->Control_Buttons = Button_GetControl();
+  txBuf->Alg_Buttons     = Button_GetAlg();
 	//-------------------------------------------------------	
 }
 //**************************************************************************************************************

@@ -274,19 +274,16 @@ void RS485_TxDataToMB(void){
 			txBuf->MicState = Power()->State.Byte; 
 		break;	
 		//--------------------
-		//Команда получения информацио о EEPROM.
-//		case(FP_CMD_GET_EEPROM_INFO):
-//			RS485_TxBuf()->Str.CmdCode = FP_CMD_GET_EEPROM_INFO;
-//		break;	
-		//--------------------
 		//Команда "Выдача статуса от FP".
 		default:
 			RS485_TxBuf()->Str.CmdCode = FP_CMD_SEND_STATUS; 		
 			txBuf->MicState        = MicState();
 			txBuf->KeyState        = KeyGetState();
 		
-			txBuf->Control_Buttons = Button_GetControl();
-			txBuf->Alg_Buttons     = Button_GetAlg();
+		//Состояния кнопока передаются 
+		//в режиме БЛОКИРОВКА УПРАВЛЕНИЯ и УПРАВЛЕНИЕ
+//			txBuf->Control_Buttons = Button_GetControl();
+//			txBuf->Alg_Buttons     = Button_GetAlg();
 		break;
 		//--------------------
 	}
