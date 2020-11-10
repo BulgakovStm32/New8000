@@ -45,7 +45,7 @@ uint8_t PriorityGet(void){
 }
 //*************************************************************************************************
 //*************************************************************************************************
-//Выполнение основных процессов в блоке. Максимальное время выполнения функции 25мкС.
+//Выполнение основных процессов в блоке. 
 void Task_Executors(void){
 	
 	uint32_t faultsInst = Faults()->Instant;
@@ -61,10 +61,7 @@ void Task_Executors(void){
 			Zummer_Fault(faultsInst);
 		}
 	//В режиме настройки зуммер не работает.
-	else
-		{
-			Zummer_Fault(0);
-		}
+	else Zummer_Fault(0);
 	//--------------------
   //Управление реле "НЕИСПРАВНОСТЬ ОБЩАЯ".
 	if(faultsInst != 0) Relay_On (RELAY_FAULT_GENERAL);//Активация реле "Н.О.".
@@ -73,7 +70,7 @@ void Task_Executors(void){
 	if(faultsInst & FAULT_MASK_FOR_RELAY_FAULT_POWER) Relay_On(RELAY_FAULT_POWER); //Активация реле "Н.П.". 
   else 																							Relay_Off(RELAY_FAULT_POWER);//Отключение реле "Н.П.". 
 	//--------------------
-	//Управление и контроль ЗУ и основного питяния.
+	//Управление и контроль ЗУ и основного питания.
 	if(FacePanel()->Key == KEY_CONFIG_STATE) Charger_Deactivate();//В режиме НАСТРОЙКА ЗУ отключается.
 	else
 		{
@@ -84,6 +81,9 @@ void Task_Executors(void){
 		}
 	//--------------------	
 	if(FacePanel()->Key == KEY_CONFIG_STATE) Relay_Off(RELAY_ALL); 
+	//Переключение выхода УМ с линии Аттенюации на линию Оповещения.
+	else Relay_On(RELAY_SP1_ATT_LIN | RELAY_SP2_ATT_LIN);
+		
 	SpeakerLine_FSMLoop();		//Работа с линиями Гр.
 	FireLine_FSMLoop();	  		//Работа с входами ШС.
 	Relay_UpdateLoop();	  		//Обновление состояний реле.
@@ -631,10 +631,8 @@ int main(void){
 	Relay_Init();
 	SirenBoard_Init();
 	//-------------------- 
-//	Charger_Activate();		  //Активация ЗУ.
   AnalogSwitch_Activate();//Включение выходов мультиплексора.
-	
-	Relay_On(RELAY_SP1_ATT_LIN | RELAY_SP2_ATT_LIN);//Переключение выхода УМ с линии Аттенюации на линию Оповещения.
+
   //--------------------
 	//Применение конфигурации.
 	MotherBoard_WorkReg()->Address = pConfig->Address;
