@@ -6,7 +6,7 @@
 #include "stm32f10x.h"
 
 //-----------------------------------------------------------------------------
-#define MaxSwTimersConst   8
+#define MaxSwTimersConst        8
 //Програмные таймеры
 #define SwTimerForPojLine1 			0
 #define SwTimerForPojLine2 			1

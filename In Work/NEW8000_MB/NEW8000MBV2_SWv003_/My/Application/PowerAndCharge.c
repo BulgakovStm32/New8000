@@ -94,6 +94,53 @@ void Charger_Deactivate(void){
 
 	ZuOff();
 }
+//*****************************************************************************
+void Charger_FSMLoop(void){
+	
+	       uint8_t batState = PowerSTR.State.bits.Bat;
+	static uint8_t state    = BAT_CONNECT;
+  //--------------------
+	switch(state){			
+		//------------
+		case(BAT_CONNECT):
+			if(batState == BAT_ATTENTION ||
+			   batState == BAT_CHARGE)   
+				{
+					state = BAT_CHARGE;
+				}		
+			if(batState == BAT_NOT_CONNECT) state = BAT_NOT_CONNECT;				
+		break;
+		//------------
+		case(BAT_CHARGE):
+			ZuOn();
+			if(batState == BAT_CHARGE_END)  
+				{
+					state = BAT_CHARGE_END;
+					SwTimers_Clr(0);
+				}
+		  if(batState == BAT_NOT_CONNECT) state = BAT_NOT_CONNECT;	  
+		break;
+		//------------
+		case(BAT_CHARGE_END):
+			ZuOff();
+			if(SwTimers_Get(0) >= (5*SEC))
+				{
+					if(batState != BAT_CHARGE_END) state = BAT_CONNECT;
+					else SwTimers_Clr(0);
+				}
+		break;
+		//------------
+		case(BAT_NOT_CONNECT):
+			ZuOff();
+			if(batState != BAT_NOT_CONNECT) state = BAT_CONNECT;	
+		break;				
+		//------------
+		default:
+			state = BAT_CONNECT;	
+		break;		
+		//------------
+	}
+}
 //*************************************************************************************************
 //*************************************************************************************************
 

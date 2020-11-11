@@ -72,10 +72,7 @@ void Task_Executors(void){
 	if(FacePanel()->Key == KEY_CONFIG_STATE) Charger_Deactivate();//В режиме НАСТРОЙКА ЗУ отключается.
 	else
 		{
-			if(Power()->CheckConfig.bits.Bat != BAT_CHECK_OFF)
-				{
-					Charger_Activate();			
-				}
+			if(Power()->CheckConfig.bits.Bat != BAT_CHECK_OFF) Charger_FSMLoop();//Управление ЗУ.
 		}
 	//--------------------	
 	if(FacePanel()->Key == KEY_CONFIG_STATE) Relay_Off(RELAY_ALL); 
